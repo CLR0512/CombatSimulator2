@@ -1,0 +1,12 @@
+# A loadout picked from its card in the Compare picker becomes side B: both cards show, checked.
+click "+ Compare…"
+expect see "Your loadouts"
+click "Compare" 2
+expect see "✕ Clear"
+wait 2500
+cs2 ui
+expect reply "card_b state=checked"
+cs2 ui
+expect reply "picker=closed"
+expect reply "button=▶ Compare"
+expect log CombatSimulator2 no "not checked"

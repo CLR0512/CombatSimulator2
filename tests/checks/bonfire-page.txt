@@ -1,0 +1,23 @@
+# Firemaking: Chk's Normal bonfire has time left but isn't lit, so it gives nothing. Lit on B it adds 1% XP gained,
+# which reaches the result's XP and nothing in the fight; out again is the save's.
+cs2 page firemaking a
+expect reply "firemaking changeable groups=1 Your bonfire: Normal Bonfire, not burning"
+expect reply "Normal 0/1 was=0 modifiers=1"
+cs2 whatif check bonfire=Redwood
+expect reply "bonfire=Redwood accepted was=out"
+cs2 whatif DragonsPass/Drake bonfire=Normal seed=1
+cs2 wait timeout=9
+cs2 wait timeout=9
+wait 1500
+cs2 compare show
+expect reply "bonfire=Normal accepted was=out"
+expect reply "DragonsPass/Drake  A=12,134 [11,836, 12,432]  B=12,245 [11,944, 12,545]"
+cs2 compare show metric=kills
+expect reply "DragonsPass/Drake  A=54.62 [53.28, 55.95]  B=54.62 [53.28, 55.95]  d=0"
+cs2 side b bonfire=Normal
+expect reply "bonfire=Normal accepted was=out"
+wait 2500
+cs2 page firemaking b
+expect reply "Normal 1/1 was=0 modifiers=1"
+cs2 side b bonfire=out
+expect reply "bonfire=out no-change was=out"

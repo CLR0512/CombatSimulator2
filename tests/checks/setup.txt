@@ -1,0 +1,12 @@
+# The checks hold numbers from one character's gear, levels and runs: Chk, kept for them and never played
+# (./mm play CombatSimulator2 --load Chk). On any other character they stop here, not on a wrong number.
+cs2 setups
+expect reply "current  Chk "
+# Every check starts on Simulate, in the game's look, with one side and every name shown, once the view is built.
+cs2 side b off
+cs2 spoilers off
+cs2 side a ignore-req=off
+cs2 skin base
+cs2 open simulate
+wait 2000
+expect see "+ Compare…"

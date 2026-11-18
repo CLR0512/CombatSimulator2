@@ -1,0 +1,8 @@
+# A refused target has no fights: its full result prints no fight counts. (A run saved before counts were kept can't
+# be made by a check; the unit tests read one.) Adds one small run.
+cs2 run CrescentLake/Spitterfish seed=1
+cs2 wait timeout=9
+wait 1500
+cs2 result CrescentLake/Spitterfish full
+expect reply "refused"
+expect reply "fights: not recorded"

@@ -1,0 +1,29 @@
+# Agility changes no fight in this build, but a technique's level opens places. Chk's techniques are all at level 1,
+# so Glowing Depths is refused for Evading 25 while requirements are checked; Evading 25 on the side makes it a target
+# that runs. Dracolith Caverns needs Climbing 40 and a permit Chk can't buy, so the check uses Glowing Depths.
+cs2 pages a
+expect reply "agility skills changeable changes=0 Nothing in Agility changes a fight in this build. Techniques decide which areas and dungeons you can enter."
+cs2 page agility a
+expect reply "Climbing 1/40 was=1"
+expect reply "DracolithCaverns 0/1 was=0 needs: Achieve Climbing Level 40 in Agility"
+expect reply "GlowingDepths 0/1 was=0 needs: Achieve Evading Level 25 in Agility"
+cs2 run GlowingDepths/GlowingJellyfish seed=1 trials=10 fresh
+cs2 wait timeout=9
+wait 1500
+cs2 result
+expect reply "GlowingDepths/GlowingJellyfish refused Achieve Evading Level 25 in Agility"
+cs2 run GlowingDepths/GlowingJellyfish technique=Evading:25 seed=1 trials=10 fresh
+cs2 wait timeout=9
+wait 1500
+cs2 result
+expect reply "GlowingDepths/GlowingJellyfish finished"
+# A place no technique gates fights the same.
+cs2 whatif GolbinForest/Golbin technique=Evading:25 seed=1
+cs2 wait timeout=9
+wait 1500
+cs2 compare show
+expect reply "technique=Evading:25 accepted was=1"
+expect reply "GolbinForest/Golbin  A=4,941 [4,877, 5,005]  B=4,941 [4,877, 5,005]  d=0"
+# Past the technique's cap is refused.
+cs2 whatif check technique=Evading:41
+expect reply "technique=Evading:41 refused was=1 level must be 1–40"

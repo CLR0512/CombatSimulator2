@@ -1,0 +1,9 @@
+# The same run twice with one seed: the second answers every finished target from the first.
+cs2 run GreenMangroves/CreeperVines HobgolbinCamp seed=1 fresh
+cs2 wait timeout=9
+wait 1500
+cs2 run GreenMangroves/CreeperVines HobgolbinCamp seed=1
+cs2 wait timeout=9
+wait 1500
+cs2 status
+expect reply "reused 2 fought 0"

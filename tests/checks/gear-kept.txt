@@ -1,0 +1,13 @@
+# A found set is a result like any other: it is kept as a run, and opens as a what-if against current gear.
+cs2 gear GolbinForest/Golbin seed=1 trials=30 short wait=0 kinds=none lock=Cape,Amulet,Torso,Legs,RingSlot1,Gloves,Boots
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "gear GolbinForest/Golbin by xp:main"
+cs2 gear keep
+expect reply "kept: GolbinForest/Golbin"
+cs2 result
+expect reply "finished 1/1 targets"
+expect reply "seed 1"

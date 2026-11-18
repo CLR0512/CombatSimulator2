@@ -1,0 +1,15 @@
+# Including what the character doesn't have: Chk's locked second utility slot is tried too, so more sets are fought
+# than without, and what it would take is marked. Gear locked and only the toolbelt searched, so it ends in about 30 s.
+cs2 gear plan GolbinForest/Golbin kinds=all unowned lock=Helmet,Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots
+expect reply "utility 2: 39 to try"
+cs2 gear plan GolbinForest/Golbin kinds=all lock=Helmet,Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots
+expect reply "utility 2: 0 to try"
+cs2 gear GolbinForest/Golbin kinds=toolbelt unowned seed=1 trials=100 short wait=0 lock=Helmet,Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots
+# cs2 wait fails once its 9 s pass with the search still going: sleep first, then one wait.
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "118 simulated"
+expect reply "Utility 2: none → Dragon Bone Casing  [needs Purchase Slayer -> Extended Toolbelt in the Shop]"

@@ -1,0 +1,4 @@
+[
+  { "id": "run-20261109-132036-1", "kind": "comparison A", "state": "Error", "seed": 1, "error": "the simulator closed unexpectedly" },
+  { "id": "run-20261109-131500-1", "kind": "run", "state": "Finished", "seed": 1, "error": null }
+]

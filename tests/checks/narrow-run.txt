@@ -1,0 +1,29 @@
+# A run of one target after the full run says how many it shows and leads back to the full run.
+# Adds two runs, both answered from earlier results once the full run has been made; after a new build the full run
+# fights every target, the masters' monsters among them, which takes longer than one wait.
+cs2 pin clear
+cs2 run all seed=1
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+wait 1000
+cs2 run GolbinForest/Golbin seed=1
+cs2 wait timeout=9
+wait 1000
+cs2 ui
+expect reply "narrow shown=1 earlier="
+expect reply "show=yes"
+cs2 open simulate
+wait 1500
+click Cs2ModeList
+wait 800
+expect see "Show"
+click "Show"
+wait 1000
+expect no see "Show"

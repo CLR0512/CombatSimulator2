@@ -1,0 +1,23 @@
+# A search of the weapon, ammo, offhand and helmet, a slot at a time and short on trials: it says what it searched, how the sets were
+# raced, and ends in an answer that is kept and shown again.
+cs2 gear GolbinForest/Golbin seed=1 trials=30 short wait=0 kinds=none lock=Cape,Amulet,Torso,Legs,RingSlot1,Gloves,Boots
+expect reply "running:"
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "gear GolbinForest/Golbin by xp:main, no deaths, margin"
+expect reply "seed 1"
+expect reply "sets:"
+expect reply "stage 1: 30 trials"
+expect reply "found a slot at a time; a better combination may exist"
+# The answer is kept for its target.
+cs2 gear show GolbinForest/Golbin
+expect reply "gear GolbinForest/Golbin by xp:main"
+# A search stopped before any stage finished keeps nothing: the answer kept before it stays in place.
+cs2 gear GolbinForest/Golbin seed=2 trials=30 short wait=0 kinds=none lock=Cape,Amulet,Torso,Legs,RingSlot1,Gloves,Boots
+cs2 gear cancel
+expect reply "stopped before any set finished a stage: nothing kept"
+cs2 gear show GolbinForest/Golbin
+expect reply "seed 1"

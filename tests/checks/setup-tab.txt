@@ -1,0 +1,25 @@
+# Compare variant, in the Compare picker, opens the Setup tab on a new side B; an edit there is a change with its effect, a refused one is dropped with
+# the game's reason, and a chip's ✕ undoes its change.
+click "+ Compare…"
+expect see "Your loadouts"
+click "Compare variant"
+cs2 ui
+expect reply "view=setup"
+expect reply "editing=b page=gear"
+expect reply "side b base=current changes=0"
+cs2 side b level=Defence:50
+wait 2500
+cs2 ui
+expect reply "side_change b 1 level=Defence:50 accepted"
+expect reply "effect_row level:MelvorBase:Defence 99 50 -49"
+expect see "Defence 99 → 50"
+cs2 side b level=Defence:5 equip=Torso:MithrilPlatebody
+wait 2500
+cs2 ui
+expect reply "refused b equip=Torso:MithrilPlatebody Defence Level 40"
+expect reply "side b base=current changes=1 req=check level=Defence:5"
+# The only ✕ is the one chip's, Defence.
+click "✕"
+wait 1500
+cs2 ui
+expect reply "side b base=current changes=0 req=check"

@@ -1,0 +1,35 @@
+# Pets: the eight whose bonuses reach a fight apart from the rest, read from their bonuses. Chk has found none, so
+# adding Bruno is refused while requirements are checked and applies, marked, with them ignored; the result says the
+# game still counts the pets the save has found.
+cs2 page pets a
+expect reply "pets changeable groups=2 Found pets always give their bonus."
+expect reply "combat (In combat) 0 of 8 found"
+expect reply "Bruno 0/1 was=0 modifiers=1"
+expect reply "other (Other pets (28))"
+cs2 side b pet=Bruno:on
+expect reply "pet=Bruno:on refused was=off not found yet"
+cs2 side b ignore-req=on pet=Bruno:on
+expect reply "pet=Bruno:on requirement-ignored was=off not found yet"
+wait 2500
+cs2 page pets b
+expect reply "Bruno 1/1 was=0 modifiers=1"
+cs2 whatif DragonsPass/Drake pet=Bruno:on ignore-req seed=1
+cs2 wait timeout=9
+cs2 wait timeout=9
+wait 1500
+cs2 compare show
+expect reply "DragonsPass/Drake  A=12,134 [11,836, 12,432]  B=12,199 [12,016, 12,382]"
+cs2 result DragonsPass/Drake full
+expect reply "Bruno found: requirement ignored (not found yet)"
+expect reply "Pets added or taken away here change their bonuses only; the game still counts the pets you've found."
+# With Spoiler guard on, a pet the player hasn't found has no name, as in the game's own list.
+cs2 spoilers on
+cs2 page pets a
+expect reply "??? hidden"
+cs2 open setup page=pets side=a
+wait 2000
+expect see "Turn off Spoiler guard to try it"
+expect no see "Bruno"
+cs2 spoilers off
+wait 1000
+expect see "Bruno"

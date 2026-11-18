@@ -1,0 +1,25 @@
+# The blocks that help a master most, from its run with no fights: within the slots open, with gain, range, cost and
+# hours, and a run with them lands on the suggested figure. Run in the game's process.
+cs2 run master:Kuren seed=1 trials=1000 fresh where=game
+cs2 wait timeout=9
+cs2 blocks Kuren metric=xp:MelvorBase:Slayer
+expect reply "(blocks now: none; slots open 2; 56 choices)"
+expect reply "open slots: Golbin, Mind Golbin   +6.73% [6.52, 6.93]   6,224   4000 coins"
+expect reply "safe to leave running"
+cs2 blocks Kuren metric=xp:MelvorBase:Slayer open
+cs2 side b
+expect reply "blocks=Kuren:Golbin,MindGolbin accepted was=none"
+# No slot open with Hans: the blocks are as good now, and a better choice says what slot it waits for.
+cs2 run master:Hans seed=1 trials=300 fresh where=game
+wait 9000
+cs2 wait timeout=9
+cs2 blocks Hans metric=xp:MelvorBase:Slayer
+expect reply "blocks: as good"
+expect reply "needs slot 2 · 20 more tasks: Blackstone Golem, Blackstone Shooter"
+# A setup that dies to Galan's monsters: blocking the deadliest leaves a master safe to leave running.
+cs2 run master:Galan level=Hitpoints:50 level=Defence:40 seed=1 trials=30 fresh where=game
+wait 9000
+cs2 wait timeout=9
+cs2 blocks Galan metric=xp:MelvorBase:Slayer
+expect reply "open slots: Savage Dire Wolf   +193%"
+expect reply "safe to leave running"

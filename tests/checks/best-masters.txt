@@ -1,0 +1,46 @@
+# Every master on its best setup: Best loadouts on each master Chk has unlocked, one seed, then each master's best
+# blocks within its open slots over its picked loadouts, from the same fights. Ranked best first; side B is left as it
+# was until a master's best is used, and a run with it lands on the ranked figure. Run in the game's process: about
+# 200 s on the release, which has all ten masters.
+cs2 loadouts best all seed=1 trials=300 metric=xp:MelvorBase:Slayer where=game
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 loadouts best status all
+expect reply "every master on its best setup · metric xp:MelvorBase:Slayer"
+expect reply "4 master:Allevia  7,964 [7,837, 8,091]"
+expect reply "blocks SlimeForest/GreenSlime (5,000 coins)  3 on own loadouts"
+expect reply "5 master:Kuren  6,952 [6,892, 7,011]"
+cs2 loadouts best use Allevia
+expect reply "Best on side B for master:Allevia"
+cs2 side b
+expect reply "blocks=Allevia:GreenSlime accepted was=none"
+expect reply "loadouts=Allevia:BlackSlime@Loadout1,BlueSlime@Loadout1,RedSlime@Loadout1 accepted was=none"
+cs2 run master:Allevia blocks=Allevia:GreenSlime loadouts=Allevia:BlackSlime@Loadout1,BlueSlime@Loadout1,RedSlime@Loadout1 seed=1 trials=300 fresh where=game
+cs2 wait timeout=9
+cs2 wait timeout=9
+cs2 result master:Allevia metric=xp:MelvorBase:Slayer
+expect reply "xp:MelvorBase:Slayer 7,964 [7,837, 8,091]"

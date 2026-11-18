@@ -1,0 +1,16 @@
+term,meaning
+setup,"Everything a side fights with: gear, levels, prayers, spell, food, potion and Setup entries. Also the Setup tab, where it is changed."
+side,"One of the two setups in a comparison, named A or B."
+run,One simulation of a setup against a set of targets; its results are saved and can be opened again. Also the verb: to simulate.
+trial,One simulated stretch of fighting a target; a run repeats trials and averages them.
+target,"A monster, dungeon, Slayer task or Slayer master that a run fights."
+master,"A Slayer master, simulated as a target: its tasks fought in turn, weighted by how long each takes."
+block,"A Slayer task blocked with a master, so the master never gives it."
+loadout,A saved set of gear and settings in the game's Loadouts; a side can start from one.
+what-if,"A side made of the player's setup with changes, owned or not, to see what they would do."
+Best setup,"CS2's search for the gear, prayers and other choices that do best against a target."
+Cheaper,"An answer of Best setup that does as well while using less, such as fewer consumables."
+Safer,An answer of Best setup that does as well while taking less damage.
+spoiler guard,"The setting that hides monsters and places the character hasn't seen yet, shown as ???."
+host,"The hidden second copy of the game where CS2 runs its fights, so the game being played doesn't slow down."
+copy,A copy of the player's character in which fights are simulated; the game being played is never touched.

@@ -5,9 +5,15 @@ body:
   - type: markdown
     attributes:
       value: >-
+        **Issues are public.** The report zip holds your character's save unless you switched that off in CS2's
+        Settings. If you'd rather keep your save private, you can send the zip to Crashv in a
+        [direct message on Discord](https://discord.com/users/187106829984202761) instead.
+  - type: markdown
+    attributes:
+      value: >-
         Thanks for reporting. CS2 filled in the summary below. Tell us what happened, then attach the report zip
-        CS2 saved: it's in `CombatSimulator2/reports/` in the game folder, and "Open folder" in CS2's bug report
-        note shows it.
+        CS2 saved: it's in `mods/CombatSimulator2/reports/` in the game's folder, and "Open folder" in CS2's bug
+        report note shows it.
   - type: textarea
     id: summary
     attributes:

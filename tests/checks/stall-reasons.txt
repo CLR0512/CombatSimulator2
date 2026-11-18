@@ -1,0 +1,19 @@
+# Targets that run over the limit end unfinished with the reason their counts show, listed after the ranked targets
+# under one line per reason. With Chk's bow at level 60 in Ranged, Hitpoints and Defence (the release lets Chk's levels
+# past 60, where it beats all four): it never hits Murkwood Trapper, Dire Wolf heals back what it is dealt, Oak
+# Treant's armour cuts its hits down, and Ringleader is too slow to kill. Adds one small run.
+cs2 run Murkwoods/MurkwoodTrapper ToweringDivide/DireWolf MistyThicket/OakTreant QuestInTheThickofIt/Ringleader ignore-req level=Ranged:60 level=Hitpoints:60 level=Defence:60 seed=1
+wait 9000
+cs2 wait timeout=9
+wait 1500
+cs2 result
+expect reply "never hit:"
+expect reply "Murkwoods/MurkwoodTrapper unfinished Never hit it: 0 of 97 attacks landed."
+expect reply "heals back:"
+expect reply "ToweringDivide/DireWolf unfinished 47 of 100 trials ran over 5 minutes. It heals back what you deal: 37908 dealt, 24133 healed, 38% HP left."
+expect reply "armour:"
+expect reply "MistyThicket/OakTreant unfinished Armour stops your hits: 54 hits did 126 damage, 65% HP left."
+expect reply "too slow:"
+expect reply "QuestInTheThickofIt/Ringleader unfinished Too slow: 59% HP left after 5 minutes."
+cs2 result MistyThicket/OakTreant full
+expect reply "fights: 1 unfinished trial"

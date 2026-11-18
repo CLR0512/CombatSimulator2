@@ -1,0 +1,7 @@
+# Ignore requirements on the side's card sets the side's requirements flag; unticking it sets it back.
+click "Ignore requirements"
+cs2 ui
+expect reply "side a base=current changes=0 req=ignore"
+click "Ignore requirements"
+cs2 ui
+expect reply "side a base=current changes=0 req=check"

@@ -1,0 +1,35 @@
+# Find best gear for a master: each set fought on every monster of its pool, on task, scored by the master's own
+# time-weighted figure; the answer says on how many monsters the set helps and its gain on each. Body, jewellery and
+# feet locked, short trials, a slot at a time, in the game's process.
+cs2 gear master:Kuren seed=1 trials=30 short wait=0 where=game kinds=none lock=Cape,Amulet,Torso,Legs,RingSlot1,Gloves,Boots
+# cs2 wait fails once its 9 s pass with the search still going: sleep first, then one wait.
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "gear master:Kuren by xp:main, no deaths, margin 1%, seed 1"
+expect reply "best: +7.4% [3.8, 11.1] xp:main (11,557 → 12,415 /h)"
+expect reply "Helmet: Green Dragonhide Cowl → Cursed Circlet"
+expect reply "Weapon: Oak Bow → Toxic Strikes Bow"
+expect reply "helps 2 of 10"
+expect reply "per target: GolbinForest/Golbin +6.22% [-2.71, 15.15]"
+expect reply "hash f562451e8698"
+# The answer is kept for the master, and Droptimizer runs on a master the same way: every item Chk doesn't own on
+# every monster of the pool, about 70 s.
+cs2 gear show master:Kuren
+expect reply "gear master:Kuren by xp:main"
+cs2 droptimizer master:Kuren seed=1 trials=30 wait=0 where=game
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 droptimizer show
+expect reply "droptimizer master:Kuren by xp:main"

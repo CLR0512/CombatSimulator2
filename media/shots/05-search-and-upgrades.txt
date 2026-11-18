@@ -1,0 +1,30 @@
+# Find best setup and upgrades for one target, as staged: Carrion Crow's results pane on Best (its uses open), on
+# Cheaper, and on upgrades, set side by side. Searches run only when no current answer is kept.
+unless "^gear ToxicBog/CarrionCrow by xp:main" cs2 gear show ToxicBog/CarrionCrow then cs2 gear ToxicBog/CarrionCrow metric=xp:main styles=all kinds=prayers,spell,imbuement,toolbelt unowned seed=1 wait=0
+retry 900 cs2 wait timeout=9
+unless "^droptimizer ToxicBog/CarrionCrow by xp:main" cs2 droptimizer show ToxicBog/CarrionCrow then cs2 droptimizer ToxicBog/CarrionCrow metric=xp:main seed=1 wait=0
+retry 900 cs2 wait timeout=9
+retry 30 cs2 run selection seed=1 trials=1000
+retry 300 cs2 wait timeout=9
+retry 10 click Cs2ModeList
+# The list is built a frame or so after the switch.
+wait 1000
+click Cs2Row_ToxicBog_CarrionCrow
+click "Gear"
+click GearSearchUsesToggle
+wait 800
+# A stale answer would show its "Out of date" banner: the frame fails rather than picture it.
+expect no see "Out of date"
+# A date would date the picture: "from an earlier run · <date>" goes.
+relabel " · from an earlier run · .*" ""
+capture Cs2Details matte
+click "Cheaper"
+wait 800
+relabel " · from an earlier run · .*" ""
+capture Cs2Details matte
+click GearSearchKindPick
+click "upgrades"
+wait 1000
+relabel " · from an earlier run · .*" ""
+capture Cs2Details matte
+background Backgrounds/Combat/ToxicBog.png

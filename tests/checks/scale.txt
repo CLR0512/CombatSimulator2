@@ -1,0 +1,19 @@
+# The Scale setting: its buttons step it 5% at a time, the command sets and reads it, the window draws at it up to
+# the cap, and it never goes under 70%. It starts at 70% so the step up fits any supported screen.
+cs2 open settings
+cs2 scale 70
+expect reply "scale 70"
+click Cs2ScaleUp
+cs2 ui
+expect reply "scale=75"
+expect reply "scale_drawn=75"
+click Cs2ScaleDown
+cs2 ui
+expect reply "scale=70"
+expect reply "scale_drawn=70"
+click Cs2ScaleDown
+cs2 ui
+expect reply "scale=70"
+cs2 scale 100
+cs2 ui
+expect reply "scale=100"

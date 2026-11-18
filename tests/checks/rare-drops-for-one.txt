@@ -1,0 +1,10 @@
+# A rare drop says what its first drop takes: the kills on average and, from the chance alone, by when half and nine
+# in ten of players have it. Creeper Vines' Ensnaring Boots are 0.79% per kill (1 in 126): half by 87 kills, 9 in 10
+# by 289, whatever the gear. Adds one small run.
+cs2 run GreenMangroves/CreeperVines seed=1
+cs2 wait timeout=9
+wait 1500
+cs2 result GreenMangroves/CreeperVines full
+expect reply "rare drops (loot below 1% per kill, rare events):"
+expect reply "first drop 126 kills"
+expect reply "first one: half by 87, 9 in 10 by 289 kills"

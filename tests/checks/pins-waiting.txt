@@ -1,0 +1,35 @@
+# A pin on a target the shown run doesn't have waits, and shows again with a run that has it. Clears the pins.
+cs2 pin clear
+cs2 run all seed=1
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+wait 1000
+cs2 pin GolbinForest/Golbin
+cs2 pin SlimeForest/BlueSlime
+cs2 run GolbinForest/Golbin seed=1
+cs2 wait timeout=9
+wait 1000
+cs2 pin
+expect reply "shown GolbinForest/Golbin"
+expect reply "waiting SlimeForest/BlueSlime"
+cs2 ui
+expect reply "pins shown=1 waiting=1"
+cs2 open simulate
+wait 1500
+click Cs2ModeList
+wait 800
+expect see "1 waiting"
+click "Show"
+wait 1000
+cs2 ui
+expect reply "pins shown=2 waiting=0"
+cs2 pin clear
+cs2 pin
+expect reply "shown none"

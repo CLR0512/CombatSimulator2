@@ -1,0 +1,35 @@
+# Spoiler guard on Chk: Golbin Forest is open, Crescent Lake is locked (Astrology) and never fought in, and Tree
+# Trimming's quest area isn't shown by the game, so its Tainted Treant (never killed) is hidden too.
+# The list shows the last run's targets: a full run first (182 targets, about 65 s), so every target is in it whatever
+# ran before.
+cs2 run all seed=1
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 spoilers on
+expect reply "ok spoilers on"
+cs2 targets
+expect reply "Combat Areas / Golbin Forest"
+expect reply "CrescentLake/Spitterfish                  Combat Areas / ???"
+expect reply "QuestTreeTrimming/TaintedTreant           Quests / ???"
+# A hidden monster's real name finds nothing; ??? finds the hidden ones, named so in the list.
+cs2 filter all kinds=monsters,dungeons,slayer,masters areas=all search=Spitterfish
+expect reply "shown=0"
+cs2 filter all kinds=monsters,dungeons,slayer,masters areas=all search=???
+# The list, not the chart: only the list's rows are controls that say a name.
+click "≡"
+wait 1500
+expect see "???"
+expect no see "Spitterfish"
+# Off names everything again.
+cs2 spoilers off
+expect reply "ok spoilers off hidden 0"
+cs2 targets
+expect reply "CrescentLake/Spitterfish                  Combat Areas / Crescent Lake"
+expect reply "QuestTreeTrimming/TaintedTreant           Quests / Act 1 - Tree Trimming"

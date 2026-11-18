@@ -1,0 +1,25 @@
+# The cover, as staged: every monster the character can fight, ranked for its magic loadout, the best one's rates
+# beside the chart, and three targets pinned.
+loadout 3
+cs2 side a base=current
+retry 30 cs2 run selection seed=1 trials=1000
+retry 300 cs2 wait timeout=9
+cs2 pin clear
+cs2 pin MistyThicket/SpiritStag
+cs2 pin DragonsPass/Wyvern
+cs2 pin GreenMangroves/MangroveCaterpillar
+retry 10 click Cs2ModeList
+# The list is built a frame or so after the switch.
+wait 1000
+click Cs2Row_MistyThicket_SpiritStag
+click "Rates"
+click Cs2ModeChart
+# Off the chart button, whose tooltip would show in the picture.
+hover Cs2TabSimulate
+wait 1500
+# A date would date the picture: "from an earlier run · <date>" goes, here and in the list.
+relabel " · from an earlier run · .*" ""
+capture Cs2Root matte
+background Backgrounds/Combat/MistyThicket.png
+# The run's status line under the results says how long it took, which differs between sets.
+vary 1080 860 360 30

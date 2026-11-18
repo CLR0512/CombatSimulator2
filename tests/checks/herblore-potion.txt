@@ -1,0 +1,30 @@
+# A combat potion on B goes in the copy's potion slot, given to the copy since Chk's bank holds none, and counts on
+# the Herblore page; something that isn't a potion is refused. Against a monster Chk misses often, the Ranged
+# potion's max hit and accuracy show in the result and its charges in supplies.
+cs2 side b potion=RangedPotionP1A
+expect reply "potion=RangedPotionP1A accepted was=none"
+wait 2500
+cs2 pages b
+expect reply "herblore skills changeable changes=1 The potion in your toolbelt. One per side."
+cs2 page herblore b
+expect reply "RangedPotionP1A 1/1 was=0"
+cs2 whatif check potion=Shrimp
+expect reply "potion=Shrimp refused not a combat potion"
+cs2 whatif DragonsPass/Drake potion=RangedPotionP1A seed=1
+cs2 wait timeout=9
+cs2 wait timeout=9
+wait 1500
+cs2 compare show
+expect reply "potion=RangedPotionP1A accepted was=none"
+expect reply "DragonsPass/Drake  A=12,134 [11,836, 12,432]  B=12,524 [12,281, 12,766]"
+expect reply "better"
+cs2 result DragonsPass/Drake full
+expect reply "used:charges:MelvorBase:RangedPotionP1A"
+# None, as the save has it, is no change.
+cs2 side b potion=none
+expect reply "potion=none no-change was=none"
+# Chk owns no potion: the plan says so, not that the build has none.
+cs2 gear plan GolbinForest/Golbin kinds=potion
+expect reply "potion: 0 to try: you have no combat potions"
+cs2 gear plan GolbinForest/Golbin kinds=potion unowned
+expect reply "potion: 49 to try"

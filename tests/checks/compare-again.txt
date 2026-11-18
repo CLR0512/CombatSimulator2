@@ -1,0 +1,14 @@
+# Stopping and picking the same loadout again checks it again: its card doesn't stay checking.
+click "+ Compare…"
+expect see "Your loadouts"
+click "Compare" 2
+expect see "✕ Clear"
+click "✕ Clear"
+expect see "+ Compare…"
+click "+ Compare…"
+expect see "Your loadouts"
+click "Compare" 2
+expect see "✕ Clear"
+wait 2500
+cs2 ui
+expect reply "card_b state=checked"

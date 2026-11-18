@@ -1,0 +1,20 @@
+# With 10 Hitpoints, 1 Defence and 60 Ranged two of these targets kill the character in every fight while earning the most
+# XP (Dev's bow: Harpy and Drake). Neither is ranked or best: the one target survived once, Archery Target, is. Adds two small runs and one kept comparison.
+cs2 whatif ToweringDivide/Harpy DragonsPass/Drake QuestPointyPreparation/ArcheryTarget level=Hitpoints:10 level=Defence:1 level=Ranged:60 seed=1
+cs2 wait timeout=9
+wait 1500
+cs2 compare show
+expect reply "b-died"
+expect reply "QuestPointyPreparation/ArcheryTarget"
+cs2 result
+expect reply "every fight died:"
+expect reply "ToweringDivide/Harpy finished kills/hour 0"
+expect reply " best"
+cs2 open simulate
+click Cs2ModeList
+wait 800
+cs2 ui
+expect reply "best QuestPointyPreparation/ArcheryTarget"
+expect reply "died 2"
+expect reply "none died"
+expect see "B died every fight"

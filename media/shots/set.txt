@@ -1,0 +1,30 @@
+# Every CS2 frame: the game's defaults at 1920×1080, CS2 at its design size in the game's look, spoiler guard on so
+# EA's new monsters stay hidden, and never on Chk, which the checks are written for.
+window 2560 1369
+size modio 1920 1080
+size github 1280 640
+reserved Chk
+# Where to look at the frames: each one's newest images, and nothing else.
+latest .local/tmp/cs2-final
+# A frame that failed mid-run would leave its run going and block the next frame's.
+cleanup cs2 cancel
+# Saved runs and kept search answers carry to the next set, so it reuses them; not the panel's settings, which
+# would carry one set's view into the next.
+keep runs
+keep searches.json.gz
+# Every frame starts on the melee loadout; a frame that wants another switches to it.
+loadout 1
+cs2 skin base
+cs2 scale 100
+cs2 motion off
+cs2 spoilers on
+cs2 side b off
+cs2 side a base=current
+# What the Simulate button runs: every target the character can fight.
+cs2 filter can-fight kinds=monsters,dungeons,slayer,masters areas=all search=
+cs2 open simulate
+wait 1500
+# The results as a chart, ranked by XP, whatever an earlier frame left: the panel remembers both.
+click Cs2ModeChart
+click Cs2RankBy
+click Cs2RankByItem_0

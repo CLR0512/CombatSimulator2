@@ -1,0 +1,25 @@
+# A star Chk hasn't the knowledge for is refused with the game's reason and dropped while requirements are checked,
+# and applies, marked, with them ignored. A change on another page is kept beside it. Every page has its data on this
+# build: none is a placeholder.
+cs2 open setup page=astrology side=a
+cs2 side a star=DeedreeA1:on
+wait 2500
+cs2 ui
+expect reply "refused a star=DeedreeA1:on needs 12 knowledge"
+expect reply "page=astrology page_state=checked page_changes=0"
+cs2 side a ignore-req=on star=DeedreeA1:on
+wait 2500
+cs2 ui
+expect reply "side_change a 1 star=DeedreeA1:on requirement-ignored needs 12 knowledge"
+expect reply "page=astrology page_state=checked page_changes=1"
+cs2 side a level=Defence:98
+wait 2500
+cs2 ui
+expect reply "side a base=current changes=2 req=ignore"
+expect reply "side_change a 1 level=Defence:98 accepted"
+expect see "Defence 99 → 98"
+cs2 pages a
+expect reply "agility skills changeable"
+expect reply "herblore skills changeable"
+expect reply "firemaking skills changeable"
+expect reply "pets account changeable"

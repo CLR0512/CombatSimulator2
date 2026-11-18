@@ -1,0 +1,10 @@
+# A finished target's full result lists what the game reported in its fights and the numbers worked out from them.
+# Creeper Vines with the Dev character (a bow): no death, so the damage dealt is its kills times its 140 HP. Adds one small run.
+cs2 run GreenMangroves/CreeperVines seed=1
+cs2 wait timeout=9
+wait 1500
+cs2 result GreenMangroves/CreeperVines full
+expect reply "fights: 1000 trials, 0 ran over"
+expect reply "you:   attacks 2745 hits 2326 damage 140000"
+expect reply "chance to hit 84.7%"
+expect reply "attacks per kill 2.7"

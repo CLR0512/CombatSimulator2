@@ -1,0 +1,8 @@
+# A locked slot stays as worn, a locked weapon keeps its stance, and an excluded item is never tried.
+cs2 gear GolbinForest/Golbin seed=1 trials=30 lock=Helmet,Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots kinds=none
+expect reply "nothing to search: nothing else owned fits an unlocked slot"
+cs2 gear plan GolbinForest/Golbin lock=Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots kinds=none
+expect reply "sets:"
+cs2 gear GolbinForest/Golbin seed=1 trials=30 lock=Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots exclude=SteelHelmet kinds=none
+expect reply "gear GolbinForest/Golbin by xp:main"
+expect reply "stage 1: 30 trials"

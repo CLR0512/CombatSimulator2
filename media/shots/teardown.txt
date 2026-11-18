@@ -1,0 +1,3 @@
+cs2 unignore all
+cs2 pin clear
+cs2 close

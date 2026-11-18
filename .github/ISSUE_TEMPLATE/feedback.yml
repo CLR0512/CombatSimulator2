@@ -1,0 +1,31 @@
+name: Feedback
+description: An idea, or an issue with Combat Simulator 2 that isn't a bug.
+labels: [feedback]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        **Issues are public.** For a question, the
+        [#mod-bug-reports channel on Discord](https://discord.com/channels/625838709203271680/1029950790254731334)
+        may be quicker.
+  - type: input
+    id: cs2-version
+    attributes:
+      label: CS2 version
+      description: Filled in by CS2's Send feedback link. Otherwise, About shows it.
+  - type: input
+    id: game-version
+    attributes:
+      label: Game version
+      description: Filled in by CS2's Send feedback link. Otherwise, the game's title screen shows it.
+  - type: textarea
+    id: what
+    attributes:
+      label: What would you like
+      description: What would make CS2 better for you, or what didn't work as you expected?
+    validations:
+      required: true
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else

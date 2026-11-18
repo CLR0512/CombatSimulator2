@@ -1,0 +1,4 @@
+# The search's game members all resolve, and the game has no kind of part the search doesn't know.
+cs2 deps
+expect reply "gear-search: on"
+expect reply "resolved"

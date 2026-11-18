@@ -1,0 +1,15 @@
+# Droptimizer lists unowned items by what each would gain, swapped alone into current gear, and keeps its answer.
+cs2 droptimizer GolbinForest/Golbin seed=1 trials=30 wait=0
+expect reply "running:"
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 droptimizer show
+expect reply "droptimizer GolbinForest/Golbin by xp:main, no deaths, margin"
+expect reply "items:"
+expect reply "gains ("
+expect reply "no gain:"
+cs2 ui
+expect reply "gear-search: done target=GolbinForest/Golbin"
+expect reply "droptimizer: gains="

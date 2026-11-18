@@ -1,0 +1,11 @@
+# A change on the only side shows in its key stats as before → after, and the card's Clear undoes every change.
+cs2 side a level=Ranged:50
+wait 4000
+cs2 ui
+expect reply "key_stats max-hit=193>113"
+expect see "1 change"
+click Cs2CardClearA
+wait 1500
+cs2 ui
+expect reply "side a base=current changes=0"
+expect reply "key_stats max-hit=193 "

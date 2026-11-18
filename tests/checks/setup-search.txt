@@ -1,0 +1,30 @@
+# A setup search with every slot locked tries only prayers and the toolbelt: on Chk two prayers win and the gear stays
+# as it is; the same search with every kind off is the gear search it was.
+cs2 gear plan GolbinForest/Golbin kinds=prayers,toolbelt lock=Helmet,Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots
+expect reply "prayers:"
+expect reply "pairs at most"
+cs2 gear GolbinForest/Golbin seed=1 trials=30 short wait=0 kinds=prayers,toolbelt lock=Helmet,Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots
+expect reply "running:"
+wait 9000
+wait 9000
+wait 9000
+cs2 gear show
+expect reply "gear GolbinForest/Golbin by xp:main"
+expect reply "48 simulated"
+expect reply "Prayers: none → Rally, Unyielding Spirit"
+# The same search with every other kind off is a gear search, as before.
+cs2 gear GolbinForest/Golbin seed=1 trials=30 short wait=0 kinds=none lock=Helmet,Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots
+wait 9000
+wait 9000
+cs2 gear show
+expect reply "gear GolbinForest/Golbin by xp:main"
+expect reply "sets:"
+# A setup search stopped mid-pass keeps the best it had confirmed, which it showed while running.
+cs2 gear GolbinForest/Golbin kinds=all seed=3 trials=2000 short wait=0
+wait 9000
+wait 9000
+cs2 gear show
+expect reply "best so far:"
+cs2 gear cancel
+expect reply "stopped at stage"
+expect reply "stopped before its close calls were settled"

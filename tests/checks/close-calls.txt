@@ -1,0 +1,20 @@
+# Where no fight was survived there is no share of close calls to give, and the target is listed as died.
+cs2 whatif Murkwoods/MurkwoodSpider Murkwoods/MurkwoodSpinner GreenMangroves/CreeperVines level=Hitpoints:10 level=Defence:1 seed=1
+cs2 wait timeout=9
+wait 1500
+cs2 result Murkwoods/MurkwoodSpinner full
+expect reply "close calls: no fight survived"
+cs2 result GreenMangroves/CreeperVines full
+expect reply "close calls 21.2%"
+# The same changes as a single run, so the list and its details show.
+cs2 side b off
+cs2 run Murkwoods/MurkwoodSpinner GreenMangroves/CreeperVines level=Hitpoints:10 level=Defence:1 seed=1
+cs2 wait timeout=9
+wait 1000
+cs2 open simulate
+wait 1500
+click Cs2ModeList
+wait 800
+expect see "Murkwood Spinner"
+expect see "Died every fight"
+expect see "Died every fight (1)"

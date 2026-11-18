@@ -1,0 +1,253 @@
+{
+ "source": "cs2dev probe all ignore-req trials=20, Dev character as is, build 26316041; counts of every trial met",
+ "targets": [
+  {
+   "key": "QuestPointyPreparation/ArcheryTarget",
+   "immune": true,
+   "dealt": {
+    "attacks": 110,
+    "hits": 0,
+    "wardDamage": 0,
+    "healed": 0,
+    "attack": 0,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 0,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "taken": {
+    "attacks": 49,
+    "hits": 3,
+    "attack": 4,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 0,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "hpLeft": 10,
+   "hpMax": 10,
+   "wardLeft": 0
+  },
+  {
+   "key": "MistyThicket/OakTreant",
+   "immune": false,
+   "dealt": {
+    "attacks": 94,
+    "hits": 48,
+    "wardDamage": 0,
+    "healed": 0,
+    "attack": 48,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 1607,
+    "wardCut": 0,
+    "armourCut": 3120,
+    "overkill": 0
+   },
+   "taken": {
+    "attacks": 110,
+    "hits": 82,
+    "attack": 4968,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 0,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "hpLeft": 312,
+   "hpMax": 360,
+   "wardLeft": 0
+  },
+  {
+   "key": "QuestRockyRumble/GrumpyGolem",
+   "immune": false,
+   "dealt": {
+    "attacks": 215,
+    "hits": 150,
+    "wardDamage": 0,
+    "healed": 0,
+    "attack": 456,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 4181,
+    "wardCut": 0,
+    "armourCut": 4500,
+    "overkill": 7
+   },
+   "taken": {
+    "attacks": 206,
+    "hits": 79,
+    "attack": 3894,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 0,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "hpLeft": 44,
+   "hpMax": 250,
+   "wardLeft": 0
+  },
+  {
+   "key": "ToweringDivide/Wolf",
+   "immune": false,
+   "dealt": {
+    "attacks": 110,
+    "hits": 20,
+    "wardDamage": 0,
+    "healed": 273,
+    "attack": 273,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 652,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "taken": {
+    "attacks": 123,
+    "hits": 89,
+    "attack": 6761,
+    "effect": 2066,
+    "reflect": 0,
+    "resisted": 0,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "hpLeft": 360,
+   "hpMax": 360,
+   "wardLeft": 0
+  },
+  {
+   "key": "SlimeForest/RainbowSlime",
+   "immune": false,
+   "dealt": {
+    "attacks": 110,
+    "hits": 30,
+    "wardDamage": 0,
+    "healed": 495,
+    "attack": 543,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 637,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "taken": {
+    "attacks": 135,
+    "hits": 87,
+    "attack": 4047,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 0,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "hpLeft": 92,
+   "hpMax": 140,
+   "wardLeft": 0
+  },
+  {
+   "key": "Murkwoods/MurkwoodTrapper",
+   "immune": false,
+   "dealt": {
+    "attacks": 108,
+    "hits": 18,
+    "wardDamage": 0,
+    "healed": 0,
+    "attack": 234,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 558,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "taken": {
+    "attacks": 114,
+    "hits": 63,
+    "attack": 3806,
+    "effect": 597,
+    "reflect": 0,
+    "resisted": 0,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "hpLeft": 86,
+   "hpMax": 320,
+   "wardLeft": 0
+  },
+  {
+   "key": "MistyThicket/WillOWisp",
+   "immune": false,
+   "dealt": {
+    "attacks": 217,
+    "hits": 47,
+    "wardDamage": 20,
+    "healed": 0,
+    "attack": 509,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 1634,
+    "wardCut": 164,
+    "armourCut": 0,
+    "overkill": 11
+   },
+   "taken": {
+    "attacks": 225,
+    "hits": 181,
+    "attack": 12612,
+    "effect": 2700,
+    "reflect": 0,
+    "resisted": 0,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 0
+   },
+   "hpLeft": 91,
+   "hpMax": 300,
+   "wardLeft": 0
+  },
+  {
+   "key": "ToxicBog/Plaguewing",
+   "immune": false,
+   "dealt": {
+    "attacks": 581,
+    "hits": 212,
+    "wardDamage": 0,
+    "healed": 0,
+    "attack": 3119,
+    "effect": 0,
+    "reflect": 0,
+    "resisted": 7603,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 93
+   },
+   "taken": {
+    "attacks": 759,
+    "hits": 640,
+    "attack": 76189,
+    "effect": 14120,
+    "reflect": 0,
+    "resisted": 0,
+    "wardCut": 0,
+    "armourCut": 0,
+    "overkill": 11
+   },
+   "hpLeft": 4,
+   "hpMax": 420,
+   "wardLeft": 0
+  }
+ ]
+}

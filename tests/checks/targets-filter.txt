@@ -1,0 +1,17 @@
+# The filter narrows what is shown and run: every target, two areas, the dungeons, the masters, a search; Can fight
+# puts it back. Chk can fight 65 monsters and dungeons, the two quest fights it is on (Pointy Preparation, Tree
+# Trimming) among them; the game has 10 Slayer masters.
+cs2 filter all
+expect reply "targets shown=182"
+cs2 filter areas=GolbinForest,SlimeForest
+expect reply "targets shown=10"
+cs2 filter areas=all kinds=dungeons
+expect reply "targets shown=14"
+cs2 filter kinds=masters
+expect reply "targets shown=10"
+cs2 filter kinds=monsters,dungeons,slayer search=slime
+expect reply "targets shown=5"
+cs2 filter can-fight search=
+cs2 ui
+expect reply "targets shown=65"
+expect see "65 of 65 targets"

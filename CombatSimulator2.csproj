@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- Generated P/Invoke marshalling for reading free memory. -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- CS2's panel has a pause-menu entry. -->
+    <UseCoreMenu>true</UseCoreMenu>
+    <!-- Lets the unnecessary-using check (IDE0005) run at build, and checks that doc comments name real members.
+         Missing docs and missing parameter tags aren't errors. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591;CS1573</NoWarn>
+  </PropertyGroup>
+  <!-- Dev code lives in Dev/ folders and *.Dev.cs partial parts, and only Debug builds compile it. -->
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <Compile Remove="src/**/Dev/**;src/**/*.Dev.cs" />
+  </ItemGroup>
+</Project>

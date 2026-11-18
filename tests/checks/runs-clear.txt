@@ -1,0 +1,9 @@
+# Clearing says what it would delete and what stays before anything goes. Nothing is cleared here.
+cs2 runs clear
+expect reply "would delete "
+expect reply " runs and "
+expect reply " pinned runs and "
+# (a wrong word is refused with the usage, and clears nothing)
+cs2 open history
+wait 800
+expect see "Clear saved runs"

@@ -1,0 +1,21 @@
+# Saving a bug report says where it can go before anything is sent: GitHub issues and the Discord channel are
+# public, and a direct message keeps the save private. The zip holds what it did before the routes were added.
+click Cs2About
+wait 300
+click Cs2AboutReport
+wait 2000
+expect see "Bug report saved"
+# The bridge lists a text longer than 60 characters cut to 59 and "…".
+expect see "GitHub issues and the Discord channel are public. To keep y…"
+expect see "Copy for Discord"
+expect see "Open a GitHub issue"
+expect see "Direct message"
+expect see "Open folder"
+click Cs2ReportClose
+wait 300
+cs2 report
+expect reply "summary.txt"
+expect reply "about.json"
+expect reply "settings.json"
+expect reply "runs.json"
+expect reply "save/Chk.save"

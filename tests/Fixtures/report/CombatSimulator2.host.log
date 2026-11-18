@@ -1,0 +1,3 @@
+13:20:36.700 [CombatSimulator2/host] run=run-20261109-132036-1 side=A | run 6: 147 targets
+13:20:37.800 [CombatSimulator2/host] ERROR run=run-20261109-132036-1 phase=fight target=MelvorBase:Wolf copy=2 | fight failed: System.InvalidOperationException: cs2dev throw
+   at MelvorMods.CombatSimulator2.Engine.CopyPool.FightOne() in C:\Users\Alexandra\src\CopyPool.cs:line 280

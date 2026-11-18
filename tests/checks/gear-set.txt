@@ -1,0 +1,15 @@
+# Find best gear for an area and for the pinned targets: each set fought on every target, each target counting the
+# same (the mean of the set's gain on each over current gear's), a pinned master counted as one target weighted by
+# time inside itself. Body, jewellery and feet locked, short trials, a slot at a time, in the game's process.
+cs2 gear area:SlimeForest seed=1 trials=30 short wait=0 where=game kinds=none lock=Cape,Amulet,Torso,Legs,RingSlot1,Gloves,Boots
+# cs2 wait fails once its 9 s pass with the search still going: sleep first, then one wait.
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "gear area:SlimeForest by xp:main"
+expect reply "best: +9.3% [3.2, 15.4] xp:main, the mean over its targets"
+expect reply "helps 2 of 5"
+expect reply "hash 1e39a38e92cc"

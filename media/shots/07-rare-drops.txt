@@ -1,0 +1,32 @@
+# Rare drops, as staged: the Green Dragon's results pane on Rates, then scrolled to its rare drops (the Dragonfang
+# Stitch Kit, about 1 in 1,141 kills, with when the first should drop), then on Fights, set side by side.
+# Refused for a moment after the panel opens ("targets aren't checked yet"): sent again until taken.
+retry 30 cs2 run selection seed=1 trials=1000
+retry 300 cs2 wait timeout=9
+# The results view is rebuilt as a run starts and ends: the button may be away for a moment.
+retry 10 click Cs2ModeList
+# The list is built a frame or so after the switch.
+wait 1000
+click Cs2Row_DragonsPass_GreenDragon
+click "Rates"
+wait 800
+scroll Cs2DetailPages up 30
+wait 800
+# A date would date the picture: "from an earlier run · <date>" goes.
+relabel " · from an earlier run · .*" ""
+capture Cs2Details matte
+scroll Cs2DetailPages down 30
+wait 800
+# The section opens and closes, and the panel remembers which: opened only when shut. Checked once scrolled to, as
+# see lists only what is on screen.
+unless "~▾.*Cs2RareDropsToggle" see then click Cs2RareDropsToggle
+wait 500
+scroll Cs2DetailPages down 30
+wait 800
+relabel " · from an earlier run · .*" ""
+capture Cs2Details matte
+click "Fights"
+wait 800
+relabel " · from an earlier run · .*" ""
+capture Cs2Details matte
+background Backgrounds/Combat/LizardVale.png

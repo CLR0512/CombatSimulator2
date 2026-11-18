@@ -1,0 +1,11 @@
+# On the Gear page a right-click steps a slot down once: the character's item goes, then comes back.
+cs2 open setup page=gear
+wait 4000
+right-click Cs2SlotWeapon
+wait 2000
+cs2 ui
+expect reply "side a base=current changes=1 req=check equip=Weapon:none"
+right-click Cs2SlotWeapon
+wait 2000
+cs2 ui
+expect reply "side a base=current changes=0"

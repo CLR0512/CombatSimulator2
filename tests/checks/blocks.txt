@@ -1,0 +1,19 @@
+# A master's blocks as a what-if: a block in a slot the save hasn't opened is tried and marked with the tasks it needs;
+# blocks change the master's pool and compare with the save's like any change. The checks run in the game's process.
+cs2 whatif check blocks=Hans:Wyvern
+expect reply "blocks=Hans:Wyvern requirement-ignored was=none needs slot 1 · 5 more tasks"
+cs2 whatif master:Kuren blocks=Kuren:Golbin,GolbinScout seed=1 trials=1000 fresh where=game
+wait 3000
+cs2 wait timeout=9
+cs2 compare show metric=xp:MelvorBase:Slayer
+expect reply "blocks=Kuren:Golbin,GolbinScout accepted was=none"
+expect reply "pct=6.67% [6.45, 6.88]  better"
+cs2 result master:Kuren
+expect reply "8 monsters, 2 blocked"
+expect reply "GolbinForest/Golbin  blocked"
+# Two block sets side by side, each its own setup.
+cs2 compare master:Kuren a=current b=current a.blocks=Kuren:Golbin b.blocks=Kuren:JackOLantern seed=1 trials=1000 where=game
+wait 3000
+cs2 wait timeout=9
+cs2 compare show metric=xp:MelvorBase:Slayer
+expect reply "hash=6cd9cd2ba3ed"

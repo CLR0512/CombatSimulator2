@@ -1,0 +1,15 @@
+# What a result doesn't simulate: Protect Item keeps an item on death, which CS2 never takes, and Chk's helmet counts
+# only on a Slayer task it doesn't have. Each is a line after the assumptions, kept in the saved run, and in compare.
+cs2 run GolbinForest/Golbin a.prayer=ProtectItem:on seed=1 trials=100 fresh
+wait 3000
+cs2 wait timeout=9
+cs2 result current GolbinForest/Golbin
+expect reply "not simulated: Protect Item: its keeping an item on death, as CS2 never takes one"
+expect reply "not simulated: Green Dragonhide Cowl: "
+expect reply ", on a Slayer task only. Your save has no task for this monster"
+cs2 compare GolbinForest/Golbin a=current b=current seed=1 trials=100 fresh b.prayer=ProtectItem:on
+wait 3000
+cs2 wait timeout=9
+cs2 compare show
+expect reply "not simulated B: Protect Item: its keeping an item on death, as CS2 never takes one"
+cs2 compare off

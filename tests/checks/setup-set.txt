@@ -1,0 +1,26 @@
+# A setup search for an area: each set fought on every monster, each counting the same; two prayers win, with the
+# prayer points they take an hour, and opening the answer runs it on each monster of the area.
+cs2 gear area:CorruptedFarmlands kinds=all seed=1 trials=30 short wait=0 where=game lock=Cape,Amulet,Torso,Legs,RingSlot1,Gloves,Boots
+expect reply "running:"
+# cs2 wait fails once its 9 s pass with the search still going: sleep first, then one wait.
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "gear area:CorruptedFarmlands by xp:main"
+expect reply "best: +19.1% [10.1, 28.1] xp:main, the mean over its targets, stance Accurate"
+expect reply "Prayers: none → Rally, Rigour   prayer points 9,850 /h"
+expect reply "helps 3 of 5"
+expect reply "hash 4c60ae894369"
+cs2 gear open
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 compare show
+expect reply "CorruptedFarmlands/JackOLantern"

@@ -1,0 +1,317 @@
+{
+  "version": 1,
+  "colours": {
+    "backdrop": "#000000ff",
+    "panel": "#0a0a0aff",
+    "panel-raised": "#151515ff",
+    "inset": "#050505ff",
+    "header": "#101010ff",
+    "button": "#1c1c1cff",
+    "button-hover": "#242424ff",
+    "button-pressed": "#151515ff",
+    "button-disabled": "#080808ff",
+    "line": "#222222ff",
+    "border": "#000000ff",
+    "border-light": "#363636ff",
+    "border-hover": "#5a5a5aff",
+    "border-disabled": "#1a1a1aff",
+    "highlight": "#b4b4b4ff",
+    "white": "#e6e6e6ff",
+    "shade-20": "#00000033",
+    "shade-40": "#00000066",
+    "shade-60": "#00000099",
+    "shade-80": "#000000cc",
+    "panel-30": "#0a0a0a4d",
+    "panel-60": "#0a0a0a99",
+    "panel-80": "#0a0a0acc",
+    "panel-86": "#0a0a0adc",
+    "tint-10": "#ffffff1a",
+    "tint-20": "#ffffff33",
+    "tint-40": "#ffffff66",
+    "green": "#22602bff",
+    "green-hover": "#2a7334ff",
+    "green-border": "#45a84fff",
+    "green-bright": "#4caf50ff",
+    "selected": "#22602bff",
+    "selected-border": "#45a84fff",
+    "red": "#6a2626ff",
+    "red-hover": "#7e2e2eff",
+    "red-border": "#c94848ff",
+    "red-bright": "#e66a6aff",
+    "gold": "#5a4815ff",
+    "gold-hover": "#6e581aff",
+    "gold-border": "#c9a43aff",
+    "gold-bright": "#e0b84aff",
+    "hover": "#5a4815ff",
+    "hover-border": "#c9a43aff",
+    "blue": "#1b3d5aff",
+    "blue-hover": "#22496bff",
+    "blue-border": "#3d7fbfff",
+    "blue-bright": "#4a9de0ff",
+    "purple": "#3d2759ff",
+    "purple-border": "#8a5cc4ff",
+    "purple-bright": "#a978e6ff",
+    "orange-bright": "#e8803cff",
+    "text-bright": "#f2f2f2ff",
+    "text": "#dadadaff",
+    "text-dim": "#b0b0b0ff",
+    "text-muted": "#a0a0a0ff",
+    "text-faint": "#dadada99",
+    "text-disabled": "#dadada80",
+    "text-pale-gold": "#e8d98cff",
+    "teal": "#143f43ff",
+    "teal-hover": "#1a4f54ff",
+    "teal-border": "#2a9ea3ff",
+    "teal-bright": "#3cc4c0ff"
+  },
+  "roles": {
+    "focus": {
+      "normal": { "fill": null, "border": "teal-border" }
+    },
+    "panel": {
+      "normal": { "fill": "panel", "border": "border" }
+    },
+    "inset": {
+      "normal": { "fill": "inset", "border": "border" }
+    },
+    "header": {
+      "normal": { "fill": "header", "border": "border" }
+    },
+    "tooltip": {
+      "normal": { "fill": "backdrop", "border": "border-light" }
+    },
+    "line": {
+      "normal": { "fill": "line", "border": null }
+    },
+    "button": {
+      "normal": { "fill": "button", "border": "border" },
+      "hover": { "fill": "hover", "border": "hover-border" },
+      "pressed": { "fill": "selected", "border": "selected-border" },
+      "hover_pressed": { "fill": "selected", "border": "selected-border" },
+      "disabled": { "fill": "button-disabled", "border": "border-disabled" },
+      "focus": { "fill": null, "border": "teal-border" }
+    },
+    "button-confirm": {
+      "normal": { "fill": "green", "border": "border" },
+      "hover": { "fill": "hover", "border": "hover-border" },
+      "pressed": { "fill": "button-pressed", "border": "green-border" },
+      "hover_pressed": { "fill": "button-pressed", "border": "green-border" },
+      "disabled": { "fill": "button-disabled", "border": "border-disabled" },
+      "focus": { "fill": null, "border": "teal-border" }
+    },
+    "button-cancel": {
+      "normal": { "fill": "red", "border": "border" },
+      "hover": { "fill": "hover", "border": "hover-border" },
+      "pressed": { "fill": "button-pressed", "border": "red-border" },
+      "hover_pressed": { "fill": "button-pressed", "border": "red-border" },
+      "disabled": { "fill": "button-disabled", "border": "border-disabled" },
+      "focus": { "fill": null, "border": "teal-border" }
+    },
+    "tab": {
+      "normal": { "fill": "button", "border": "border" },
+      "hover": { "fill": "hover", "border": "hover-border" },
+      "pressed": { "fill": "selected", "border": "selected-border" },
+      "hover_pressed": { "fill": "selected", "border": "selected-border" },
+      "disabled": { "fill": "button-disabled", "border": "border-disabled" }
+    },
+    "slot": {
+      "normal": { "fill": "inset", "border": "border-light" },
+      "hover": { "fill": "hover", "border": "hover-border" },
+      "pressed": { "fill": "selected", "border": "selected-border" },
+      "hover_pressed": { "fill": "selected", "border": "selected-border" },
+      "disabled": { "fill": "inset", "border": "border-disabled" }
+    },
+    "accent-green": {
+      "normal": { "fill": "green", "border": "green-border" }
+    },
+    "accent-red": {
+      "normal": { "fill": "red", "border": "red-border" }
+    },
+    "accent-gold": {
+      "normal": { "fill": "gold", "border": "gold-border" }
+    },
+    "accent-blue": {
+      "normal": { "fill": "blue", "border": "blue-border" }
+    },
+    "accent-purple": {
+      "normal": { "fill": "purple", "border": "purple-border" }
+    },
+    "accent-teal": {
+      "normal": { "fill": "teal", "border": "teal-border" }
+    },
+    "bar-track": {
+      "normal": { "fill": "inset", "border": "border" }
+    },
+    "bar-fill": {
+      "normal": { "fill": "teal-border", "border": "teal-bright" }
+    },
+    "bar-health": {
+      "normal": { "fill": "red", "border": "red-border" }
+    },
+    "ring-track": {
+      "normal": { "fill": "line", "border": null }
+    },
+    "ring-fill": {
+      "normal": { "fill": "teal-bright", "border": null }
+    },
+    "ring-timer": {
+      "normal": { "fill": "white", "border": null }
+    },
+    "clear": {
+      "normal": { "fill": null, "border": null }
+    },
+    "bar-frame": {
+      "normal": { "fill": "border-light", "border": null }
+    },
+    "glyph": {
+      "normal": { "fill": "text-dim", "border": "button" }
+    },
+    "chrome-bar": {
+      "normal": { "fill": "panel", "border": "line" }
+    },
+    "chrome-button": {
+      "normal": { "fill": null, "border": null },
+      "hover": { "fill": "button", "border": null },
+      "pressed": { "fill": "panel-raised", "border": "teal-bright" },
+      "hover_pressed": { "fill": "button", "border": "teal-bright" },
+      "disabled": { "fill": null, "border": null },
+      "focus": { "fill": null, "border": "teal-border" }
+    },
+    "chrome-ring": {
+      "normal": { "fill": null, "border": "line" },
+      "hover": { "fill": "button", "border": "line" },
+      "pressed": { "fill": "panel-raised", "border": "line" },
+      "hover_pressed": { "fill": "button", "border": "line" },
+      "disabled": { "fill": null, "border": "line" },
+      "focus": { "fill": null, "border": "teal-border" }
+    },
+    "chrome-current": {
+      "normal": { "fill": "panel-raised", "border": "teal-bright" },
+      "hover": { "fill": "button", "border": "teal-bright" }
+    },
+    "chrome-pill": {
+      "normal": { "fill": null, "border": "border-light" }
+    },
+    "chrome-divider": {
+      "normal": { "fill": null, "border": "border-light" }
+    }
+  },
+  "seeds": {
+    "primary": {
+      "label": "Primary",
+      "description": "Panels and backgrounds: the largest areas, and the darker and lighter levels around them.",
+      "seed": "panel",
+      "drives": ["backdrop", "inset", "panel", "header", "panel-raised", "button-pressed", "line", "border-light", "border-hover", "border-disabled", "panel-30", "panel-60", "panel-80", "panel-86"]
+    },
+    "secondary": {
+      "label": "Secondary",
+      "description": "Buttons and tabs.",
+      "seed": "button",
+      "drives": ["button", "button-hover", "button-disabled"]
+    },
+    "accent": {
+      "label": "Accent",
+      "description": "Focus and progress: keyboard focus, action and XP bars.",
+      "seed": "teal-border",
+      "drives": ["teal", "teal-hover", "teal-border", "teal-bright"]
+    },
+    "hover": {
+      "label": "Hover",
+      "description": "Controls under the mouse.",
+      "advanced": true,
+      "seed": "hover-border",
+      "drives": ["hover", "hover-border"]
+    },
+    "selected": {
+      "label": "Selected",
+      "description": "The fill and edge of selected and pressed tabs, slots and buttons.",
+      "advanced": true,
+      "seed": "selected-border",
+      "drives": ["selected", "selected-border"]
+    },
+    "confirm": {
+      "label": "Confirm",
+      "description": "Confirm and action buttons, gains, hit points.",
+      "advanced": true,
+      "seed": "green-border",
+      "drives": ["green", "green-hover", "green-border", "green-bright"]
+    },
+    "cancel": {
+      "label": "Cancel",
+      "description": "Cancel and stop buttons, losses, warnings, health.",
+      "advanced": true,
+      "seed": "red-border",
+      "drives": ["red", "red-hover", "red-border", "red-bright"]
+    },
+    "currency": {
+      "label": "Currency",
+      "description": "Gold amounts and gold rarity.",
+      "advanced": true,
+      "seed": "gold-border",
+      "drives": ["gold", "gold-hover", "gold-border", "gold-bright", "text-pale-gold"]
+    },
+    "rare": {
+      "label": "Rare",
+      "description": "Blue rarity and stats.",
+      "advanced": true,
+      "seed": "blue-border",
+      "drives": ["blue", "blue-hover", "blue-border", "blue-bright"]
+    },
+    "epic": {
+      "label": "Epic",
+      "description": "Purple rarity and stats.",
+      "advanced": true,
+      "seed": "purple-border",
+      "drives": ["purple", "purple-border", "purple-bright"]
+    }
+  },
+  "contrast": {
+    "steps": [
+      ["backdrop", "inset", 1.2],
+      ["inset", "panel", 1.2],
+      ["panel", "header", 1.2],
+      ["header", "panel-raised", 1.2],
+      ["panel-raised", "button", 2.5],
+      ["button", "button-hover", 2.5]
+    ],
+    "pairs": [
+      ["text-bright", "selected", 4.5],
+      ["text-bright", "inset", 7],
+      ["text-bright", "panel", 7],
+      ["text-bright", "header", 7],
+      ["text-bright", "button", 7],
+      ["text", "inset", 7],
+      ["text", "panel", 7],
+      ["text", "header", 7],
+      ["text", "button", 7],
+      ["text-dim", "inset", 4.5],
+      ["text-dim", "panel", 4.5],
+      ["text-dim", "header", 4.5],
+      ["text-dim", "button", 4.5],
+      ["text-muted", "inset", 4.5],
+      ["text-muted", "panel", 4.5],
+      ["text-muted", "header", 4.5],
+      ["text-muted", "button", 4.5],
+      ["gold-bright", "panel", 4.5],
+      ["green-bright", "panel", 4.5],
+      ["red-bright", "panel", 4.5],
+      ["blue-bright", "panel", 4.5],
+      ["purple-bright", "panel", 4.5],
+      ["orange-bright", "panel", 4.5],
+      ["teal-bright", "panel", 4.5],
+      ["text-pale-gold", "panel", 4.5],
+      ["text-bright", "green", 4.5],
+      ["text-bright", "red", 4.5],
+      ["text-bright", "teal", 4.5],
+      ["text-bright", "button-hover", 4.5],
+      ["text-bright", "gold", 4.5],
+      ["text", "gold", 4.5],
+      ["text-bright", "hover", 4.5],
+      ["text", "hover", 4.5]
+    ]
+  },
+  "outline": { "selected": "panel-raised" },
+  "borderWidth": 1,
+  "cornerRadius": 0,
+  "antiAliased": false
+}

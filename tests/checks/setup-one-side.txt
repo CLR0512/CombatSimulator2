@@ -1,0 +1,6 @@
+# With one setup nothing names a side: the Setup tab's title, changes bar and Effect panel carry no letter.
+cs2 open setup page=gear
+expect see "Changes (0)"
+expect see "Effects"
+expect see "Against your character unchanged"
+expect no see "Changes on A (0)"

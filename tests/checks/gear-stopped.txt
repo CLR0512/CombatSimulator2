@@ -1,0 +1,10 @@
+# A search stopped once a stage has finished keeps the best set it had, marked with the stage it stopped at, and keeps
+# it for the target like a finished search's answer.
+cs2 gear GolbinForest/Golbin seed=3 trials=1000 wait=0 where=game kinds=none
+wait 9000
+wait 9000
+cs2 gear cancel
+expect reply ", stopped at stage"
+expect reply "best: "
+cs2 gear show GolbinForest/Golbin
+expect reply "seed 3, stopped at stage"

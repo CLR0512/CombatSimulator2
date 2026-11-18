@@ -1,0 +1,4 @@
+13:20:36.665 [CombatSimulator2] run=run-20261109-132036-1 | started in host: 147 targets
+13:20:37.001 [CombatSimulator2] config C:\Users\Alexandra\AppData\Roaming\MelvorMods\config.json
+13:20:38.002 [CombatSimulator2] WARN host lost: the simulator closed unexpectedly on ALEX-DESKTOP
+13:20:39.003 [CombatSimulator2] wsl path \\wsl.localhost\Ubuntu\home\alexandra\wfn and /mnt/c/users/alexandra/Desktop

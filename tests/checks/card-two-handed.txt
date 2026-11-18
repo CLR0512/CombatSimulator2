@@ -1,0 +1,35 @@
+# A two-handed weapon fills two slots, so one change marks both on the card: a right-click on either puts it back,
+# whichever slot the change is kept under. Chk wears the Oak Bow, two-handed.
+wait 4000
+# Emptied from the weapon slot, put back from the shield slot.
+right-click Cs2CardSlot_Weapon
+wait 2000
+cs2 side a
+expect reply "side a base=current changes=1 req=check equip=Weapon:none"
+right-click Cs2CardSlot_Offhand
+wait 2000
+cs2 side a
+expect reply "side a base=current changes=0"
+# Emptied from the shield slot, put back from the weapon slot.
+right-click Cs2CardSlot_Offhand
+wait 2000
+cs2 side a
+expect reply "side a base=current changes=1 req=check equip=Offhand:none"
+right-click Cs2CardSlot_Weapon
+wait 2000
+cs2 side a
+expect reply "side a base=current changes=0"
+# A one-handed weapon in its place empties the shield slot too: that slot puts the bow back.
+cs2 side a equip=Weapon:CopperSword
+wait 2000
+right-click Cs2CardSlot_Offhand
+wait 2000
+cs2 side a
+expect reply "side a base=current changes=0"
+# A shield in its place empties the weapon slot: that slot puts the bow back.
+cs2 side a equip=Offhand:CopperShield
+wait 2000
+right-click Cs2CardSlot_Weapon
+wait 2000
+cs2 side a
+expect reply "side a base=current changes=0"

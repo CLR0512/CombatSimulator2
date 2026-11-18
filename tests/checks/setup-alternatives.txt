@@ -1,0 +1,29 @@
+# Chk's ranged setup against Golbin with every kind: two prayers win, the highest gain among the sets as good, and
+# a cheaper and a safer set are offered beside the best, with what they give up and save.
+cs2 gear GolbinForest/Golbin kinds=all seed=1 trials=100 short wait=0 lock=Cape,Amulet,Torso,Legs,RingSlot1,Gloves,Boots
+expect reply "running:"
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "best: +11.1% [6.8, 15.3] xp:main (4,935 → 5,481 /h), stance Accurate"
+expect reply "Prayers: none → Rigour, Unyielding Spirit   prayer points 9,505 /h"
+expect reply "hash 984c640f72e4"
+expect reply "cheaper: −1.0% · 3,452 fewer prayer points /h"
+expect reply "safer: −2.3% · 100% less damage taken"
+expect reply "also fine: Cursed Circlet instead of Green Dragonhide Cowl"
+expect reply "as good (35):"
+expect reply "and 25 more"
+# The answer opened and run gives its own result.
+cs2 gear open
+expect reply ", B run-"
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 result
+expect reply "results 984c640f72e4"

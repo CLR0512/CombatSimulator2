@@ -1,0 +1,29 @@
+# A slot of the side's card: its tooltip, a right-click that empties it and one that puts it back, and the small
+# picker it opens under it, whose rows say how an item changes the side's stats; a pick changes the side.
+wait 4000
+hover Cs2CardSlot_Weapon
+wait 500
+cs2 ui
+expect reply "tooltip=Weapon: Oak Bow | Right-click: empty"
+right-click Cs2CardSlot_Weapon
+wait 2000
+cs2 ui
+expect reply "side a base=current changes=1 req=check equip=Weapon:none"
+expect reply "tooltip=Weapon: empty | Right-click: put back"
+right-click Cs2CardSlot_Weapon
+wait 2000
+cs2 ui
+expect reply "side a base=current changes=0"
+click Cs2CardSlot_Weapon
+wait 500
+cs2 ui
+expect reply "slot_picker=MelvorBase:Weapon"
+hover "Copper Sword"
+wait 500
+cs2 ui
+expect reply "In brackets: change from Oak Bow"
+click "Copper Sword"
+wait 2500
+cs2 ui
+expect reply "equip=Weapon:CopperSword"
+expect reply "slot_picker=closed"

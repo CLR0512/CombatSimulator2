@@ -1,0 +1,7686 @@
+# Messages of CombatSimulator2, extracted from its sources by ./mm strings CombatSimulator2. Don't edit: regenerate it.
+msgid ""
+msgstr ""
+"Project-Id-Version: CombatSimulator2\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/CombatSimulator2Mod.cs:89
+#: src/CombatSimulator2Mod.cs:90
+#: src/Panel/Cs2Modal.cs:205
+#: src/Panel/Help/About.cs:115
+msgid "Combat Simulator 2"
+msgstr ""
+
+#: src/CombatSimulator2Mod.cs:90
+msgid "Sim"
+msgstr ""
+
+#: src/CombatSimulator2Mod.cs:267
+msgid "cancelled: the character was closed"
+msgstr ""
+
+#: src/CombatSimulator2Mod.cs:282
+msgid "cancelled: the mod was reloaded"
+msgstr ""
+
+#: src/Engine/CopyFailures.cs:30
+#: src/Engine/RunService.Progress.cs:141
+#, csharp-format
+msgid "failed: {0}: {1}"
+msgstr ""
+
+#: src/Engine/MemoryReserve.cs:92
+#, csharp-format
+msgid "not enough free memory for one copy (needs about {0} MB with {1} MB free): close other programs, or simulate in the game's process"
+msgstr ""
+
+#: src/Engine/RunFailures.cs:15
+#, csharp-format
+msgid "{0} wasn't saved: {1}"
+msgstr ""
+
+#: src/Engine/RunFailures.cs:27
+#, csharp-format
+msgid "{0} couldn't be opened: {1}"
+msgstr ""
+
+#: src/Engine/RunFailures.cs:58
+msgid "a copy failed to build and was dropped"
+msgstr ""
+
+#: src/Engine/RunFailures.cs:78
+#, csharp-format
+msgid "{0} target failed"
+msgid_plural "{0} targets failed"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Engine/RunPlan.Masters.cs:32
+#: src/Game/Slayer/MasterFight.cs:47
+#: src/Game/Slayer/SlayerTasks.cs:138
+#, csharp-format
+msgid "no Slayer master {0} in this game"
+msgstr ""
+
+#: src/Engine/RunPlan.Masters.cs:37
+#, csharp-format
+msgid "loadout {0} is gone: change it"
+msgstr ""
+
+#: src/Engine/RunService.Comparisons.cs:119
+#: src/Engine/RunService.Loadouts.cs:176
+#: src/Engine/RunService.cs:301
+#: src/Game/Search/SetFight.cs:44
+#: src/Game/Slayer/MasterFight.cs:102
+#: src/Model/Ranking.cs:478
+#: src/Panel/Simulate/ComparePicker.cs:400
+msgid "cancelled"
+msgstr ""
+
+#: src/Engine/RunService.Loadouts.cs:157
+#: src/Engine/Search/SearchRun.cs:459
+#: src/Engine/Search/SearchStart.cs:33
+#, csharp-format
+msgid "failed: {0}"
+msgstr ""
+
+#: src/Engine/RunService.Progress.cs:117
+#: src/Engine/RunService.Progress.cs:122
+msgid "the pool ended without a result for it"
+msgstr ""
+
+#: src/Engine/RunService.SavedRuns.cs:42
+#: src/Engine/RunService.SavedRuns.cs:74
+#: src/Model/RunHistory.cs:53
+msgid "the run is in progress"
+msgstr ""
+
+#: src/Engine/Search/KeptAnswers.cs:89
+msgid "could not be checked"
+msgstr ""
+
+#: src/Engine/Search/SearchPool.cs:169
+#, csharp-format
+msgid "{0} was refused"
+msgstr ""
+
+#: src/Game/BonfireChange.cs:42
+msgid "no bonfire"
+msgstr ""
+
+#: src/Game/BonfireChange.cs:50
+msgid "the game kept it burning"
+msgstr ""
+
+#: src/Game/BonfireChange.cs:59
+msgid "the game can't lower a bonfire"
+msgstr ""
+
+#: src/Game/BonfireChange.cs:67
+#: src/Game/Changes.cs:232
+#: src/Game/Changes.cs:332
+#: src/Game/Changes.cs:356
+#: src/Game/QuestChange.cs:90
+#: src/Game/ShopChange.cs:39
+#: src/Game/ShopChange.cs:51
+#: src/Game/ToolbeltChange.cs:49
+msgid "bank full"
+msgstr ""
+
+#: src/Game/BonfireChange.cs:70
+msgid "the game didn't raise it"
+msgstr ""
+
+#: src/Game/BonfireChange.cs:75
+msgid "the game didn't light it"
+msgstr ""
+
+#: src/Game/ChangeOptions.cs:224
+#: src/Game/Changes.cs:281
+#: src/Game/Changes.cs:313
+#, csharp-format
+msgid "weapon can't cast {0}"
+msgstr ""
+
+#: src/Game/ChangeOptions.cs:339
+#, csharp-format
+msgid "Power ({0}): {1}"
+msgstr ""
+
+#: src/Game/ChangeOptions.cs:350
+#, csharp-format
+msgid "Protection ({0}): {1}"
+msgstr ""
+
+#: src/Game/ChangeOptions.cs:405
+#, csharp-format
+msgid "Heals {0}"
+msgstr ""
+
+#: src/Game/ChangeOptions.cs:417
+#, csharp-format
+msgid "In brackets: change from {0}"
+msgstr ""
+
+#: src/Game/Changes.cs:104
+#: src/Game/Changes.cs:164
+#: src/Game/Pages/PageReader.cs:58
+msgid "unsupported on this game build"
+msgstr ""
+
+#: src/Game/Changes.cs:110
+#, csharp-format
+msgid "the game failed: {0}"
+msgstr ""
+
+#: src/Game/Changes.cs:169
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:48
+#: src/Panel/Simulate/PasteDialog.cs:182
+msgid "not in this build"
+msgstr ""
+
+#: src/Game/Changes.cs:180
+msgid "can't change this skill"
+msgstr ""
+
+#: src/Game/Changes.cs:186
+#: src/Game/TechniqueChange.cs:35
+#, csharp-format
+msgid "level must be {0}–{1}"
+msgstr ""
+
+#: src/Game/Changes.cs:190
+#: src/Game/TechniqueChange.cs:43
+#, csharp-format
+msgid "the game kept level {0}"
+msgstr ""
+
+#: src/Game/Changes.cs:203
+msgid "this slot is locked"
+msgstr ""
+
+#: src/Game/Changes.cs:213
+#: src/Game/ToolbeltChange.cs:35
+msgid "the game didn't take it off"
+msgstr ""
+
+#: src/Game/Changes.cs:218
+#: src/Game/ToolbeltChange.cs:40
+msgid "doesn't fit this slot"
+msgstr ""
+
+#: src/Game/Changes.cs:224
+msgid "already worn in another slot"
+msgstr ""
+
+#: src/Game/Changes.cs:239
+#: src/Game/ToolbeltChange.cs:59
+msgid "the game didn't equip it"
+msgstr ""
+
+#: src/Game/Changes.cs:258
+msgid "this weapon has no such stance"
+msgstr ""
+
+#: src/Game/Changes.cs:262
+msgid "the game kept its stance"
+msgstr ""
+
+#: src/Game/Changes.cs:289
+#: src/Game/Changes.cs:321
+#: src/Game/Changes.cs:360
+msgid "the game didn't select it"
+msgstr ""
+
+#: src/Game/Changes.cs:304
+#: src/Game/Changes.cs:348
+#: src/Game/PetChange.cs:28
+msgid "the game kept it"
+msgstr ""
+
+#: src/Game/Changes.cs:353
+msgid "isn't food"
+msgstr ""
+
+#: src/Game/Changes.cs:377
+msgid "the game kept it on"
+msgstr ""
+
+#: src/Game/Changes.cs:389
+msgid "no free prayer slot"
+msgstr ""
+
+#: src/Game/Changes.cs:395
+msgid "the game didn't turn it on"
+msgstr ""
+
+#: src/Game/Dependencies.cs:101
+#, csharp-format
+msgid "{0}: not counted, missing {1}"
+msgstr ""
+
+#: src/Game/Driver.cs:64
+#, csharp-format
+msgid "requirements ignored: {0}"
+msgstr ""
+
+#: src/Game/Driver.cs:72
+msgid "no master gives it: off task"
+msgstr ""
+
+#: src/Game/Driver.cs:204
+#, csharp-format
+msgid "cancelled after {0} of {1} trials"
+msgstr ""
+
+#: src/Game/Driver.cs:236
+#, csharp-format
+msgid "a trial ran over the {0:0} s limit after {1} finished trials"
+msgstr ""
+
+#: src/Game/Driver.cs:344
+#, csharp-format
+msgid "stopped early at ±{0}% after {1} of {2} trials"
+msgstr ""
+
+#. What of a part is left out of the fights: it keeps an item when the player dies, and CS2 never takes one.
+#: src/Game/Gaps.cs:20
+msgid "its keeping an item on death, as CS2 never takes one"
+msgstr ""
+
+#. A part's bonus left out of the fights; {0} is the bonus as the game words it ("+10% damage").
+#. The Setup tab's Slayer page can put the monster on task.
+#: src/Game/Gaps.cs:27
+#, csharp-format
+msgid "{0}, on a Slayer task only. Your save has no task for this monster; On task, on the Setup tab's Slayer page, counts it."
+msgstr ""
+
+#. A part's bonus left out of the fights; {0} is the bonus as the game words it ("+10% damage").
+#: src/Game/Gaps.cs:35
+#, csharp-format
+msgid "{0}, on a Slayer task only. This setup fights off task."
+msgstr ""
+
+#: src/Game/Guards.cs:111
+#, csharp-format
+msgid "{0}: blocked a side effect at {1}"
+msgstr ""
+
+#: src/Game/GuildChange.cs:35
+#, csharp-format
+msgid "this guild has ranks 0–{0}"
+msgstr ""
+
+#: src/Game/GuildChange.cs:50
+#, csharp-format
+msgid "rank needs {1} points, completable tasks only give {0}"
+msgstr ""
+
+#: src/Game/GuildChange.cs:67
+#, csharp-format
+msgid "rank needs {1} points taken back, undoable tasks only give {0}"
+msgstr ""
+
+#: src/Game/GuildChange.cs:79
+#, csharp-format
+msgid "the game kept rank {0}"
+msgstr ""
+
+#: src/Game/LineIds.Slayer.cs:63
+#: src/Game/LineIds.cs:264
+#: src/Game/LineIds.cs:278
+#, csharp-format
+msgid "{0}: not in this build"
+msgstr ""
+
+#: src/Game/LiveGame.cs:40
+msgid "no game is loaded: open a character first"
+msgstr ""
+
+#: src/Game/Pages/AgilityPage.cs:32
+#: src/Game/Pages/AstrologyPage.cs:45
+#: src/Game/Pages/GuildPage.cs:100
+#: src/Game/Pages/PageReader.cs:47
+#: src/Game/Pages/PetsPage.cs:47
+#: src/Game/Pages/QuestsPage.cs:28
+#: src/Game/Pages/ShopPage.cs:30
+#: src/Game/Pages/SlayerPage.cs:18
+msgid "Not in this build"
+msgstr ""
+
+#: src/Game/Pages/AgilityPage.cs:46
+msgid "This build has it; CS2 can't show or change it yet."
+msgstr ""
+
+#: src/Game/Pages/AgilityPage.cs:47
+msgid "Nothing in Agility changes a fight in this build. Techniques decide which areas and dungeons you can enter."
+msgstr ""
+
+#: src/Game/Pages/AgilityPage.cs:107
+#, csharp-format
+msgid "Needs level {0}"
+msgstr ""
+
+#: src/Game/Pages/AgilityPage.cs:142
+#, csharp-format
+msgid "{0} shortcut built"
+msgid_plural "{0} shortcuts built"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Game/Pages/AgilityPage.cs:151
+msgid "Times each course was completed, read only: courses change no fight"
+msgstr ""
+
+#: src/Game/Pages/AstrologyPage.cs:70
+msgid "The game can't remove a star."
+msgstr ""
+
+#: src/Game/Pages/AstrologyPage.cs:79
+#, csharp-format
+msgid "{0} of {1} stars · {2} knowledge"
+msgstr ""
+
+#: src/Game/Pages/FiremakingPage.cs:35
+msgid "No bonfires yet"
+msgstr ""
+
+#: src/Game/Pages/FiremakingPage.cs:44
+#, csharp-format
+msgid "Your bonfire: {0}, burning"
+msgstr ""
+
+#: src/Game/Pages/FiremakingPage.cs:45
+#, csharp-format
+msgid "Your bonfire: {0}, not burning"
+msgstr ""
+
+#: src/Game/Pages/FiremakingPage.cs:52
+msgid "Bonfire"
+msgstr ""
+
+#: src/Game/Pages/FiremakingPage.cs:75
+msgid "The game can't lower a bonfire."
+msgstr ""
+
+#: src/Game/Pages/FiremakingPage.cs:77
+#, csharp-format
+msgid "Burns up to {0} h"
+msgstr ""
+
+#: src/Game/Pages/FiremakingPage.cs:78
+#, csharp-format
+msgid "{0:N0} {1} · burns up to {2} h"
+msgstr ""
+
+#: src/Game/Pages/GuildPage.cs:94
+#, csharp-format
+msgid "{0} of {1} points"
+msgstr ""
+
+#: src/Game/Pages/HerblorePage.cs:42
+msgid "No combat potions"
+msgstr ""
+
+#: src/Game/Pages/HerblorePage.cs:63
+msgid "The potion in your toolbelt. One per side."
+msgstr ""
+
+#: src/Game/Pages/HerblorePage.cs:106
+#, csharp-format
+msgid "{0} in your bank"
+msgstr ""
+
+#. Mark on a choice of a setup search's answer that the bank holds none of.
+#: src/Game/Pages/HerblorePage.cs:106
+#: src/Panel/Search/SetupRows.cs:470
+msgid "Not in your bank"
+msgstr ""
+
+#: src/Game/Pages/PetsPage.cs:93
+msgid "No bonus"
+msgstr ""
+
+#: src/Game/Pages/PetsPage.cs:104
+#, csharp-format
+msgid "{0} of {1} found"
+msgstr ""
+
+#: src/Game/Pages/PetsPage.cs:106
+msgid "In combat"
+msgstr ""
+
+#: src/Game/Pages/PetsPage.cs:115
+msgid "Help only their own skill, or give nothing"
+msgstr ""
+
+#: src/Game/Pages/PetsPage.cs:117
+#, csharp-format
+msgid "Other pets ({0})"
+msgstr ""
+
+#: src/Game/Pages/PetsPage.cs:124
+msgid "Found pets always give their bonus."
+msgstr ""
+
+#: src/Game/Pages/QuestsPage.cs:71
+#, csharp-format
+msgid "{0} of {1} done"
+msgstr ""
+
+#: src/Game/Pages/ShopPage.cs:45
+#, csharp-format
+msgid "{0} of {1} bought"
+msgstr ""
+
+#: src/Game/PetChange.cs:31
+msgid "not found yet"
+msgstr ""
+
+#: src/Game/PotionChange.cs:16
+msgid "no combat potion slot"
+msgstr ""
+
+#: src/Game/PotionChange.cs:25
+msgid "not a combat potion"
+msgstr ""
+
+#: src/Game/QuestChange.cs:36
+msgid "the game kept it done"
+msgstr ""
+
+#: src/Game/QuestChange.cs:84
+msgid "the game didn't complete the quest"
+msgstr ""
+
+#: src/Game/QuestChange.cs:93
+msgid "the game didn't complete a task"
+msgstr ""
+
+#: src/Game/QuestChange.cs:97
+msgid "the game didn't give the quest's rewards (bank full)"
+msgstr ""
+
+#. Why a setup search leaves out a combat style that needs a spell: the setup has none, and
+#. Spell is switched off under "Also try". Shown after "Magic: skipped, ".
+#: src/Game/Search/GearCatalog.cs:111
+msgid "switch on Spell under Also try to include it"
+msgstr ""
+
+#: src/Game/Search/ItemSources.cs:30
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:34
+msgid "Shop"
+msgstr ""
+
+#: src/Game/Search/ItemSources.cs:35
+msgid "Upgrade"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:44
+msgid "Combat Level"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:45
+msgid "Combat Style"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:46
+msgid "Attack Stance"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:47
+msgid "Element"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:50
+msgid "Min Hit"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:51
+msgid "Max Hit"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:57
+#, csharp-format
+msgid "Accuracy Rating ({0})"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:65
+msgid "Attack Interval"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:75
+#, csharp-format
+msgid "Power ({0})"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:82
+msgid "Max Hitpoints"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:89
+#, csharp-format
+msgid "Evasion ({0})"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:100
+#, csharp-format
+msgid "Protection ({0})"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:109
+msgid "Critical Hit Chance"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:116
+msgid "Critical Hit Multiplier"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:121
+msgid "Attack Reflect"
+msgstr ""
+
+#: src/Game/SetupSheet.cs:123
+msgid "Light"
+msgstr ""
+
+#: src/Game/ShopChange.cs:31
+msgid "the game has no refund"
+msgstr ""
+
+#: src/Game/ShopChange.cs:33
+#, csharp-format
+msgid "the shop sells at most {0}"
+msgstr ""
+
+#: src/Game/ShopChange.cs:52
+msgid "the wallet is full"
+msgstr ""
+
+#: src/Game/ShopChange.cs:53
+msgid "the game still asks for its requirements"
+msgstr ""
+
+#: src/Game/ShopChange.cs:56
+msgid "the game didn't sell it"
+msgstr ""
+
+#: src/Game/ShopChange.cs:63
+#, csharp-format
+msgid "the game sold {0}"
+msgstr ""
+
+#: src/Game/Slayer/BlockChange.cs:31
+#, csharp-format
+msgid "{0} isn't one of {1}'s monsters"
+msgstr ""
+
+#: src/Game/Slayer/BlockChange.cs:39
+#, csharp-format
+msgid "{0} has {1} block slots"
+msgstr ""
+
+#: src/Game/Slayer/BlockChange.cs:63
+#, csharp-format
+msgid "the game blocked {0}"
+msgstr ""
+
+#: src/Game/Slayer/BlockChange.cs:71
+#, csharp-format
+msgid "needs slot {0} · {1} more task"
+msgid_plural "needs slot {0} · {1} more tasks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Game/Slayer/LoadoutChange.cs:46
+#, csharp-format
+msgid "{0} is not in {1}'s pool"
+msgstr ""
+
+#: src/Game/Slayer/LoadoutChange.cs:50
+#, csharp-format
+msgid "no loadout {0}"
+msgstr ""
+
+#: src/Game/Slayer/LoadoutChange.cs:52
+#, csharp-format
+msgid "{0} is locked"
+msgstr ""
+
+#: src/Game/Slayer/LoadoutChange.cs:71
+#, csharp-format
+msgid "{0} is not a single monster"
+msgstr ""
+
+#: src/Game/StarChange.cs:46
+#, csharp-format
+msgid "needs {0} more minor stars in this constellation"
+msgstr ""
+
+#: src/Game/StarChange.cs:60
+#: src/Game/StarChange.cs:76
+#: src/Game/StarChange.cs:77
+#, csharp-format
+msgid "needs {0} knowledge"
+msgstr ""
+
+#: src/Game/StarChange.cs:61
+msgid "no more stars can be unlocked in this constellation"
+msgstr ""
+
+#: src/Game/StarChange.cs:85
+msgid "the game didn't unlock it"
+msgstr ""
+
+#: src/Game/ToolbeltChange.cs:26
+msgid "not a combat toolbelt slot"
+msgstr ""
+
+#: src/Game/ToolbeltChange.cs:46
+msgid "already in another slot"
+msgstr ""
+
+#: src/Host/HostClient.cs:178
+msgid "the simulator can't start: CS2 is not loaded"
+msgstr ""
+
+#: src/Host/HostClient.cs:208
+msgid "the simulator did not start within 30 s"
+msgstr ""
+
+#: src/Host/HostClient.cs:223
+msgid "the simulator closed while starting: an antivirus may be blocking a second Melvor2.exe; allow it, or simulate in the game's process"
+msgstr ""
+
+#: src/Host/HostClient.cs:226
+#, csharp-format
+msgid "the simulator broke off while starting ({0}); try again, or simulate in the game's process"
+msgstr ""
+
+#: src/Host/HostClient.cs:266
+#, csharp-format
+msgid "the simulator sent something unreadable ({0})"
+msgstr ""
+
+#: src/Host/HostClient.cs:298
+#: src/Host/HostHealth.cs:177
+#: src/Host/HostHealth.cs:204
+#: src/Host/RemotePool.cs:157
+#: src/Host/RemoteSearch.cs:68
+#: src/Host/RemoteSearch.cs:173
+msgid "the simulator closed unexpectedly"
+msgstr ""
+
+#: src/Host/HostHealth.cs:118
+#, csharp-format
+msgid "the simulator loaded a different game build ({0}, live {1}); restart the game"
+msgstr ""
+
+#: src/Host/HostHealth.cs:124
+msgid "the simulator loaded a different CS2 version; reload CS2"
+msgstr ""
+
+#: src/Host/HostHealth.cs:176
+#, csharp-format
+msgid "the simulator closed unexpectedly (code {0})"
+msgstr ""
+
+#: src/Host/HostHealth.cs:193
+msgid "the simulator did not start within 30 s: the machine may be busy; try again, or simulate in the game's process"
+msgstr ""
+
+#: src/Host/HostHealth.cs:213
+msgid "the simulator stopped responding"
+msgstr ""
+
+#: src/Host/RemotePool.cs:219
+#: src/Host/RemoteSearch.cs:194
+#: src/Host/RemoteSearch.cs:233
+#, csharp-format
+msgid "the simulator failed: {0}"
+msgstr ""
+
+#: src/Model/Assumption.cs:17
+msgid "clean start (combat stopped, HP full)"
+msgstr ""
+
+#: src/Model/Assumption.cs:18
+msgid "no item loss on death"
+msgstr ""
+
+#: src/Model/Assumption.cs:19
+msgid "fights again after a death"
+msgstr ""
+
+#: src/Model/Assumption.cs:20
+msgid "unlimited consumables (topped up after each tick)"
+msgstr ""
+
+#: src/Model/Assumption.cs:21
+msgid "levels held (XP reset after each trial)"
+msgstr ""
+
+#: src/Model/Assumption.cs:22
+msgid "loot cleared from the bank after it is counted"
+msgstr ""
+
+#: src/Model/Assumption.cs:26
+msgid "slayer task as in the save, auto-slayer off; a task that ends during a fight changes the rest of that fight, as in the game"
+msgstr ""
+
+#: src/Model/Assumption.cs:31
+msgid "time of day frozen at 12:00"
+msgstr ""
+
+#: src/Model/Assumption.cs:43
+msgid "Auto Slayer on, starting in the task's area"
+msgstr ""
+
+#: src/Model/Assumption.cs:44
+msgid "every task fought to the end; no rerolls or extensions"
+msgstr ""
+
+#: src/Model/Assumption.cs:45
+msgid "Slayer level as in the setup"
+msgstr ""
+
+#: src/Model/Assumption.cs:46
+msgid "one respawn between tasks"
+msgstr ""
+
+#: src/Model/Assumption.cs:49
+msgid "you start again after each death: the game stops, so a master with deaths can't be left running"
+msgstr ""
+
+#: src/Model/Assumption.cs:52
+msgid "Auto Slayer enters areas you haven't unlocked"
+msgstr ""
+
+#: src/Model/Assumption.cs:53
+msgid "each monster given up to an hour a kill"
+msgstr ""
+
+#: src/Model/Assumption.cs:59
+msgid "Loadout swaps between tasks cost no time (swapped while the next monster spawns)"
+msgstr ""
+
+#: src/Model/Assumption.cs:72
+msgid "Pets added or taken away here change their bonuses only; the game still counts the pets you've found."
+msgstr ""
+
+#: src/Model/Assumption.cs:84
+msgid "items and prayers already in use stay when a level is lowered"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:32
+#, csharp-format
+msgid "{0}: requirement ignored ({1})"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:35
+#, csharp-format
+msgid "left out: {0} ({1})"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:38
+#, csharp-format
+msgid "left out: {0} (not in this build)"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:64
+#: src/Model/Search/SetupAnswers.cs:44
+#: src/Panel/Compare/CompareChart.cs:215
+#: src/Panel/Search/AnswerView.cs:405
+#: src/Panel/Search/SetupRows.cs:268
+#: src/Panel/Simulate/SetupCard.cs:404
+#: src/Panel/Slayer/MonsterLoadouts.cs:73
+#: src/Panel/Words.cs:24
+#, csharp-format
+msgid "{0}: {1}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:79
+#, csharp-format
+msgid "{0} + {1} change"
+msgid_plural "{0} + {1} changes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Model/ChangeNotes.cs:89
+#: src/Model/ChangeNotes.cs:148
+#, csharp-format
+msgid "{0} {1} → {2}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:90
+#, csharp-format
+msgid "Stance: {0} → {1}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:92
+#, csharp-format
+msgid "Spell: none → {0}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:93
+#, csharp-format
+msgid "Spell: {0} → {1}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:96
+#, csharp-format
+msgid "Imbuement: none → {0}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:97
+#, csharp-format
+msgid "Imbuement: {0} → none"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:98
+#, csharp-format
+msgid "Imbuement: {0} → {1}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:101
+#, csharp-format
+msgid "{0} on"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:102
+#, csharp-format
+msgid "{0} off"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:104
+#, csharp-format
+msgid "Quest {0} done"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:105
+#, csharp-format
+msgid "Quest {0} not done"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:106
+#, csharp-format
+msgid "{0}: {1} → {2} bought"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:107
+#, csharp-format
+msgid "{0} guild rank {1} → {2}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:108
+#, csharp-format
+msgid "Star {0} on"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:111
+#, csharp-format
+msgid "{0}: empty → {1}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:112
+#, csharp-format
+msgid "{0}: {1} → empty"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:113
+#, csharp-format
+msgid "{0}: {1} → {2}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:115
+#, csharp-format
+msgid "{0} blocks: {1} → {2}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:121
+#, csharp-format
+msgid "{0} loadouts: {1} → {2}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:128
+msgid "Single monsters on a slayer task"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:129
+msgid "Single monsters off any slayer task"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:132
+#, csharp-format
+msgid "{0}: on a slayer task"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:133
+#, csharp-format
+msgid "{0}: off any slayer task"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:134
+#, csharp-format
+msgid "{0}: slayer task as the save"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:138
+#, csharp-format
+msgid "Food: none → {0}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:139
+#, csharp-format
+msgid "Food: {0} → none"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:140
+#, csharp-format
+msgid "Food: {0} → {1}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:143
+#, csharp-format
+msgid "{0} found"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:144
+#, csharp-format
+msgid "{0} removed"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:146
+#, csharp-format
+msgid "{0} bonfire, burning"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:147
+msgid "Bonfire out"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:151
+#, csharp-format
+msgid "Potion: none → {0}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:152
+#, csharp-format
+msgid "Potion: {0} → none"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:153
+#, csharp-format
+msgid "Potion: {0} → {1}"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:181
+msgid "no reason given"
+msgstr ""
+
+#: src/Model/ChangeNotes.cs:183
+#, csharp-format
+msgid "{0}; {1}"
+msgstr ""
+
+#: src/Model/Comparison.cs:99
+#, csharp-format
+msgid "The sides come from different game builds: {0} and {1}."
+msgstr ""
+
+#: src/Model/Comparison.cs:101
+msgid "The baseline was simulated by an earlier version of CS2."
+msgstr ""
+
+#: src/Model/Comparison.cs:106
+msgid "The baseline run is gone."
+msgstr ""
+
+#: src/Model/Differences.cs:66
+msgid "Both died every fight"
+msgstr ""
+
+#: src/Model/Differences.cs:67
+msgid "A died every fight"
+msgstr ""
+
+#: src/Model/Differences.cs:68
+msgid "B died every fight"
+msgstr ""
+
+#: src/Model/Metrics.cs:114
+#: src/Model/Metrics.cs:184
+msgid "Kills"
+msgstr ""
+
+#: src/Model/Metrics.cs:115
+msgid "Completions"
+msgstr ""
+
+#: src/Model/Metrics.cs:116
+msgid "Kills or completions"
+msgstr ""
+
+#: src/Model/Metrics.cs:118
+#: src/Model/Metrics.cs:187
+msgid "Kill time (s)"
+msgstr ""
+
+#: src/Model/Metrics.cs:119
+msgid "Clear time (s)"
+msgstr ""
+
+#: src/Model/Metrics.cs:120
+msgid "Kill or clear time (s)"
+msgstr ""
+
+#. Label of the death limit's three buttons in the gear search's form.
+#: src/Model/Metrics.cs:124
+#: src/Model/Metrics.cs:185
+#: src/Panel/Results/FightsSection.cs:47
+#: src/Panel/Search/AnswerView.cs:375
+#: src/Panel/Search/StartForm.cs:71
+#: src/Panel/SetupTab/SlayerMasters.cs:105
+msgid "Deaths"
+msgstr ""
+
+#: src/Model/Metrics.cs:125
+#: src/Model/Metrics.cs:186
+msgid "Death rate"
+msgstr ""
+
+#: src/Model/Metrics.cs:188
+msgid "Highest hit taken"
+msgstr ""
+
+#: src/Model/Metrics.cs:189
+#: src/Panel/Results/FightsSection.cs:49
+#: src/Panel/Results/RiskBlock.cs:91
+#: src/Panel/Results/RiskBlock.cs:109
+#: src/Panel/Results/RiskBlock.cs:172
+msgid "Lowest HP"
+msgstr ""
+
+#: src/Model/Metrics.cs:190
+msgid "Highest reflect taken"
+msgstr ""
+
+#: src/Model/Metrics.cs:191
+msgid "Drops"
+msgstr ""
+
+#. Label in the fights section: hits over attacks as they happened. "It made no attack" replaces the value when there was no attack.
+#: src/Model/Metrics.cs:192
+#: src/Panel/Results/FightBlock.cs:41
+#: src/Panel/Results/FightBlock.cs:51
+#: src/Panel/Results/FightBlock.cs:143
+#: src/Panel/Results/FightBlock.cs:147
+#: src/Panel/Results/FightBlock.cs:188
+msgid "Chance to hit"
+msgstr ""
+
+#. Label in the fights section: health removed per landed hit. "No hit landed" replaces the value when none landed.
+#: src/Model/Metrics.cs:193
+#: src/Panel/Results/FightBlock.cs:43
+#: src/Panel/Results/FightBlock.cs:57
+#: src/Panel/Results/FightBlock.cs:144
+#: src/Panel/Results/FightBlock.cs:148
+#: src/Panel/Results/FightBlock.cs:191
+msgid "Damage per hit"
+msgstr ""
+
+#. Label in the fights section: health removed per second of fighting, from every cause.
+#: src/Model/Metrics.cs:194
+#: src/Panel/Results/FightBlock.cs:45
+#: src/Panel/Results/FightBlock.cs:145
+#: src/Panel/Results/FightBlock.cs:194
+msgid "Damage per second"
+msgstr ""
+
+#: src/Model/Metrics.cs:195
+msgid "Enemy's chance to hit"
+msgstr ""
+
+#: src/Model/Metrics.cs:196
+msgid "Enemy's damage per hit"
+msgstr ""
+
+#. Label in the fights section: the player's health lost per second of fighting.
+#: src/Model/Metrics.cs:197
+#: src/Panel/Results/FightBlock.cs:62
+#: src/Panel/Results/FightBlock.cs:149
+#: src/Panel/Results/FightBlock.cs:194
+msgid "Damage taken per second"
+msgstr ""
+
+#. Label in the fights section: the share of damage beyond the enemy's remaining health.
+#: src/Model/Metrics.cs:198
+#: src/Panel/Results/FightBlock.cs:91
+#: src/Panel/Results/FightBlock.cs:199
+msgid "Overkill"
+msgstr ""
+
+#. Label and value: attacks made per kill (per clear), and how many of them missed; {0} and {1} are numbers.
+#: src/Model/Metrics.cs:199
+#: src/Panel/Results/FightBlock.cs:82
+#: src/Panel/Results/FightBlock.cs:202
+msgid "Attacks per kill"
+msgstr ""
+
+#: src/Model/Metrics.cs:200
+msgid "Missed per kill"
+msgstr ""
+
+#. A stat: the share of trials that passed the time limit.
+#: src/Model/Metrics.cs:202
+msgid "Ran over"
+msgstr ""
+
+#: src/Model/Metrics.cs:400
+msgid "XP"
+msgstr ""
+
+#: src/Model/Metrics.cs:401
+msgid "Item"
+msgstr ""
+
+#: src/Model/Metrics.cs:402
+msgid "Dropped"
+msgstr ""
+
+#: src/Model/Metrics.cs:403
+msgid "Value"
+msgstr ""
+
+#. A metric: dropped items at their sell price plus the currency dropped itself.
+#: src/Model/Metrics.cs:405
+msgid "Total value"
+msgstr ""
+
+#. A metric: what the bones dropped would give if buried, such as prayer points.
+#: src/Model/Metrics.cs:407
+msgid "If buried"
+msgstr ""
+
+#: src/Model/Metrics.cs:408
+msgid "Used"
+msgstr ""
+
+#: src/Model/Metrics.cs:409
+msgid "Rare event"
+msgstr ""
+
+#: src/Model/Metrics.cs:423
+#: src/Panel/Search/KindSwitches.cs:23
+#: src/Panel/Search/SetupRows.cs:458
+#: src/Panel/SetupTab/GearPage.Loadout.cs:277
+#: src/Panel/SetupTab/GearPage.Loadout.cs:304
+#: src/Panel/SetupTab/GearSkeleton.cs:78
+#: src/Panel/Simulate/SlotPicker.cs:178
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:31
+msgid "Food"
+msgstr ""
+
+#: src/Model/Metrics.cs:424
+msgid "Consumables"
+msgstr ""
+
+#: src/Model/Metrics.cs:425
+#: src/Panel/Search/KindSwitches.cs:25
+msgid "Potions"
+msgstr ""
+
+#: src/Model/Metrics.cs:426
+msgid "Runes"
+msgstr ""
+
+#: src/Model/Metrics.cs:427
+msgid "Ammo"
+msgstr ""
+
+#: src/Model/Metrics.cs:433
+msgid "Prayer points"
+msgstr ""
+
+#: src/Model/Metrics.cs:437
+#, csharp-format
+msgid "{0} (ammo)"
+msgstr ""
+
+#: src/Model/Metrics.cs:438
+#, csharp-format
+msgid "{0} (charges)"
+msgstr ""
+
+#: src/Model/Ranking.Masters.cs:13
+#: src/Panel/Slayer/MasterDetail.cs:33
+#, csharp-format
+msgid "Gets stuck on {0}: {1}"
+msgstr ""
+
+#: src/Model/Ranking.cs:474
+msgid "queued"
+msgstr ""
+
+#: src/Model/Ranking.cs:475
+msgid "running"
+msgstr ""
+
+#: src/Model/Ranking.cs:476
+msgid "no estimate"
+msgstr ""
+
+#: src/Model/Ranking.cs:477
+msgid "unfinished"
+msgstr ""
+
+#: src/Model/Ranking.cs:479
+msgid "refused"
+msgstr ""
+
+#: src/Model/Ranking.cs:480
+msgid "unsupported"
+msgstr ""
+
+#: src/Model/RunHistory.cs:55
+msgid "the run is pinned: unpin it first"
+msgstr ""
+
+#: src/Model/RunHistory.cs:57
+msgid "a kept comparison uses this run"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:218
+msgid "setup changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:220
+msgid "gear changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:222
+msgid "levels changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:224
+msgid "game updated"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:226
+msgid "Combat Simulator 2 updated"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:228
+msgid "goal changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:230
+msgid "locks changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:232
+msgid "excluded items changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:234
+msgid "styles changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:236
+msgid "margin changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:238
+msgid "seed changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:240
+msgid "choices tried changed"
+msgstr ""
+
+#: src/Model/Search/Answer.cs:242
+msgid "prayers, spells, food or toolbelt changed"
+msgstr ""
+
+#: src/Model/Search/Answers.cs:10
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:39
+#: src/Panel/Stats/FullStatsView.Stats.cs:16
+msgid "Other"
+msgstr ""
+
+#: src/Model/Search/Planner.cs:227
+msgid "takes more than one slot"
+msgstr ""
+
+#: src/Model/Search/Planner.cs:383
+msgid "nothing owned for it to fire"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:53
+msgid "Choose one target"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:55
+msgid "Droptimizer keeps every slot as worn: it takes no locks"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:57
+msgid "Droptimizer tries gear only"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:59
+#, csharp-format
+msgid "No kind of choice {0}"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:62
+#, csharp-format
+msgid "No slot {0}"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:65
+#, csharp-format
+msgid "{0} is not an item that can be worn"
+msgstr ""
+
+#: src/Model/Slayer/MasterFigures.cs:107
+#, csharp-format
+msgid "no result for {0}"
+msgstr ""
+
+#. Why a Slayer master gets stuck on a monster: the player died in every fight with it.
+#: src/Model/Slayer/MasterFigures.cs:112
+msgid "dies every time"
+msgstr ""
+
+#. How many trials passed the time limit, with why: where a target stopped for it, and in the hover of a row's ran-over chip; {2} is the limit in minutes, {3} the reason sentence.
+#: src/Model/StallReason.cs:44
+#: src/Panel/Results/RanOverChip.cs:95
+#, csharp-format
+msgid "{0} of {1} trials ran over {2} minutes. {3}"
+msgstr ""
+
+#. Why a target has no result: the player made no attack within the time limit ({0} minutes).
+#: src/Model/StallReason.cs:82
+#, csharp-format
+msgid "You never attacked in {0} minutes."
+msgstr ""
+
+#. Why a target has no result: the game marks the enemy immune; {0} is the number of attacks made.
+#: src/Model/StallReason.cs:84
+#, csharp-format
+msgid "Immune to your attacks: 0 of {0} landed."
+msgstr ""
+
+#. Why a target has no result: no attack landed; {0} is the number of attacks made.
+#: src/Model/StallReason.cs:86
+#, csharp-format
+msgid "Never hit it: 0 of {0} attacks landed."
+msgstr ""
+
+#. Why a target has no result: the enemy heals back about what it is dealt; {0} damage dealt, {1} healed, {2} percent of its health left.
+#: src/Model/StallReason.cs:88
+#, csharp-format
+msgid "It heals back what you deal: {0} dealt, {1} healed, {2}% HP left."
+msgstr ""
+
+#. Why a target has no result: the enemy's armour takes nearly every hit; {0} hits, {1} damage done, {2} percent of its health left.
+#: src/Model/StallReason.cs:95
+#, csharp-format
+msgid "Armour stops your hits: {0} hits did {1} damage, {2}% HP left."
+msgstr ""
+
+#. Why a target has no result: the fight is too slow for the time limit; {0} percent health left, {1} minutes, {2} of {3} attacks landed, {4} damage per hit.
+#: src/Model/StallReason.cs:102
+#, csharp-format
+msgid "Too slow: {0}% HP left after {1} minutes. {2} of {3} attacks landed, {4} damage a hit."
+msgstr ""
+
+#. Before a dungeon's stall reason: {0} the stage number, {1} the enemy's name, {2} the reason sentence.
+#: src/Model/StallReason.cs:113
+#, csharp-format
+msgid "Stage {0}, {1}: {2}"
+msgstr ""
+
+#. Heading of a group of results with no attack made; {0} is how many targets. The other headings work the same way.
+#: src/Model/StallReason.cs:122
+#, csharp-format
+msgid "Never attacked ({0})"
+msgstr ""
+
+#. Heading of a group of results with no attack made; {0} is how many targets. The other headings work the same way.
+#: src/Model/StallReason.cs:123
+#, csharp-format
+msgid "Immune ({0})"
+msgstr ""
+
+#. Heading of a group of results with no attack made; {0} is how many targets. The other headings work the same way.
+#: src/Model/StallReason.cs:124
+#, csharp-format
+msgid "Never hit ({0})"
+msgstr ""
+
+#. Heading of a group of results with no attack made; {0} is how many targets. The other headings work the same way.
+#: src/Model/StallReason.cs:125
+#, csharp-format
+msgid "Heals back ({0})"
+msgstr ""
+
+#. Heading of a group of results with no attack made; {0} is how many targets. The other headings work the same way.
+#: src/Model/StallReason.cs:126
+#, csharp-format
+msgid "Armour stops your hits ({0})"
+msgstr ""
+
+#. Heading of a group of results with no attack made; {0} is how many targets. The other headings work the same way.
+#: src/Model/StallReason.cs:127
+#, csharp-format
+msgid "Too slow ({0})"
+msgstr ""
+
+#. The reason in a few words, in a comparison row's verdict place, e.g. "A: Too slow". Same words as the group headings.
+#: src/Model/StallReason.cs:135
+msgid "Never attacked"
+msgstr ""
+
+#. The reason in a few words, in a comparison row's verdict place, e.g. "A: Too slow". Same words as the group headings.
+#: src/Model/StallReason.cs:136
+msgid "Immune"
+msgstr ""
+
+#. The reason in a few words, in a comparison row's verdict place, e.g. "A: Too slow". Same words as the group headings.
+#: src/Model/StallReason.cs:137
+msgid "Never hit"
+msgstr ""
+
+#. The reason in a few words, in a comparison row's verdict place, e.g. "A: Too slow". Same words as the group headings.
+#: src/Model/StallReason.cs:138
+msgid "Heals back"
+msgstr ""
+
+#. The reason in a few words, in a comparison row's verdict place, e.g. "A: Too slow". Same words as the group headings.
+#: src/Model/StallReason.cs:139
+msgid "Armour stops your hits"
+msgstr ""
+
+#. The reason in a few words, in a comparison row's verdict place, e.g. "A: Too slow". Same words as the group headings.
+#: src/Model/StallReason.cs:140
+msgid "Too slow"
+msgstr ""
+
+#: src/Model/VersionNews.cs:17
+msgid "Simulate every monster, dungeon and Slayer task with your setup, ranked by XP, kills and more"
+msgstr ""
+
+#: src/Model/VersionNews.cs:19
+msgid "Compare two setups on the same fights"
+msgstr ""
+
+#: src/Model/VersionNews.cs:20
+msgid "Try any gear, levels, prayers and Setup entries, owned or not"
+msgstr ""
+
+#: src/Model/VersionNews.cs:21
+msgid "Find the best setup for a target, with a cheaper and a safer one"
+msgstr ""
+
+#: src/Model/VersionNews.cs:22
+msgid "Rare drop chances per kill, and roughly when the first should drop"
+msgstr ""
+
+#: src/Model/VersionNews.cs:23
+msgid "Slayer masters: the best loadout for each, and which tasks to block"
+msgstr ""
+
+#. Column head over the difference of B from A in the comparison's table.
+#: src/Panel/Compare/CompareCells.cs:30
+msgid "B vs A"
+msgstr ""
+
+#. Short for "different skills" in a narrow column: A and B train different skills.
+#: src/Panel/Compare/CompareCells.cs:85
+msgid "diff. skills"
+msgstr ""
+
+#: src/Panel/Compare/CompareCells.cs:86
+msgid "A and B train different skills, so their XP isn't compared"
+msgstr ""
+
+#. Short, in a narrow comparison column: only side {0} (A or B) can kill the target in time.
+#: src/Panel/Compare/CompareCells.cs:93
+#, csharp-format
+msgid "only {0}"
+msgstr ""
+
+#. Side {0} (A or B) can't kill the target in time; {1} says why, e.g. "Armour stops your hits".
+#: src/Panel/Compare/CompareCells.cs:98
+#: src/Panel/Compare/CompareChart.cs:244
+#, csharp-format
+msgid "{0} can't kill it in time: {1}"
+msgstr ""
+
+#. Tooltip on a change too small to tell from luck: {0} and {1} the ends of its 95%
+#. range, "-15%" and "+2%".
+#: src/Panel/Compare/CompareCells.cs:118
+#, csharp-format
+msgid "Could be luck: likely between {0} and {1}. More trials narrow it."
+msgstr ""
+
+#: src/Panel/Compare/CompareCells.cs:138
+#: src/Panel/Results/RiskBlock.cs:159
+msgid "Unfinished"
+msgstr ""
+
+#. Shown in the fights section for a run saved before fight counts were kept; the second message explains it.
+#: src/Panel/Compare/CompareCells.cs:139
+#: src/Panel/Results/FightBlock.cs:29
+#: src/Panel/Results/RiskBlock.cs:159
+#: src/Panel/Results/RiskBlock.cs:262
+msgid "Not recorded"
+msgstr ""
+
+#: src/Panel/Compare/CompareChart.cs:95
+#, csharp-format
+msgid "{0} worse"
+msgstr ""
+
+#: src/Panel/Compare/CompareChart.cs:104
+#: src/Panel/Widgets/ChartMarks.cs:59
+msgid "95% range"
+msgstr ""
+
+#: src/Panel/Compare/CompareChart.cs:109
+#: src/Panel/Compare/CompareList.cs:362
+msgid "different skills"
+msgstr ""
+
+#: src/Panel/Compare/CompareChart.cs:155
+#, csharp-format
+msgid "{0}, better"
+msgstr ""
+
+#: src/Panel/Compare/CompareChart.cs:253
+#, csharp-format
+msgid "{4} − {5}: {0} ({1} to {2}) · {3}"
+msgstr ""
+
+#. Comparison chart hover, in place of the verdict: the sides' main skills differ.
+#: src/Panel/Compare/CompareChart.cs:261
+msgid "different skills, not compared"
+msgstr ""
+
+#: src/Panel/Compare/CompareChart.cs:277
+msgid "Ignored in the next run · click the portrait to return it"
+msgstr ""
+
+#: src/Panel/Compare/CompareChart.cs:278
+msgid "Click the portrait to ignore it in the next run · right-click to run only it"
+msgstr ""
+
+#: src/Panel/Compare/CompareDetails.cs:55
+#, csharp-format
+msgid "Select a target to see {0} and {1} side by side."
+msgstr ""
+
+#. Tab in a target's details: its rates against the run's other targets, then its drops.
+#: src/Panel/Compare/CompareDetails.cs:87
+#: src/Panel/Results/DetailsTabs.cs:48
+msgid "Rates"
+msgstr ""
+
+#. Tab in a target's details: risk, how the fights went and a dungeon's fight by fight.
+#: src/Panel/Compare/CompareDetails.cs:93
+#: src/Panel/Results/DetailsTabs.cs:50
+#: src/Panel/Results/DetailsTabs.cs:95
+msgid "Fights"
+msgstr ""
+
+#: src/Panel/Compare/CompareDetails.cs:137
+#: src/Panel/RunCache.cs:140
+msgid "XP · main skill"
+msgstr ""
+
+#. The comparison's headline: only side {0} (A or B) can kill the target in time.
+#: src/Panel/Compare/CompareDetails.cs:153
+#, csharp-format
+msgid "Only {0} kills it"
+msgstr ""
+
+#: src/Panel/Compare/CompareDetails.cs:164
+#, csharp-format
+msgid "B is better · {0} {1}"
+msgstr ""
+
+#: src/Panel/Compare/CompareDetails.cs:168
+#, csharp-format
+msgid "B is worse · {0} {1}"
+msgstr ""
+
+#: src/Panel/Compare/CompareDetails.cs:172
+#, csharp-format
+msgid "Unclear in {0}"
+msgstr ""
+
+#. Comparison, heading over rare drops shown as the time one takes on each side.
+#: src/Panel/Compare/CompareDrops.cs:73
+msgid "Rare · time to first drop"
+msgstr ""
+
+#: src/Panel/Compare/CompareDrops.cs:82
+#, csharp-format
+msgid "{0} → {1} {2}"
+msgstr ""
+
+#. Under a rare drop in a comparison: {0} its chance, "0.12%"; {1} its rates, A → B.
+#: src/Panel/Compare/CompareDrops.cs:92
+#, csharp-format
+msgid "{0} per kill · {1}"
+msgstr ""
+
+#. Comparison, heading over drops whose chance per kill differs between A and B.
+#: src/Panel/Compare/CompareDrops.cs:101
+msgid "Drop rate changed"
+msgstr ""
+
+#. Under a drop in a comparison: {0} how its drop rate per kill changes, "-6.5%".
+#: src/Panel/Compare/CompareDrops.cs:106
+#, csharp-format
+msgid "{0} drop rate"
+msgstr ""
+
+#. Comparison, the folded drops whose chance per kill is the same for A and B: {0} how many.
+#: src/Panel/Compare/CompareDrops.cs:134
+#, csharp-format
+msgid "Drop rate unchanged · {0}"
+msgstr ""
+
+#. Comparison, over the drops, when B's kill rate is about A's.
+#: src/Panel/Compare/CompareDrops.cs:184
+msgid "B kills about as fast."
+msgstr ""
+
+#. Comparison, over the drops: {0} how much fewer kills B gets, "43%".
+#: src/Panel/Compare/CompareDrops.cs:188
+#, csharp-format
+msgid "B gets {0} fewer kills."
+msgstr ""
+
+#. Comparison, over the drops: {0} how much more kills B gets, "262%".
+#: src/Panel/Compare/CompareDrops.cs:190
+#, csharp-format
+msgid "B gets {0} more kills."
+msgstr ""
+
+#: src/Panel/Compare/CompareList.cs:90
+msgid "Target"
+msgstr ""
+
+#: src/Panel/Compare/CompareList.cs:98
+msgid "Verdict"
+msgstr ""
+
+#: src/Panel/Compare/CompareList.cs:113
+msgid "About 1 in 20 targets can show a difference by chance."
+msgstr ""
+
+#: src/Panel/Compare/CompareList.cs:158
+msgid "Click to sort by this column."
+msgstr ""
+
+#: src/Panel/Compare/CompareList.cs:170
+#, csharp-format
+msgid "Difference {0} − {1} · 95% range"
+msgstr ""
+
+#: src/Panel/Compare/CompareList.cs:400
+#: src/Panel/Compare/CompareList.cs:402
+msgid "waiting for both sides"
+msgstr ""
+
+#: src/Panel/Compare/CompareList.cs:404
+#, csharp-format
+msgid "A: {0}"
+msgstr ""
+
+#: src/Panel/Compare/CompareList.cs:406
+#, csharp-format
+msgid "B: {0}"
+msgstr ""
+
+#: src/Panel/Compare/CompareList.cs:407
+msgid "no kills on one side"
+msgstr ""
+
+#: src/Panel/Compare/CompareSides.cs:23
+msgid "Same seed per target"
+msgstr ""
+
+#: src/Panel/Compare/CompareSides.cs:61
+#: src/Panel/Simulate/RecentComparisons.cs:147
+msgid "saved run"
+msgstr ""
+
+#. Under a side's changed item in a comparison: {0} the item it replaced.
+#: src/Panel/Compare/CompareSides.cs:67
+#: src/Panel/SetupTab/EntriesPage.Rows.cs:183
+#: src/Panel/SetupTab/EntriesPage.cs:182
+#: src/Panel/SetupTab/GearPage.Levels.cs:25
+#: src/Panel/SetupTab/GearPage.cs:140
+#, csharp-format
+msgid "was {0}"
+msgstr ""
+
+#. Under a side's first change in a comparison: {0} how many more it made.
+#: src/Panel/Compare/CompareSides.cs:73
+#, csharp-format
+msgid "+{0} more"
+msgstr ""
+
+#: src/Panel/Compare/CompareSides.cs:83
+#, csharp-format
+msgid "{0} · requirement ignored"
+msgstr ""
+
+#: src/Panel/Compare/CompareSides.cs:95
+msgid "Left out of A"
+msgstr ""
+
+#: src/Panel/Compare/CompareSides.cs:95
+msgid "Left out of B"
+msgstr ""
+
+#: src/Panel/Compare/CompareText.cs:13
+msgctxt "comparison verdict"
+msgid "Better"
+msgstr ""
+
+#: src/Panel/Compare/CompareText.cs:14
+msgctxt "comparison verdict"
+msgid "Worse"
+msgstr ""
+
+#: src/Panel/Compare/CompareText.cs:15
+msgctxt "verdict"
+msgid "Unclear"
+msgstr ""
+
+#: src/Panel/Compare/CompareText.cs:43
+#, csharp-format
+msgid "{0}  ({1} to {2})"
+msgstr ""
+
+#: src/Panel/Compare/CompareText.cs:54
+#: src/Panel/Results/RankList.cs:336
+#, csharp-format
+msgid "± {0}"
+msgstr ""
+
+#: src/Panel/Compare/CompareText.cs:59
+#, csharp-format
+msgid "{0} · saved run"
+msgstr ""
+
+#: src/Panel/Compare/CompareText.cs:64
+#: src/Panel/Results/RankList.cs:370
+msgid "Running…"
+msgstr ""
+
+#: src/Panel/Compare/CompareText.cs:65
+#: src/Panel/Results/RankList.cs:371
+msgid "Queued"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:33
+#: src/Panel/Stats/FullStatsView.cs:128
+msgid "◂ Back to results"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:39
+msgid "Same setup, build and seed · bars relative to the best of the pins · gold = best"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:68
+#, csharp-format
+msgid "Comparing {0} pinned target"
+msgid_plural "Comparing {0} pinned targets"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Compare/CompareView.cs:134
+msgid "Unpin row"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:134
+msgid "Pin row to top"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:143
+msgid "Top loot / kill"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:144
+msgid "Top loot / second"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:145
+msgid "Top loot / minute"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:146
+msgid "Top loot / hour"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:147
+msgid "Top loot / day"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:179
+#: src/Panel/Results/RankList.cs:419
+#: src/Panel/Settings/HistoryList.Rows.cs:47
+msgid "Unpin"
+msgstr ""
+
+#: src/Panel/Compare/CompareView.cs:213
+#, csharp-format
+msgid "−{0}%"
+msgstr ""
+
+#: src/Panel/Cs2Modal.cs:209
+#: src/Panel/Help/HelpText.cs:91
+#: src/Panel/Help/HelpText.cs:215
+msgid "Simulate"
+msgstr ""
+
+#: src/Panel/Cs2Modal.cs:210
+msgid "Setup"
+msgstr ""
+
+#: src/Panel/Cs2Modal.cs:211
+msgid "Settings"
+msgstr ""
+
+#: src/Panel/Help/About.cs:42
+#: src/Panel/Help/AboutButton.cs:31
+msgid "About"
+msgstr ""
+
+#: src/Panel/Help/About.cs:79
+msgid "Unofficial fan mod, not affiliated with or endorsed by Games by Malcs or Jagex."
+msgstr ""
+
+#: src/Panel/Help/About.cs:85
+#: src/Panel/Help/HelpText.cs:153
+msgid "Close"
+msgstr ""
+
+#. {0} is CS2's version number; Crash is the author's name.
+#: src/Panel/Help/About.cs:118
+#, csharp-format
+msgid "Version {0}  ·  by Crash"
+msgstr ""
+
+#. {0} is the game's version, {1} its build number.
+#: src/Panel/Help/About.cs:128
+#, csharp-format
+msgid "Checked with Melvor Idle 2 {0} (build {1})"
+msgstr ""
+
+#. {0} is the game's version, {1} its build number.
+#: src/Panel/Help/About.cs:140
+#, csharp-format
+msgid "Not checked with Melvor Idle 2 {0} (build {1}). Results may be wrong."
+msgstr ""
+
+#: src/Panel/Help/About.cs:150
+#: src/Panel/Results/ResultsBanners.cs:134
+#: src/Panel/Settings/ReportSection.cs:22
+msgid "Save bug report"
+msgstr ""
+
+#: src/Panel/Help/About.cs:153
+#: src/Panel/Settings/ReportSection.cs:19
+msgid "Zips CS2's logs, settings and recent runs into mods/CombatSimulator2/reports, to send with a bug report."
+msgstr ""
+
+#: src/Panel/Help/About.cs:164
+msgid "Info"
+msgstr ""
+
+#: src/Panel/Help/About.cs:168
+#: src/Panel/Settings/SettingsView.Sections.cs:66
+msgid "Spoiler guard"
+msgstr ""
+
+#: src/Panel/Help/About.cs:172
+#: src/Panel/Settings/SettingsView.Sections.cs:67
+msgid "Monsters you haven't killed and places you can't enter yet show as ???. Results stay the same."
+msgstr ""
+
+#: src/Panel/Help/About.cs:182
+msgid "What CS2 does and how sure a result is"
+msgstr ""
+
+#: src/Panel/Help/About.cs:190
+msgid "Tour"
+msgstr ""
+
+#: src/Panel/Help/About.cs:191
+#, csharp-format
+msgid "{0} step around the window"
+msgid_plural "{0} steps around the window"
+msgstr[0] ""
+msgstr[1] ""
+
+#. {0} is CS2's version number.
+#: src/Panel/Help/About.cs:225
+#, csharp-format
+msgid "What's new in {0}"
+msgstr ""
+
+#: src/Panel/Help/About.cs:227
+msgid "All changes"
+msgstr ""
+
+#: src/Panel/Help/About.cs:242
+msgid "Update notifications"
+msgstr ""
+
+#: src/Panel/Help/About.cs:249
+msgid "After an update, a red dot on the About button until About is opened."
+msgstr ""
+
+#. Marks a change that fixed something, in the list of a version's changes.
+#: src/Panel/Help/About.cs:275
+msgctxt "change"
+msgid "Fixed"
+msgstr ""
+
+#. Marks a change that added something, in the list of a version's changes.
+#: src/Panel/Help/About.cs:277
+msgctxt "change"
+msgid "New"
+msgstr ""
+
+#: src/Panel/Help/About.cs:286
+msgid "Disclaimer"
+msgstr ""
+
+#: src/Panel/Help/About.cs:292
+msgid "Built with AI assistance."
+msgstr ""
+
+#: src/Panel/Help/About.cs:293
+msgid "Results are estimates from simulated fights; real play can differ."
+msgstr ""
+
+#: src/Panel/Help/About.cs:294
+msgid "CS2 never changes or edits your game."
+msgstr ""
+
+#: src/Panel/Help/About.cs:295
+msgid "Nothing is sent online."
+msgstr ""
+
+#. Heading over the people who translated CS2, one line per language.
+#: src/Panel/Help/AboutCredits.cs:25
+msgid "Translations"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:28
+msgid "Links"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:38
+msgid "Source and changelog"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:47
+msgid "Send feedback"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:48
+msgid "Ideas or issues that aren't bugs"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:57
+msgid "Report a bug"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:58
+msgid "New issue on GitHub"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:68
+msgid "Questions, comments, and reports"
+msgstr ""
+
+#. A private message on Discord to CS2's developer.
+#: src/Panel/Help/AboutLinks.cs:78
+#: src/Panel/Report/ReportNote.cs:187
+msgid "Direct message"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:79
+msgid "Send private bug report"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:89
+msgid "Main page and updates"
+msgstr ""
+
+#. Opens the project where players translate CS2.
+#: src/Panel/Help/AboutLinks.cs:99
+msgid "Translate"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:100
+msgid "Community translations on Crowdin"
+msgstr ""
+
+#: src/Panel/Help/AboutLinks.cs:157
+msgid "Not available yet"
+msgstr ""
+
+#: src/Panel/Help/AboutUsage.cs:24
+#: src/Panel/Stats/FullStatsView.Stats.cs:32
+#: src/Panel/Stats/StatsText.cs:35
+msgid "Stats"
+msgstr ""
+
+#: src/Panel/Help/AboutUsage.cs:30
+msgid "This session"
+msgstr ""
+
+#: src/Panel/Help/AboutUsage.cs:31
+#: src/Panel/Help/AboutUsage.cs:46
+msgid "All time"
+msgstr ""
+
+#: src/Panel/Help/AboutUsage.cs:45
+msgid "Session"
+msgstr ""
+
+#: src/Panel/Help/AboutUsage.cs:47
+msgid "Runs"
+msgstr ""
+
+#: src/Panel/Help/AboutUsage.cs:47
+msgid "Fights simulated"
+msgstr ""
+
+#: src/Panel/Help/AboutUsage.cs:47
+#: src/Panel/Settings/HistoryList.cs:62
+msgid "Comparisons"
+msgstr ""
+
+#. {0} is a date, such as "6 Nov 2026".
+#: src/Panel/Help/AboutUsage.cs:61
+#, csharp-format
+msgid "First opened {0}. Counts while CS2 is open."
+msgstr ""
+
+#. A time in seconds, as short as it can be said: "40s".
+#: src/Panel/Help/AboutUsage.cs:128
+#, csharp-format
+msgid "{0}s"
+msgstr ""
+
+#. A time in minutes, as short as it can be said: "42m".
+#: src/Panel/Help/AboutUsage.cs:131
+#, csharp-format
+msgid "{0}m"
+msgstr ""
+
+#. A time in hours and minutes, as short as it can be said: "31h 12m".
+#: src/Panel/Help/AboutUsage.cs:133
+#, csharp-format
+msgid "{0}h {1}m"
+msgstr ""
+
+#. Title of the window that explains the Gear tab's two searches.
+#: src/Panel/Help/GearGuideText.cs:13
+msgid "Gear search"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:16
+msgid "Each set fights the target as in a run. The best by your Rank by stat wins, within your Deaths limit."
+msgstr ""
+
+#. Start button of a gear search for the best setup of what the character has (gear, prayers, food…).
+#: src/Panel/Help/GearGuideText.cs:18
+#: src/Panel/Search/StartForm.cs:171
+msgid "Find best setup"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:20
+msgid "Best mix of what you own: gear, plus what's on under Also try."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:22
+msgid "Gather"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:24
+msgid "Everything you own and can wear now."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:28
+msgid "Bank, worn and your other loadouts. Locked slots stay; items marked Never use are left out."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:29
+msgid "With Include what I can't use yet, choices you lack and gear you can't wear yet are tried too, and marked."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:34
+msgid "Rule out"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:36
+msgid "Sets beaten in every stat skip the fight."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:40
+msgid "Beaten or matched in every stat that counts against this target."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:41
+msgid "Sets with the same stats against the target fight once."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:44
+msgid "Race"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:48
+#, csharp-format
+msgid "Fights in stages: {0} trials."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:55
+msgid "A set clearly behind the leader, or over the death limit, drops out after each stage."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:56
+msgid "Your current gear always stays in, so the gain can be measured."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:57
+#, csharp-format
+msgid "{0} trials first when there are {1} sets or more."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:63
+msgid "Too many sets"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:66
+#, csharp-format
+msgid "Over {0}: improves one slot at a time."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:70
+#, csharp-format
+msgid "Also when fighting them all would take over {0} min, or before any search is timed, over {1} sets."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:74
+#, csharp-format
+msgid "Weapon first, then each slot, then set pieces together, until nothing changes or {0} min pass."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:78
+msgid "A close second weapon gets its own climb. A better combination may exist."
+msgstr ""
+
+#. Gear guide step: trying prayers, spell, imbuement, food and toolbelt after the gear.
+#: src/Panel/Help/GearGuideText.cs:82
+msgid "Beyond gear"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:84
+msgid "Then prayers, spell, food and the rest, in turn."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:88
+#, csharp-format
+msgid "Prayers one at a time, then pairs of the best {0}."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:89
+msgid "When a choice changes, the gear is searched again around it, up to three passes."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:90
+msgid "Two too close to call fight again, four times as long; the answer names the runner-up."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:93
+msgid "Answer"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:95
+msgid "Best set and its gain, or keep yours if as good."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:99
+msgid "The gain over your setup, with a 95% range, and why it wins."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:100
+msgid "Gear alone: of the sets within the best's range or the margin, the one taking least damage; yours if it takes no more."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:103
+msgid "With Also try: yours if within the best's range, else the highest gain."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:104
+msgid "Cheaper and Safer: as good, using less or taking less damage. Open as setup puts one on side B."
+msgstr ""
+
+#. Start button of a gear search for which unowned items would gain the most.
+#: src/Panel/Help/GearGuideText.cs:107
+#: src/Panel/Search/StartForm.cs:173
+msgid "Find upgrades"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:109
+msgid "Items you don't own yet, by what they'd gain."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:111
+msgid "Every item you don't own and can wear."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:114
+msgid "Items you can't wear yet are listed with what they need, and never fought."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:116
+msgid "Items beaten in every stat skip the fight."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:119
+msgid "Beaten or matched by another unowned item for its slot, in every stat that counts."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:121
+msgid "Swap and fight"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:123
+msgid "Each item alone in your gear, raced against it."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:125
+msgid "The same stages as Find best setup, judged against your gear alone."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:127
+msgid "Gains by source, largest first. Click one to try it on B."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:131
+msgid "Safer lists items as good that take clearly less damage."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:132
+msgid "Click others to try them together; click one again to take it out."
+msgstr ""
+
+#. Gear search guide button that hides the Gear tab's (i) button; Settings shows it again.
+#: src/Panel/Help/GearGuideText.cs:136
+msgid "Hide guide button"
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:138
+msgid "Hides the (i) on the Gear tab. Settings shows it again."
+msgstr ""
+
+#: src/Panel/Help/GearGuideText.cs:140
+msgid "Answers are kept per character and target."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:14
+msgctxt "CS2 help"
+msgid "Guide"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:17
+msgid "CS2 runs the game's combat code on a copy of your character and records the results."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:19
+msgid "Snapshot"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:22
+msgid "CS2 saves your character to memory, including gear, prayers, potions and bonuses."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:24
+msgid "Fight"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:35
+#, csharp-format
+msgid "A separate copy of the game fights each target {0} time."
+msgid_plural "A separate copy of the game fights each target {0} times."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Help/HelpText.cs:41
+#, csharp-format
+msgid "A separate copy of the game fights each target up to {0} time."
+msgid_plural "A separate copy of the game fights each target up to {0} times."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Help/HelpText.cs:47
+#, csharp-format
+msgid "Copies inside your game fight each target {0} time."
+msgid_plural "Copies inside your game fight each target {0} times."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Help/HelpText.cs:53
+#, csharp-format
+msgid "Copies inside your game fight each target up to {0} time."
+msgid_plural "Copies inside your game fight each target up to {0} times."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Help/HelpText.cs:62
+msgid "Measure"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:65
+#, csharp-format
+msgid "CS2 turns the results into rates {0}, each with a range."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:68
+#, csharp-format
+msgid "XP {0}"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:70
+msgid "CS2 is 95% sure the rate is in this range."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:84
+msgid "In every fight"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:86
+msgid "Each result lists all of its assumptions."
+msgstr ""
+
+#. Heading over the Guide's rows that say what CS2 can do: simulate, compare, find gear, Slayer.
+#: src/Panel/Help/HelpText.cs:89
+msgid "What you can do"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:93
+msgid "Rank every target by any rate. Click one for its fights."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:99
+msgid "Fight details: chance to hit and damage, both ways, with ranges."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:100
+msgid "Close calls: fights won where one more top hit would have killed."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:101
+msgid "Ran over: a fight past the time limit counts as no kill and no death."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:104
+#: src/Panel/Help/HelpText.cs:207
+#: src/Panel/Simulate/ComparePicker.cs:50
+#: src/Panel/Simulate/ComparePicker.cs:225
+#: src/Panel/Simulate/ComparePicker.cs:378
+msgid "Compare"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:106
+msgid "Setup A against B, target by target."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:112
+msgid "+ Compare starts B from a copy of yours, a loadout, a preset or a saved run."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:113
+msgid "Each target shows which side is better and by how much."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:114
+msgid "Better and Worse show only where B is clearly ahead or behind."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:115
+msgid "⇅ swaps the sides; ✕ Clear goes back to one setup."
+msgstr ""
+
+#. Guide row title for the Gear tab's two searches.
+#: src/Panel/Help/HelpText.cs:119
+msgid "Find gear"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:121
+msgid "Best set of what you own; upgrades you don't."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:127
+#, csharp-format
+msgid "A set within the best's 95% range or the margin ({0}) is as good; then yours wins."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:131
+msgid "For an area or the pins, each target counts the same."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:132
+msgid "How it searches: (i) on the Gear tab."
+msgstr ""
+
+#. Guide row title for Slayer masters and the Slayer page.
+#: src/Panel/Help/HelpText.cs:136
+#: src/Panel/SetupTab/PageList.cs:53
+#: src/Panel/Simulate/TargetFilters.cs:63
+msgid "Slayer"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:138
+msgid "Masters as targets; best loadouts and blocks per master."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:144
+msgid "A master's monsters fight on task, weighted by how long their tasks take."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:145
+msgid "The Slayer page tries your loadouts and blocks; nothing changes in your game."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:146
+msgid "Your tasks: which to extend or reroll."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:149
+msgid "CS2 does not change or edit your game."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:151
+msgid "Start tour"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:170
+msgid "You start at full HP"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:171
+msgid "Food and ammo never run out"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:172
+msgid "Your levels stay the same"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:173
+msgid "You lose no items on death"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:177
+msgid "Skip tour"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:179
+msgid "Back"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:181
+msgid "Next"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:183
+msgid "Done"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:186
+#: src/Panel/SetupTab/EntriesPage.Rows.cs:181
+#: src/Panel/SetupTab/EntriesPage.cs:181
+#: src/Panel/SetupTab/SlayerTasksNow.cs:169
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:113
+#, csharp-format
+msgid "{0} of {1}"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:195
+msgid "Your setup"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:196
+msgid "What you fight with. Click a slot to change it; right-click puts it back or empties it. Edit opens the Setup tab for levels, prayers, spells and more."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:201
+#: src/Panel/Simulate/TargetStrip.cs:217
+msgid "Targets"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:202
+msgid "Open this to see what will be simulated. Click a monster to ignore it. The filters to its left narrow the list."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:207
+msgid "Two setups"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:209
+msgid "A is compared to B, target by target. ⇅ swaps them. ✕ Clear goes back to one setup."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:210
+msgid "+ Compare adds a second setup: a copy of yours to change, a loadout, a preset or a saved run. Each target then shows which is better and by how much."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:217
+msgid "A run is going. This button cancels it."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:219
+msgid "Each result shows as its target finishes."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:222
+msgid "Read the results"
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:223
+msgid "Results show here after a run. Rank them by any stat. Click one for its details."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:225
+msgid "Each bar is a target: its height is the stat you rank by, its colour how often you die there, its whisker the 95% range. Hover for numbers, click for details, shift-click to pin. Click a portrait to ignore that target, or an area's name to fold it into one bar."
+msgstr ""
+
+#: src/Panel/Help/HelpText.cs:228
+msgid "Rank by any stat. Click a row for its details. Pin up to three, then View side by side."
+msgstr ""
+
+#: src/Panel/PanelPins.cs:124
+#, csharp-format
+msgid "pins full ({0}, {1} waiting): unpin one or clear"
+msgstr ""
+
+#: src/Panel/PanelPins.cs:125
+#, csharp-format
+msgid "pins full ({0}): unpin one first"
+msgstr ""
+
+#: src/Panel/RefusalNotice.cs:65
+#, csharp-format
+msgid "Refused: {0}"
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:70
+msgid "Bug report saved"
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:70
+msgid "Couldn't save the bug report"
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:83
+#, csharp-format
+msgid "{0}, in mods/CombatSimulator2/reports in the game's folder."
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:92
+msgid "It holds CS2's logs, settings and recent runs, with your user and computer names taken out, and your character's save, so the developer can run what you ran."
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:95
+msgid "It holds CS2's logs, settings and recent runs, with your user and computer names taken out. Your save isn't in it."
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:113
+msgid "What the panel showed"
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:116
+msgid "Snapshots of failed runs"
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:129
+msgid "Open the channel"
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:139
+msgid "GitHub issues and the Discord channel are public. To keep your save private, send the zip to Crashv in a direct message on Discord."
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:152
+msgid "Copy for Discord"
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:158
+msgid "Copied. Paste it in the Melvor Discord's mod bug reports channel, then drag the zip in after it."
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:166
+msgid "Open a GitHub issue"
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:174
+msgid "Opened in your browser. Say what happened there, then drag the zip into the Report zip box."
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:182
+msgid "CS2's GitHub page isn't up yet"
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:193
+msgid "Opened Discord. Send Crashv the zip there, with what happened."
+msgstr ""
+
+#: src/Panel/Report/ReportNote.cs:198
+msgid "Open folder"
+msgstr ""
+
+#: src/Panel/Results/BestTag.cs:29
+#: src/Panel/Widgets/ChartMarks.cs:58
+msgid "best"
+msgstr ""
+
+#. Answer tab: the best setup found.
+#: src/Panel/Results/BestTag.cs:29
+#: src/Panel/Search/SetupRows.cs:40
+msgid "Best"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:66
+msgid "Select a result to see how it compares with the others."
+msgstr ""
+
+#: src/Panel/Results/Details.cs:195
+#, csharp-format
+msgid "#{0} of {1} by {2}"
+msgstr ""
+
+#. Under the name of a target with no result because its trial passed the time limit; {0} is the limit in minutes.
+#: src/Panel/Results/Details.cs:199
+#, csharp-format
+msgid "Unfinished · trial limit {0} minutes"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:228
+#: src/Panel/Results/RankList.cs:369
+#, csharp-format
+msgid "{0} / {1} trials"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:229
+msgid "No results for this target yet."
+msgstr ""
+
+#: src/Panel/Results/Details.cs:232
+#, csharp-format
+msgid "vs {0} other"
+msgid_plural "vs {0} others"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/Details.cs:279
+#, csharp-format
+msgid "{0} assumption"
+msgid_plural "{0} assumptions"
+msgstr[0] ""
+msgstr[1] ""
+
+#. After the assumptions line at the foot of a target's details, only when CS2 had to block
+#. something in its fights; {0} is how many. Its hover lists them.
+#: src/Panel/Results/Details.cs:286
+#, csharp-format
+msgid "{0} not simulated"
+msgid_plural "{0} not simulated"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/Details.cs:333
+#, csharp-format
+msgid "Lv {0}"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:390
+#: src/Panel/Widgets/Chart.Hover.cs:221
+#, csharp-format
+msgid "{0}: {1}  ({2})"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:394
+#, csharp-format
+msgid "{0}: {1}  (#{2} of {3})"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:411
+#, csharp-format
+msgid "Best: {0}, {1}"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:415
+#, csharp-format
+msgid "Median: {0}"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:417
+#, csharp-format
+msgid "Worst: {0}"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:425
+#, csharp-format
+msgid "The bar is this value as a share of the best: {0}."
+msgstr ""
+
+#: src/Panel/Results/Details.cs:427
+#, csharp-format
+msgid "Lower is better: the bar is the best as a share of this value: {0}."
+msgstr ""
+
+#: src/Panel/Results/Details.cs:431
+msgid "Lower is better and the best is zero: the bar runs from the worst (empty) to the best (full)."
+msgstr ""
+
+#: src/Panel/Results/Details.cs:453
+msgid "safest"
+msgstr ""
+
+#: src/Panel/Results/Details.cs:454
+#: src/Panel/Widgets/Chart.Hover.cs:208
+#, csharp-format
+msgid "#{0} of {1}"
+msgstr ""
+
+#. Gear tab sentence "Find [best setup] for [this target]": the selected target alone.
+#: src/Panel/Results/DetailsLegend.cs:23
+#: src/Panel/Results/DetailsLegend.cs:52
+#: src/Panel/Search/GearTab.cs:440
+msgid "this target"
+msgstr ""
+
+#: src/Panel/Results/DetailsLegend.cs:26
+msgid "middle half"
+msgstr ""
+
+#: src/Panel/Results/DetailsLegend.cs:29
+msgid "median"
+msgstr ""
+
+#: src/Panel/Results/DetailsLegend.cs:48
+msgid "Each row runs from the run's worst value (left) to its best (right)."
+msgstr ""
+
+#: src/Panel/Results/DetailsLegend.cs:53
+msgid "the middle half of the run's targets"
+msgstr ""
+
+#: src/Panel/Results/DetailsLegend.cs:54
+msgid "their median"
+msgstr ""
+
+#: src/Panel/Results/DetailsLegend.cs:57
+msgid "Where lower is better (kill time, deaths), the lowest is at the right."
+msgstr ""
+
+#: src/Panel/Results/DetailsLegend.cs:62
+msgid "Hover a row for its best, median and worst values."
+msgstr ""
+
+#. Tab in a target's details: find the best gear against this target.
+#: src/Panel/Results/DetailsTabs.cs:52
+msgid "Gear"
+msgstr ""
+
+#. Tab in a Slayer master's details: its monsters, what blocking them would do, and its risk.
+#: src/Panel/Results/DetailsTabs.cs:113
+#: src/Panel/Simulate/TargetFilters.cs:61
+#: src/Panel/Slayer/MasterDetail.cs:67
+msgid "Monsters"
+msgstr ""
+
+#: src/Panel/Results/DiedMark.cs:13
+#: src/Panel/Results/RiskBlock.cs:120
+#: src/Panel/Results/RiskBlock.cs:143
+#: src/Panel/Results/RiskBlock.cs:164
+#: src/Panel/Widgets/Chart.Hover.cs:210
+msgid "Died every fight"
+msgstr ""
+
+#: src/Panel/Results/DiedMark.cs:17
+msgid "You died in every fight here. Its values were earned while dying: no rank, never best."
+msgstr ""
+
+#: src/Panel/Results/EmptyState.cs:22
+msgid "Nothing simulated yet"
+msgstr ""
+
+#: src/Panel/Results/EmptyState.cs:26
+msgid "Pick targets on the left, or start with what you're fighting."
+msgstr ""
+
+#: src/Panel/Results/EmptyState.cs:36
+msgid "Simulate what I'm fighting"
+msgstr ""
+
+#: src/Panel/Results/EmptyState.cs:43
+msgid "Simulate selected"
+msgstr ""
+
+#: src/Panel/Results/EmptyState.cs:64
+#, csharp-format
+msgid "Simulate {0} selected"
+msgstr ""
+
+#. Heading of a section in a target's details: chance to hit, damage and what a kill cost, measured in the fights.
+#: src/Panel/Results/FightBlock.cs:19
+msgid "Fight Details"
+msgstr ""
+
+#: src/Panel/Results/FightBlock.cs:22
+msgid "Measured over the trials: hits over attacks as they happened, so chance to hit can differ from the combat screen's."
+msgstr ""
+
+#. Shown in the fights section for a run saved before fight counts were kept; the second message explains it.
+#: src/Panel/Results/FightBlock.cs:29
+msgid "Runs from before this version have no fight counts."
+msgstr ""
+
+#. Sub-heading in the fights section: the numbers for the player's attacks.
+#: src/Panel/Results/FightBlock.cs:39
+#: src/Panel/Results/FightBlock.cs:142
+msgid "You"
+msgstr ""
+
+#. Label in the fights section: hits over attacks as they happened. "It made no attack" replaces the value when there was no attack.
+#: src/Panel/Results/FightBlock.cs:41
+#: src/Panel/Results/FightBlock.cs:53
+#: src/Panel/Results/FightBlock.cs:143
+#: src/Panel/Results/FightBlock.cs:147
+msgid "It made no attack"
+msgstr ""
+
+#. Label in the fights section: health removed per landed hit. "No hit landed" replaces the value when none landed.
+#: src/Panel/Results/FightBlock.cs:43
+#: src/Panel/Results/FightBlock.cs:59
+#: src/Panel/Results/FightBlock.cs:144
+#: src/Panel/Results/FightBlock.cs:148
+msgid "No hit landed"
+msgstr ""
+
+#. Sub-heading in the fights section: the numbers for the enemy's attacks on the player ("Enemies" for a dungeon).
+#: src/Panel/Results/FightBlock.cs:48
+msgid "Enemies"
+msgstr ""
+
+#. Sub-heading in the fights section: the numbers for the enemy's attacks on the player ("Enemies" for a dungeon).
+#: src/Panel/Results/FightBlock.cs:48
+#: src/Panel/Results/FightBlock.cs:146
+msgid "Enemy"
+msgstr ""
+
+#. Sub-heading in the fights section: what one kill (one dungeon clear) cost.
+#: src/Panel/Results/FightBlock.cs:65
+msgid "Per clear"
+msgstr ""
+
+#. Sub-heading in the fights section: what one kill (one dungeon clear) cost.
+#: src/Panel/Results/FightBlock.cs:65
+msgid "Per kill"
+msgstr ""
+
+#. Label: game time per kill (per dungeon clear). "No kill" replaces the value when nothing was killed.
+#: src/Panel/Results/FightBlock.cs:70
+msgid "Clear time"
+msgstr ""
+
+#. Label: game time per kill (per dungeon clear). "No kill" replaces the value when nothing was killed.
+#: src/Panel/Results/FightBlock.cs:70
+msgid "Time to kill"
+msgstr ""
+
+#: src/Panel/Results/FightBlock.cs:74
+msgid "No kill"
+msgstr ""
+
+#. Label and value: attacks made per kill (per clear), and how many of them missed; {0} and {1} are numbers.
+#: src/Panel/Results/FightBlock.cs:82
+#: src/Panel/Results/FightBlock.cs:202
+msgid "Attacks per clear"
+msgstr ""
+
+#. Label and value: attacks made per kill (per clear), and how many of them missed; {0} and {1} are numbers.
+#: src/Panel/Results/FightBlock.cs:84
+#, csharp-format
+msgid "{0}, of which {1} missed"
+msgstr ""
+
+#. In a box in the fights section: how many trials passed the time limit; {2} is the limit in minutes.
+#: src/Panel/Results/FightBlock.cs:117
+#, csharp-format
+msgid "{0} of {1} trials ran over {2} minutes"
+msgstr ""
+
+#. Under the line above: the share of trials that ran over, then its 95% range; the reason sentence follows.
+#: src/Panel/Results/FightBlock.cs:126
+#, csharp-format
+msgid "{0}, range {1}."
+msgstr ""
+
+#. Shown above plain numbers for a target whose trial ran over the time limit before any finished.
+#: src/Panel/Results/FightBlock.cs:138
+#, csharp-format
+msgid "{0} unfinished trial"
+msgid_plural "{0} unfinished trials"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Hover of "Chance to hit" in Fight Details.
+#: src/Panel/Results/FightBlock.cs:190
+msgid "Attacks that landed, of all attacks made. Can differ from the combat screen's chance."
+msgstr ""
+
+#. Hover of "Damage per hit" in Fight Details.
+#: src/Panel/Results/FightBlock.cs:193
+msgid "Health an attack removed when it landed, after armour and resistance."
+msgstr ""
+
+#. Hover of the two damage-per-second rows in Fight Details.
+#: src/Panel/Results/FightBlock.cs:196
+msgid "Health removed per second of fighting, from attacks, effects and reflect. Waiting for a spawn doesn't count."
+msgstr ""
+
+#. Hover of "Overkill" in Fight Details.
+#: src/Panel/Results/FightBlock.cs:201
+msgid "Damage beyond the enemy's remaining health, as a share of all damage dealt."
+msgstr ""
+
+#. Hover of "Attacks per kill" in Fight Details.
+#: src/Panel/Results/FightBlock.cs:204
+msgid "Attacks made for each kill, and how many of them missed."
+msgstr ""
+
+#. Hover of the other rows in Fight Details.
+#: src/Panel/Results/FightBlock.cs:206
+msgid "Measured over the trials; the small numbers are the 95% range."
+msgstr ""
+
+#: src/Panel/Results/FightBlock.cs:217
+#: src/Panel/Results/RareDropsSection.cs:148
+#: src/Panel/Widgets/Ui.cs:246
+#, csharp-format
+msgid "{0} – {1}"
+msgstr ""
+
+#. Line under a damage per second: the part from combat effects (damage over time) and from reflected damage, per second.
+#: src/Panel/Results/FightBlock.cs:227
+#, csharp-format
+msgid "of which effects {0}/s, reflect {1}/s"
+msgstr ""
+
+#. Line under a damage per second: the part from combat effects (damage over time) and from reflected damage, per second.
+#: src/Panel/Results/FightBlock.cs:231
+#, csharp-format
+msgid "of which effects {0}/s"
+msgstr ""
+
+#. Line under a damage per second: the part from combat effects (damage over time) and from reflected damage, per second.
+#: src/Panel/Results/FightBlock.cs:232
+#, csharp-format
+msgid "of which reflect {0}/s"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:22
+#, csharp-format
+msgid "{0} stage"
+msgid_plural "{0} stages"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/FightsSection.cs:24
+#, csharp-format
+msgid "{0} · deaths at stage {1}"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:28
+msgid "Fight by fight"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:28
+#, csharp-format
+msgid "Fight by fight · {0}"
+msgstr ""
+
+#. In a gear search's counts before it starts: how long it is expected to take.
+#: src/Panel/Results/FightsSection.cs:45
+#: src/Panel/Search/StartForm.cs:337
+msgid "Time"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:46
+msgid "Damage"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:48
+#: src/Panel/Results/RiskBlock.cs:90
+#: src/Panel/Results/RiskBlock.cs:106
+#: src/Panel/Results/RiskBlock.cs:170
+msgid "Highest hit"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:62
+msgid "Time between fights"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:64
+#, csharp-format
+msgid "{0} s per completion"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:68
+msgid "Highest hit and lowest HP per fight: not recorded in this run."
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:69
+msgid "Later fights count only the trials that reached them."
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:70
+msgid "The bar is the stage's share of the clear time."
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:115
+#: src/Panel/Results/FightsSection.cs:139
+msgid "Not reached"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:125
+msgid "not rolled"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:126
+#, csharp-format
+msgid "×{0} rolled"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:134
+msgid "reached"
+msgstr ""
+
+#: src/Panel/Results/FightsSection.cs:143
+#: src/Panel/Words.cs:84
+#: src/Panel/Words.cs:93
+#, csharp-format
+msgid "{0} s"
+msgstr ""
+
+#. Under a dungeon stage in "Fight by fight": mean per fight. {0}/{1} the player's hits/attacks,
+#. {2} damage dealt, {3}/{4} the enemy's hits/attacks.
+#: src/Panel/Results/FightsSection.cs:165
+#, csharp-format
+msgid "You hit {0} / {1} · dealt {2} · it hit {3} / {4}"
+msgstr ""
+
+#. Added after the line above when fights at this stage passed the time limit; {0} is how many.
+#: src/Panel/Results/FightsSection.cs:181
+#, csharp-format
+msgid "{0} fight ran over"
+msgid_plural "{0} fights ran over"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/IgnoreButton.cs:20
+#: src/Panel/Results/IgnoreButton.cs:27
+#: src/Panel/Results/IgnoreButton.cs:69
+msgid "✕ Ignore"
+msgstr ""
+
+#: src/Panel/Results/IgnoreButton.cs:28
+#: src/Panel/Results/IgnoreButton.cs:69
+msgid "Return"
+msgstr ""
+
+#: src/Panel/Results/IgnoreButton.cs:71
+msgid "Bring this target back into the next run"
+msgstr ""
+
+#: src/Panel/Results/IgnoreButton.cs:72
+msgid "Leave this target out of the next run · right-click to run only it"
+msgstr ""
+
+#: src/Panel/Results/Loot.cs:38
+msgid "Loot per kill"
+msgstr ""
+
+#: src/Panel/Results/Loot.cs:39
+msgid "Loot per second"
+msgstr ""
+
+#: src/Panel/Results/Loot.cs:40
+msgid "Loot per minute"
+msgstr ""
+
+#: src/Panel/Results/Loot.cs:41
+msgid "Loot per hour"
+msgstr ""
+
+#: src/Panel/Results/Loot.cs:42
+msgid "Loot per day"
+msgstr ""
+
+#: src/Panel/Results/NarrowLine.cs:28
+msgctxt "earlier run"
+msgid "Show"
+msgstr ""
+
+#: src/Panel/Results/NarrowLine.cs:46
+#, csharp-format
+msgid "Showing {0} of {1} target · previous run:"
+msgid_plural "Showing {0} of {1} targets · previous run:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/NarrowLine.cs:53
+#, csharp-format
+msgid "Showing {0} of {1} target · previous run no longer saved"
+msgid_plural "Showing {0} of {1} targets · previous run no longer saved"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/PerfView.cs:87
+msgid "Run a simulation to see its CPU, memory and frame rate here."
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:93
+msgid "Performance · this run, live · in the CS2 host"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:94
+msgid "Performance · this run, live · in the game's process"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:95
+msgid "Performance · last run · in the CS2 host"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:96
+msgid "Performance · last run · in the game's process"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:113
+msgid "Start a search to see its CPU, memory and frame rate here."
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:119
+msgid "Performance · this search, live · in the CS2 host"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:120
+msgid "Performance · this search, live · in the game's process"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:121
+msgid "Performance · last search · in the CS2 host"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:122
+msgid "Performance · last search · in the game's process"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:129
+msgid "Performance"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:146
+msgid "now"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:146
+msgid "at end"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:147
+msgid "average"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:148
+msgid "low"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:149
+msgid "peak"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:177
+#, csharp-format
+msgid "Over {0} s · CPU 0–100% · memory 0–{1} · fps 0–{2}"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:196
+#, csharp-format
+msgid "cancelled {0}"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:197
+#, csharp-format
+msgid "failed {0}"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:198
+#, csharp-format
+msgid "ran {0}"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:207
+msgid "just now"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:208
+#, csharp-format
+msgid "{0} min ago"
+msgid_plural "{0} min ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/PerfView.cs:209
+#, csharp-format
+msgid "{0} h ago"
+msgid_plural "{0} h ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/PerfView.cs:210
+#, csharp-format
+msgid "{0} d ago"
+msgid_plural "{0} d ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/PerfView.cs:216
+#, csharp-format
+msgid "build {0} · seed {1}"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:224
+msgid "Simulator CPU"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:224
+msgid "Game CPU"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:225
+msgid "Simulator memory"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:225
+msgid "Game memory"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:226
+msgid "Free memory"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:227
+msgid "Game fps"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:233
+#: src/Panel/Results/RiskBlock.cs:231
+#: src/Panel/Widgets/Ui.cs:257
+#: src/Panel/Words.cs:102
+#, csharp-format
+msgid "{0}%"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:283
+#: src/Panel/Results/PerfView.cs:288
+#: src/Panel/Results/PerfView.cs:306
+msgid "Starting the simulator…"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:298
+#, csharp-format
+msgid "Readying copies for the next run · {0} / {1}"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:300
+#, csharp-format
+msgid "Preparing the simulator · {0} / {1} copies"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:309
+#, csharp-format
+msgid "Simulator ready · {0} copy"
+msgid_plural "Simulator ready · {0} copies"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/PerfView.cs:348
+#, csharp-format
+msgid "Finishing the last target · {0}"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:349
+#, csharp-format
+msgid "Finishing the last {0} target"
+msgid_plural "Finishing the last {0} targets"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/PerfView.cs:356
+#, csharp-format
+msgid "Fighting {0}"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:357
+#, csharp-format
+msgid "Fighting {0} and {1} other"
+msgid_plural "Fighting {0} and {1} others"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/PerfView.cs:367
+msgid "Building a copy of your game…"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:369
+msgid "Checking which targets you can fight…"
+msgstr ""
+
+#: src/Panel/Results/PerfView.cs:370
+msgid "Starting the next targets…"
+msgstr ""
+
+#: src/Panel/Results/PinTray.cs:34
+msgctxt "pins"
+msgid "Clear"
+msgstr ""
+
+#: src/Panel/Results/PinTray.cs:36
+msgid "Side by side ▸"
+msgstr ""
+
+#: src/Panel/Results/PinTray.cs:57
+#, csharp-format
+msgid "{0} waiting"
+msgstr ""
+
+#: src/Panel/Results/PinTray.cs:61
+#, csharp-format
+msgid "Not in this run, shown again in one that has them: {0}"
+msgstr ""
+
+#: src/Panel/Results/PinTray.cs:66
+#: src/Panel/Results/PinTray.cs:67
+#, csharp-format
+msgid "{0} of {1} pinned"
+msgstr ""
+
+#: src/Panel/Results/PinTray.cs:79
+msgid "Side by side needs 2 pins in the shown run"
+msgstr ""
+
+#: src/Panel/Results/PinTray.cs:80
+msgid "Pin at least 2 targets to compare"
+msgstr ""
+
+#. Chip on a results row: the share of trials that ran over the time limit, e.g. "1.2% ran over".
+#: src/Panel/Results/RanOverChip.cs:30
+#: src/Panel/Results/RanOverChip.cs:50
+#, csharp-format
+msgid "{0} ran over"
+msgstr ""
+
+#: src/Panel/Results/RankList.cs:81
+msgid "No target survived"
+msgstr ""
+
+#: src/Panel/Results/RankList.cs:118
+#, csharp-format
+msgid "Died every fight ({0})"
+msgstr ""
+
+#: src/Panel/Results/RankList.cs:241
+#: src/Panel/Results/RankList.cs:342
+#: src/Panel/Words.cs:65
+msgid "per kill"
+msgstr ""
+
+#: src/Panel/Results/RankList.cs:252
+#: src/Panel/Results/RankList.cs:419
+#, csharp-format
+msgid "Pin to compare (up to {0})"
+msgstr ""
+
+#: src/Panel/Results/RankList.cs:342
+msgid "per clear"
+msgstr ""
+
+#: src/Panel/Results/RankList.cs:401
+#, csharp-format
+msgid "from an earlier run · {0}"
+msgstr ""
+
+#: src/Panel/Results/RankList.cs:440
+msgid "Dungeon"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:33
+#, csharp-format
+msgid "{0} reward"
+msgid_plural "{0} rewards"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/RareDropsSection.cs:34
+#, csharp-format
+msgid "{0} loot"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:37
+#, csharp-format
+msgid "{0} event"
+msgid_plural "{0} events"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/RareDropsSection.cs:42
+msgid "Rare drops"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:55
+msgid "Rewards below 1% per completion, and rare events"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:56
+msgid "Loot below 1% per kill, and rare events"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:69
+#, csharp-format
+msgid "Rewards · chance per completion · {0} from {1} completions {2}"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:73
+#, csharp-format
+msgid "Loot · chance per kill · {0} from {1} kills {2}"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:88
+msgid "Rare events · chance per minute in combat · rate as observed"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:115
+msgid "observed only: not in the game's list"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:116
+#, csharp-format
+msgid "{0} per minute in combat"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:117
+#, csharp-format
+msgid "{0} per completion"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:118
+#, csharp-format
+msgid "{0} per kill"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:140
+msgid "Not possible"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:147
+#: src/Panel/Results/RiskBlock.cs:189
+#: src/Panel/Slayer/MasterDetail.cs:66
+#, csharp-format
+msgid "{0} {1}"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:150
+#, csharp-format
+msgid "observed {0}"
+msgstr ""
+
+#. How long the first rare event takes on average: {0} a time, "16.7 h".
+#: src/Panel/Results/RareDropsSection.cs:160
+#, csharp-format
+msgid "First ≈{0} in combat"
+msgstr ""
+
+#. How many completions the first rare reward takes on average: {0} a count.
+#: src/Panel/Results/RareDropsSection.cs:165
+#, csharp-format
+msgid "First drop ≈{0} completions"
+msgstr ""
+
+#. How many kills the first rare drop takes on average: {0} a count, "831".
+#: src/Panel/Results/RareDropsSection.cs:167
+#, csharp-format
+msgid "First drop ≈{0} kills"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:168
+#, csharp-format
+msgid "{0} · ≈{1}"
+msgstr ""
+
+#. Rare drop tooltip, a rare event: {0} time in combat, "8.4 h".
+#: src/Panel/Results/RareDropsSection.cs:180
+#, csharp-format
+msgid "{0} in combat"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:182
+#, csharp-format
+msgid "{0} completions"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:182
+#, csharp-format
+msgid "{0} kills"
+msgstr ""
+
+#: src/Panel/Results/RareDropsSection.cs:183
+#, csharp-format
+msgid "{0} ({1})"
+msgstr ""
+
+#. Rare drop tooltip, first line; the two lines after it give the chance of having it by then.
+#: src/Panel/Results/RareDropsSection.cs:188
+msgid "First drop, by luck:"
+msgstr ""
+
+#. Rare drop tooltip: {0} kills (or completions, or time in combat), "576 kills (8.4 h)".
+#: src/Panel/Results/RareDropsSection.cs:190
+#, csharp-format
+msgid "50% chance within {0}"
+msgstr ""
+
+#. Rare drop tooltip: {0} kills (or completions, or time in combat), "1,912 kills (1.2 days)".
+#: src/Panel/Results/RareDropsSection.cs:192
+#, csharp-format
+msgid "90% chance within {0}"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:51
+#: src/Panel/Results/ResultsBanners.cs:127
+#: src/Panel/Results/ResultsBanners.cs:146
+msgid "Dismiss"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:64
+msgid "Pick another run"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:77
+msgid "Baseline gone"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:77
+msgid "The sides differ in more than the setup"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:87
+msgid "The simulator closed unexpectedly"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:88
+msgid "The simulator stopped responding"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:89
+msgid "The simulator couldn't start"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:90
+msgid "The run failed"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:91
+msgid "Some targets failed"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:92
+msgid "Couldn't save"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:93
+msgid "Couldn't open a saved run"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:108
+#, csharp-format
+msgid "Simulate the {0} again"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:119
+msgid "Run cancelled"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:120
+#, csharp-format
+msgid "Finished results are kept; {0} target was cancelled."
+msgid_plural "Finished results are kept; {0} targets were cancelled."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/ResultsBanners.cs:139
+msgid "Simulate in the game's process (may stutter)"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:166
+msgid "Use Character as is"
+msgstr ""
+
+#: src/Panel/Results/ResultsBanners.cs:176
+msgid "This setup can't be simulated"
+msgstr ""
+
+#: src/Panel/Results/ResultsToolbar.cs:52
+#: src/Panel/Results/ResultsToolbar.cs:57
+#: src/Panel/Search/AnswerView.cs:374
+#: src/Panel/Search/StartForm.cs:52
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:113
+msgid "Rank by"
+msgstr ""
+
+#: src/Panel/Results/ResultsToolbar.cs:71
+msgid "List"
+msgstr ""
+
+#: src/Panel/Results/ResultsToolbar.cs:73
+msgid "Chart"
+msgstr ""
+
+#: src/Panel/Results/ResultsToolbar.cs:78
+msgctxt "comparison filter"
+msgid "Show"
+msgstr ""
+
+#: src/Panel/Results/ResultsToolbar.cs:83
+msgctxt "comparison filter"
+msgid "All"
+msgstr ""
+
+#: src/Panel/Results/ResultsToolbar.cs:89
+msgid "Better"
+msgstr ""
+
+#: src/Panel/Results/ResultsToolbar.cs:95
+msgid "Worse"
+msgstr ""
+
+#: src/Panel/Results/ResultsView.cs:243
+msgid "Showing the last results, for the character as is."
+msgstr ""
+
+#: src/Panel/Results/ResultsView.cs:244
+#, csharp-format
+msgid "Showing the last results, for {0}."
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:46
+msgid "lowest HP"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:48
+msgid "highest hit"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:50
+#, csharp-format
+msgid "scale: max HP {0}"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:87
+#: src/Panel/Results/RiskBlock.cs:152
+#: src/Panel/Slayer/MasterDetail.cs:250
+msgid "Risk"
+msgstr ""
+
+#. Folded section of a setup search's answer: options about as good, raced again to settle.
+#: src/Panel/Results/RiskBlock.cs:92
+#: src/Panel/Results/RiskBlock.cs:129
+#: src/Panel/Results/RiskBlock.cs:186
+#: src/Panel/Search/SetupRows.cs:369
+msgid "Close calls"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:93
+msgid "This run was saved before CS2 kept risk."
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:98
+#, csharp-format
+msgid "worst of {0} trial"
+msgid_plural "worst of {0} trials"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Results/RiskBlock.cs:116
+#, csharp-format
+msgid "of {0}"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:140
+#: src/Panel/Results/RiskMark.cs:22
+msgid "Highest hit reaches lowest HP"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:154
+#: src/Panel/Results/RiskBlock.cs:250
+#: src/Panel/Search/SearchWords.cs:100
+#: src/Panel/Search/SearchWords.cs:151
+#: src/Panel/Simulate/KeyStats.cs:76
+#: src/Panel/Simulate/KeyStats.cs:99
+#, csharp-format
+msgid "{0} → {1}"
+msgstr ""
+
+#. A comparison's risk warning line for a side whose trial ran over before any finished.
+#: src/Panel/Results/RiskBlock.cs:198
+#, csharp-format
+msgid "{0} · unfinished"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:199
+#, csharp-format
+msgid "{0} · not recorded"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:200
+#, csharp-format
+msgid "{0} · highest hit reaches lowest HP"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:201
+#, csharp-format
+msgid "{0} · died every fight"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:202
+#, csharp-format
+msgid "{0} · no warning"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:224
+msgid "Fights won where one more hit as large as the highest taken would have killed. Share of all fights, with its 95% range. A lost fight isn't one."
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:229
+msgid "No fight survived"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:234
+#, csharp-format
+msgid "{0}–{1}%"
+msgstr ""
+
+#: src/Panel/Results/RiskBlock.cs:242
+msgid "same"
+msgstr ""
+
+#: src/Panel/Results/RiskMark.cs:59
+#, csharp-format
+msgid "The biggest hit taken here ({0}) is at least the lowest HP reached ({1}): that hit at that moment would kill."
+msgstr ""
+
+#. Under a monster's name: it was fought on this Slayer master's task, by the setup's choice.
+#: src/Panel/Results/TargetTask.cs:21
+#, csharp-format
+msgid "On {0}'s task"
+msgstr ""
+
+#. Under a monster's name: the setup put it on a slayer task, but no master gives it.
+#: src/Panel/Results/TargetTask.cs:24
+msgid "No master gives it"
+msgstr ""
+
+#: src/Panel/Results/UncheckedStrip.cs:53
+msgid "Fold until CS2 next opens"
+msgstr ""
+
+#: src/Panel/Results/UncheckedStrip.cs:86
+msgid "Not checked with this game version. Results may be wrong."
+msgstr ""
+
+#. {0} is CS2's version, {1} the game versions it was checked with, {2} this game's version
+#. and {3} its build number.
+#: src/Panel/Results/UncheckedStrip.cs:92
+#, csharp-format
+msgid "CS2 {0} was checked with Melvor Idle 2 {1}. This is {2} (build {3})."
+msgstr ""
+
+#: src/Panel/Results/UncheckedStrip.cs:99
+#: src/Panel/Settings/RunMarks.cs:25
+#: src/Panel/Simulate/RecentComparisons.cs:97
+msgid "Made on a game version CS2 wasn't checked with. Results may be wrong."
+msgstr ""
+
+#: src/Panel/ScaleSlider.cs:31
+#: src/Panel/Settings/ScaleRow.cs:42
+#: src/Panel/Simulate/PanelMenu.cs:83
+msgid "Scale"
+msgstr ""
+
+#. Above a gear search's answer when the search was stopped; {0} is the last stage it finished.
+#: src/Panel/Search/AnswerView.Sets.cs:27
+#, csharp-format
+msgid "Stopped at stage {0} · best so far"
+msgstr ""
+
+#. A Slayer master as a target in the results; {0} is the master's name.
+#: src/Panel/Search/AnswerView.Sets.cs:47
+#: src/Panel/SetupTab/SlayerMasters.cs:372
+#: src/Panel/Slayer/MasterRowLine.cs:23
+#, csharp-format
+msgid "{0}'s tasks"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.Sets.cs:52
+msgid "On each monster"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.Sets.cs:52
+msgid "On each target"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.Sets.cs:61
+#, csharp-format
+msgid "Helps {0} of {1}"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.Sets.cs:62
+#, csharp-format
+msgid "Helps {0} of {1} · worse on {2}"
+msgstr ""
+
+#. Beside a target's gain in a set search's answer: its 95% range, lowest to highest.
+#: src/Panel/Search/AnswerView.Sets.cs:90
+#, csharp-format
+msgid "[{0} – {1}]"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.Sets.cs:96
+#, csharp-format
+msgid "{0}: another set does clearly better there alone. Search it on its own."
+msgstr ""
+
+#. Button on the out-of-date notice: simulate the search again with the setup as it is now.
+#: src/Panel/Search/AnswerView.cs:53
+#: src/Panel/Search/DroptimizerList.cs:57
+msgid "Sim again"
+msgstr ""
+
+#. Over a kept gear search answer whose setup has changed since; what changed is under it.
+#: src/Panel/Search/AnswerView.cs:60
+#: src/Panel/Search/DroptimizerList.cs:54
+msgid "Out of date"
+msgstr ""
+
+#. Gear search answer when no set is better than current gear by more than the margin.
+#: src/Panel/Search/AnswerView.cs:102
+msgid "Keep what you have"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:106
+#, csharp-format
+msgid "No set is better by more than {0}."
+msgstr ""
+
+#. Gear search answer when every set dies more often than the death limit allows.
+#: src/Panel/Search/AnswerView.cs:119
+msgid "No set stays within the death limit"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:124
+#, csharp-format
+msgid "Closest: {0}"
+msgstr ""
+
+#. Gear search answer when no set finishes a fight against the target.
+#: src/Panel/Search/AnswerView.cs:134
+msgid "No set kills this target"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:139
+msgid "Nothing to search"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:141
+msgid "Nothing else you own fits an unlocked slot."
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:154
+#: src/Panel/Search/AnswerView.cs:348
+#: src/Panel/Search/SetupRows.cs:211
+msgid "Open as setup"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:203
+#: src/Panel/Search/DroptimizerList.cs:96
+msgid "Search again"
+msgstr ""
+
+#. Heading over the slots a gear search's answer changes.
+#: src/Panel/Search/AnswerView.cs:223
+msgid "Wear"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:240
+msgid "Nothing"
+msgstr ""
+
+#. Under the item a gear search puts on: {0} the slot, {1} the item it takes off.
+#: src/Panel/Search/AnswerView.cs:247
+#, csharp-format
+msgid "{0} · replaces {1}"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:262
+#: src/Panel/Search/AnswerView.cs:408
+#: src/Panel/Search/DroptimizerList.cs:245
+#, csharp-format
+msgid "Stance: {0}"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:265
+#, csharp-format
+msgid "Assumes {0} lasts"
+msgstr ""
+
+#. Heading over the fight numbers that explain a gear search's answer.
+#: src/Panel/Search/AnswerView.cs:275
+msgid "Why"
+msgstr ""
+
+#. Heading over each combat style's best set.
+#: src/Panel/Search/AnswerView.cs:292
+msgid "By style"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:301
+msgid "No set"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:307
+#: src/Panel/Search/StartForm.cs:333
+#, csharp-format
+msgid "{0}: skipped, {1}"
+msgstr ""
+
+#. Folded list of sets as good as the best within the margin.
+#: src/Panel/Search/AnswerView.cs:324
+#: src/Panel/Search/SetupRows.cs:172
+msgid "As good"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:344
+#: src/Panel/Search/SetupRows.cs:207
+msgid "Open"
+msgstr ""
+
+#. In a gear search's counts: how many sets could be worn from what is owned.
+#: src/Panel/Search/AnswerView.cs:369
+#: src/Panel/Search/StartForm.cs:322
+msgid "Combinations"
+msgstr ""
+
+#. In a gear search's counts: sets left out because another set matches or beats them.
+#: src/Panel/Search/AnswerView.cs:371
+#: src/Panel/Search/StartForm.cs:324
+msgid "Ruled out"
+msgstr ""
+
+#. In a gear search's counts: sets that were fought.
+#: src/Panel/Search/AnswerView.cs:373
+msgid "Simulated"
+msgstr ""
+
+#. In a gear search's counts: sets this close to the best count as just as good.
+#: src/Panel/Search/AnswerView.cs:377
+msgid "Equal within"
+msgstr ""
+
+#. Under a gear search's answer when there were too many sets to fight them all.
+#: src/Panel/Search/AnswerView.cs:382
+msgid "Built slot by slot, as there were too many combinations to try. A better mix may exist."
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:390
+#, csharp-format
+msgid "The best was behind at stage {0}, so the leaders were fought again with another seed."
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:405
+msgid "nothing"
+msgstr ""
+
+#: src/Panel/Search/AnswerView.cs:410
+msgid "current gear"
+msgstr ""
+
+#: src/Panel/Search/DroptimizerList.cs:69
+#: src/Panel/Search/StartForm.cs:342
+msgid "Nothing to try: no unowned item can be worn now."
+msgstr ""
+
+#. Droptimizer's heading when no item the character doesn't own would gain.
+#: src/Panel/Search/DroptimizerList.cs:72
+msgid "No upgrades found"
+msgstr ""
+
+#. Droptimizer's heading: {0} items the character doesn't own that would gain if worn.
+#: src/Panel/Search/DroptimizerList.cs:74
+#, csharp-format
+msgid "{0} upgrade found"
+msgid_plural "{0} upgrades found"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Under Droptimizer's heading: what it tries, so a weak item worn on purpose isn't a surprise.
+#: src/Panel/Search/DroptimizerList.cs:83
+msgid "Each item you don't own, tried alone in place of what you wear now. Your other gear isn't changed."
+msgstr ""
+
+#. Droptimizer's group of items as good on the goal that take clearly less damage.
+#: src/Panel/Search/DroptimizerList.cs:115
+msgid "Safer, same result"
+msgstr ""
+
+#. Under Droptimizer's gains: {0} items that gained nothing, {1} that died more than the limit allows.
+#: src/Panel/Search/DroptimizerList.cs:123
+#, csharp-format
+msgid "No gain: {0} · over the death limit: {1}"
+msgstr ""
+
+#. Folded list of unowned items the character can't wear yet.
+#: src/Panel/Search/DroptimizerList.cs:134
+msgid "Not yet wearable"
+msgstr ""
+
+#. Droptimizer's counts: {0} unowned items read, {1} wearable now, {2} fought.
+#: src/Panel/Search/DroptimizerList.cs:159
+#, csharp-format
+msgid "{0} not owned · {1} wearable now · {2} simulated"
+msgstr ""
+
+#. Hover of a Droptimizer row whose item is on side B.
+#: src/Panel/Search/DroptimizerList.cs:203
+msgid "On setup B. Click to take it out."
+msgstr ""
+
+#. Hover of a Droptimizer row: clicking adds the item to side B, beside the others added.
+#: src/Panel/Search/DroptimizerList.cs:205
+msgid "Click to add to setup B."
+msgstr ""
+
+#. Droptimizer's safer item: {0} how much less damage a second it takes, "-18%".
+#: src/Panel/Search/DroptimizerList.cs:228
+#, csharp-format
+msgid "{0}% damage"
+msgstr ""
+
+#. Droptimizer's safer item: the damage a second taken now, then with the item.
+#: src/Panel/Search/DroptimizerList.cs:231
+#, csharp-format
+msgid "{0} → {1} damage/s"
+msgstr ""
+
+#: src/Panel/Search/DroptimizerList.cs:243
+#, csharp-format
+msgid "replaces {0}"
+msgstr ""
+
+#. Gear tab sentence "Find [best setup] for [this target]": the best setup of what the character has.
+#: src/Panel/Search/GearTab.cs:80
+msgid "best setup"
+msgstr ""
+
+#. Gear tab sentence "Find [upgrades] for [this target]": which unowned items would gain the most.
+#: src/Panel/Search/GearTab.cs:82
+msgid "upgrades"
+msgstr ""
+
+#. Gear tab sentence; {0} is "best setup" or "upgrades", {1} is "this target", "its area" or "the 3 pins", each a gold choice.
+#: src/Panel/Search/GearTab.cs:98
+#, csharp-format
+msgid "Find {0} for {1}"
+msgstr ""
+
+#. Hover of the Gear tab's info button, which opens its guide.
+#: src/Panel/Search/GearTab.cs:115
+msgid "How gear search works"
+msgstr ""
+
+#. Hover of the greyed "its area" choice when the selected target isn't an enemy.
+#: src/Panel/Search/GearTab.cs:179
+msgid "Select an enemy to search its whole area."
+msgstr ""
+
+#. Hover of the greyed pins choice when fewer than two targets are pinned.
+#: src/Panel/Search/GearTab.cs:181
+msgid "Pin 2 or 3 targets to search them together."
+msgstr ""
+
+#. Gear tab sentence "Find [best setup] for [its area]": every enemy of the target's area.
+#: src/Panel/Search/GearTab.cs:442
+msgid "its area"
+msgstr ""
+
+#. Gear tab sentence "Find [best setup] for [the 3 pins]": the pinned targets together.
+#: src/Panel/Search/GearTab.cs:444
+#, csharp-format
+msgid "the {0} pins"
+msgstr ""
+
+#. Gear tab sentence "Find [best setup] for [the 3 pins]": the pinned targets together.
+#: src/Panel/Search/GearTab.cs:444
+msgid "the pins"
+msgstr ""
+
+#: src/Panel/Search/GearTab.cs:457
+#, csharp-format
+msgid "Cancelled after stage {0}."
+msgstr ""
+
+#: src/Panel/Search/GearTab.cs:458
+#, csharp-format
+msgid "The search failed: {0}"
+msgstr ""
+
+#: src/Panel/Search/GearTab.cs:465
+#, csharp-format
+msgid "A search for {0} is running: wait for it or cancel it first."
+msgstr ""
+
+#: src/Panel/Search/GearTab.cs:469
+msgid "A run is going: wait for it or cancel it first."
+msgstr ""
+
+#: src/Panel/Search/KindSwitches.cs:20
+#: src/Panel/Search/SetupRows.cs:455
+#: src/Panel/SetupTab/GearPage.Loadout.cs:215
+#: src/Panel/SetupTab/GearSkeleton.cs:77
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:29
+msgid "Prayers"
+msgstr ""
+
+#: src/Panel/Search/KindSwitches.cs:21
+#: src/Panel/Search/SetupRows.cs:456
+#: src/Panel/SetupTab/GearPage.Loadout.cs:317
+#: src/Panel/SetupTab/GearPage.Loadout.cs:332
+#: src/Panel/SetupTab/GearPage.Loadout.cs:375
+#: src/Panel/SetupTab/GearSkeleton.cs:79
+#: src/Panel/Simulate/SlotPicker.cs:193
+msgid "Spell"
+msgstr ""
+
+#: src/Panel/Search/KindSwitches.cs:22
+#: src/Panel/Search/SetupRows.cs:457
+#: src/Panel/SetupTab/GearPage.Loadout.cs:348
+#: src/Panel/SetupTab/GearPage.Loadout.cs:375
+msgid "Imbuement"
+msgstr ""
+
+#: src/Panel/Search/KindSwitches.cs:24
+#: src/Panel/Search/SetupRows.cs:461
+#: src/Panel/SetupTab/GearPage.Loadout.cs:100
+#: src/Panel/SetupTab/GearSkeleton.cs:60
+msgid "Toolbelt"
+msgstr ""
+
+#. Label of the switches choosing what a setup search tries besides gear.
+#: src/Panel/Search/KindSwitches.cs:33
+msgid "Also try"
+msgstr ""
+
+#. Tick in a setup search's form: also try prayers, food and the like the character lacks, and gear it owns but can't wear yet.
+#: src/Panel/Search/KindSwitches.cs:64
+msgid "Include what I can't use yet"
+msgstr ""
+
+#: src/Panel/Search/KindSwitches.cs:74
+msgid "Also tries prayers, spells, food and toolbelt items you don't have, and gear you own but can't wear yet."
+msgstr ""
+
+#. Second line of the tooltip of "Include what I can't use yet".
+#: src/Panel/Search/KindSwitches.cs:79
+msgid "Gear you don't own: Find upgrades."
+msgstr ""
+
+#. Hover of the Potions switch while the game has no combat potions.
+#: src/Panel/Search/KindSwitches.cs:108
+#: src/Panel/SetupTab/GearPage.Loadout.cs:132
+#: src/Panel/SetupTab/MissingPage.cs:49
+msgid "No combat potions in this build"
+msgstr ""
+
+#. Hover of the Potions switch while the character holds no combat potion to try.
+#: src/Panel/Search/KindSwitches.cs:111
+msgid "You have no combat potions"
+msgstr ""
+
+#. Heading of a gear search under way.
+#: src/Panel/Search/Progress.cs:50
+msgid "Simulating"
+msgstr ""
+
+#: src/Panel/Search/Progress.cs:84
+#: src/Panel/Settings/HistoryList.Rows.cs:192
+#: src/Panel/Settings/HistoryList.Rows.cs:212
+#: src/Panel/SetupTab/RunningStrip.cs:34
+#: src/Panel/SetupTab/SlayerMasters.cs:253
+#: src/Panel/Simulate/ComparePicker.cs:300
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:92
+#: src/Panel/Widgets/PresetNaming.cs:104
+msgid "Cancel"
+msgstr ""
+
+#. A gear search a slot at a time: the step under way.
+#: src/Panel/Search/Progress.cs:132
+#, csharp-format
+msgid "Step {0}"
+msgstr ""
+
+#. A gear search's stage under way.
+#: src/Panel/Search/Progress.cs:134
+#, csharp-format
+msgid "Stage {0}"
+msgstr ""
+
+#. A gear search's stage under way: how many trials each set fights in it.
+#: src/Panel/Search/Progress.cs:136
+#, csharp-format
+msgid "{0} trials"
+msgstr ""
+
+#. A gear search's stage under way: {0} sets fought of {1}.
+#: src/Panel/Search/Progress.cs:138
+#, csharp-format
+msgid "{0} of {1} sets"
+msgstr ""
+
+#. A gear search reading what the character owns before its first fights.
+#: src/Panel/Search/Progress.cs:143
+msgid "Reading your gear…"
+msgstr ""
+
+#. While a setup search runs, before its first step has finished.
+#: src/Panel/Search/Progress.cs:170
+msgid "Best so far: none yet"
+msgstr ""
+
+#. While a setup search runs, when nothing found so far beats the setup as it is.
+#: src/Panel/Search/Progress.cs:172
+msgid "Best so far: keep what you have"
+msgstr ""
+
+#. While a setup search runs: {0} its gain so far; icons of what it changes follow.
+#: src/Panel/Search/Progress.cs:174
+#, csharp-format
+msgid "Best so far: {0}"
+msgstr ""
+
+#. A gear search's time so far, in minutes and seconds: "2m 05s".
+#: src/Panel/Search/Progress.cs:210
+#, csharp-format
+msgid "{0}m {1}s"
+msgstr ""
+
+#. A step of a gear search a slot at a time that has ended: {0} the step, {1} sets fought, {2} dropped.
+#: src/Panel/Search/Progress.cs:234
+#, csharp-format
+msgid "Step {0} · {1} fought · {2} dropped"
+msgstr ""
+
+#. A gear search's stage that has ended: {0} the stage, {1} trials per set, {2} sets fought, {3} dropped, {4} left.
+#: src/Panel/Search/Progress.cs:236
+#, csharp-format
+msgid "Stage {0} · {1} trials · {2} fought · {3} dropped · {4} left"
+msgstr ""
+
+#. A gear search with nothing left to fight but its last checks.
+#: src/Panel/Search/SearchWords.cs:24
+msgid "finishing"
+msgstr ""
+
+#. A gear search's estimated time left: "1h 02m 05s left".
+#: src/Panel/Search/SearchWords.cs:29
+#, csharp-format
+msgid "{0}h {1}m {2}s left"
+msgstr ""
+
+#. A gear search's estimated time left: "2m 05s left".
+#: src/Panel/Search/SearchWords.cs:32
+#, csharp-format
+msgid "{0}m {1}s left"
+msgstr ""
+
+#. A gear search's estimated time left: "45s left".
+#: src/Panel/Search/SearchWords.cs:34
+#, csharp-format
+msgid "{0}s left"
+msgstr ""
+
+#. Death limit of a gear search: no trial may end in a death.
+#: src/Panel/Search/SearchWords.cs:42
+msgid "No deaths"
+msgstr ""
+
+#. Death limit of a gear search: fewer than 5% of trials may end in a death.
+#: src/Panel/Search/SearchWords.cs:44
+msgid "Under 5% deaths"
+msgstr ""
+
+#. Death limit of a gear search: any number of deaths, as long as one trial was survived.
+#: src/Panel/Search/SearchWords.cs:46
+msgid "Any, if survived once"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:78
+#, csharp-format
+msgid "Your gear now doesn't finish a fight: {0}"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:80
+#: src/Panel/Widgets/Chart.Hover.cs:255
+msgid "no result"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:86
+#, csharp-format
+msgid "95% range {0}% to {1}%"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:87
+#, csharp-format
+msgid "95% range {0} to {1}"
+msgstr ""
+
+#. Gear search, a rare item goal: {0} how long the first takes with current gear, "12.2 h".
+#: src/Panel/Search/SearchWords.cs:119
+#, csharp-format
+msgid "≈{0} to first drop with your gear"
+msgstr ""
+
+#. Gear search, a rare item goal: {0} how long the first takes with the set, "10.8 h".
+#: src/Panel/Search/SearchWords.cs:121
+#, csharp-format
+msgid "≈{0} to first drop"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:126
+#: src/Panel/Settings/HistoryList.Rows.cs:82
+#: src/Panel/SetupTab/SetupTabView.cs:266
+#: src/Panel/Simulate/RunControl.cs:365
+#: src/Panel/Words.cs:52
+#, csharp-format
+msgid "{0} · {1}"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:126
+#, csharp-format
+msgid "{0} sooner"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:126
+#, csharp-format
+msgid "{0} later"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:133
+#: src/Panel/Widgets/Badge.cs:41
+#, csharp-format
+msgid "{0} deaths"
+msgstr ""
+
+#. A very large count, {0} a number with up to three figures: "8.54 quadrillion".
+#: src/Panel/Search/SearchWords.cs:173
+#, csharp-format
+msgid "{0} quadrillion"
+msgstr ""
+
+#. A very large count, {0} a number with up to three figures: "8.54 trillion".
+#: src/Panel/Search/SearchWords.cs:175
+#, csharp-format
+msgid "{0} trillion"
+msgstr ""
+
+#. A large count, {0} a number with up to three figures: "30.5 billion".
+#: src/Panel/Search/SearchWords.cs:177
+#, csharp-format
+msgid "{0} billion"
+msgstr ""
+
+#. A large count, {0} a number with up to three figures: "4.68 million".
+#: src/Panel/Search/SearchWords.cs:179
+#, csharp-format
+msgid "{0} million"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:199
+#, csharp-format
+msgid "About {0} s"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:200
+#, csharp-format
+msgid "About {0} min"
+msgstr ""
+
+#. Answer tab: the best setup found.
+#: src/Panel/Search/SetupRows.cs:40
+msgid "The best setup found."
+msgstr ""
+
+#. Answer tab: another setup, about as good, that uses less.
+#: src/Panel/Search/SetupRows.cs:46
+msgid "Cheaper"
+msgstr ""
+
+#: src/Panel/Search/SetupRows.cs:47
+msgid "Another setup about as good as the best (within its 95% range) that uses less."
+msgstr ""
+
+#. Answer tab: another setup, about as good, that takes the least damage.
+#: src/Panel/Search/SetupRows.cs:55
+msgid "Safer"
+msgstr ""
+
+#: src/Panel/Search/SetupRows.cs:56
+msgid "Another setup about as good as the best (within its 95% range) that takes the least damage."
+msgstr ""
+
+#. On an alternative setup's banner: {0} its gain less the best's, such as "−0.8%".
+#: src/Panel/Search/SetupRows.cs:72
+#, csharp-format
+msgid "{0} against Best"
+msgstr ""
+
+#. On the Cheaper setup's banner: {0} how many, {1} of what, {2} the unit ("/h").
+#: src/Panel/Search/SetupRows.cs:79
+#, csharp-format
+msgid "{0} less {1}{2}"
+msgstr ""
+
+#. On the Safer setup's banner: {0} a percentage.
+#: src/Panel/Search/SetupRows.cs:83
+#, csharp-format
+msgid "{0} less damage taken"
+msgstr ""
+
+#. Over the Cheaper or Safer tab of a setup search's answer: another setup than the best.
+#: src/Panel/Search/SetupRows.cs:90
+msgid "Alternative"
+msgstr ""
+
+#: src/Panel/Search/SetupRows.cs:94
+msgid "Blue: not as in Best"
+msgstr ""
+
+#. Under a setup search's answer: the loadout it was found for.
+#: src/Panel/Search/SetupRows.cs:147
+#, csharp-format
+msgid "For {0}"
+msgstr ""
+
+#. Short mark on a stopped setup search's answer.
+#: src/Panel/Search/SetupRows.cs:153
+msgid "Close calls unsettled"
+msgstr ""
+
+#: src/Panel/Search/SetupRows.cs:154
+msgid "Stopped before its close calls were raced again."
+msgstr ""
+
+#. Opens a setup search's "As good" fold: what the setups in it are.
+#: src/Panel/Search/SetupRows.cs:177
+msgid "Setups the search can't tell apart from Best. Each shows only what it does differently."
+msgstr ""
+
+#. Hover of a set as good's difference from Best: {0} its own gain over your setup.
+#: src/Panel/Search/SetupRows.cs:203
+#, csharp-format
+msgid "Against Best; {0} over your setup"
+msgstr ""
+
+#. Under the first setups as good as Best: shows the rest; {0} how many.
+#: src/Panel/Search/SetupRows.cs:229
+msgid "Show fewer"
+msgstr ""
+
+#. Under the first setups as good as Best: shows the rest; {0} how many.
+#: src/Panel/Search/SetupRows.cs:229
+#, csharp-format
+msgid "Show {0} more"
+msgstr ""
+
+#. Beside a set as good's icons: what Best holds where the set holds something else.
+#: src/Panel/Search/SetupRows.cs:259
+#, csharp-format
+msgid "instead of {0}"
+msgstr ""
+
+#. Under a set as good's icons: what Best holds that the set goes without.
+#: src/Panel/Search/SetupRows.cs:262
+#, csharp-format
+msgid "without {0}"
+msgstr ""
+
+#. Heading of the hover on the mark beside a part of a setup search's answer; what the fights left
+#. out of the part follows, one per line.
+#: src/Panel/Search/SetupRows.cs:326
+msgid "Not in this answer:"
+msgstr ""
+
+#. Folded section of a setup search's answer: what the setup uses up, each in its own units.
+#: src/Panel/Search/SetupRows.cs:337
+msgid "Uses"
+msgstr ""
+
+#. Folded section of a setup search's answer: the damage it takes and the food it eats.
+#: src/Panel/Search/SetupRows.cs:350
+msgid "Damage taken"
+msgstr ""
+
+#. In a setup search's damage taken: the damage taken per second of fighting.
+#: src/Panel/Search/SetupRows.cs:355
+msgid "Per second"
+msgstr ""
+
+#: src/Panel/Search/SetupRows.cs:359
+msgid "Food eaten"
+msgstr ""
+
+#. A close call the longer race settled: {0} won over {1}.
+#: src/Panel/Search/SetupRows.cs:425
+#, csharp-format
+msgid "{0} won over {1}{2}"
+msgstr ""
+
+#. A close call still too close: {0} is about as good as the kept {1}.
+#: src/Panel/Search/SetupRows.cs:427
+#, csharp-format
+msgid "Also fine: {0} instead of {1}{2}"
+msgstr ""
+
+#: src/Panel/Search/SetupRows.cs:459
+msgid "Potion"
+msgstr ""
+
+#: src/Panel/Search/SetupRows.cs:464
+#: src/Panel/Search/StartForm.cs:78
+#: src/Panel/SetupTab/SlayerMasters.cs:112
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:78
+msgid "None"
+msgstr ""
+
+#. Mark on a choice the character can't use yet, when the game gives no reason.
+#: src/Panel/Search/SetupRows.cs:473
+#: src/Panel/SetupTab/GearPage.Loadout.cs:118
+msgid "Locked"
+msgstr ""
+
+#. Short button of the gear search's death limit: fewer than 5% of trials die.
+#: src/Panel/Search/StartForm.cs:80
+#: src/Panel/SetupTab/SlayerMasters.cs:113
+msgid "Under 5%"
+msgstr ""
+
+#. Short button of the gear search's death limit: any deaths, if one trial was survived.
+#: src/Panel/Search/StartForm.cs:82
+#: src/Panel/SetupTab/SlayerMasters.cs:114
+msgid "Any"
+msgstr ""
+
+#. Tick in the gear search's form: also try the other combat styles' weapons.
+#: src/Panel/Search/StartForm.cs:106
+msgid "Include other styles"
+msgstr ""
+
+#: src/Panel/Search/StartForm.cs:114
+msgid "Also search with a weapon of each other combat style, and show each style's best."
+msgstr ""
+
+#: src/Panel/Search/StartForm.cs:250
+msgid "Counting combinations…"
+msgstr ""
+
+#: src/Panel/Search/StartForm.cs:265
+msgid "The sets couldn't be counted."
+msgstr ""
+
+#. The start button when fighting every set would pass the long-search limit.
+#: src/Panel/Search/StartForm.cs:274
+msgid "Shorter search"
+msgstr ""
+
+#. In Droptimizer's counts: items the character doesn't own.
+#: src/Panel/Search/StartForm.cs:314
+msgid "Not owned"
+msgstr ""
+
+#. In Droptimizer's counts: of those, the ones the character can wear now.
+#: src/Panel/Search/StartForm.cs:316
+msgid "Wearable now"
+msgstr ""
+
+#. In a gear search's counts before it starts: how many sets will be simulated.
+#: src/Panel/Search/StartForm.cs:318
+#: src/Panel/Search/StartForm.cs:326
+#: src/Panel/Settings/SettingsView.Sections.cs:103
+msgid "Simulation"
+msgstr ""
+
+#. In a gear search's counts, when there are too many sets to fight them all.
+#: src/Panel/Search/StartForm.cs:329
+msgid "Per slot"
+msgstr ""
+
+#: src/Panel/Search/StartForm.cs:343
+msgid "Nothing to search: nothing else you own fits an unlocked slot."
+msgstr ""
+
+#. Under a gear search's counts before it starts, when there are too many sets to fight them all.
+#: src/Panel/Search/StartForm.cs:350
+msgid "Too many combinations to try: the search builds a set slot by slot. A better mix may exist."
+msgstr ""
+
+#. Under a setup search's counts: {0} the long-search limit in minutes.
+#: src/Panel/Search/StartForm.cs:359
+#, csharp-format
+msgid "Trying everything switched on may take over {0} min. Switch some off to make it shorter."
+msgstr ""
+
+#. Under a gear search's counts: {0} the long-search limit in minutes.
+#: src/Panel/Search/StartForm.cs:371
+#, csharp-format
+msgid "Simulating them all would take over {0} min, so the search builds a set slot by slot. A better mix may exist."
+msgstr ""
+
+#. Before any search of this kind of target has been timed; {0} is how many sets.
+#: src/Panel/Search/StartForm.cs:382
+#, csharp-format
+msgid "{0} sets is too many to simulate before a search here has been timed, so the search builds a set slot by slot. A better mix may exist."
+msgstr ""
+
+#. Above the items a gear search must not use.
+#: src/Panel/Search/StartGear.cs:45
+#: src/Panel/Simulate/SlotPicker.cs:92
+msgid "Never use"
+msgstr ""
+
+#. Button that adds an item to those a gear search must not use.
+#: src/Panel/Search/StartGear.cs:51
+msgid "+ Item"
+msgstr ""
+
+#. Hover of an item a gear search must not use, under its name.
+#: src/Panel/Search/StartGear.cs:161
+msgid "Click to use it again."
+msgstr ""
+
+#: src/Panel/Search/StartGear.cs:167
+msgid "Show less"
+msgstr ""
+
+#. Shows every item a gear search must not use, when they fill more than two rows: {0} how many.
+#: src/Panel/Search/StartGear.cs:169
+#, csharp-format
+msgid "Show all ({0})"
+msgstr ""
+
+#. Hover of a locked slot in the gear search's form.
+#: src/Panel/Search/StartGear.cs:182
+msgid "Locked: the search keeps this slot. Click to unlock."
+msgstr ""
+
+#. Hover of a slot in the gear search's form.
+#: src/Panel/Search/StartGear.cs:184
+msgid "Click to lock: the search keeps this slot as it is."
+msgstr ""
+
+#: src/Panel/Settings/ClearRuns.cs:22
+#: src/Panel/Settings/ClearRuns.cs:85
+msgid "Clear saved runs"
+msgstr ""
+
+#: src/Panel/Settings/ClearRuns.cs:68
+msgid "Click again to clear"
+msgstr ""
+
+#: src/Panel/Settings/ClearRuns.cs:99
+msgid "Nothing to clear"
+msgstr ""
+
+#: src/Panel/Settings/ClearRuns.cs:105
+#: src/Panel/Settings/SettingsView.Sections.cs:144
+#, csharp-format
+msgid "{0} run"
+msgid_plural "{0} runs"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Settings/ClearRuns.cs:106
+#, csharp-format
+msgid "{0} comparison"
+msgid_plural "{0} comparisons"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Settings/ClearRuns.cs:113
+#: src/Panel/Stats/FullStatsView.cs:59
+#, csharp-format
+msgid "{0} and {1}"
+msgstr ""
+
+#: src/Panel/Settings/ClearRuns.cs:116
+#, csharp-format
+msgid "Deletes {0}."
+msgstr ""
+
+#: src/Panel/Settings/ClearRuns.cs:120
+#, csharp-format
+msgid "{0} pinned run stays."
+msgid_plural "{0} pinned runs stay."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:47
+msgid "Pin: keep past the limit"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:80
+#, csharp-format
+msgid "seed {0}"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:90
+#: src/Panel/SetupTab/SetupTabView.cs:76
+#: src/Panel/Simulate/SetupCard.cs:122
+msgid "Ignore requirements"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:91
+msgid "No changes"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:93
+#: src/Panel/Simulate/BasePicker.cs:172
+#: src/Panel/Simulate/ComparePicker.cs:397
+#, csharp-format
+msgid "{0} target"
+msgid_plural "{0} targets"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:127
+msgid "Show"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:129
+#: src/Panel/Settings/HistoryList.Rows.cs:139
+msgid "A run is in progress"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:129
+msgid "Show this run's results"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:132
+msgid "Compare now with this"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:140
+#, csharp-format
+msgid "Simulate: your setup now as {0}, this run as {1}"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:144
+#: src/Panel/Simulate/ComparePicker.cs:335
+msgid "Rename"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:155
+#: src/Panel/Settings/HistoryList.Rows.cs:189
+#: src/Panel/Settings/HistoryList.Rows.cs:236
+#: src/Panel/Simulate/ComparePicker.cs:340
+msgid "Delete"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:188
+msgid "Delete this run?"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:206
+msgid "Enter saves · Esc cancels · empty clears the name"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:208
+#: src/Panel/Simulate/ComparePicker.cs:298
+#: src/Panel/Widgets/PresetNaming.cs:76
+#: src/Panel/Widgets/PresetNaming.cs:83
+#: src/Panel/Widgets/PresetNaming.cs:186
+msgid "Save"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:231
+#, csharp-format
+msgid "Unreadable: {0}"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:260
+#: src/Panel/Simulate/ComparePicker.cs:390
+#: src/Panel/Simulate/RecentComparisons.cs:148
+msgid "Character as is"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:261
+#, csharp-format
+msgid "{0} · requirements ignored"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:267
+msgid "Finished"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:268
+msgid "Cancelled"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:269
+msgid "Failed"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.Rows.cs:270
+msgid "Running"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.cs:65
+#, csharp-format
+msgid "The last {0} comparisons are kept, with their runs."
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.cs:72
+msgid "No runs yet. Simulate once and it appears here."
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.cs:122
+#, csharp-format
+msgid "Kept {0} of {1} · {2} pinned"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.cs:125
+msgid "More runs are pinned or in kept comparisons than the limit: they stay until unpinned or removed."
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.cs:128
+msgid "Pinned runs and kept comparisons' runs stay past the limit. Select a run for actions."
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.cs:144
+msgid "Hide runs ▴"
+msgstr ""
+
+#: src/Panel/Settings/HistoryList.cs:145
+#, csharp-format
+msgid "Show {0} run ▾"
+msgid_plural "Show {0} runs ▾"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Settings/LanguageRow.cs:23
+msgid "Language"
+msgstr ""
+
+#: src/Panel/Settings/LanguageRow.cs:24
+msgid "CS2's own text. Game names stay in the game's language."
+msgstr ""
+
+#: src/Panel/Settings/LanguageRow.cs:27
+msgid "Same as the game"
+msgstr ""
+
+#: src/Panel/Settings/MotionRow.cs:15
+msgid "Full"
+msgstr ""
+
+#: src/Panel/Settings/MotionRow.cs:16
+msgid "Reduced"
+msgstr ""
+
+#: src/Panel/Settings/MotionRow.cs:17
+#: src/Panel/Settings/RunSettings.cs:74
+msgid "Off"
+msgstr ""
+
+#: src/Panel/Settings/MotionRow.cs:28
+msgid "Motion"
+msgstr ""
+
+#: src/Panel/Settings/MotionRow.cs:29
+msgid "Reduced: short fades only. Off: nothing moves."
+msgstr ""
+
+#: src/Panel/Settings/ReportSection.cs:15
+msgid "Bug reports"
+msgstr ""
+
+#: src/Panel/Settings/ReportSection.cs:18
+#, csharp-format
+msgid "Combat Simulator 2 {0}"
+msgstr ""
+
+#: src/Panel/Settings/ReportSection.cs:26
+#, csharp-format
+msgid "{0} MB each"
+msgstr ""
+
+#: src/Panel/Settings/ReportSection.cs:37
+msgid "Allocated space"
+msgstr ""
+
+#: src/Panel/Settings/ReportSection.cs:38
+msgid "Most each crash dump or report takes in CombatSimulator2's folder. Oldest go first."
+msgstr ""
+
+#: src/Panel/Settings/ReportSection.cs:43
+msgid "Include my character's save"
+msgstr ""
+
+#: src/Panel/Settings/ReportSection.cs:44
+msgid "Lets the developer rerun your runs. Names your character, not your Windows or Steam account. Public if posted on GitHub or Discord."
+msgstr ""
+
+#: src/Panel/Settings/RunMarks.cs:15
+#: src/Panel/Simulate/RecentComparisons.cs:91
+msgid "another game build"
+msgstr ""
+
+#: src/Panel/Settings/RunMarks.cs:16
+#, csharp-format
+msgid "The run comes from game build {0}; this is {1}."
+msgstr ""
+
+#. A saved run made on a game version CS2 wasn't checked with.
+#: src/Panel/Settings/RunMarks.cs:24
+#: src/Panel/Simulate/RecentComparisons.cs:96
+msgid "not checked"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:44
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:109
+msgid "Trials per target"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:44
+msgid "More: tighter ranges, longer runs."
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:48
+msgid "CS2 host"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:48
+msgid "Game process (may stutter)"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:54
+msgid "Simulate in"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:55
+msgid "CS2 host: a hidden second copy of the game, so yours doesn't slow."
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:68
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:111
+msgid "Simulate fresh"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:69
+msgid "Rerun every target. Off: reuse results with the same setup and settings."
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:75
+#, csharp-format
+msgid "±{0}%"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:90
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:112
+msgid "Stop targets early"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:91
+msgid "Stop a target once its kill rate is this precise. Faster; marked in results."
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:97
+#, csharp-format
+msgid "Auto ({0})"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:107
+msgid "Copies in parallel"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:108
+#, csharp-format
+msgid "Auto: cores − 2, at most 4 ({0} here)."
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:117
+msgid "random"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:127
+msgid "New seed each run"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:140
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:110
+msgid "Seed"
+msgstr ""
+
+#: src/Panel/Settings/RunSettings.cs:140
+msgid "Same seed and setup, same results."
+msgstr ""
+
+#: src/Panel/Settings/ScaleRow.cs:24
+msgid "Smaller"
+msgstr ""
+
+#: src/Panel/Settings/ScaleRow.cs:38
+msgid "Larger"
+msgstr ""
+
+#: src/Panel/Settings/ScaleRow.cs:43
+msgid "Everything in this window. On top of the game's UI size."
+msgstr ""
+
+#: src/Panel/Settings/ScaleRow.cs:58
+#, csharp-format
+msgid "{0:0}%"
+msgstr ""
+
+#: src/Panel/Settings/ScaleRow.cs:62
+#, csharp-format
+msgid "Up to {0:0}% on this screen."
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:13
+#: src/Panel/Simulate/PanelMenu.cs:81
+msgid "Window"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:28
+msgid "Show the Sim button in the header"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:29
+msgid "Next to the game's Guide button. The pause menu keeps its entry."
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:34
+msgid "Notices"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:35
+msgid "Where refused changes show."
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:38
+msgid "Top"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:38
+msgid "Bottom"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:49
+msgid "Hide game notifications"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:50
+msgid "While this window is open: items found, level-ups and quests. They show again when it closes."
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:82
+msgid "Show the gear search guide button"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:83
+msgid "The (i) on the Gear tab that explains how gear search works."
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:91
+msgid "Skin"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:92
+msgid "The game's look or mElvUI's flat one. Either works with mElvUI on or off."
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:110
+msgid "Results"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:122
+msgid "Rank by, when CS2 opens"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:133
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:114
+msgid "Time unit"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:140
+#: src/Panel/Simulate/ComparePicker.cs:109
+msgid "Saved runs"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.Sections.cs:164
+msgid "Keep the last"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.cs:135
+msgid "Base Game"
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.cs:187
+#, csharp-format
+msgid "Saved with setup, build and seed. {0} MB used. Results on screen not saved."
+msgstr ""
+
+#: src/Panel/Settings/SettingsView.cs:188
+#, csharp-format
+msgid "Saved with setup, build and seed. {0} MB used."
+msgstr ""
+
+#. Setting of the gear search: sets whose results differ by less than this share count as equal.
+#: src/Panel/Settings/TieShareRow.cs:40
+msgid "Treat as equal within"
+msgstr ""
+
+#: src/Panel/Settings/TieShareRow.cs:41
+msgid "Gear search: a set must beat another by more than this to rank above it."
+msgstr ""
+
+#. Button that forgets the gear search answers kept for each target.
+#: src/Panel/Settings/TieShareRow.cs:45
+msgid "Clear kept answers"
+msgstr ""
+
+#: src/Panel/Settings/TieShareRow.cs:48
+msgid "Gear search answers"
+msgstr ""
+
+#: src/Panel/Settings/TieShareRow.cs:49
+msgid "Kept to show again on returning to their target."
+msgstr ""
+
+#. Placeholder of the search over the side's changes on the Setup tab.
+#: src/Panel/SetupTab/ChangesBar.cs:74
+msgid "Search changes"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:98
+msgid "Clear changes"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:104
+msgid "Clear this page"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:116
+msgid "Save as preset…"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:117
+msgid "Keep these changes by name, for any character to use"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:119
+msgid "Export setup"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:151
+msgid "Show changes"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:151
+msgid "Hide changes"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:187
+#, csharp-format
+msgid "Changes ({0})"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:189
+#, csharp-format
+msgid "Changes on {0} ({1})"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:197
+msgid "No changes were made on this page"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:198
+#, csharp-format
+msgid "Undo the {0} change made on this page"
+msgid_plural "Undo the {0} changes made on this page"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:209
+msgid "Checking this side…"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:210
+msgid "Copies this side as one line, for another player to import"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:213
+msgid "None yet"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:253
+msgid "checking…"
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:254
+msgid "No change: the side already has this."
+msgstr ""
+
+#: src/Panel/SetupTab/ChangesBar.cs:257
+#: src/Panel/SetupTab/GearPage.cs:142
+#, csharp-format
+msgid "Requirement ignored: {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:85
+#: src/Panel/SetupTab/EffectPanel.cs:91
+#, csharp-format
+msgid "{0} vs {1}"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:98
+msgid "Against your character unchanged"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:116
+#, csharp-format
+msgid "Effects on {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:118
+msgid "Effects"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:121
+#, csharp-format
+msgid "Differences ({0})"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:122
+#: src/Panel/SetupTab/EntriesPage.cs:150
+#, csharp-format
+msgid "All {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:131
+msgid "No changes yet"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:132
+#: src/Panel/Simulate/CardLines.cs:50
+msgid "Checking…"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:133
+msgid "No difference."
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:165
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:57
+#: src/Panel/Stats/StatsText.cs:62
+msgid "Modifiers"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:173
+#, csharp-format
+msgid "{0} added · {1} gone"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:173
+#, csharp-format
+msgid "{0} added on {2} · {1} gone on {2}"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:179
+#, csharp-format
+msgid "{0} added"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:179
+#, csharp-format
+msgid "{0} added on {1}"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:181
+#, csharp-format
+msgid "{0} gone"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:181
+#, csharp-format
+msgid "{0} gone on {1}"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:206
+#, csharp-format
+msgid "on {0} obstacle"
+msgid_plural "on {0} obstacles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:207
+#, csharp-format
+msgid "×{0}"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:212
+#, csharp-format
+msgid "{0} only"
+msgstr ""
+
+#: src/Panel/SetupTab/EffectPanel.cs:212
+msgid "gone"
+msgstr ""
+
+#: src/Panel/SetupTab/EntriesPage.Rows.cs:154
+msgid "Turn off Spoiler guard to try it"
+msgstr ""
+
+#: src/Panel/SetupTab/EntriesPage.Rows.cs:162
+#, csharp-format
+msgid "{0} modifier"
+msgid_plural "{0} modifiers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/SetupTab/EntriesPage.Rows.cs:171
+msgid "The character has this: CS2 can add purchases and stars, not take them away."
+msgstr ""
+
+#: src/Panel/SetupTab/EntriesPage.cs:66
+msgid "With modifiers or unlocks"
+msgstr ""
+
+#: src/Panel/SetupTab/EntriesPage.cs:167
+msgid "None with modifiers or unlocks"
+msgstr ""
+
+#: src/Panel/SetupTab/EntriesPage.cs:167
+msgid "Nothing here"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Levels.cs:14
+#: src/Panel/SetupTab/GearSkeleton.cs:24
+#: src/Panel/Stats/FullStatsView.Stats.cs:13
+msgid "Levels"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Levels.cs:38
+#: src/Panel/SetupTab/GearSkeleton.cs:39
+msgid "max"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Levels.cs:43
+#, csharp-format
+msgid "Max {0} in this build. Hitpoints at least 10."
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:14
+#: src/Panel/SetupTab/GearSkeleton.cs:42
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:27
+msgid "Equipment"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:53
+#: src/Panel/SetupTab/GearPage.Loadout.cs:87
+#: src/Panel/SetupTab/GearPage.Loadout.cs:147
+#: src/Panel/SetupTab/GearPage.Loadout.cs:165
+msgid "empty"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:70
+#: src/Panel/Simulate/SetupCard.cs:407
+msgid "Right-click: put back"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:74
+#: src/Panel/SetupTab/GearPage.Loadout.cs:241
+#: src/Panel/Simulate/SetupCard.cs:408
+msgid "Right-click: empty"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:87
+#: src/Panel/SetupTab/GearPage.Loadout.cs:165
+#, csharp-format
+msgid "Pick an item for {0}. Now: {1}."
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:88
+#: src/Panel/SetupTab/GearPage.Loadout.cs:166
+#: src/Panel/Simulate/SlotPicker.cs:94
+#: src/Panel/Simulate/SlotPicker.cs:135
+msgid "Search items"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:89
+#: src/Panel/SetupTab/GearPage.Loadout.cs:167
+#: src/Panel/SetupTab/GearPage.Loadout.cs:264
+#: src/Panel/Simulate/SlotPicker.cs:136
+#: src/Panel/Simulate/SlotPicker.cs:224
+msgid "Empty slot"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:186
+#: src/Panel/SetupTab/GearSkeleton.cs:76
+#: src/Panel/Simulate/SlotPicker.cs:165
+msgid "Stance"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:237
+msgid "Empty prayer slot"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:261
+#: src/Panel/Simulate/SlotPicker.cs:221
+#, csharp-format
+msgid "Prayer slot {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:262
+#, csharp-format
+msgid "Pick a prayer for {0}. Now: {1}."
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:262
+#: src/Panel/SetupTab/GearPage.Loadout.cs:305
+#: src/Panel/SetupTab/GearPage.Loadout.cs:377
+#: src/Panel/SetupTab/GearPage.Loadout.cs:378
+#: src/Panel/Slayer/MasterDetail.cs:126
+msgid "none"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:263
+#: src/Panel/Simulate/SlotPicker.cs:223
+msgid "Search prayers"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:290
+msgid "Pick other food"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:296
+#: src/Panel/SetupTab/GearPage.Loadout.cs:307
+#: src/Panel/Simulate/CardLines.cs:66
+#: src/Panel/Simulate/ComparePicker.cs:218
+#: src/Panel/Simulate/SlotPicker.cs:181
+msgid "No food"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:305
+#, csharp-format
+msgid "Pick food for {0}. Now: {1}."
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:306
+#: src/Panel/Simulate/SlotPicker.cs:180
+msgid "Search food"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:335
+#: src/Panel/Simulate/CardLines.cs:73
+msgid "No spell"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:352
+#: src/Panel/SetupTab/GearPage.Loadout.cs:380
+msgid "No imbuement"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:377
+#, csharp-format
+msgid "Pick a spell for {0}. Now: {1}."
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:378
+#, csharp-format
+msgid "Pick an imbuement for {0}. Now: {1}."
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:379
+#: src/Panel/Simulate/SlotPicker.cs:195
+msgid "Search spells"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:379
+msgid "Search imbuements"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:388
+#: src/Panel/SetupTab/GearSkeleton.cs:80
+msgid "Rune Costs"
+msgstr ""
+
+#: src/Panel/SetupTab/GearPage.Loadout.cs:393
+msgid "No spell selected"
+msgstr ""
+
+#. After a rune's count in the spell's costs: that many are used each time it is cast.
+#. The count's own size, so the two share a baseline; dimmed to stay quiet beside it.
+#: src/Panel/SetupTab/GearPage.Loadout.cs:410
+msgid "/cast"
+msgstr ""
+
+#. Hover of a gear slot whose item the setup's levels or unlocks don't allow; {0} is what it needs.
+#: src/Panel/SetupTab/GearPage.cs:145
+#, csharp-format
+msgid "Can't be worn: {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/ItemPicker.cs:107
+msgid "Unowned"
+msgstr ""
+
+#: src/Panel/SetupTab/ItemPicker.cs:167
+msgid "Drag to move · double-click or middle-click: reset"
+msgstr ""
+
+#: src/Panel/SetupTab/ItemPicker.cs:265
+msgid "selected"
+msgstr ""
+
+#: src/Panel/SetupTab/ItemPicker.cs:267
+msgid "in A"
+msgstr ""
+
+#: src/Panel/SetupTab/ItemPicker.cs:267
+msgid "worn"
+msgstr ""
+
+#: src/Panel/SetupTab/ItemPicker.cs:268
+#: src/Panel/SetupTab/PageLegend.cs:14
+msgid "owned"
+msgstr ""
+
+#: src/Panel/SetupTab/ItemPicker.cs:269
+msgid "unowned"
+msgstr ""
+
+#. Heading in a master's editor on the Slayer page; {0} is the side, A or B.
+#: src/Panel/SetupTab/MasterEditor.cs:50
+#, csharp-format
+msgid "Blocks on {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:55
+#, csharp-format
+msgid "{0} slot open ·"
+msgid_plural "{0} slots open ·"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:58
+#, csharp-format
+msgid "{0} each"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:71
+#, csharp-format
+msgid "Slot {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:77
+#: src/Panel/Slayer/MasterDetail.cs:160
+#, csharp-format
+msgid "{0} more task"
+msgid_plural "{0} more tasks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:91
+msgctxt "block"
+msgid "None"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:115
+#, csharp-format
+msgid "Loadouts on {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:117
+msgid "a saved loadout per monster; the rest fight with the setup"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:122
+msgid "No saved loadouts yet. Save loadouts in the game to try one per monster."
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:154
+#: src/Panel/Slayer/MonsterLoadouts.cs:221
+msgid "Same as setup"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:159
+#, csharp-format
+msgid "{0} · gone"
+msgstr ""
+
+#. Button in a master's editor: Find best on this master alone (the editor is under its row).
+#: src/Panel/SetupTab/MasterEditor.cs:180
+msgid "Find best"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:188
+#, csharp-format
+msgid "Use best on {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterEditor.cs:208
+#, csharp-format
+msgid "Clear on {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:20
+#, csharp-format
+msgid "Gets stuck on {0} with every loadout"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:21
+msgid "No figures"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:27
+#, csharp-format
+msgid "{0} on its own loadout"
+msgid_plural "{0} on their own loadouts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/SetupTab/MasterLines.cs:30
+#, csharp-format
+msgid "Best: {0} · {1}"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:30
+#: src/Panel/SetupTab/SlayerMasters.cs:407
+msgid "no blocks"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:33
+#, csharp-format
+msgid "Best: blocks {0} ·"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:39
+#, csharp-format
+msgid "{0}{1} ·"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:43
+#, csharp-format
+msgid "needs slot {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:64
+msgid "Stuck"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:69
+#, csharp-format
+msgid "{0} deaths / h"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:85
+#, csharp-format
+msgid "vs {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:101
+#: src/Panel/Slayer/MasterDetail.cs:205
+#: src/Panel/Slayer/MasterDetail.cs:305
+#, csharp-format
+msgid "On {0} ✓"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:101
+#: src/Panel/Slayer/MasterDetail.cs:205
+#: src/Panel/Slayer/MasterDetail.cs:305
+#, csharp-format
+msgid "Use on {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:103
+msgid "Side B gives this master its best blocks and loadouts"
+msgstr ""
+
+#: src/Panel/SetupTab/MasterLines.cs:104
+msgid "Puts this master's best blocks and loadouts on side B; nothing else on B changes"
+msgstr ""
+
+#: src/Panel/SetupTab/MissingPage.cs:50
+msgid "No bonfires in this build"
+msgstr ""
+
+#: src/Panel/SetupTab/MissingPage.cs:51
+#, csharp-format
+msgid "{0} isn't in this build"
+msgstr ""
+
+#: src/Panel/SetupTab/MissingPage.cs:55
+msgid "Once the game adds it, your courses and obstacles show here, and you can try others."
+msgstr ""
+
+#: src/Panel/SetupTab/MissingPage.cs:58
+msgid "Once the game adds combat potions, you can pick one for a side here."
+msgstr ""
+
+#: src/Panel/SetupTab/MissingPage.cs:59
+msgid "Once the game adds bonfires, you can light one for a side here."
+msgstr ""
+
+#: src/Panel/SetupTab/MissingPage.cs:60
+msgid "Once the game adds pets, yours show here, and you can try others."
+msgstr ""
+
+#: src/Panel/SetupTab/MissingPage.cs:62
+#, csharp-format
+msgid "Nothing from {0} affects results in this build."
+msgstr ""
+
+#: src/Panel/SetupTab/PageLegend.cs:17
+msgid "on"
+msgstr ""
+
+#: src/Panel/SetupTab/PageLegend.cs:21
+msgid "changed"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:50
+msgid "Gear and levels"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:51
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:37
+msgid "Astrology"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:52
+msgid "Mastery Guild"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:54
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:36
+msgid "Agility"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:55
+msgid "Herblore"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:56
+msgid "Firemaking"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:57
+msgid "Shop upgrades"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:58
+msgid "Quests"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:59
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:33
+msgid "Pets"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:65
+msgid "Character"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:66
+msgid "Skills"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:67
+msgid "Account"
+msgstr ""
+
+#: src/Panel/SetupTab/PageList.cs:126
+#: src/Panel/SetupTab/SetupTabView.cs:247
+#: src/Panel/SetupTab/SetupTabView.cs:248
+#: src/Panel/Simulate/BasePicker.cs:190
+#: src/Panel/Simulate/ComparePicker.cs:396
+#: src/Panel/Simulate/PasteDialog.cs:264
+#: src/Panel/Simulate/SetupCard.cs:287
+#, csharp-format
+msgid "{0} change"
+msgid_plural "{0} changes"
+msgstr[0] ""
+msgstr[1] ""
+
+#. On the Setup tab while a gear search runs.
+#: src/Panel/SetupTab/RunningStrip.cs:53
+msgid "Gear search running"
+msgstr ""
+
+#. On the Setup tab while a gear search runs.
+#: src/Panel/SetupTab/RunningStrip.cs:57
+#, csharp-format
+msgid "Simulating · {0} of {1} targets"
+msgstr ""
+
+#: src/Panel/SetupTab/SetupTabView.cs:254
+msgid "Use any gear and entry, requirements met or not"
+msgstr ""
+
+#: src/Panel/SetupTab/SetupTabView.cs:255
+#, csharp-format
+msgid "{0} can use any gear and entry, requirements met or not"
+msgstr ""
+
+#: src/Panel/SetupTab/SetupTabView.cs:261
+msgid "Unsupported on this game build"
+msgstr ""
+
+#: src/Panel/SetupTab/SetupTabView.cs:271
+#, csharp-format
+msgid "Copy of {0} · simulation only"
+msgstr ""
+
+#: src/Panel/SetupTab/SetupTabView.cs:272
+msgid "Simulation only"
+msgstr ""
+
+#. Filter toggle: the Slayer masters' tasks as targets in the results.
+#: src/Panel/SetupTab/SlayerMasters.cs:81
+#: src/Panel/Simulate/TargetFilters.cs:65
+msgid "Masters"
+msgstr ""
+
+#. Label of the Slayer page's goal: what tasks are judged and masters ranked by.
+#: src/Panel/SetupTab/SlayerMasters.cs:93
+msgid "Goal"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:106
+msgid "The deaths Find best allows when it picks loadouts and blocks"
+msgstr ""
+
+#. Under the Slayer page's Masters heading; {0} is the side shown, A or B.
+#: src/Panel/SetupTab/SlayerMasters.cs:208
+#, csharp-format
+msgid "Blocks and loadouts per master on {0}, and each one's best. Click a master to change them."
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:264
+msgid "Find best for every master"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:265
+#, csharp-format
+msgid "Find best for {0} master"
+msgid_plural "Find best for {0} masters"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:267
+msgid "Finds each ticked master's best saved loadout per monster and best blocks, from side A. Use on B tries one."
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:362
+msgid "Take this master in the next Find best"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:390
+msgid "Close this master"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:390
+msgid "Change this master's blocks and loadouts"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:408
+#, csharp-format
+msgid "blocks {0}"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:415
+msgid "no loadouts"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerMasters.cs:416
+#, csharp-format
+msgid "loadouts {0}"
+msgstr ""
+
+#. A master's row on the Slayer page: what the side shown gives it; {0} is A or B.
+#: src/Panel/SetupTab/SlayerMasters.cs:426
+#, csharp-format
+msgid "On {0}: {1} · {2}"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTaskChoice.cs:21
+msgid "Slayer task"
+msgstr ""
+
+#. The Slayer page's choice of whether single monsters are fought on a slayer task.
+#: src/Panel/SetupTab/SlayerTaskChoice.cs:26
+msgid "As save"
+msgstr ""
+
+#. The Slayer page's choice of whether single monsters are fought on a slayer task.
+#: src/Panel/SetupTab/SlayerTaskChoice.cs:27
+msgid "On task"
+msgstr ""
+
+#. The Slayer page's choice of whether single monsters are fought on a slayer task.
+#: src/Panel/SetupTab/SlayerTaskChoice.cs:28
+msgid "Off task"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTaskChoice.cs:36
+msgid "Single monsters are fought on a task only when your save has one for them."
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTaskChoice.cs:39
+msgid "Each single monster is fought on a task from a master that gives it, with Slayer XP, coins and on-task bonuses. Masters are always on task."
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTaskChoice.cs:42
+msgid "Single monsters are fought with no slayer task. Masters are always on task."
+msgstr ""
+
+#. Heading on the Slayer page: the save's current slayer tasks, each against its master's overall rate.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:36
+msgid "Your tasks now"
+msgstr ""
+
+#. Button on the Slayer page: simulate every master the player has a task with.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:40
+msgid "Simulate tasks"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTasksNow.cs:41
+msgid "Simulates each master you have a task with, on side A, to compare your task with the master's overall rate"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTasksNow.cs:96
+msgid "Simulate to compare each task with its master's overall rate."
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTasksNow.cs:97
+msgid "Each task on its master's best setup (side A before Find best) against the master's overall rate: above it is worth extending, below it worth rerolling."
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTasksNow.cs:176
+msgid "not simulated yet"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTasksNow.cs:177
+#, csharp-format
+msgid "{0} /h · {1}"
+msgstr ""
+
+#. After a task's comparison when it was judged on side A, before Find best.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:179
+msgid "on side A"
+msgstr ""
+
+#. After a task's comparison when its master's best setup blocks the task's monster.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:181
+msgid "its best setup blocks it"
+msgstr ""
+
+#. Hover on a task's comparison once Find best has found its master's best; {0} the master.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:193
+#, csharp-format
+msgid "On {0}'s best loadouts and blocks. Overall rate: all of {0}'s tasks, blocked monsters left out."
+msgstr ""
+
+#. Hover on a task's comparison before Find best; {0} is the master.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:197
+#, csharp-format
+msgid "On side A. Find best on {0} judges it on its best loadouts."
+msgstr ""
+
+#. Advice on a slayer task: pay to extend it.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:209
+msgid "Extend"
+msgstr ""
+
+#. Advice on a slayer task: pay to reroll it.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:211
+msgid "Reroll"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTasksNow.cs:219
+msgid "Extended already: the game extends a task once"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTasksNow.cs:220
+msgid "Neither extending nor rerolling earns back what it costs"
+msgstr ""
+
+#: src/Panel/SetupTab/SlayerTasksNow.cs:221
+msgid "About its master's overall rate: neither is worth paying for"
+msgstr ""
+
+#. Between a task's advice (Extend, Reroll) and what it costs in the master's coin.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:236
+msgid "for"
+msgstr ""
+
+#. A reroll's cost and gain; {1} the gain, {2} the goal's metric, {3} how long the
+#. kills left would take, {4} how many.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:243
+#, csharp-format
+msgid "{0}: +{1} {2} over the {3} the {4} kills left would take"
+msgstr ""
+
+#. An extension's cost and gain; {1} the gain, {2} the goal's metric, {3} how long the
+#. kills added take, {4} how many.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:255
+#, csharp-format
+msgid "{0}: +{1} {2} over the {3} of {4} more kills"
+msgstr ""
+
+#. After a task's cost and gain, when both are the master's coin: what is left.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:267
+#, csharp-format
+msgid "net +{0}"
+msgstr ""
+
+#. Hover on a reroll's or extension's gain; {0} the master.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:273
+#, csharp-format
+msgid "Against the same time on {0}'s tasks"
+msgstr ""
+
+#. A task about as good as its master's rate over all its tasks; {0} is the master.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:286
+#, csharp-format
+msgid "about {0}'s overall rate"
+msgstr ""
+
+#. A task better than its master's rate over all its tasks by {0} percent; {1} is the master.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:289
+#, csharp-format
+msgid "{0}% above {1}'s overall rate"
+msgstr ""
+
+#. A task worse than its master's rate over all its tasks by {0} percent; {1} is the master.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:291
+#, csharp-format
+msgid "{0}% below {1}'s overall rate"
+msgstr ""
+
+#. Why a setup can't be simulated; {0} lists what it has on but can't use, each with what it needs.
+#: src/Panel/SetupTab/Unwearable.cs:38
+#, csharp-format
+msgid "Can't be used at these levels: {0}. Take them off, or switch on Ignore requirements."
+msgstr ""
+
+#. Side letter before a reason the side can't be simulated: "Side B: …".
+#: src/Panel/SetupTab/Unwearable.cs:43
+#, csharp-format
+msgid "Side {0}: {1}"
+msgstr ""
+
+#: src/Panel/Sharing.cs:26
+#, csharp-format
+msgid "Can't be exported: {0}"
+msgstr ""
+
+#: src/Panel/Sharing.cs:48
+msgid "Side B is a saved run: it can't be shared. Compare with a setup instead."
+msgstr ""
+
+#: src/Panel/Sharing.cs:50
+msgid "Still checking the sides: try again in a moment."
+msgstr ""
+
+#: src/Panel/Sharing.cs:90
+#, csharp-format
+msgid "Too long to share: {0} of {1} characters. Remove some changes."
+msgstr ""
+
+#: src/Panel/Sharing.cs:100
+msgid "Copied!"
+msgstr ""
+
+#: src/Panel/Sharing.cs:106
+msgid "The clipboard is empty."
+msgstr ""
+
+#: src/Panel/Sharing.cs:107
+msgid "The clipboard holds no CS2 setup."
+msgstr ""
+
+#: src/Panel/Sharing.cs:108
+msgid "Too long for a CS2 setup."
+msgstr ""
+
+#: src/Panel/Sharing.cs:109
+msgid "Damaged: cut short or changed after it was copied."
+msgstr ""
+
+#: src/Panel/Sharing.cs:110
+msgid "Made by a newer CS2: update to use it."
+msgstr ""
+
+#: src/Panel/Sharing.cs:111
+msgid "Not a setup CS2 can read."
+msgstr ""
+
+#: src/Panel/Simulate/AreaMenu.cs:104
+msgid "All areas"
+msgstr ""
+
+#: src/Panel/Simulate/AreaMenu.cs:130
+#: src/Panel/Simulate/TargetFilters.cs:62
+#: src/Panel/Simulate/TargetStrip.cs:192
+msgid "Dungeons"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:75
+#, csharp-format
+msgid "{0} starts from"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:84
+#, csharp-format
+msgid "{0} as you are now"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:92
+#: src/Panel/Simulate/ComparePicker.cs:102
+msgid "Your loadouts"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:106
+#: src/Panel/Simulate/ComparePicker.cs:183
+msgid "Presets · shared by every character"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:120
+msgid "Saved runs · results only"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:127
+#, csharp-format
+msgid "A saved run can only be side {0}."
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:130
+msgid "Import setup…"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:136
+msgid "Reads a setup another player exported from the clipboard, and shows it before anything changes"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:168
+msgid "as it was"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:191
+#: src/Panel/Simulate/ComparePicker.cs:322
+#, csharp-format
+msgid "Can't be used: {0}"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:198
+#: src/Panel/Simulate/BasePicker.cs:281
+msgid "in use"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:202
+#: src/Panel/Simulate/BasePicker.cs:285
+msgid "Pick"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:215
+#, csharp-format
+msgid "Side {0} keeps its start and takes this preset's changes"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:216
+#, csharp-format
+msgid "Side {0} keeps its start and takes this preset's changes. Replaces its {1} change."
+msgid_plural "Side {0} keeps its start and takes this preset's changes. Replaces its {1} changes."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/BasePicker.cs:297
+#, csharp-format
+msgid "Compares side {0} against this saved run"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:298
+#, csharp-format
+msgid "Side {0} starts from this"
+msgstr ""
+
+#: src/Panel/Simulate/BasePicker.cs:299
+#, csharp-format
+msgid "Side {0} starts from this. Clears its {1} change."
+msgid_plural "Side {0} starts from this. Clears its {1} changes."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/CardLines.cs:114
+msgid "No prayers"
+msgstr ""
+
+#: src/Panel/Simulate/CardLines.cs:131
+msgid "+ Prayer"
+msgstr ""
+
+#: src/Panel/Simulate/CardLines.cs:132
+msgid "Add prayer"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:53
+#, csharp-format
+msgid "Pick {0}. It runs on the same targets with the same seed as {1}."
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:63
+#, csharp-format
+msgid "{0} with changes"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:66
+#, csharp-format
+msgid "Start from {0} and change gear, levels, food, prayers or a spell."
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:70
+msgid "Compare variant"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:72
+#, csharp-format
+msgid "Side {0} starts as a copy of side {1}, for you to change"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:93
+msgid "Import…"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:98
+msgid "Import a setup or preset another player exported"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:105
+msgid "Recent comparisons"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:113
+msgid "All in History ▸"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:184
+msgid "Presets · none yet: save one from the Setup tab"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:209
+msgid "Nothing worn"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:232
+#, csharp-format
+msgid "This is side {0}"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:233
+#, csharp-format
+msgid "Makes this loadout side {0}"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:262
+msgid "Saved runs · none yet"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:263
+#, csharp-format
+msgid "Saved runs · {0}"
+msgid_plural "Saved runs · {0}"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/ComparePicker.cs:291
+msgid "Another preset has that name."
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:292
+#: src/Panel/Simulate/PasteDialog.cs:320
+#: src/Panel/Widgets/PresetNaming.cs:229
+msgid "Give the preset a name."
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:315
+#, csharp-format
+msgid "{0} change · on top of {1}"
+msgid_plural "{0} changes · on top of {1}"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/ComparePicker.cs:326
+msgid "Use"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:328
+#, csharp-format
+msgid "Side {0}: what side {1} starts from, with this preset's changes"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:340
+msgid "Delete?"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:357
+msgid "Export"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:360
+msgid "Copies this preset as one line, for another player to import"
+msgstr ""
+
+#: src/Panel/Simulate/ComparePicker.cs:379
+#, csharp-format
+msgid "Compares side {0} against this saved run's results"
+msgstr ""
+
+#: src/Panel/Simulate/KeyStats.cs:30
+msgid "Key stats"
+msgstr ""
+
+#: src/Panel/Simulate/KeyStats.cs:37
+msgid "All stats ▸"
+msgstr ""
+
+#: src/Panel/Simulate/KeyStats.cs:74
+msgid "start → with changes"
+msgstr ""
+
+#: src/Panel/Simulate/KeyStats.cs:121
+#, csharp-format
+msgid "Accuracy ({0})"
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:60
+msgid "Menu"
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:64
+msgid "Share"
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:66
+msgid "Copy simulation"
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:68
+msgid "Paste…"
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:71
+msgid "Both sides, the targets left out and the settings below, as one line."
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:77
+msgid "How runs fight"
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:85
+msgid "Help and reports"
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:89
+msgid "Save bug report…"
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:101
+msgid "History"
+msgstr ""
+
+#: src/Panel/Simulate/PanelMenu.cs:120
+msgid "Menu: share this simulation, how runs fight, bug reports and history"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:17
+msgid "Import simulation"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:29
+msgid "One side"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:29
+msgid "Two sides"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:30
+#, csharp-format
+msgid "{0} target left out"
+msgid_plural "{0} targets left out"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:31
+#, csharp-format
+msgid "A simulation · {0} · {1}"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:35
+#, csharp-format
+msgid "Made on game build {0}: results may differ."
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:60
+#: src/Panel/Simulate/PasteDialog.cs:218
+msgid "The check failed."
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:72
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:74
+#, csharp-format
+msgid "Side {0}"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:75
+msgid "Targets left out"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:79
+#, csharp-format
+msgid "{0} not in this build"
+msgid_plural "{0} not in this build"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:84
+msgid "Settings that change"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:86
+msgid "None: as now"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.Simulation.cs:90
+msgid "Use this simulation"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:69
+msgid "Import setup"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:84
+#: src/Panel/Widgets/PresetNaming.cs:52
+msgid "Preset name"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:173
+#, csharp-format
+msgid "Preset: {0} · {1}"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:174
+#, csharp-format
+msgid "A setup · {0}"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:180
+msgid "Made on another game build."
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:186
+msgid "Save as preset"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:189
+msgid "Use as A"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:190
+#, csharp-format
+msgid "Replaces side {0}'s changes with these"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:192
+msgid "Use as B"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:193
+#, csharp-format
+msgid "Side {0}: what side {1} starts from, with these changes. Replaces a side {0} already there."
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:207
+msgid "Checking on your character…"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:255
+#, csharp-format
+msgid "{0} already as yours"
+msgid_plural "{0} already as yours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/PasteDialog.cs:269
+msgid "requirement ignored"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:270
+msgid "applies"
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:317
+msgid "A preset has this name. Save again to replace it."
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:323
+#: src/Panel/Widgets/PresetNaming.cs:232
+#, csharp-format
+msgid "{0} presets already: delete one first."
+msgstr ""
+
+#: src/Panel/Simulate/PasteDialog.cs:326
+#: src/Panel/Widgets/PresetNaming.cs:235
+msgid "No changes to save."
+msgstr ""
+
+#: src/Panel/Simulate/RecentComparisons.cs:59
+#, csharp-format
+msgid "{0} {1} · {2} {3}"
+msgstr ""
+
+#: src/Panel/Simulate/RecentComparisons.cs:75
+#, csharp-format
+msgid "{0} target · {1} · {2}"
+msgid_plural "{0} targets · {1} · {2}"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/RecentComparisons.cs:88
+msgid "run gone"
+msgstr ""
+
+#: src/Panel/Simulate/RecentComparisons.cs:88
+msgid "One of its saved runs is no longer there, so it can't be shown."
+msgstr ""
+
+#: src/Panel/Simulate/RecentComparisons.cs:91
+msgid "Simulated on another game build than this one."
+msgstr ""
+
+#: src/Panel/Simulate/RecentComparisons.cs:103
+msgctxt "comparison"
+msgid "Show"
+msgstr ""
+
+#: src/Panel/Simulate/RecentComparisons.cs:125
+msgctxt "comparison"
+msgid "Remove"
+msgstr ""
+
+#: src/Panel/Simulate/RecentComparisons.cs:134
+msgid "Removes the comparison. Its two runs stay."
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.BestLoadouts.cs:21
+#, csharp-format
+msgid "Find best · {0} · {1} of {2} masters"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.BestLoadouts.cs:27
+#, csharp-format
+msgid "Find best · {0} · {1} of {2} loadouts"
+msgstr ""
+
+#. Under the run button while Best loadouts runs on one master: loadouts fought of all it tries.
+#: src/Panel/Simulate/RunControl.BestLoadouts.cs:30
+#, csharp-format
+msgid "Best loadouts · {0} · {1} of {2}"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:52
+msgid "Simulation used: both sides, the targets left out and the settings."
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:58
+msgid "Undo"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:83
+msgid "▶ Simulate"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:124
+msgid "This setup can't be simulated; see the message above the results."
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:141
+#: src/Panel/Simulate/TargetStrip.Paint.cs:22
+msgid "Checking targets for this setup…"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:142
+msgid "Nothing to simulate: every target shown is ignored. Return some."
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:143
+msgid "Nothing to simulate: no target matches the filters."
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:160
+msgid "■ Cancel run"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:161
+#, csharp-format
+msgid "▶ Compare {0} target"
+msgid_plural "▶ Compare {0} targets"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/RunControl.cs:162
+#, csharp-format
+msgid "▶ Simulate {0} target"
+msgid_plural "▶ Simulate {0} targets"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Simulate/RunControl.cs:173
+msgid "The button can't be pressed now"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:193
+msgid "Same as before: nothing fought"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:218
+msgctxt "a run's time"
+msgid "reused"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:230
+#, csharp-format
+msgid "{5} {0} of {1} · {6} {2} of {3} · {4}"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:279
+msgid "Reused from earlier runs: Settings › Simulate fresh fights again."
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:331
+msgid "Not run yet"
+msgstr ""
+
+#. Under the run button while a gear search reads the gear, before its first step.
+#: src/Panel/Simulate/RunControl.cs:336
+msgid "Searching · reading your gear"
+msgstr ""
+
+#. Under the run button while a gear search runs: {0} the step or stage under way.
+#: src/Panel/Simulate/RunControl.cs:338
+#, csharp-format
+msgid "Searching · step {0}"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:355
+msgid "no runs yet"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:363
+#, csharp-format
+msgid "{0} of {1} done · {2}"
+msgstr ""
+
+#: src/Panel/Simulate/RunControl.cs:364
+#, csharp-format
+msgid "{0} of {1} · {2}"
+msgstr ""
+
+#: src/Panel/Simulate/RunStarter.cs:32
+msgid "Not fighting anything right now."
+msgstr ""
+
+#: src/Panel/Simulate/RunStarter.cs:134
+msgid "No changes yet: change a level, an item, food, a prayer or a spell."
+msgstr ""
+
+#: src/Panel/Simulate/RunStarter.cs:152
+msgid "Both sides are the same setup, so it ran once."
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:82
+msgid "Change"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:83
+msgid "Pick what this side starts from"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:106
+msgid "Clear"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:112
+msgid "Undo every change"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:126
+msgid "Ignore level, quest and unlock requirements of targets, gear and Setup entries."
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:127
+msgid "Ignore level, quest and unlock requirements of targets. Gear and Setup entries: unsupported on this game build."
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:134
+msgid "Edit"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:136
+msgid "Levels, gear, prayers, guilds and more, on the Setup tab"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:142
+#, csharp-format
+msgid "Compare variant: copy this setup to {0}"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:155
+msgid "Export setup: copies this side as one line, for another player to import"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:252
+msgid "A loadout that is gone"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:254
+msgid "A saved run that is gone"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:255
+#, csharp-format
+msgid "Saved run · {0}"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:268
+msgid "Its results are shown as they were saved. A saved run keeps no setup, so it has no gear to show, nothing to change and no stats."
+msgstr ""
+
+#: src/Panel/Simulate/SetupCard.cs:403
+#, csharp-format
+msgid "{0}: empty"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCheck.cs:63
+msgid "unknown error"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCheck.cs:84
+#, csharp-format
+msgid "The character as is can't be simulated: {0}"
+msgstr ""
+
+#: src/Panel/Simulate/SetupCheck.cs:85
+#, csharp-format
+msgid "Loadout {0} can't be simulated: {1}"
+msgstr ""
+
+#: src/Panel/Simulate/SetupColumn.cs:49
+msgid "vs"
+msgstr ""
+
+#: src/Panel/Simulate/SetupColumn.cs:72
+msgid "✕ Clear"
+msgstr ""
+
+#: src/Panel/Simulate/SetupColumn.cs:73
+#, csharp-format
+msgid "Clear comparison: back to side {0} alone"
+msgstr ""
+
+#: src/Panel/Simulate/SetupColumn.cs:81
+msgid "+ Compare…"
+msgstr ""
+
+#: src/Panel/Simulate/SetupColumn.cs:82
+msgid "Compare this setup with changes, a loadout or a saved run"
+msgstr ""
+
+#: src/Panel/Simulate/SetupColumn.cs:143
+#, csharp-format
+msgid "Loadout {0} is gone or locked: pick another with Change."
+msgstr ""
+
+#: src/Panel/Simulate/SetupColumn.cs:151
+msgid "The saved run is gone: pick another with Change."
+msgstr ""
+
+#: src/Panel/Simulate/SetupColumn.cs:175
+msgid "A saved run can only be side B"
+msgstr ""
+
+#: src/Panel/Simulate/SetupColumn.cs:176
+#, csharp-format
+msgid "Swap sides {0} and {1}; results shown swap too"
+msgstr ""
+
+#: src/Panel/Simulate/SlotPicker.cs:167
+msgid "Search stances"
+msgstr ""
+
+#: src/Panel/Simulate/TargetFilters.cs:41
+msgid "Search targets"
+msgstr ""
+
+#: src/Panel/Simulate/TargetFilters.cs:51
+msgid "Can fight"
+msgstr ""
+
+#: src/Panel/Simulate/TargetFilters.cs:51
+msgctxt "targets"
+msgid "All"
+msgstr ""
+
+#: src/Panel/Simulate/TargetFilters.cs:56
+msgid "The targets this setup can fight"
+msgstr ""
+
+#: src/Panel/Simulate/TargetFilters.cs:57
+msgid "Every target in the game, locked ones included"
+msgstr ""
+
+#: src/Panel/Simulate/TargetFilters.cs:105
+#, csharp-format
+msgid "Areas ({0}) ▾"
+msgstr ""
+
+#: src/Panel/Simulate/TargetFilters.cs:106
+msgid "Areas ▾"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.Paint.cs:23
+msgid "No target matches the filters."
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:70
+msgid "Click a target to ignore it in the next run, an area's name for the whole area. Right-click to run only it, then to add more."
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:80
+msgid "Ignore all"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:87
+msgid "Return all"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:145
+msgid "Return every target and clear the search"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:194
+msgid "Slayer masters"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:216
+#, csharp-format
+msgid "{0} of {1} targets"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:353
+msgid "Show this area's targets"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:353
+msgid "Fold this area"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:356
+#, csharp-format
+msgid "{0}: click to return the whole area"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:357
+#, csharp-format
+msgid "{0}: click to ignore the whole area"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:363
+msgid "Ignored: click to return it"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:364
+msgid "This setup can't fight it yet: the run refuses it"
+msgstr ""
+
+#: src/Panel/Simulate/TargetStrip.cs:365
+msgid "Click to ignore it in the next run"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:65
+#: src/Panel/Slayer/MasterRowLine.cs:36
+#, csharp-format
+msgid "{0} monster"
+msgid_plural "{0} monsters"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Under "Monsters" in a Slayer master's details.
+#: src/Panel/Slayer/MasterDetail.cs:71
+msgid "Each comes up as often as any other, so the slow ones take most of the time."
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:102
+msgid "Blocked in this run"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:104
+#, csharp-format
+msgid "{0} of the time · {1} {2} · {3} deaths / h"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:130
+msgid "as good"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:132
+#, csharp-format
+msgid "{0} block"
+msgid_plural "{0} blocks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Slayer/MasterDetail.cs:133
+msgid "still stuck"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:136
+msgid "Blocks"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:143
+#, csharp-format
+msgid "Blocks now: {0} · {1} of {2} slots open · worked out from this run, no extra fights"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:152
+msgid "Best in your open slots"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:156
+#, csharp-format
+msgid "Better · needs slot {0} · {1}"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:181
+#, csharp-format
+msgid "Block {0}"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:186
+#, csharp-format
+msgid "95% range {0} – {1}"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:191
+msgid "Safe to leave running: no deaths"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:214
+msgid "Costs nothing: these are blocked already"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:216
+msgid "Costs"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:229
+#, csharp-format
+msgid "· about {0} of {1}'s coins"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:240
+msgid "Risk · no deaths"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:241
+#, csharp-format
+msgid "Risk · {0} · {1}"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:245
+#, csharp-format
+msgid "1 death in {0} min"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:246
+#, csharp-format
+msgid "1 death in {0} h"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:253
+#, csharp-format
+msgid "Deaths {0} {1} · highest hit taken {2} · lowest HP {3}"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:268
+msgid "The game stops at a death: a master with deaths can't be left running."
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:296
+#, csharp-format
+msgid "Best setup: {0} · {1} vs {2}"
+msgstr ""
+
+#: src/Panel/Slayer/MasterDetail.cs:300
+#, csharp-format
+msgid "Best setup: {0}"
+msgstr ""
+
+#. Link from a master's Monsters tab to its editor on the Setup tab's Slayer page.
+#: src/Panel/Slayer/MasterDetail.cs:310
+msgid "On Setup ›"
+msgstr ""
+
+#. A Slayer master as a target in the results; {0} is the master's name.
+#: src/Panel/Slayer/MasterRowLine.cs:23
+#: src/Panel/Slayer/MasterRowLine.cs:35
+msgid "Slayer master"
+msgstr ""
+
+#: src/Panel/Slayer/MasterRowLine.cs:40
+msgid "Blocks: as good"
+msgstr ""
+
+#: src/Panel/Slayer/MasterRowLine.cs:41
+#, csharp-format
+msgid "Best blocks: {0}"
+msgstr ""
+
+#: src/Panel/Slayer/MasterRowLine.cs:42
+msgid "Blocks help"
+msgstr ""
+
+#: src/Panel/Slayer/MonsterLoadouts.cs:42
+msgid "tie"
+msgstr ""
+
+#: src/Panel/Slayer/MonsterLoadouts.cs:49
+#, csharp-format
+msgid "As good: {0}"
+msgstr ""
+
+#: src/Panel/Slayer/MonsterLoadouts.cs:78
+#, csharp-format
+msgid "{0} for the master with them. Use on B on the Slayer setup page to try them."
+msgstr ""
+
+#. Banner title after Find best loadouts on a Slayer master.
+#: src/Panel/Slayer/MonsterLoadouts.cs:88
+#, csharp-format
+msgid "{0} monster does better on another loadout"
+msgid_plural "{0} monsters do better on another loadout"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Slayer/MonsterLoadouts.cs:107
+msgid "Loadouts"
+msgstr ""
+
+#. Link on a master's Monsters tab to its editor on the Setup tab's Slayer page.
+#: src/Panel/Slayer/MonsterLoadouts.cs:112
+msgid "Edit on Setup ›"
+msgstr ""
+
+#: src/Panel/Slayer/MonsterLoadouts.cs:117
+msgid "Change this master's blocks and loadouts per monster, and find its best"
+msgstr ""
+
+#: src/Panel/Slayer/MonsterLoadouts.cs:121
+msgid "Monsters fight with the setup unless given a saved loadout; a tag names it."
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:28
+msgid "Set bonuses"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:30
+msgid "Potions and toolbelt"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:32
+msgid "Stance and spell"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:35
+msgid "Mastery"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:38
+msgid "Area"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:50
+#, csharp-format
+msgid "{0} (on the enemy)"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:64
+msgid "Search modifiers or sources"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:71
+#, csharp-format
+msgid "{0} {1}: both sides · {0} only, {1} only: one side"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:86
+#, csharp-format
+msgid "{0} from {1} sources"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:115
+#, csharp-format
+msgid "{0} · {1} on one side"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:120
+#, csharp-format
+msgid "No match in {0}."
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:192
+#: src/Panel/Stats/StatsText.cs:72
+msgid "A B"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:193
+#: src/Panel/Stats/StatsText.cs:73
+msgid "A only"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Modifiers.cs:194
+#: src/Panel/Stats/StatsText.cs:74
+msgid "B only"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Stats.cs:14
+msgid "Offence"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Stats.cs:15
+msgid "Defence"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Stats.cs:17
+msgid "Equipment stats"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Stats.cs:83
+#: src/Panel/Stats/StatsText.cs:37
+#, csharp-format
+msgid "differing {0} of {1}"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.Stats.cs:84
+#, csharp-format
+msgid "{0} stat"
+msgid_plural "{0} stats"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Stats/FullStatsView.Stats.cs:106
+#, csharp-format
+msgid "{0} − {1}"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.cs:47
+msgid "Stats and modifiers"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.cs:70
+msgid "Only differences"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.cs:79
+msgid "Copy as text"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.cs:128
+msgid "◂ Back to Setup"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.cs:136
+msgid "Load a character to see its setup."
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.cs:137
+msgid "Reading the setup…"
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.cs:152
+#, csharp-format
+msgid "A saved run keeps no stats: side {0} as it is now."
+msgstr ""
+
+#: src/Panel/Stats/FullStatsView.cs:154
+msgid "as the game computes them · read from a copy, your game is untouched"
+msgstr ""
+
+#: src/Panel/Stats/StatsText.cs:23
+#, csharp-format
+msgid "Combat Simulator 2 · A {0} · B {1}"
+msgstr ""
+
+#: src/Panel/Stats/StatsText.cs:27
+#, csharp-format
+msgid "Combat Simulator 2 · {0}"
+msgstr ""
+
+#: src/Panel/Stats/StatsText.cs:43
+msgid "B − A"
+msgstr ""
+
+#. Hover of the deaths badge on a results row ("0% deaths").
+#: src/Panel/Widgets/Badge.cs:44
+msgid "Share of trials that ended in your death."
+msgstr ""
+
+#: src/Panel/Widgets/Badge.cs:72
+#: src/Panel/Widgets/ChartMarks.cs:50
+msgid "no deaths"
+msgstr ""
+
+#: src/Panel/Widgets/Badge.cs:73
+#, csharp-format
+msgid "1 in {0} min"
+msgstr ""
+
+#: src/Panel/Widgets/Badge.cs:74
+#, csharp-format
+msgid "1 in {0} h"
+msgstr ""
+
+#. Hover of a Slayer master's deaths badge on a results row ("1 in 5.2 h").
+#: src/Panel/Widgets/Badge.cs:76
+msgid "How long its tasks go between deaths. The game stops at a death."
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:113
+msgid "Ignored in the next run · click to return it"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:114
+msgid "Click to ignore it in the next run · right-click to run only it"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:141
+#, csharp-format
+msgid "{0} area without results"
+msgid_plural "{0} areas without results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:165
+#, csharp-format
+msgid "{0} target, no result"
+msgid_plural "{0} targets, none with a result"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:186
+msgid "Click to show their targets"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:187
+msgid "Click to show its targets"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:188
+msgid "Click to collapse"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:190
+msgid "Click to unfold"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:191
+msgid "Click to fold into its best bar"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:233
+#, csharp-format
+msgid "Deaths: {0}"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:239
+#, csharp-format
+msgid "Kills / h: {0}"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:247
+#, csharp-format
+msgid "Time per kill: {0} s"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:260
+msgid "Best of its folded area"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Hover.cs:261
+msgid "Click: details · Shift-click: pin"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.Paint.cs:23
+msgid "Nothing to chart yet."
+msgstr ""
+
+#: src/Panel/Widgets/Chart.cs:113
+msgid "Hover a bar for value, range and deaths · click for details · shift-click to pin · click a portrait to ignore it · click an area to fold it into one bar"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.cs:193
+msgid "Unfold every area"
+msgstr ""
+
+#: src/Panel/Widgets/Chart.cs:193
+msgid "Fold every area into its best bar"
+msgstr ""
+
+#: src/Panel/Widgets/ChartMarks.cs:51
+msgid "some deaths"
+msgstr ""
+
+#: src/Panel/Widgets/ChartMarks.cs:52
+msgid "5%+ deaths"
+msgstr ""
+
+#: src/Panel/Widgets/ChartMarks.cs:53
+msgid "died every fight"
+msgstr ""
+
+#. Chart legend: the mark of a target where some trials ran over the time limit (under 5%).
+#: src/Panel/Widgets/ChartMarks.cs:55
+msgid "some ran over"
+msgstr ""
+
+#. Chart legend: the mark of a target where 5% or more of the trials ran over the time limit.
+#: src/Panel/Widgets/ChartMarks.cs:57
+msgid "5%+ ran over"
+msgstr ""
+
+#: src/Panel/Widgets/Chip.cs:28
+msgid "Undo this change"
+msgstr ""
+
+#: src/Panel/Widgets/MelvPalette.cs:71
+msgid "mElvUI's palette is missing"
+msgstr ""
+
+#: src/Panel/Widgets/MelvPalette.cs:75
+#: src/Panel/Widgets/MelvPalette.cs:90
+#, csharp-format
+msgid "mElvUI's palette is unreadable: {0}"
+msgstr ""
+
+#: src/Panel/Widgets/MelvPalette.cs:97
+msgid "mElvUI's palette is unreadable: not an object"
+msgstr ""
+
+#: src/Panel/Widgets/MelvPalette.cs:103
+#, csharp-format
+msgid "mElvUI's palette is version {0}, CS2 reads version {1}"
+msgstr ""
+
+#: src/Panel/Widgets/MelvPalette.cs:104
+#, csharp-format
+msgid "mElvUI's palette is version unknown, CS2 reads version {0}"
+msgstr ""
+
+#: src/Panel/Widgets/MelvPalette.cs:114
+msgid "mElvUI's palette has no roles"
+msgstr ""
+
+#: src/Panel/Widgets/MelvPalette.cs:135
+#, csharp-format
+msgid "mElvUI's palette has no '{0}' role"
+msgstr ""
+
+#: src/Panel/Widgets/MelvPalette.cs:144
+#, csharp-format
+msgid "mElvUI's palette role '{0}' names an unknown colour '{1}'"
+msgstr ""
+
+#: src/Panel/Widgets/PresetNaming.cs:73
+msgid "Update a preset: pick it to save these changes over it"
+msgstr ""
+
+#: src/Panel/Widgets/PresetNaming.cs:83
+#: src/Panel/Widgets/PresetNaming.cs:187
+msgid "Update"
+msgstr ""
+
+#: src/Panel/Widgets/PresetNaming.cs:83
+#: src/Panel/Widgets/PresetNaming.cs:188
+msgid "Replace"
+msgstr ""
+
+#: src/Panel/Widgets/PresetNaming.cs:135
+msgid "Save as preset: keeps this side's changes by name, for any character to use"
+msgstr ""
+
+#: src/Panel/Widgets/PresetNaming.cs:171
+msgid "New preset"
+msgstr ""
+
+#: src/Panel/Widgets/PresetNaming.cs:220
+#, csharp-format
+msgid "Updated preset: {0}"
+msgstr ""
+
+#: src/Panel/Widgets/PresetNaming.cs:221
+#, csharp-format
+msgid "Saved as preset: {0}"
+msgstr ""
+
+#: src/Panel/Widgets/PresetNaming.cs:226
+msgid "A preset has this name. Replace it?"
+msgstr ""
+
+#: src/Panel/Widgets/Skins.cs:26
+msgid "mElvUI isn't installed"
+msgstr ""
+
+#: src/Panel/Widgets/Skins.cs:100
+#, csharp-format
+msgid "{0}: showing Base Game."
+msgstr ""
+
+#: src/Panel/Widgets/Ui.cs:223
+#: src/Panel/Words.cs:90
+msgid "∞"
+msgstr ""
+
+#: src/Panel/Widgets/Ui.cs:230
+#, csharp-format
+msgid "{0}B"
+msgstr ""
+
+#: src/Panel/Widgets/Ui.cs:231
+#, csharp-format
+msgid "{0}M"
+msgstr ""
+
+#: src/Panel/Widgets/Ui.cs:232
+#, csharp-format
+msgid "{0}k"
+msgstr ""
+
+#: src/Panel/Widgets/Ui.cs:269
+#, csharp-format
+msgid "{0} MB"
+msgstr ""
+
+#: src/Panel/Widgets/Ui.cs:269
+#, csharp-format
+msgid "{0} GB"
+msgstr ""
+
+#: src/Panel/Words.cs:42
+#, csharp-format
+msgid "{0} / kill"
+msgstr ""
+
+#: src/Panel/Words.cs:43
+#, csharp-format
+msgid "{0} / s"
+msgstr ""
+
+#: src/Panel/Words.cs:44
+#, csharp-format
+msgid "{0} / min"
+msgstr ""
+
+#: src/Panel/Words.cs:45
+#, csharp-format
+msgid "{0} / h"
+msgstr ""
+
+#: src/Panel/Words.cs:46
+#, csharp-format
+msgid "{0} / day"
+msgstr ""
+
+#: src/Panel/Words.cs:53
+#, csharp-format
+msgid "{0} / kill · {1}"
+msgstr ""
+
+#: src/Panel/Words.cs:54
+#, csharp-format
+msgid "{0} / s · {1}"
+msgstr ""
+
+#: src/Panel/Words.cs:55
+#, csharp-format
+msgid "{0} / min · {1}"
+msgstr ""
+
+#: src/Panel/Words.cs:56
+#, csharp-format
+msgid "{0} / h · {1}"
+msgstr ""
+
+#: src/Panel/Words.cs:57
+#, csharp-format
+msgid "{0} / day · {1}"
+msgstr ""
+
+#: src/Panel/Words.cs:66
+msgid "per second"
+msgstr ""
+
+#: src/Panel/Words.cs:67
+msgid "per minute"
+msgstr ""
+
+#: src/Panel/Words.cs:68
+msgid "per hour"
+msgstr ""
+
+#: src/Panel/Words.cs:69
+msgid "per day"
+msgstr ""
+
+#: src/Panel/Words.cs:76
+msgid "/kill"
+msgstr ""
+
+#: src/Panel/Words.cs:77
+msgid "/s"
+msgstr ""
+
+#: src/Panel/Words.cs:78
+msgid "/min"
+msgstr ""
+
+#: src/Panel/Words.cs:79
+msgid "/h"
+msgstr ""
+
+#: src/Panel/Words.cs:80
+msgid "/day"
+msgstr ""
+
+#: src/Panel/Words.cs:94
+#, csharp-format
+msgid "{0} min"
+msgstr ""
+
+#: src/Panel/Words.cs:95
+#, csharp-format
+msgid "{0} h"
+msgstr ""
+
+#: src/Panel/Words.cs:96
+#, csharp-format
+msgid "{0} days"
+msgstr ""
+
+#: src/Panel/Words.cs:108
+msgctxt "loadout"
+msgid "current"
+msgstr ""
+
+#: src/Panel/Words.cs:110
+#, csharp-format
+msgid "{0} (requirements ignored)"
+msgstr ""

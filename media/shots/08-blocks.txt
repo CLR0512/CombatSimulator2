@@ -1,0 +1,16 @@
+# Which monsters to block for a master, with what the block gains and costs.
+cs2 run master:Kuren master:Allevia master:Satsgar master:Fells master:Galan master:Hans seed=1 trials=1000
+retry 300 cs2 wait timeout=9
+retry 10 click Cs2ModeList
+wait 1000
+click Cs2Row_master_Kuren
+click "Monsters" 2
+wait 1000
+scroll Cs2DetailPages down 15
+wait 800
+# A date would date the picture: "from an earlier run · <date>" goes, here and in the list.
+relabel " · from an earlier run · .*" ""
+capture Cs2Root matte
+background Backgrounds/Combat/StingingNest.png
+# The run's status line under the results says how long it took, which differs between sets.
+vary 1080 860 360 30

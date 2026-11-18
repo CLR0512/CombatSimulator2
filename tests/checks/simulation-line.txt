@@ -1,0 +1,17 @@
+# A simulation line sets the Simulate page, and undo puts it back once. The line is Chk's own page with 250 trials,
+# copied with cs2 line copy sim; the checks run at 1,000.
+cs2 line copy sim
+expect reply "length="
+cs2 line read CS2-1NASQUu2J6jwDCBM4uBm7cW68IheNbPdBEoA5mEJrzx2Idb878hD1jfMhrsfYNjPJlaxJ8LUZNdIh25s54ZxpVV5oIzy6cay8y9sEgS2wCLAchnNFMliNFgjtjFRhWEXgaznLFmYdKF0hTBlJsRF8OlSiyx2nDy57vnBBI3pFV1igDBnvOcYbMrb6kPzeMSIjlQBB5qI4RXGpkeqEtdJoh9KyDJQc4CwmoGzr424q6fxhDO1mwv451oaUK1
+expect reply "simulation build="
+expect reply "settings: trials 1000 -> 250"
+cs2 line use CS2-1NASQUu2J6jwDCBM4uBm7cW68IheNbPdBEoA5mEJrzx2Idb878hD1jfMhrsfYNjPJlaxJ8LUZNdIh25s54ZxpVV5oIzy6cay8y9sEgS2wCLAchnNFMliNFgjtjFRhWEXgaznLFmYdKF0hTBlJsRF8OlSiyx2nDy57vnBBI3pFV1igDBnvOcYbMrb6kPzeMSIjlQBB5qI4RXGpkeqEtdJoh9KyDJQc4CwmoGzr424q6fxhDO1mwv451oaUK1 as=sim
+expect reply "used"
+cs2 line read CS2-1NASQUu2J6jwDCBM4uBm7cW68IheNbPdBEoA5mEJrzx2Idb878hD1jfMhrsfYNjPJlaxJ8LUZNdIh25s54ZxpVV5oIzy6cay8y9sEgS2wCLAchnNFMliNFgjtjFRhWEXgaznLFmYdKF0hTBlJsRF8OlSiyx2nDy57vnBBI3pFV1igDBnvOcYbMrb6kPzeMSIjlQBB5qI4RXGpkeqEtdJoh9KyDJQc4CwmoGzr424q6fxhDO1mwv451oaUK1
+expect reply "settings: as now"
+cs2 line undo
+expect reply "restored"
+cs2 line undo
+expect reply "nothing to undo"
+cs2 line read CS2-1NASQUu2J6jwDCBM4uBm7cW68IheNbPdBEoA5mEJrzx2Idb878hD1jfMhrsfYNjPJlaxJ8LUZNdIh25s54ZxpVV5oIzy6cay8y9sEgS2wCLAchnNFMliNFgjtjFRhWEXgaznLFmYdKF0hTBlJsRF8OlSiyx2nDy57vnBBI3pFV1igDBnvOcYbMrb6kPzeMSIjlQBB5qI4RXGpkeqEtdJoh9KyDJQc4CwmoGzr424q6fxhDO1mwv451oaUK1
+expect reply "settings: trials 1000 -> 250"

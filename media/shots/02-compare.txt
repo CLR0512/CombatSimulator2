@@ -1,0 +1,25 @@
+# Comparison, as staged: the ranged loadout (A) against the melee setup (B) on 27 targets, ranked by kills, with
+# Giant Chicken's fights side by side.
+cs2 side a base=Loadout2
+cs2 side b base=current
+cs2 ignore BlackstoneBasin/GasBall DragonsPass/Drake DragonsPass/GreenDragon DragonsPass/Wyvern GreenMangroves/MangroveCaterpillar GreenMangroves/MangroveMantis HobgolbinCamp MistyThicket/OakTreant MistyThicket/SpiritStag MistyThicket/Treant MistyThicket/WillOWisp StingingNest/AngryWasp StingingNest/GiantHornet StingingNest/RoyalBee ToweringDivide/DireWolf ToweringDivide/Harpy ToweringDivide/Wolf ToxicBog/CarrionCrow ToxicBog/Plaguewing ToxicBog/ToxicMoth ToxicBog/ToxicRazorfish master:Allevia master:Fells master:Galan master:Hans master:Kuren master:Satsgar
+cs2 compare selection a=Loadout2 b=current seed=1 trials=1000
+retry 300 cs2 wait timeout=9
+click Cs2RankBy
+# Kills or completions, by its place in the list: the dropdown's own button may say "Kills" too.
+click Cs2RankByItem_1
+click Cs2ModeList
+# The list is built a frame or so after the switch.
+wait 1000
+click Cs2CompareRow_CorruptedFarmlands_GiantChicken
+click "Fights"
+click Cs2ModeChart
+# Off the chart button, whose tooltip would show in the picture.
+hover Cs2TabSimulate
+wait 1500
+# A date would date the picture: "from an earlier run · <date>" goes, here and in the list.
+relabel " · from an earlier run · .*" ""
+capture Cs2Root matte
+background Backgrounds/Combat/CorruptedFarmlands.png
+# The run's status line under the results says how long it took, which differs between sets.
+vary 1080 860 360 30

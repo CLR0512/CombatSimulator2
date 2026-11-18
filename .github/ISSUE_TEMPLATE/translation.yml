@@ -1,0 +1,40 @@
+name: Translation
+description: Request a language, or report a wrong, missing or cut-off translation in Combat Simulator 2.
+labels: [translation]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Translations are made on [Crowdin](https://crowdin.com/project/combat-simulator-2), where anyone can help.
+        A language ships with CS2 once half of it is translated. The game's own names (items, monsters, skills)
+        come from the game and aren't translated here.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is it about
+      options:
+        - A language I'd like CS2 in
+        - A wrong translation
+        - A missing translation
+        - Text cut off or too long
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      placeholder: Français
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where and what
+      description: >-
+        For a mistake: where in CS2 it shows, what it says, and what it should say. A screenshot helps: paste or
+        drop it here.
+  - type: input
+    id: cs2-version
+    attributes:
+      label: CS2 version
+      description: About shows it.

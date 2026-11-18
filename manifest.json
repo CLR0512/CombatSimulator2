@@ -1,0 +1,9 @@
+{
+  "id": "CombatSimulator2",
+  "name": "Combat Simulator 2",
+  "version": "0.1.0-preview.1",
+  "author": "Crash",
+  "description": "A combat simulator mod for Melvor Idle 2.",
+  "dependencies": [],
+  "gameBuilds": [{ "build": "26724394", "version": "0.11.6-alpha.1" }]
+}

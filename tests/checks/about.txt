@@ -1,0 +1,59 @@
+# The About button opens About over the window; Escape and Close close it; its cards open the Guide and start the
+# Tour; Update notifications is switched there and read back.
+cs2 open simulate
+wait 1200
+click Cs2About
+wait 300
+cs2 ui
+expect reply "help=about"
+expect reply "about_dot=off"
+expect see "About"
+expect see "Combat Simulator 2"
+expect see "Save bug report"
+expect see "Stats"
+expect see "Built with AI assistance."
+expect see "Nothing is sent online."
+key escape
+wait 300
+cs2 ui
+expect reply "help=none"
+expect reply "open=true"
+click Cs2About
+wait 300
+click Cs2AboutDone
+wait 300
+cs2 ui
+expect reply "help=none"
+click Cs2About
+wait 300
+click Cs2AboutGuide
+wait 300
+cs2 ui
+expect reply "help=explainer"
+key escape
+wait 300
+click Cs2About
+wait 300
+click Cs2AboutTour
+wait 400
+cs2 ui
+expect reply "help=tour"
+expect reply "tour_step=1"
+key escape
+wait 300
+cs2 ui
+expect reply "help=none"
+click Cs2About
+wait 300
+click Cs2AboutNotify
+cs2 ui
+expect reply "update_notifications=off"
+click Cs2AboutNotify
+cs2 ui
+expect reply "update_notifications=on"
+key escape
+wait 300
+key escape
+wait 300
+cs2 ui
+expect reply "open=false"

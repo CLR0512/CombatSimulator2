@@ -1,0 +1,21 @@
+# Settings, Window, Language: CS2's own text follows the choice at once and keeps it; Same as the game follows the
+# game again. With a translation shipped, also pick it and look: CS2's text changes, the game's names don't.
+cs2 open settings
+wait 1000
+expect see "Language"
+expect see "Same as the game"
+cs2 ui
+expect reply "language=game"
+click Cs2Language
+wait 300
+click "English"
+wait 800
+cs2 ui
+expect reply "language=en shown=en"
+expect see "Language"
+click Cs2Language
+wait 300
+click "Same as the game"
+wait 800
+cs2 ui
+expect reply "language=game"

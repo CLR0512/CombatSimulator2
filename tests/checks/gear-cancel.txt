@@ -1,0 +1,9 @@
+# Cancelling a search leaves the saved runs and the answer kept before it as they were.
+cs2 runs
+cs2 gear HobgolbinCamp seed=1 short wait=0 kinds=none
+expect reply "running:"
+cs2 gear cancel
+expect reply "stopped before any set finished a stage: nothing kept"
+cs2 gear show
+expect reply "stopped before any set finished a stage: nothing kept"
+cs2 runs

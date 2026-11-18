@@ -1,0 +1,20 @@
+# A small window caps the Scale: 150% saved is drawn at the most the room allows and stays saved, and Settings says
+# why. With the game's UI scale at 1.0, a 1280×800 window leaves room for 120% beside the Bank; a skill's page adds
+# the game's widget strip, which leaves room for 115% only.
+goto bank
+window 1280 800
+wait 1500
+cs2 open settings
+cs2 scale 150
+expect reply "scale 150 cap 120 drawn 120"
+cs2 ui
+expect reply "scale=150"
+expect reply "scale_cap=120"
+expect reply "scale_drawn=120"
+expect see "Up to 120% on this screen."
+expect see "120%"
+cs2 scale 100
+window 1920 1080
+wait 1500
+cs2 ui
+expect reply "scale=100"

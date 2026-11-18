@@ -1,0 +1,33 @@
+# The header's Sim button shows whether CS2's window is open, whichever way it opened or closed, and the motion
+# level is chosen in Settings or by command and read back.
+cs2 close
+cs2 ui
+expect reply "open=false"
+expect reply "header_icon=normal"
+cs2 open settings
+cs2 ui
+expect reply "header_icon=selected"
+click Cs2MotionOff
+cs2 ui
+expect reply "motion=off"
+click Cs2MotionReduced
+cs2 ui
+expect reply "motion=reduced"
+cs2 motion full
+cs2 ui
+expect reply "motion=full"
+key escape
+wait 300
+cs2 ui
+expect reply "open=false"
+expect reply "header_icon=normal"
+click Cs2SimButton
+wait 300
+cs2 ui
+expect reply "open=true"
+expect reply "header_icon=selected"
+click Cs2SimButton
+wait 300
+cs2 ui
+expect reply "open=false"
+expect reply "header_icon=normal"

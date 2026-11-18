@@ -1,0 +1,7 @@
+# Opened from the Setup tab, the full stats view goes back to the Setup tab.
+cs2 open setup
+click "All 52"
+expect see "◂ Back to Setup"
+click "◂ Back to Setup"
+cs2 ui
+expect reply "view=setup"

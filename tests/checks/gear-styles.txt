@@ -1,0 +1,12 @@
+# With every style included, each style the character can fight in gets its own best set, and the answer names the
+# best overall; a style it can't search says why. Most slots locked; the release's weapons still make it 555 sets.
+cs2 gear GolbinForest/Golbin styles=all lock=Helmet,Torso,Legs,Cape,Gloves,Boots,Amulet,RingSlot1,Offhand seed=1 copies=4 where=host wait=9 kinds=none
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "style Magic: skipped, switch on Spell under Also try to include it"
+expect reply "style Melee: Weapon: Oak Bow → Adamant Sword; stance Block"
+expect reply "style Ranged: Weapon: Oak Bow → Maple Boomerang; stance Accurate"
+expect reply "best overall: Ranged"

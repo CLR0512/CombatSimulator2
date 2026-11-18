@@ -1,0 +1,9 @@
+# The full stats view opens from the Simulate view, lists the setup's 52 stats, and Back returns to Simulate.
+cs2 open stats
+expect see "Stats and modifiers"
+cs2 ui
+expect reply "view=stats"
+expect reply "stats_rows=52"
+click "◂ Back to results"
+cs2 ui
+expect reply "view=simulate"

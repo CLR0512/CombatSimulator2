@@ -1,0 +1,11 @@
+# The three fight numbers rank results like any stat; damage taken per second ranks lowest first. Adds one run.
+cs2 run GreenMangroves/CreeperVines HobgolbinCamp GolbinForest/Golbin seed=1
+cs2 wait timeout=9
+wait 1500
+cs2 result metric=fight:hit
+expect reply "HobgolbinCamp finished"
+expect reply " best"
+cs2 result metric=fight:dps
+expect reply " best"
+cs2 result metric=fight:taken
+expect reply " best"

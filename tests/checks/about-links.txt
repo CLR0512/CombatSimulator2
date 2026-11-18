@@ -1,0 +1,23 @@
+# About's links name the address each opens, read from the rows without opening them: the feedback form with CS2's
+# version and the game's filled in, the private route, the Discord channel; mod.io switched off. Their lines are
+# clipped labels, which see doesn't list. The disclaimer and the footer say what CS2 is and isn't.
+click Cs2About
+wait 300
+cs2 ui
+expect reply "Cs2AboutGitHub:https://github.com/Crashv0/CombatSimulator2 "
+expect reply "Cs2AboutFeedback:https://github.com/Crashv0/CombatSimulator2/issues/new?template=feedback.yml&cs2-version="
+expect reply "&game-version="
+expect reply "Cs2AboutReportBug:https://github.com/Crashv0/CombatSimulator2/issues/new?template=bug-report.yml "
+expect reply "Cs2AboutDiscord:https://discord.com/channels/625838709203271680/1029950790254731334 "
+expect reply "Cs2AboutPrivate:https://discord.com/users/187106829984202761 "
+expect reply "Cs2AboutModIo:off"
+expect reply "Cs2AboutTranslate:https://crowdin.com/project/combat-simulator-2"
+expect see "Send feedback"
+expect see "Direct message"
+expect see "Built with AI assistance."
+expect see "CS2 never changes or edits your game."
+expect see "Nothing is sent online."
+# The bridge lists a text longer than 60 characters cut to 59 and "…".
+expect see "Unofficial fan mod, not affiliated with or endorsed by Game…"
+click Cs2AboutDone
+wait 300

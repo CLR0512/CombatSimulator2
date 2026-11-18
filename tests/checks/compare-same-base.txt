@@ -1,0 +1,16 @@
+# Two sides on the same base, each with a change of its own: starting the comparison keeps both sides' changes.
+# Requirements are ignored: lowered levels could leave gear on that a side keeping to them can't run with.
+cs2 open simulate
+cs2 filter can-fight kinds=monsters areas=all search=Chicken
+cs2 side a base=current ignore-req=on level=Strength:50
+cs2 side b base=current ignore-req=on level=Defence:50
+wait 2500
+cs2 ui
+expect reply "side b base=current changes=1"
+cs2 start
+wait 4000
+cs2 wait timeout=9
+cs2 ui
+expect reply "side a base=current changes=1"
+expect reply "side b base=current changes=1"
+expect reply "level=Defence:50"

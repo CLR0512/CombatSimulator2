@@ -1,0 +1,83 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- CombatSimulator2's Godot-free statistics and results code, compiled in without the mod (which needs the game). -->
+  <PropertyGroup>
+    <AssemblyName>MelvorMods.CombatSimulator2.Tests</AssemblyName>
+    <RootNamespace>MelvorMods.CombatSimulator2.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <OutputType>Exe</OutputType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- Windows won't create the test exe on the WSL share. -->
+    <OutDir Condition="'$(LOCALAPPDATA)' != ''"
+      >$(LOCALAPPDATA)\MelvorMods\tests\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../src/Model/*.cs" Link="Model/%(Filename)%(Extension)" />
+    <Compile Include="../src/Model/Search/*.cs" Link="Model/Search/%(Filename)%(Extension)" />
+    <Compile Include="../src/Model/Slayer/*.cs" Link="Model/Slayer/%(Filename)%(Extension)" />
+    <Compile Include="../src/Panel/Widgets/MelvPalette.cs" Link="Panel/Widgets/MelvPalette.cs" />
+    <Compile Include="../src/Panel/Widgets/SkinChoice.cs" Link="Panel/Widgets/SkinChoice.cs" />
+    <Compile
+      Include="../src/Panel/Widgets/TourPlacement.cs"
+      Link="Panel/Widgets/TourPlacement.cs"
+    />
+    <Compile Include="../src/Panel/Widgets/PixelGrid.cs" Link="Panel/Widgets/PixelGrid.cs" />
+    <Compile Include="../src/Panel/Widgets/BarSlot.cs" Link="Panel/Widgets/BarSlot.cs" />
+    <Compile Include="../src/Host/Protocol.cs" Link="Host/Protocol.cs" />
+    <Compile Include="../src/Host/Protocol.Search.cs" Link="Host/Protocol.Search.cs" />
+    <Compile Include="../src/Host/RunGate.cs" Link="Host/RunGate.cs" />
+    <Compile Include="../src/Host/Protocol.Dev.cs" Link="Host/Protocol.Dev.cs" />
+    <Compile Include="../src/Host/DevFrameFallback.cs" Link="Host/DevFrameFallback.cs" />
+    <Compile Include="../src/Host/HostHealth.cs" Link="Host/HostHealth.cs" />
+    <Compile
+      Include="../src/Panel/Settings/HistoryStamp.cs"
+      Link="Panel/Settings/HistoryStamp.cs"
+    />
+    <Compile Include="../src/Host/HostIdle.cs" Link="Host/HostIdle.cs" />
+    <Compile Include="../src/Engine/MemoryReserve.cs" Link="Engine/MemoryReserve.cs" />
+    <Compile Include="../src/Engine/Dev/BenchLimits.cs" Link="Engine/Dev/BenchLimits.cs" />
+    <Compile Include="../src/Engine/Dev/Budgets.cs" Link="Engine/Dev/Budgets.cs" />
+    <Compile Include="../src/Commands/Dev/BudgetsReport.cs" Link="Commands/Dev/BudgetsReport.cs" />
+    <Compile Include="../src/Engine/ResultIndex.cs" Link="Engine/ResultIndex.cs" />
+    <Compile Include="../src/Engine/Search/SearchTimes.cs" Link="Engine/Search/SearchTimes.cs" />
+    <Compile Include="../src/Engine/Search/RaceChecks.cs" Link="Engine/Search/RaceChecks.cs" />
+    <Compile Include="../src/Engine/ProcessMeter.cs" Link="Engine/ProcessMeter.cs" />
+    <Compile Include="../src/Engine/RunPeak.cs" Link="Engine/RunPeak.cs" />
+    <Compile Include="../src/Common/ByteMask.cs" Link="Common/ByteMask.cs" />
+    <Compile Include="../src/Engine/SlotClock.cs" Link="Engine/SlotClock.cs" />
+    <Compile Include="../src/Engine/DefaultCopies.cs" Link="Engine/DefaultCopies.cs" />
+    <Compile Include="../src/Commands/RunTimingsText.cs" Link="Commands/RunTimingsText.cs" />
+    <Compile Include="../src/Commands/ResultText.cs" Link="Commands/ResultText.cs" />
+    <Compile Include="../src/Commands/ResultText.Master.cs" Link="Commands/ResultText.Master.cs" />
+    <Compile Include="../src/Commands/GearText.cs" Link="Commands/GearText.cs" />
+    <Compile Include="../src/Commands/GearText.Sets.cs" Link="Commands/GearText.Sets.cs" />
+    <Compile Include="../src/Commands/GearText.Choices.cs" Link="Commands/GearText.Choices.cs" />
+    <Compile Include="../src/Commands/GearPlanText.cs" Link="Commands/GearPlanText.cs" />
+    <Compile Include="../src/Commands/BlocksText.cs" Link="Commands/BlocksText.cs" />
+    <Compile Include="../src/Commands/LoadoutsText.cs" Link="Commands/LoadoutsText.cs" />
+    <Compile Include="../src/Commands/FightText.cs" Link="Commands/FightText.cs" />
+    <Compile Include="../src/Commands/CompareRowText.cs" Link="Commands/CompareRowText.cs" />
+    <Compile Include="../src/Common/Fmt.cs" Link="Common/Fmt.cs" />
+    <Compile Include="../src/Core/ModalStack.cs" Link="Core/ModalStack.cs" />
+    <Compile Include="../src/Core/WorkerArgs.cs" Link="Core/WorkerArgs.cs" />
+    <Compile Include="../src/Core/HeaderRegistry.cs" Link="Core/HeaderRegistry.cs" />
+    <Compile Include="../src/Common/LogScope.cs" Link="Common/LogScope.cs" />
+    <Compile Include="../src/Host/HostLogFiles.cs" Link="Host/HostLogFiles.cs" />
+    <Compile Include="../src/Host/HostDumps.cs" Link="Host/HostDumps.cs" />
+    <Compile Include="../src/Common/LogTail.cs" Link="Common/LogTail.cs" />
+    <Compile Include="../src/Common/Redact.cs" Link="Common/Redact.cs" />
+    <Compile Include="../src/Common/ReportText.cs" Link="Common/ReportText.cs" />
+    <Compile Include="../src/Engine/ReportWriter.cs" Link="Engine/ReportWriter.cs" />
+    <Compile Include="../src/Host/CrashEventLog.cs" Link="Host/CrashEventLog.cs" />
+    <Compile Include="../src/Common/ReportLinks.cs" Link="Common/ReportLinks.cs" />
+    <Compile Include="../src/Common/Links.cs" Link="Common/Links.cs" />
+    <PackageReference Include="xunit.v3" />
+    <!-- Syntax only: the layer test reads the mod's sources as text. -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+    <!-- Tests read the mod's sources and their own fixtures, wherever the test exe is built. -->
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>ModFolder</_Parameter1>
+      <_Parameter2>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)/..'))</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+</Project>

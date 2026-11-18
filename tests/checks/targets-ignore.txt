@@ -1,0 +1,19 @@
+# Targets left out from an area and from a list row: the count and the run button follow the one set; an ignored
+# row stays in the list, its button turned to Return, which brings that one target back. The strip starts closed.
+# Chk can fight 65 (see targets-filter).
+cs2 filter can-fight kinds=monsters,dungeons,slayer areas=all search=
+cs2 unignore all
+click Cs2ModeList
+cs2 ignore area=ToxicBog
+expect reply "ignored=5 to-run=60"
+click "✕ Ignore" 1
+cs2 ui
+expect reply "targets shown=65 ignored=6 to-run=59"
+expect reply "strip=closed"
+expect reply "button=▶ Simulate 59 targets"
+expect reply "strip_area ToxicBog 5 ignored=5"
+expect see "Return"
+click "Return" 1
+cs2 ui
+expect reply "targets shown=65 ignored=5 to-run=60"
+cs2 unignore all

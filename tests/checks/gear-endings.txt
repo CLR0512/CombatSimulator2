@@ -1,0 +1,9 @@
+# How a search ends when there is no better set: current gear is as good as anything, every set dies, or nothing
+# is left to try. One slot is free (the cape, where current gear is best; the helmet for the deaths), so each search is short.
+cs2 gear GolbinForest/Golbin seed=1 trials=30 lock=Helmet,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots kinds=none
+expect reply "keep what you have: no set is better by more than the margin"
+cs2 gear GreenMangroves/MangroveStrider seed=1 trials=30 lock=Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots level=Hitpoints:10 level=Defence:1 kinds=none
+expect reply "no set within the limit: closest"
+expect reply "% deaths"
+cs2 gear GreenMangroves/MangroveStrider seed=1 trials=30 lock=Cape,Amulet,Ammo,Weapon,Torso,Offhand,Legs,RingSlot1,Gloves,Boots level=Hitpoints:10 level=Defence:1 deaths=any kinds=none
+expect reply "any deaths, if survived once"

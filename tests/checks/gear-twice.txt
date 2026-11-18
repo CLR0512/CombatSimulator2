@@ -1,0 +1,22 @@
+# The same search twice on four copies gives the same answer, and a set fought late (after many with loot chances)
+# gives the hash a run of the same changes gives: a copy is put back exactly between sets. Chk in its gear (Oak Bow,
+# Elite Amulet of Ranged, Pestilence Ring): retake the hashes when it or the game changes. No set dies on Golbin, so
+# every set is as good and listed with its hash.
+cs2 gear GolbinForest/Golbin metric=deaths lock=Weapon,Ammo,Cape,Gloves,Offhand,Torso,Boots,Helmet,Legs trials=100 seed=1 copies=4 where=host wait=9 kinds=none
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "sets: 204 possible, 0 ruled out, 204 simulated"
+expect reply "Silver Topaz Amulet; RingSlot1: Pestilence Ring → Royal Bee Ring   hash 08ec00e9dca2"
+expect reply "Silver Topaz Amulet; RingSlot1: Pestilence Ring → Glowstone Ring   hash 61d30c6c188a"
+cs2 gear GolbinForest/Golbin metric=deaths lock=Weapon,Ammo,Cape,Gloves,Offhand,Torso,Boots,Helmet,Legs trials=100 seed=1 copies=4 where=host wait=9 kinds=none
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "sets: 204 possible, 0 ruled out, 204 simulated"
+expect reply "Silver Topaz Amulet; RingSlot1: Pestilence Ring → Royal Bee Ring   hash 08ec00e9dca2"
+expect reply "Silver Topaz Amulet; RingSlot1: Pestilence Ring → Glowstone Ring   hash 61d30c6c188a"
+cs2 run GolbinForest/Golbin seed=1 trials=100 equip=Amulet:SilverTopazAmulet equip=RingSlot1:RoyalBeeRing
+cs2 wait timeout=9
+cs2 result
+expect reply "results 08ec00e9dca2"

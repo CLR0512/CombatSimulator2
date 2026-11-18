@@ -1,0 +1,9 @@
+# A report says what each run ran and lists the snapshots of failed runs, and leaves them out with the save.
+cs2 report
+expect reply "runs.json"
+expect reply "panel.txt"
+expect reply "snapshots.txt"
+expect reply "save/Chk.save"
+cs2 report no-save
+expect reply "runs.json"
+expect reply "snapshots.txt"

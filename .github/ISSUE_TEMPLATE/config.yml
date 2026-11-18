@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions on Discord
+    url: https://discord.com/channels/625838709203271680/1029950790254731334
+    about: Ask in #mod-bug-reports on the Melvor Idle Discord.
+  - name: Translate on Crowdin
+    url: https://crowdin.com/project/combat-simulator-2
+    about: Help translate CS2 into your language.

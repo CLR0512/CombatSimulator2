@@ -1,0 +1,17 @@
+# A finished comparison is kept and listed, newest first, and offered again where a comparison is chosen.
+cs2 whatif Murkwoods/MurkwoodSpider Murkwoods/MurkwoodSpinner GreenMangroves/CreeperVines level=Hitpoints:10 level=Defence:1 seed=1
+cs2 wait timeout=9
+wait 1500
+cs2 compare list
+expect reply "what-if A run-"
+expect reply "targets=3"
+cs2 ui
+expect reply "comparisons kept="
+cs2 side b off
+cs2 open simulate
+wait 1000
+click "+ Compare…"
+expect see "Recent comparisons"
+cs2 ui
+expect reply "recent="
+click Cs2PickClose

@@ -1,0 +1,19 @@
+# Best loadouts on Allevia: the master fought with the setup and with every monster on each of Chk's three saved
+# loadouts, one seed; per monster a loadout is picked only when it beats the setup beyond its range, ties are named, and
+# the picks go on side B as one change. Run in the game's process.
+cs2 loadouts
+expect reply "Loadout1  "
+expect reply "  unlocked"
+cs2 loadouts best master:Allevia seed=1 trials=300 metric=xp:MelvorBase:Slayer where=game
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 loadouts best status
+expect reply "master:Allevia · best loadouts · 4 choices · metric xp:MelvorBase:Slayer · seed 1"
+expect reply "SlimeForest/RedSlime       Loadout1     +17.71% [13.6, 21.82]"
+expect reply "SlimeForest/RainbowSlime   setup        tie with Loadout1, Loadout2"
+expect reply "master: +12.82% [10.89, 14.74] xp:MelvorBase:Slayer against the setup"
+expect reply "on side B: loadouts=Allevia:BlackSlime@Loadout1,BlueSlime@Loadout1,GreenSlime@Loadout1,RedSlime@Loadout1"
+cs2 side b
+expect reply "loadouts=Allevia:BlackSlime@Loadout1,BlueSlime@Loadout1,GreenSlime@Loadout1,RedSlime@Loadout1 accepted was=none"

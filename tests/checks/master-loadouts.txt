@@ -1,0 +1,33 @@
+# A master's monsters each on a saved loadout of their own: Golbin on Chk's melee Loadout 1, Jack O'Lantern on its
+# magic Loadout 3, the rest on the setup. Each monster wears its loadout through the game's swap; the pool lines name
+# it, the master assumes free swaps, and the same seed gives the same hash. Run in the game's process.
+cs2 whatif check loadouts=Kuren:Golbin@Loadout9
+expect reply "loadouts=Kuren:Golbin@Loadout9 refused was=none no loadout Loadout9"
+cs2 whatif check loadouts=Kuren:RedSlime@Loadout1
+expect reply "Red Slime is not in Kuren's pool"
+cs2 whatif master:Kuren loadouts=Kuren:Golbin@Loadout1,JackOLantern@Loadout3 seed=1 trials=1000 fresh where=game
+wait 9000
+cs2 wait timeout=9
+cs2 wait timeout=9
+cs2 wait timeout=9
+cs2 compare show metric=xp:MelvorBase:Slayer
+expect reply "loadouts=Kuren:Golbin@Loadout1,JackOLantern@Loadout3 accepted was=none"
+expect reply "B=5,048 [5,014, 5,082]"
+expect reply "hash=02951ace4ec7"
+cs2 result master:Kuren metric=xp:MelvorBase:Slayer
+expect reply "deaths/hour · loadout):"
+expect reply "GolbinForest/Golbin  7.0 %  4,402 [4,355, 4,450]  0 [0, 0]  Loadout1"
+expect reply "CorruptedFarmlands/JackOLantern  25.2 %  3,816 [3,749, 3,884]  0 [0, 0]  Loadout3"
+expect reply "Loadout swaps between tasks cost no time"
+# A search over the master fights the monsters on their own loadout once, keeps them, and says so. (With every monster
+# on one it is refused, which a check can't expect: a refusal is an error reply.) The body, jewellery and feet are
+# locked so it ends in about 25 s; it finds what the open search finds.
+cs2 gear master:Kuren seed=1 trials=30 short wait=0 where=game kinds=none lock=Cape,Amulet,Torso,Legs,RingSlot1,Gloves,Boots loadouts=Kuren:Golbin@Loadout1
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "kept their own loadout: GolbinForest/Golbin (Loadout1)"
+expect reply "hash 8aec27393a65"

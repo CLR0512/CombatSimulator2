@@ -1,0 +1,9 @@
+# Side B's card has Edit too, whatever B starts from: it opens the Setup tab on B.
+click "+ Compare…"
+expect see "Your loadouts"
+click "Compare" 2
+expect see "✕ Clear"
+click Cs2CardEditB
+cs2 ui
+expect reply "view=setup"
+expect reply "editing=b page=gear"

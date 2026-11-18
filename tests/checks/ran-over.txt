@@ -1,0 +1,12 @@
+# Once a trial has finished, a trial over the limit is counted as ran over and the target fights on: with Chk's bow
+# a Willow Treant's armour keeps its kill time just under the limit, so a few of its fights pass it. Adds one small run.
+cs2 run MistyThicket/WillowTreant seed=1
+wait 3000
+cs2 wait timeout=9
+wait 1500
+cs2 result
+expect reply "MistyThicket/WillowTreant finished"
+expect reply "ran-over 3/1000"
+cs2 result MistyThicket/WillowTreant full
+expect reply "fights: 1000 trials, 3 ran over"
+expect reply "ran over 0.3%"

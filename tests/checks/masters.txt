@@ -1,0 +1,30 @@
+# A Slayer master is a target: its monsters are fought on its task, its figures are over its tasks (Slayer XP among
+# them), its assumptions are its own, and the same seed gives the same hash every time.
+cs2 run master:Kuren seed=1 trials=1000 fresh
+cs2 wait timeout=9
+cs2 result
+expect reply "results 9998bde78716"
+expect reply "master:Kuren finished kills/hour"
+cs2 result master:Kuren metric=xp:MelvorBase:Slayer
+expect reply "Kuren's tasks · 10 monsters, 0 blocked"
+expect reply "xp:MelvorBase:Slayer 5,831"
+expect reply "Auto Slayer on, starting in the task's area"
+cs2 run master:Kuren seed=1 trials=1000 fresh
+cs2 wait timeout=9
+cs2 result
+expect reply "results 9998bde78716"
+# Galan's monsters take minutes a kill: the master's own trial limit lets every one of them finish.
+cs2 run master:Galan seed=1 trials=300 fresh
+cs2 wait timeout=9
+cs2 wait timeout=9
+cs2 result
+expect reply "results d96e554680a5"
+cs2 result master:Galan metric=xp:MelvorBase:Slayer
+expect reply "ToweringDivide/Harpy  6.5 %"
+expect reply "xp:MelvorBase:Slayer 1,938"
+# A master the setup hasn't unlocked is refused with what it needs, as any locked target is.
+cs2 run master:Fells master:Feriken level=Slayer:1 seed=1 trials=30
+cs2 wait timeout=9
+cs2 result
+expect reply "master:Fells refused Slayer Level 30"
+expect reply "master:Feriken refused Slayer Level 60"

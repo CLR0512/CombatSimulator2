@@ -1,0 +1,89 @@
+name CS2
+# A mid-game character: combat skills at 50, and a loadout for each style with gear for that level, Lobster as food in
+# each. Loadout 1 melee, 2 ranged, 3 magic (Water Wave from a Mystic Water Staff), so the frames have
+# something to compare.
+unlock shop
+level Attack 50
+level Strength 50
+level Defence 50
+level Hitpoints 50
+level Ranged 50
+level Magic 50
+level Prayer 50
+level Slayer 50
+give ToadskinAmulet 2
+give SnakeskinCape 3
+give SnakeFangRing
+give MantisDefender
+give ElkAntlerHelmet
+give AdamantScimitar
+give MithrilPlatebodyU
+give MithrilPlatelegsU
+give MithrilBootsU
+give MithrilGloves
+give ToxicStrikesBow
+give BoneArrow 2000
+give ChainmailCowlU
+give VenomQueenBody
+give ChainmailChapsU
+give SpiderSilkBoots
+give SpiderSilkVambraces
+give PestilenceRing
+give MysticWaterStaff
+give WaterWizardHatU
+give WaterWizardRobesU
+give WaterWizardBottomsU
+give WaterWizardBootsU
+give BasicWizardMitts
+give GoldSapphireAmulet
+give GoldSapphireRing
+give WaterRune 100000
+give DeathRune 100000
+loadout 1 Melee
+equip AdamantScimitar
+equip MantisDefender
+equip ElkAntlerHelmet
+equip MithrilPlatebodyU
+equip MithrilPlatelegsU
+equip MithrilBootsU
+equip MithrilGloves
+equip ToadskinAmulet
+equip SnakeFangRing
+equip SnakeskinCape
+stance Slash
+food Lobster 1000
+loadout 2 Ranged
+equip ToxicStrikesBow
+equip BoneArrow
+equip ChainmailCowlU
+equip VenomQueenBody
+equip ChainmailChapsU
+equip SpiderSilkBoots
+equip SpiderSilkVambraces
+equip ToadskinAmulet
+equip PestilenceRing
+equip SnakeskinCape
+stance Accurate
+food Lobster 1000
+loadout 3 Magic
+equip MysticWaterStaff
+equip WaterWizardHatU
+equip WaterWizardRobesU
+equip WaterWizardBottomsU
+equip WaterWizardBootsU
+equip BasicWizardMitts
+equip GoldSapphireAmulet
+equip GoldSapphireRing
+equip SnakeskinCape
+stance Offensive
+food Lobster 1000
+spell WaterWave
+loadout 1
+# Met monsters, so the spoiler guard names them; the rest of the world stays hidden.
+kills Golbin 120
+kills GolbinScout 80
+kills Hobgolbin 40
+kills GiantChicken 60
+kills Scarecrow 30
+kills GreenSlime 50
+kills MangroveStrider 25

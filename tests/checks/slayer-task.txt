@@ -1,0 +1,28 @@
+# Single monsters on or off a slayer task, whatever the save holds: Chk's save has Red Slime on Allevia's task. Off
+# task it gives no Slayer XP and says so; on task it gives the game's 12.65 Slayer XP and 11 coins a kill and names the
+# master. A monster's own choice wins over the side's, and one no master gives is fought off task. Run in the game's
+# process.
+cs2 compare SlimeForest/RedSlime a=current b=current a.task=off b.task=on seed=1 trials=1000 where=game
+cs2 wait timeout=9
+cs2 wait timeout=9
+cs2 compare show metric=xp:MelvorBase:Slayer
+expect reply "not simulated A: Green Dragonhide Cowl: "
+expect reply ", on a Slayer task only. This setup fights off task."
+expect reply "SlimeForest/RedSlime  A=0 [0, 0]  B=5,990 [5,877, 6,102]"
+expect reply "hash=96d448171cd3"
+cs2 result SlimeForest/RedSlime unit=kill
+expect reply "on Allevia's task"
+expect reply "xp:MelvorBase:Slayer 12.65 [12.65, 12.65]"
+expect reply "currency:MelvorBase:SlayerCoins 11 [11, 11]"
+cs2 compare off
+cs2 run SlimeForest/RedSlime SlimeForest/GreenSlime task=off taskfor=SlimeForest/RedSlime:on seed=1 trials=300 fresh where=game
+cs2 wait timeout=9
+cs2 result SlimeForest/RedSlime
+expect reply "on Allevia's task"
+cs2 result SlimeForest/GreenSlime
+expect reply "not simulated: Green Dragonhide Cowl: "
+expect reply ", on a Slayer task only. This setup fights off task."
+cs2 run MistyThicket/OakTreant task=on seed=1 trials=10 fresh where=game
+cs2 wait timeout=9
+cs2 result MistyThicket/OakTreant
+expect reply "no master gives it: off task"

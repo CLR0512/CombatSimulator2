@@ -1,0 +1,17 @@
+# Any setup: B is a copy of the character with requirements ignored, higher levels and gear it doesn't own, and the
+# offhand picker open beside the gear, unowned items shown.
+cs2 side b base=current ignore-req=on level=Attack:60 level=Defence:60 level=Strength:60 equip=Amulet:EliteAmuletOfMelee equip=Boots:AdamantBootsU equip=Cape:DireWolfCloak equip=Gloves:BasicSlayerGauntlet equip=Helmet:AdamantHelmetU equip=Legs:AdamantPlatelegsU equip=RingSlot1:RoyalBeeRing equip=Torso:AdamantPlatebodyU equip=Weapon:StaggeringLashGreatsword toolbelt=CombatUtility1:GreenButterflyinaJar stance=Crush prayer=SteelSkin:on
+cs2 open setup page=gear side=b
+wait 1000
+click Cs2SlotOffhand
+wait 800
+# The panel remembers whether unowned items show: each row then says so.
+unless "~Label .unowned." see all then click Cs2ItemUnowned
+wait 600
+# Down to the shields: some unowned, one needing a level, the one A wears.
+scroll Cs2ItemRow1 down 9
+# Off the rows, whose item card would cover the page list.
+hover Cs2Title
+wait 1500
+capture Cs2Root matte
+background Backgrounds/Combat/GolbinForest.png
