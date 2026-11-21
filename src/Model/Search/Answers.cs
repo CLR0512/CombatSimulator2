@@ -103,8 +103,10 @@ public static class Answers
                 )
                 {
                     Mark =
-                        change.Item != null && catalogue?.Item(change.Item) is { Wearable: false } locked
-                            ? Mark.Locked(locked.Unmet[0])
+                        change.Item != null
+                        && catalogue?.Item(change.Item) is { } item
+                        && Mark.OfItem(item) is { Kind: not MarkKind.None } mark
+                            ? mark
                             : null,
                 }
             );
@@ -161,7 +163,8 @@ public static class Answers
             case AnswerState.NoneWithinLimit:
                 // The closest may have been dropped at an earlier stage: its last result is the one it left with.
                 var closest = DeathLimits.Closest(
-                    all.Values.Where(r => Race.Value(r, prices) != null).Select(r => (r.Index, r.Result))
+                    all.Values.Select(r => (r.Index, r.Result, Race.Value(r, prices))).Where(r => r.Item3 != null),
+                    Ranking.LowerIsBetter(goal.Metric)
                 );
                 answer.Closest = closest is { } index ? Shown(index) : null;
                 break;

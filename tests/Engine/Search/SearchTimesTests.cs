@@ -1,5 +1,6 @@
 using MelvorMods.CombatSimulator2.Engine.Search;
 using MelvorMods.CombatSimulator2.Model;
+using MelvorMods.CombatSimulator2.Model.Search;
 using Xunit;
 
 namespace MelvorMods.CombatSimulator2.Tests;
@@ -28,6 +29,29 @@ public sealed class SearchTimesTests
         var kind = SearchTimes.PerTrial(Target("New"), TargetKind.Enemy);
         Assert.NotNull(kind);
         Assert.True(kind > 0);
+    }
+
+    [Fact]
+    public void EveryItemHasALimitOfItsOwn()
+    {
+        var request = SearchRequestTests.Request();
+        Assert.Equal(150, PlanPreview.LimitFor(ItemPool.Owned));
+        Assert.Equal(300, PlanPreview.LimitFor(ItemPool.Every));
+        Assert.Equal(150, SearchTimes.Limit(request));
+        Assert.Equal(300, SearchTimes.Limit(request with { Pool = ItemPool.Every }));
+    }
+
+    [Fact]
+    public void AClimbIsTimedByItsOwnStepsPerSet()
+    {
+        var target = Target("Climb");
+        // Two steps of a 1,000-trial search: 100 sets in 15 s, then 50 sets in 9 s.
+        SearchTimes.RecordStep(target, TargetKind.Dungeon, 100, 1000, 15);
+        SearchTimes.RecordStep(target, TargetKind.Dungeon, 50, 1000, 9);
+        var pace = SearchTimes.StepPace(target, TargetKind.Dungeon)!.Value;
+        Assert.Equal(24 / 150_000.0, pace, 9);
+        // The climb's passes of 600 sets at that pace: 0.16 s a set.
+        Assert.Equal(SearchTimes.ClimbPasses * 600 * 0.16, SearchTimes.ClimbExpected(pace, 600, 1000), 6);
     }
 
     [Fact]

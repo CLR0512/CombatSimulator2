@@ -86,9 +86,22 @@ internal static class SearchPlanning
     public static bool TooLong(SearchPlan plan, SearchRequest request, double? perTrial) =>
         !plan.Climb
         && (
-            Expected(plan, request, perTrial) > SearchTimes.LongSearchSeconds
+            Expected(plan, request, perTrial) > PlanPreview.LimitFor(request.Pool)
             || perTrial == null && plan.Candidates.Count > PlanPreview.MostUntimed
         );
+
+    /// <summary>
+    /// The seconds a climb over <paramref name="plan"/> is expected to take: its widest pass, the weapon step over
+    /// every branch and each slot's choices on the branch with the most, at a climb step's <paramref name="pace"/>;
+    /// null when it doesn't climb or no climb was timed.
+    /// </summary>
+    public static double? ClimbExpected(SearchPlan plan, SearchRequest request, double? pace)
+    {
+        if (!plan.Climb || pace is not { } seconds || plan.Branches.Count == 0)
+            return null;
+        var slots = plan.Branches.Max(b => b.Units.Sum(u => u.Pool.Count + (u.AllowEmpty ? 1 : 0)));
+        return SearchTimes.ClimbExpected(seconds, plan.Branches.Count + slots, request.Trials);
+    }
 
     /// <summary>The seconds fighting every set of <paramref name="plan"/> is expected to take; null when not known.</summary>
     public static double? Expected(SearchPlan plan, SearchRequest request, double? perTrial) =>

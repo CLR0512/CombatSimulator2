@@ -56,6 +56,41 @@ public sealed class GearTextTests
         Assert.Matches("   hash [0-9a-f]{12}$", lines[10]);
     }
 
+    private static Answer InPool(Answer answer, bool wearable = false, params string[] leftOut)
+    {
+        answer.Key = answer.Key.WithPool(
+            SearchRequestTests.Request() with
+            {
+                Pool = ItemPool.Every,
+                WearableOnly = wearable,
+                LeftOutSources = leftOut.ToHashSet(),
+            }
+        );
+        return answer;
+    }
+
+    [Fact]
+    public void AnAnswerFromEveryItemNamesItsPool()
+    {
+        var lines = Lines(InPool(Answered([Set(0, 12), Set(1, 10), Set(2, 10.02)])));
+        Assert.EndsWith("] kills (300 → 360 /h), stance Block · pool: every item", lines[5], StringComparison.Ordinal);
+        var narrowed = Lines(InPool(Answered([Set(0, 12), Set(1, 10)]), true, "Shop", "Golbin"));
+        Assert.EndsWith(
+            " · pool: every item, wearable at my levels, leaving out Golbin, Shop",
+            narrowed[5],
+            StringComparison.Ordinal
+        );
+        var kept = Lines(InPool(Answered([Set(0, 10), Set(1, 10.02), Set(2, 14)])));
+        Assert.Contains(
+            "keep what you have: no set is better by more than the margin (1 as good) · pool: every item",
+            kept
+        );
+        Assert.DoesNotContain(
+            Lines(Answered([Set(0, 12), Set(1, 10)])),
+            l => l.Contains("pool:", StringComparison.Ordinal)
+        );
+    }
+
     [Fact]
     public void TheHashIsTheOneARunOfTheSetPrints()
     {
@@ -85,7 +120,7 @@ public sealed class GearTextTests
     {
         Assert.Equal(
             "no set within the limit: closest Helmet: StoneHelmet → IronHelmet; Weapon: StoneSword → IronBattleaxe; stance Block with 1% deaths",
-            Lines(Answered([Set(0, 12, deaths: 40), Set(1, 10, deaths: 3)]))[^1]
+            Lines(Answered([Set(0, 12, deaths: 40), Set(1, 10, deaths: 3)]))[^2]
         );
         Assert.Equal(
             "no set kills this target: no result",

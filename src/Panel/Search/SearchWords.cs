@@ -15,7 +15,7 @@ internal static class SearchWords
     /// A search's time left in whole seconds, "45s left", "2m 05s left", "1h 02m 05s left"; "finishing" once its steps
     /// are done; empty while too early to say.
     /// </summary>
-    public static string TimeLeft(double? seconds)
+    public static string TimeLeft(double? seconds, bool atMost = false)
     {
         if (seconds is not { } left)
             return "";
@@ -24,6 +24,15 @@ internal static class SearchWords
             return Tr.Get("finishing");
         var whole = (long)Math.Ceiling(left);
         var (h, m, sec) = (whole / 3600, whole / 60 % 60, (whole % 60).ToString("00", Tr.Culture));
+        if (atMost)
+            return h > 0
+                    // Translators: A gear search's time left when only the player's limit is known: "at most 1h 02m 05s left".
+                    ? Tr.Format("at most {0}h {1}m {2}s left", [h, m.ToString("00", Tr.Culture), sec])
+                : m > 0
+                    // Translators: A gear search's time left when only the player's limit is known: "at most 9m 59s left".
+                    ? Tr.Format("at most {0}m {1}s left", [m, sec])
+                // Translators: A gear search's time left when only the player's limit is known: "at most 45s left".
+                : Tr.Format("at most {0}s left", whole);
         return h > 0
                 // Translators: A gear search's estimated time left: "1h 02m 05s left".
                 ? Tr.Format("{0}h {1}m {2}s left", [h, m.ToString("00", Tr.Culture), sec])
@@ -204,4 +213,36 @@ internal static class SearchWords
     // A share as signed percent points with one decimal: "+6.5".
     private static string Share(double fraction) =>
         (fraction >= 0 ? "+" : "") + (fraction * 100).ToString("0.0", Tr.Culture);
+
+    // How the session's search for this target ended without an answer to show.
+    public static string? Ended(Answer? answer) =>
+        answer?.State switch
+        {
+            AnswerState.Cancelled => Tr.Format("Cancelled after stage {0}.", answer.CancelledAfter ?? 0),
+            AnswerState.Failed => Tr.Format("The search failed: {0}", answer.Reason is { } why ? Tr.Note(why) : "–"),
+            _ => null,
+        };
+
+    // Another search or a run under way: one at a time.
+    public static string? Busy() =>
+        Engine.RunService.Instance.Search is { IsActive: true } active
+            ? Tr.Format(
+                "A search for {0} is running: wait for it or cancel it first.",
+                Spoilers.Current.Name(active.TargetName)
+            )
+        : Engine.RunService.Instance.IsActive ? Tr.Get("A run is going: wait for it or cancel it first.")
+        : null;
+
+    // A set's changed slots on one line: "Weapon: Rune Sword → Dragon Sword; Stance: Slash".
+    public static string SetLine(SetResult set)
+    {
+        var names = PanelState.Names();
+        var parts = set
+            .Slots.Select(s => Tr.Format("{0}: {1}", [names(s.Slot), s.NewName ?? Tr.Get("nothing")]))
+            .ToList();
+        if (set.Stance != null)
+            parts.Add(Tr.Format("Stance: {0}", PanelState.Names()(set.Stance)));
+        parts.AddRange(SetupRows.ChoiceParts(set));
+        return parts.Count == 0 ? Tr.Get("current gear") : string.Join("; ", parts);
+    }
 }

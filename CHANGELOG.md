@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.0-preview.2 (2026-11-21)
+
+### Added
+
+- Find best setup can search every item in the game, narrowed to what you can wear or have reached
+- Items you don't own say where they come from; hover for the full source
+- The spoiler guard hides chests that only hidden monsters drop
+- Slots your goal can't tell apart keep what you wear or take the safer item; Gap from now shows what to get first
+- Set how long a gear search may run (15 min by default)
+- Slayer tasks follow whichever ran last, Simulate tasks or Find best
+
+### Fixed
+
+- When a close call changes a search's answer, the sets and choices shown beside it now match it
+- The About button's icon lines up with the other header buttons
+- Marking a quest done on the Setup tab also completes its tasks that wait for Confirm
+- Gear searches read Early Access's item stats again, so they fight far fewer sets
+- Best setup searches include the Meteorite and Refined Meteorite Javelins
+- Slayer Coins and XP for your current task no longer show too low with Slayer task "As save"
+- Searches from a magic setup show their gain over your gear again
+
 ## 0.1.0-preview.1
 
 The first release, for Melvor Idle 2 Early Access (game version 0.11.6-alpha.1).

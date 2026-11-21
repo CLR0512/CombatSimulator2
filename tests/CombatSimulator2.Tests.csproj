@@ -53,6 +53,7 @@
     <Compile Include="../src/Commands/GearText.Sets.cs" Link="Commands/GearText.Sets.cs" />
     <Compile Include="../src/Commands/GearText.Choices.cs" Link="Commands/GearText.Choices.cs" />
     <Compile Include="../src/Commands/GearPlanText.cs" Link="Commands/GearPlanText.cs" />
+    <Compile Include="../src/Commands/BestInSlotText.cs" Link="Commands/BestInSlotText.cs" />
     <Compile Include="../src/Commands/BlocksText.cs" Link="Commands/BlocksText.cs" />
     <Compile Include="../src/Commands/LoadoutsText.cs" Link="Commands/LoadoutsText.cs" />
     <Compile Include="../src/Commands/FightText.cs" Link="Commands/FightText.cs" />

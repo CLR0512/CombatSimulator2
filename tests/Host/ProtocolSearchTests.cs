@@ -175,6 +175,53 @@ public sealed class ProtocolSearchTests
     }
 
     [Fact]
+    public void ARequestCarriesItsPool()
+    {
+        var request = new SearchRequest(
+            SearchKind.BestGear,
+            new Setup { Character = "Dev" },
+            "MelvorBase:Farm/MelvorBase:Cow",
+            new Goal("kills"),
+            1000,
+            4
+        )
+        {
+            Pool = ItemPool.Every,
+            WearableOnly = true,
+            ReachedOnly = true,
+            LeftOutSources = new HashSet<string> { "Shop", "Golbin" },
+        };
+        var back = RoundTrip(
+            MessageKind.SearchPlan,
+            new SearchPlanMessage(1, "s", "Dev", "sha", "b", null, request, PlanWhat.Search)
+        ).Request;
+        Assert.Equal(ItemPool.Every, back.Pool);
+        Assert.True(back.WearableOnly);
+        Assert.True(back.ReachedOnly);
+        Assert.Equal(["Golbin", "Shop"], back.LeftOutSources.Order(StringComparer.Ordinal));
+    }
+
+    [Fact]
+    public void ARequestWithoutAPoolReadsAsOwned()
+    {
+        var request = new SearchRequest(
+            SearchKind.BestGear,
+            new Setup { Character = "Dev" },
+            "MelvorBase:Farm/MelvorBase:Cow",
+            new Goal("kills"),
+            1000,
+            4
+        );
+        var json = System.Text.Json.Nodes.JsonNode.Parse(Json(request))!.AsObject();
+        foreach (var field in new[] { "pool", "wearableOnly", "reachedOnly", "leftOutSources" })
+            Assert.True(json.Remove(field), field);
+        var back = JsonSerializer.Deserialize<SearchRequest>(json.ToJsonString(), RunFile.Options)!;
+        Assert.Equal(ItemPool.Owned, back.Pool);
+        Assert.False(back.Narrowed);
+        Assert.Empty(back.LeftOutSources);
+    }
+
+    [Fact]
     public void APlanCarriesItsChoices()
     {
         var option = new ChoiceOption(

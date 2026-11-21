@@ -1,0 +1,70 @@
+# Every item's pool narrowed: to what the setup's levels meet, to what Chk owns or can get now, and without named
+# sources. The plan's counts follow each, each answer names its pool and keeps to it, and each is kept apart.
+# Against Golbin with Ranged lowered to 60, the weapon, ammo, gloves and ring free.
+cs2 gear plan GolbinForest/Golbin pool=every kinds=none lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet level=Ranged:60 wearable
+expect reply "Weapon: 187 (owned 83, wearable 187)"
+cs2 gear plan GolbinForest/Golbin pool=every kinds=none lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet level=Ranged:60 reached
+expect reply "Weapon: 189 (owned 83, wearable 164)"
+expect reply "54 left out"
+cs2 gear plan GolbinForest/Golbin pool=every kinds=none lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet level=Ranged:60 leave=Javelins
+expect reply "Weapon: 215 (owned 83, wearable 187)"
+# Wearable at Ranged 60: nothing that needs more.
+cs2 gear GolbinForest/Golbin pool=every kinds=none seed=1 wait=0 lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet level=Ranged:60 wearable
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show GolbinForest/Golbin level=Ranged:60 pool=every wearable
+expect reply "· pool: every item, wearable at my levels"
+expect reply "Weapon: Oak Bow → Hard Oak Boomerang  [not in your bank: Boomerangs]"
+# Content reached: what Chk can get now, needing levels or not.
+cs2 gear GolbinForest/Golbin pool=every kinds=none seed=1 wait=0 lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet level=Ranged:60 reached
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show GolbinForest/Golbin level=Ranged:60 pool=every reached
+expect reply "· pool: every item, content reached"
+expect reply "Gloves: Spider Silk Vambraces → Meteorite Gloves  [not in your bank: Meteorite Gear]"
+# Javelins and bolts left out: the javelin found above isn't there.
+cs2 gear GolbinForest/Golbin pool=every kinds=none seed=1 wait=0 lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet level=Ranged:60 leave=Javelins,Bolts
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show GolbinForest/Golbin level=Ranged:60 pool=every leave=Javelins,Bolts
+expect reply "· pool: every item, leaving out Bolts, Javelins"
+expect reply "Weapon: Oak Bow → Hard Oak Boomerang"
+# Each narrowing's answer is kept apart: asked for by its target and pool, the wearable one is still there.
+cs2 gear show GolbinForest/Golbin level=Ranged:60 pool=every wearable
+expect reply "· pool: every item, wearable at my levels"

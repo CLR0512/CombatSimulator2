@@ -32,23 +32,19 @@ public sealed class SearchProgress
 
     /// <summary>
     /// The seconds a search has left, from its pace so far: <paramref name="elapsed"/> seconds for the share
-    /// <paramref name="shown"/>; a climb stops at the limit, so no more than <paramref name="toLimit"/> when it
-    /// climbs, and the time to that limit until its pace says less. Null while too little is done to say.
+    /// <paramref name="shown"/>. Null while too little is done to say.
     /// </summary>
-    public static double? SecondsLeft(double elapsed, double shown, double? toLimit)
+    public static double? SecondsLeft(double elapsed, double shown)
     {
         if (elapsed < EstimateAfter)
             return null;
         // A climb's bar counts every pass it may make, so it starts slow: its first steps say little of its pace.
-        double? left = shown < 0.02 ? null : elapsed * (1 - Math.Min(shown, 1)) / shown;
-        if (toLimit is not { } most)
-            return left;
-        return Math.Clamp(left ?? most, 0, Math.Max(0, most));
+        return shown < 0.02 ? null : elapsed * (1 - Math.Min(shown, 1)) / shown;
     }
 
     /// <summary>
     /// The seconds the round under way still needs at its own pace: <paramref name="elapsed"/> seconds for its share
-    /// <paramref name="round"/>. A climb stops at its limit only between steps, so this is the least it has left.
+    /// <paramref name="round"/>: the least a climb has left, whatever its whole pace says.
     /// </summary>
     public static double? RoundLeft(double elapsed, double round) =>
         round < 0.02 ? null : elapsed * (1 - Math.Min(round, 1)) / round;
@@ -66,20 +62,30 @@ public sealed class SearchProgress
 
     /// <summary>
     /// The seconds left, and the bar following them: at the search's pace, <paramref name="shown"/> done
-    /// (<see cref="Update"/>'s share) <paramref name="elapsed"/> seconds in. A
-    /// climb (<paramref name="climbSpent"/> seconds into its own, <paramref name="queued"/> more after it) is no more
-    /// than its limit and each queued climb's, and no less than its step under way needs at that step's pace
-    /// (<paramref name="roundElapsed"/> seconds in).
+    /// (<see cref="Update"/>'s share) <paramref name="elapsed"/> seconds in; while <paramref name="climbing"/>, no less
+    /// than its step under way needs at that step's pace (<paramref name="roundElapsed"/> seconds in), and no more than
+    /// <paramref name="toLimit"/>, the player's limit, which is the time left until the pace says less.
     /// </summary>
-    public double? Left(double shown, double elapsed, double? climbSpent, int queued, double roundElapsed, double limit)
+    public double? Left(double shown, double elapsed, bool climbing, double roundElapsed, double? toLimit = null)
     {
-        var toLimit = climbSpent is { } spent ? Math.Max(0, limit * (1 + queued) - spent) : (double?)null;
-        var left = SecondsLeft(elapsed, shown, toLimit);
-        if (toLimit != null && left != null && RoundLeft(roundElapsed, LastRound) is { } step)
-            left = Math.Max(left.Value, step);
+        var left = SecondsLeft(elapsed, shown);
+        AtLimit = false;
+        if (climbing && toLimit is { } most && (left == null || left >= most))
+        {
+            left = most;
+            AtLimit = true;
+        }
+        if (climbing && left != null && RoundLeft(roundElapsed, LastRound) is { } step && step > left.Value)
+        {
+            left = step;
+            AtLimit = false;
+        }
         Follow(elapsed, left);
         return left;
     }
+
+    /// <summary>Whether <see cref="Left"/> last gave the time to the player's limit, the most the search has.</summary>
+    public bool AtLimit { get; private set; }
 
     /// <summary>The round under way's share done, as the last update found it.</summary>
     public double LastRound { get; private set; }

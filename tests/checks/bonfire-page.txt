@@ -9,11 +9,11 @@ cs2 whatif DragonsPass/Drake bonfire=Normal seed=1
 cs2 wait timeout=9
 cs2 wait timeout=9
 wait 1500
-cs2 compare show
+cs2 compare show metric=xp:main
 expect reply "bonfire=Normal accepted was=out"
-expect reply "DragonsPass/Drake  A=12,134 [11,836, 12,432]  B=12,245 [11,944, 12,545]"
+expect reply "DragonsPass/Drake  A=13,019 [12,768, 13,271]  B=13,138 [12,884, 13,392]"
 cs2 compare show metric=kills
-expect reply "DragonsPass/Drake  A=54.62 [53.28, 55.95]  B=54.62 [53.28, 55.95]  d=0"
+expect reply "DragonsPass/Drake  A=59.09 [57.91, 60.28]  B=59.09 [57.91, 60.28]  d=0"
 cs2 side b bonfire=Normal
 expect reply "bonfire=Normal accepted was=out"
 wait 2500

@@ -89,6 +89,20 @@ internal static class QuestChange
                 if (!Supplies.Ingredients(copy, costs, 1) || !quests.ExecuteTaskCosts(task))
                     return [Note.Of("bank full")];
             }
+            // A task whose goals are conditions (a technique's level, Astrology nodes unlocked) waits for the player's
+            // Confirm, which the game accepts only while they hold; unmet, they count as the quest's requirements do.
+            if (task.State == QuestStepState.Active && !task.ConditionGoalsConfirmed)
+            {
+                task.ConfirmConditionGoals();
+                if (!task.ConditionGoalsConfirmed)
+                {
+                    var conditions = Targets.Unmet(task.ConditionGoals);
+                    if (!ignoreRequirements)
+                        return [.. conditions];
+                    ignored.AddRange(conditions);
+                    task.ConditionGoalsConfirmed = true;
+                }
+            }
             if (task.State == QuestStepState.Active)
                 return [Note.Of("the game didn't complete a task")];
         }

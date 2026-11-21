@@ -10,8 +10,9 @@ namespace MelvorMods.CombatSimulator2.Engine.Search;
 /// search is done, in the finished setup. The setup as it is, the finished setup and each variant with a runner-up
 /// in place fight one stage together, four times the search's trials, on a seed of their own, so all three are
 /// paired. A variant that clearly wins takes the finished setup's place, as does one still tied that holds the setup's
-/// own option or one the character has more of; the answer is then read from this race. Each close call is named in
-/// the answer with its difference.
+/// own option or one the character has more of; it is then fought once more at the search's own seed and trials, and
+/// the answer read from that, so a run of the set opened gives the answer's figures. Each close call is named in the
+/// answer with its difference.
 /// </summary>
 internal sealed class CloseCallRaces
 {
@@ -38,6 +39,17 @@ internal sealed class CloseCallRaces
     public bool Any => _noted.Count > 0;
 
     /// <summary>
+    /// The race's sets and results once a variant has taken the finished setup's place: the answer was read from
+    /// them, so it is completed against them, not the search's own, which number other sets and fought fewer trials.
+    /// Null while the answer stands as the steps found it.
+    /// </summary>
+    public (IReadOnlyList<Candidate> Sets, IReadOnlyDictionary<int, StageResult> Results)? Answered
+    {
+        get;
+        private set;
+    }
+
+    /// <summary>
     /// Notes the ties of a step's race that differ from its winner in one slot or choice; a later step's close call
     /// on the same slot or choice takes the place of an earlier one.
     /// </summary>
@@ -47,9 +59,11 @@ internal sealed class CloseCallRaces
             _noted[Subject(winner, tie)] = (winner, tie);
     }
 
-    // A raced set is made after the plan, so it fights as the candidates it comes from did: gear the character can't
-    // wear yet, and any choice the search already tried, with their requirements ignored.
-    private static ChangeList Ignoring(ChangeList set, SearchRun run, GearCatalogue? catalogue) =>
+    /// <summary>
+    /// A set made after the plan (raced again, or settled) fights as the candidates it comes from did: gear the
+    /// character can't wear yet, and any choice the search already tried, with their requirements ignored.
+    /// </summary>
+    public static ChangeList Ignoring(ChangeList set, SearchRun run, GearCatalogue? catalogue) =>
         ChangeList.Of(
             set.Where(c => catalogue?.Locked([c]).IsEmpty == false || run.Candidates.Any(k => k.Ignoring.Contains(c)))
         );
@@ -70,12 +84,15 @@ internal sealed class CloseCallRaces
             .ToList();
         if (variants.Count == 0)
             return false;
+        Answered = null;
         _finished = finished.IsEmpty ? 0 : 1;
+        // The finished setup's style stays with it and its variants: settling and each style's best read it.
+        var style = answer.Best?.Style ?? "";
         _sets = [new Candidate(0, ChangeList.Empty, "")];
         if (_finished == 1)
-            _sets.Add(new Candidate(1, finished, "") { Ignoring = Ignoring(finished, run, catalogue) });
+            _sets.Add(new Candidate(1, finished, style) { Ignoring = Ignoring(finished, run, catalogue) });
         foreach (var variant in variants)
-            _sets.Add(new Candidate(_sets.Count, variant!, "") { Ignoring = Ignoring(variant!, run, catalogue) });
+            _sets.Add(new Candidate(_sets.Count, variant!, style) { Ignoring = Ignoring(variant!, run, catalogue) });
         (_run, _answer, _end, _catalogue) = (run, answer, end, catalogue);
         // A seed of its own, kept under 2^53 as the search's second seed is.
         _seed = (run.Seed * 2862933555777941757UL + 3037000493UL) >> 11;
@@ -170,15 +187,43 @@ internal sealed class CloseCallRaces
             Finish(answer);
             return;
         }
-        // The variant that won by most takes the finished setup's place; the answer is read from this race, whose
-        // sets are all paired on its seed.
+        // The variant that won by most takes the finished setup's place, fought again at the search's own seed and
+        // trials beside current gear's result there: the race's own seed and length aren't what opening it runs.
         var best = lower ? swapped.MinBy(s => s.Value.Point).Index : swapped.MaxBy(s => s.Value.Point).Index;
-        var kept = new List<StageResult>();
-        if (_results.GetValueOrDefault(0) is { } current)
-            kept.Add(current);
-        kept.Add(_results[best]);
-        Answers.Fill(answer, _sets, kept, _results, run.Request.Goal, run.Margin, false, _catalogue);
-        answer.Seed = _seed;
+        var won = _sets[best] with { Index = 1 };
+        _sets = [new Candidate(0, ChangeList.Empty, ""), won];
+        _results.Clear();
+        if (answer.Current is { } now)
+            _results[0] = new StageResult(0, now.Result, now.Metric);
+        _generation = run.NewGeneration();
+        var request = run.Request;
+        run.Fighter.Stage(
+            new SearchJob(
+                run.Snapshot,
+                run.LoadoutSlot,
+                request.Setup.Changes,
+                TargetSpec.FromKey(request.Target),
+                new DriveOptions(request.Trials, request.Limits ?? new TrialLimits(), request.Setup.IgnoreRequirements),
+                run.Seed,
+                request.Copies,
+                [won]
+            ),
+            new SearchReport(_queue, _generation, Done, _ => Confirmed(), Failed),
+            _generation,
+            run.Cancelled
+        );
+    }
+
+    // The winner's result at the search's own seed: the answer is read from it and current gear's.
+    private void Confirmed()
+    {
+        var answer = _answer!;
+        if (_results.GetValueOrDefault(1) != null)
+        {
+            var kept = _results.Values.OrderBy(r => r.Index).ToList();
+            Answers.Fill(answer, _sets, kept, _results, _run!.Request.Goal, _run.Margin, false, _catalogue);
+            Answered = (_sets, new Dictionary<int, StageResult>(_results));
+        }
         Finish(answer);
     }
 

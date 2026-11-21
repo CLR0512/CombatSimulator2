@@ -28,6 +28,7 @@ internal sealed class GearTab
 
     private readonly Dropdown _kindPick;
     private readonly Dropdown _scopePick;
+    private readonly PoolPick _pool;
 
     // The scopes in the scope's list, in its order.
     private readonly List<string> _scopeIds = [];
@@ -93,21 +94,32 @@ internal sealed class GearTab
                 Show(selected);
         };
         var head = Ui.Add(page, Ui.Row(6, "GearSearchHead"));
+        // The sentence wraps before the info button when the pool's words make it longer than the tab.
+        var sentence = Ui.Add(head, new HFlowContainer { Name = "GearSearchSentence" });
+        sentence.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
+        sentence.AddThemeConstantOverride("h_separation", 6);
         // The sentence is translated whole, so a language may put its two choices in either order.
         // Translators: Gear tab sentence; {0} is "best setup" or "upgrades", {1} is "this target", "its area" or "the 3 pins", each a gold choice.
         foreach (var part in Regex.Split(Tr.Get("Find {0} for {1}"), @"(\{[01]\})"))
         {
             if (part == "{0}")
-                head.AddChild(_kindPick.Root);
+                sentence.AddChild(_kindPick.Root);
             else if (part == "{1}")
-                head.AddChild(_scopePick.Root);
+                sentence.AddChild(_scopePick.Root);
             else if (part.Trim().Length > 0)
             {
-                var words = Ui.Add(head, Ui.Label(part.Trim(), TextStyle.Body));
+                var words = Ui.Add(sentence, Ui.Label(part.Trim(), TextStyle.Body));
                 words.SizeFlagsVertical = Control.SizeFlags.ShrinkCenter;
             }
         }
-        head.AddChild(Ui.Spacer());
+        // A new pool has its own kept answer, and the form counts it again.
+        _pool = new PoolPick(() =>
+        {
+            _lookups.Clear();
+            _form!.PoolChanged();
+            Refresh();
+        });
+        sentence.AddChild(_pool.Root);
         Button? guide = null;
         guide = IconButton.Quiet(
             Game.Art.File(Game.Art.InfoPath) ?? Game.Art.Missing,
@@ -116,6 +128,7 @@ internal sealed class GearTab
             "GearSearchGuide",
             () => Help.HelpLayer.OpenGearGuide(guide)
         );
+        guide.SizeFlagsVertical = Control.SizeFlags.ShrinkBegin;
         head.AddChild(guide);
         guide.Visible = PanelState.Prefs.ShowGearGuide;
         // Settings can show it again while the tab is out of sight; it follows when the tab shows.
@@ -129,7 +142,7 @@ internal sealed class GearTab
         _message.Visible = false;
         _form = new StartForm(pickItem, Start);
         _progress = new Progress(hoverOwner);
-        _answer = new AnswerView(Again, Open);
+        _answer = new AnswerView(Again, Open, LeaveOut);
         _drops = new DroptimizerList(Again, Toggle);
         foreach (var view in new Control[] { _form.Root, _progress.Root, _answer.Root, _drops.Root })
         {
@@ -202,6 +215,7 @@ internal sealed class GearTab
         if (_target is not { } target || !_page.Visible)
             return;
         _kindPick.Select(_kind == SearchKind.Droptimizer ? 1 : 0);
+        _pool.Show(_kind, target);
         var search = RunService.Instance.Search;
         var mine = search != null && search.Request.Target == target && search.Request.Kind == _kind;
         if (mine && search!.IsActive)
@@ -215,7 +229,10 @@ internal sealed class GearTab
         if (!_again.Contains((target, _kind)))
         {
             var lookup = LookUp(target);
-            var live = mine && search!.Answer is { Finished: true } ? search.Answer : null;
+            var live =
+                mine && search!.Answer is { Finished: true } done && done.Key.SamePool(PoolPick.Key(_kind, target))
+                    ? done
+                    : null;
             // A search that just ended is kept as the target's answer: it takes the place of the one looked up before
             // it, which would otherwise come back, out of date, once this search is no longer the tab's own.
             if (live != null && lookup != null && lookup.Kept?.Answer.FoundAt != live.FoundAt)
@@ -243,7 +260,7 @@ internal sealed class GearTab
             }
         }
         Choose(_form.Root, "form", target);
-        _form.Show(target, _kind, mine ? Ended(search!.Answer) : Busy());
+        _form.Show(target, _kind, mine ? SearchWords.Ended(search!.Answer) : SearchWords.Busy());
     }
 
     /// <summary>The tab as shown, for <c>cs2 ui</c>.</summary>
@@ -320,7 +337,8 @@ internal sealed class GearTab
                     lookup.Done = true;
                     if (GodotObject.IsInstanceValid(_form.Root))
                         Refresh();
-                }
+                },
+                kind == SearchKind.BestGear ? PoolPick.Key(kind, target) : null
             );
         }
         catch (CommandException e)
@@ -344,6 +362,16 @@ internal sealed class GearTab
         {
             Say(e.Message);
         }
+    }
+
+    // A source left out from an answer's items to get: the form again, over every item without it.
+    private void LeaveOut(string source)
+    {
+        PanelState.Prefs.SearchLeftOut = [.. PanelState.Prefs.SearchLeftOut, source];
+        PanelState.Save();
+        _lookups.Clear();
+        _form.PoolChanged();
+        Again();
     }
 
     private void Again()
@@ -449,23 +477,4 @@ internal sealed class GearTab
         _message.Text = message;
         _message.Visible = message.Length > 0;
     }
-
-    // How the session's search for this target ended without an answer to show.
-    private static string? Ended(Answer? answer) =>
-        answer?.State switch
-        {
-            AnswerState.Cancelled => Tr.Format("Cancelled after stage {0}.", answer.CancelledAfter ?? 0),
-            AnswerState.Failed => Tr.Format("The search failed: {0}", answer.Reason is { } why ? Tr.Note(why) : "–"),
-            _ => null,
-        };
-
-    // Another search or a run under way: one at a time.
-    private static string? Busy() =>
-        RunService.Instance.Search is { IsActive: true } active
-            ? Tr.Format(
-                "A search for {0} is running: wait for it or cancel it first.",
-                Spoilers.Current.Name(active.TargetName)
-            )
-        : RunService.Instance.IsActive ? Tr.Get("A run is going: wait for it or cancel it first.")
-        : null;
 }

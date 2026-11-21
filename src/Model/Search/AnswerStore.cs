@@ -136,7 +136,12 @@ public sealed class AnswerStore
         if (!answer.Finished)
             return false;
         var kind = KindName(answer.Kind);
-        _entries.RemoveAll(e => e.Kind == kind && e.Target == answer.Target && e.Key.Character == answer.Key.Character);
+        _entries.RemoveAll(e =>
+            e.Kind == kind
+            && e.Target == answer.Target
+            && e.Key.Character == answer.Key.Character
+            && e.Key.SamePool(answer.Key)
+        );
         _entries.Add(
             new Entry
             {
@@ -152,7 +157,7 @@ public sealed class AnswerStore
     }
 
     /// <summary>
-    /// The kept answer for a kind and target of <paramref name="now"/>'s character, with what differs between the key
+    /// The kept answer for a kind and target of <paramref name="now"/>'s character and pool, with what differs between the key
     /// it was searched under and <paramref name="now"/>: empty when it is current, else why it is out of date. Null
     /// when none is kept.
     /// </summary>
@@ -160,7 +165,9 @@ public sealed class AnswerStore
     {
         ArgumentNullException.ThrowIfNull(now);
         var name = KindName(kind);
-        var entry = _entries.Find(e => e.Kind == name && e.Target == target && e.Key.Character == now.Character);
+        var entry = _entries.Find(e =>
+            e.Kind == name && e.Target == target && e.Key.Character == now.Character && e.Key.SamePool(now)
+        );
         return entry == null ? null : (entry.Answer, entry.Key.Changed(now));
     }
 

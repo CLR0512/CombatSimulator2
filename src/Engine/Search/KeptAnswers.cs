@@ -43,14 +43,16 @@ internal static partial class KeptAnswers
     /// <summary>
     /// The kept answer for <paramref name="target"/> (the last one found when null) with what has changed since it
     /// was searched, read against <paramref name="setup"/> as it stands now: the catalogue is read from a check copy
-    /// off the main thread, and <paramref name="done"/> runs on it. Null when no answer is kept.
+    /// off the main thread, and <paramref name="done"/> runs on it. Null when no answer is kept. A target's answers
+    /// are kept per pool: <paramref name="pool"/>'s, the character's own items when null.
     /// </summary>
     public static void Find(
         SearchKind kind,
         Setup setup,
         string? target,
         double share,
-        Action<(Answer Answer, IReadOnlyList<Note> Changed)?> done
+        Action<(Answer Answer, IReadOnlyList<Note> Changed)?> done,
+        AnswerKey? pool = null
     )
     {
         MainThread.Assert("KeptAnswers.Find");
@@ -60,7 +62,7 @@ internal static partial class KeptAnswers
         var kept =
             target == null
                 ? Store?.Latest(kind, character)
-                : Store?.Find(kind, target, new AnswerKey { Character = character })?.Answer;
+                : Store?.Find(kind, target, (pool ?? new AnswerKey()) with { Character = character })?.Answer;
         if (kept == null)
         {
             done(null);

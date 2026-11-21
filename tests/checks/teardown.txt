@@ -1,5 +1,6 @@
-# And leaves nothing running, one side, the character as it is, with no changes, no target ignored, no pins, the default filter and the window closed, whatever it did.
+# And leaves nothing running, no Find best results, one side, the character as it is, with no changes, no target ignored, no pins, the default filter and the window closed, whatever it did.
 cs2 cancel all
+cs2 loadouts best clear
 cs2 side b off
 cs2 side a ignore-req=off
 cs2 side a clear

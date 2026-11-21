@@ -136,7 +136,7 @@ public static class Race
                 AnswerState.NoneWithinLimit,
                 null,
                 [],
-                Closest: DeathLimits.Closest(valued.Select(p => (p.Set.Index, p.Set.Result)))
+                Closest: DeathLimits.Closest(valued.Select(p => (p.Set.Index, p.Set.Result, (Estimate?)p.Value)), lower)
             );
         var (best, bestValue) = Best(within, lower);
         var scale = Math.Abs(bestValue.Point);

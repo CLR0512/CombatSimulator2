@@ -1,4 +1,5 @@
 using MelvorMods.CombatSimulator2.Common;
+using MelvorMods.CombatSimulator2.Model;
 using MelvorMods.CombatSimulator2.Model.Search;
 
 namespace MelvorMods.CombatSimulator2.Engine.Search;
@@ -7,8 +8,9 @@ namespace MelvorMods.CombatSimulator2.Engine.Search;
 // leaders fought again when the best came from behind.
 internal sealed partial class SearchRun
 {
-    // The set of the round that died least, by each set's last result; the held set on equal shares.
-    private int FewestDeaths() => DeathLimits.Fewest(_roundAll, _held, _last, _prices);
+    // The round's set closest to the death limit by each set's last result; the held set when equal.
+    private int FewestDeaths() =>
+        DeathLimits.Fewest(_roundAll, _held, _last, Ranking.LowerIsBetter(Request.Goal.Metric), _prices);
 
     // A best that was behind the leader by more than the margin at an earlier stage got ahead later: the last stage
     // is fought again with a second seed for current gear, the best and its ties. True when the fight was started.

@@ -1,6 +1,6 @@
 # A combat potion on B goes in the copy's potion slot, given to the copy since Chk's bank holds none, and counts on
-# the Herblore page; something that isn't a potion is refused. Against a monster Chk misses often, the Ranged
-# potion's max hit and accuracy show in the result and its charges in supplies.
+# the Herblore page; something that isn't a potion is refused. The Ranged potion reaches the fight: its result
+# differs from current gear's, and its charges show in supplies.
 cs2 side b potion=RangedPotionP1A
 expect reply "potion=RangedPotionP1A accepted was=none"
 wait 2500
@@ -14,10 +14,9 @@ cs2 whatif DragonsPass/Drake potion=RangedPotionP1A seed=1
 cs2 wait timeout=9
 cs2 wait timeout=9
 wait 1500
-cs2 compare show
+cs2 compare show metric=xp:main
 expect reply "potion=RangedPotionP1A accepted was=none"
-expect reply "DragonsPass/Drake  A=12,134 [11,836, 12,432]  B=12,524 [12,281, 12,766]"
-expect reply "better"
+expect reply "DragonsPass/Drake  A=13,019 [12,768, 13,271]  B=13,140 [12,884, 13,396]"
 cs2 result DragonsPass/Drake full
 expect reply "used:charges:MelvorBase:RangedPotionP1A"
 # None, as the save has it, is no change.

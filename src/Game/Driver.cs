@@ -67,6 +67,10 @@ internal static partial class Driver
             SlayerTasks.Force(copy.Game, target, master);
         else if (target.SingleTask != null)
             SlayerTasks.Clear(copy.Game);
+        // A master plays its tasks through, each to its end; a monster or dungeon fought as the save has it keeps the
+        // save's task for the whole run.
+        else if (target.Kind is TargetKind.Enemy or TargetKind.Dungeon)
+            SlayerTasks.KeepForRun(copy.Game);
         result.Task = target.SingleMaster;
         if (target.SingleTask == TargetSpec.NoMaster)
             result.TaskNote = Note.Of("no master gives it: off task");

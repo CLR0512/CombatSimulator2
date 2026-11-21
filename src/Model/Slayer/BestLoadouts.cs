@@ -31,6 +31,15 @@ public sealed class BestLoadouts(string master, Setup side, Goal goal, ulong see
     public LoadoutPicksAnswer? Picks { get; set; }
     public Note? Error { get; set; }
     public bool IsActive => State == BestLoadoutsState.Running;
+
+    /// <summary>When it ended with its picks; null before.</summary>
+    public DateTime? EndedAt { get; set; }
+
+    /// <summary>
+    /// The side it started from as one setup line, when the caller had one: a side that reads another line now has
+    /// changed since.
+    /// </summary>
+    public string? SideLine { get; init; }
 }
 
 /// <summary>
@@ -45,6 +54,9 @@ public sealed class BestMastersRun(IReadOnlyList<string> masters, Goal goal)
     public BestLoadoutsState State { get; set; } = BestLoadoutsState.Running;
     public Note? Error { get; set; }
     public bool IsActive => State == BestLoadoutsState.Running;
+
+    /// <summary>The side it started from as one setup line, given to each master's Best loadouts.</summary>
+    public string? SideLine { get; init; }
 
     /// <summary>The master under way; null once all are done.</summary>
     public string? Current => Done.Count < Masters.Count ? Masters[Done.Count] : null;

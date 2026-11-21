@@ -53,6 +53,30 @@ public sealed class ChoicesTests
     }
 
     [Fact]
+    public void CurrentGearKeepsItsOwnSpellWhileAMagicSetWithNoneIsGivenOne()
+    {
+        var staff = new WeaponPart("Staff", Choices.Magic, [SearchFixture.Id("Magic")], Elements: ["Air"]);
+        var catalogue = SearchFixture.Catalogue(i => i.Weapon != null ? i with { Weapon = staff } : i);
+        var spells = new Choice(
+            ChoiceKind.Spell,
+            null,
+            new ChoiceOption(ChoiceKind.Spell, [], ChangeList.Empty),
+            [Spell("WindStrike", "Air")]
+        );
+        var swap = ChangeList.Of([
+            new Change(ChangeKind.Equip, SearchFixture.Id("Weapon"), SearchFixture.Id("IronSword")),
+        ]);
+        var sets = Choices.WithSpells(
+            [new Candidate(0, ChangeList.Empty, Choices.Magic), new Candidate(1, swap, Choices.Magic)],
+            catalogue,
+            spells,
+            includeUnowned: false
+        );
+        Assert.True(sets[0].Changes.IsEmpty);
+        Assert.Contains(sets[1].Changes, c => c.Kind == ChangeKind.Spell);
+    }
+
+    [Fact]
     public void AnImbuementNeedsOnlyItsElement()
     {
         var imbuement = Spell("AirImbue", "Air") with { Kind = ChoiceKind.Imbuement, NeedsMagic = false };

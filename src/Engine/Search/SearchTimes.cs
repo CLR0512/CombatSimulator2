@@ -14,9 +14,59 @@ internal static class SearchTimes
 
     /// <summary>
     /// The long-search limit as searches under way keep to it: a search that fights every set gives up on its first
-    /// stage past it, and a second climb stops at it. Lowered only by a dev command, to see either happen.
+    /// stage past it and goes a slot at a time, which no limit stops. Lowered only by a dev command, to see it happen.
     /// </summary>
     public static double LimitSeconds { get; set; } = LongSearchSeconds;
+
+    /// <summary>
+    /// The limit <paramref name="request"/> keeps to: its pool's, lowered with <see cref="LimitSeconds"/> in the same
+    /// proportion.
+    /// </summary>
+    public static double Limit(SearchRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        return LimitSeconds * PlanPreview.LimitFor(request.Pool) / LongSearchSeconds;
+    }
+
+    /// <summary>
+    /// The passes a climb is expected to make: one to move every slot and one to find nothing left to move, twice
+    /// over, as every climb climbs again from the weapon step's runner-up. Every-item
+    /// climbs on Golbin took 1.6 to 2.8 times what two passes would.
+    /// </summary>
+    public const int ClimbPasses = 4;
+
+    // A climb's steps as they went, by target and by kind of target: seconds, and sets times the search's trials.
+    // A step races sets near the held one, which mostly fight to the end, so its pace is its own, not a whole
+    // search's.
+    private static readonly Dictionary<string, (double Seconds, double SetTrials)> _steps = [];
+
+    /// <summary>Notes a climb's step: <paramref name="sets"/> sets raced in a search of <paramref name="trials"/> trials.</summary>
+    public static void RecordStep(string target, TargetKind kind, int sets, int trials, double seconds)
+    {
+        if (sets <= 0 || trials <= 0 || seconds <= 0)
+            return;
+        foreach (var scope in new[] { Of(target), Of(kind) })
+        {
+            var (total, setTrials) = _steps.GetValueOrDefault(scope);
+            _steps[scope] = (total + seconds, setTrials + (double)sets * trials);
+        }
+    }
+
+    /// <summary>
+    /// Seconds a climb's step takes per set and trial on <paramref name="target"/>, else on its kind; null before a
+    /// climb was timed.
+    /// </summary>
+    public static double? StepPace(string target, TargetKind kind) => StepPace(Of(target)) ?? StepPace(Of(kind));
+
+    private static double? StepPace(string scope) =>
+        _steps.TryGetValue(scope, out var step) && step.SetTrials > 0 ? step.Seconds / step.SetTrials : null;
+
+    /// <summary>
+    /// The seconds a climb is expected to take: <see cref="ClimbPasses"/> passes of <paramref name="setsPerPass"/>
+    /// sets each, at <paramref name="pace"/> seconds per set and trial.
+    /// </summary>
+    public static double ClimbExpected(double pace, int setsPerPass, int trials) =>
+        ClimbPasses * setsPerPass * (double)trials * pace;
 
     /// <summary>
     /// How much longer a trial of a search that fights every set takes than one of a search a slot at a time: the

@@ -1,4 +1,6 @@
+using System.Globalization;
 using Godot;
+using MelvorMods.CombatSimulator2.Common;
 using MelvorMods.CombatSimulator2.Game;
 using MelvorMods.CombatSimulator2.Panel.Widgets;
 
@@ -14,6 +16,9 @@ internal static class AboutButton
     private const float IconSize = 24;
     private const float DotRadius = 4;
     private const float DotOutline = 2;
+
+    // How far the icon must move in one alignment to be logged: a window resize or scale change moves it too, rarely.
+    private const float LoggedMove = 8;
 
     // Brighter than any red in the palette, whose reds are for deaths: this one only says "look here".
     private static readonly Color DotColour = Color.FromHtml("#e32121");
@@ -66,17 +71,50 @@ internal static class AboutButton
             // The icon starts past the button's own left margin: the icon's edge is what lines up.
             var inset = info.GetThemeStylebox("normal").GetMargin(Side.Left);
             var width = Math.Max(0, (float)Math.Round(slot.Position.X + slot.Size.X - left + inset));
-            if (Math.Abs(slot.CustomMinimumSize.X - width) >= 1)
-                slot.CustomMinimumSize = new Vector2(width, 0);
+            var before = slot.CustomMinimumSize.X;
+            if (Math.Abs(before - width) < 1)
+                return;
+            // A large move names the panel and where it stood, so an icon seen out of place can be traced in the log.
+            if (Math.Abs(before - width) >= LoggedMove)
+                Log.Info(
+                    string.Create(
+                        CultureInfo.InvariantCulture,
+                        $"about icon: lined up with {panel.Name} at x {left:0} of the title bar ({bar.Size.X:0} wide), slot {before:0} -> {width:0}"
+                    )
+                );
+            slot.CustomMinimumSize = new Vector2(width, 0);
+        }
+        // Containers place their children in deferred calls, a panel's ancestors sometimes after the panel itself, so a
+        // position read as a signal fires can be stale: 0 for a panel just shown, or past the bar's end mid-layout. When
+        // no later move followed, the icon stayed there. It lines up on the next frame, once this frame's layout is
+        // done, through the mod's own frame callback so a reload leaves nothing behind.
+        var pending = false;
+        void AfterLayout()
+        {
+            pending = false;
+            Align();
+        }
+        void Later()
+        {
+            if (pending)
+                return;
+            pending = true;
+            var frame = Godot.Engine.GetProcessFrames();
+            MainThread.When(
+                () => Godot.Engine.GetProcessFrames() > frame,
+                AfterLayout,
+                TimeSpan.FromSeconds(5),
+                AfterLayout
+            );
         }
         // The bar moves with the window and the scale; a panel moves or first shows after the bar's layout.
-        bar.ItemRectChanged += Align;
+        bar.ItemRectChanged += Later;
         foreach (var panel in panels)
         {
-            panel.ItemRectChanged += Align;
-            panel.VisibilityChanged += Align;
+            panel.ItemRectChanged += Later;
+            panel.VisibilityChanged += Later;
         }
-        Callable.From(Align).CallDeferred();
+        Later();
     }
 
     /// <summary>Draws the button as it is now: bright under the mouse or with the dot, dim otherwise.</summary>

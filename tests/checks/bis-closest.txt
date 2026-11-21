@@ -1,0 +1,16 @@
+# When no set stays within the death limit, the closest set is settled as a found one is: on Chk at Hitpoints 10 and
+# Defence 1 against Mangrove Strider, the closest set changed the helmet and the legs; raced against what is worn, the
+# legs change dies clearly more and the helmet changes nothing, so both go back and the closest is current gear.
+# Retake the numbers when Chk or the game changes.
+cs2 gear GreenMangroves/MangroveStrider seed=1 trials=100 level=Hitpoints:10 level=Defence:1 kinds=none lock=Weapon,Ammo,Offhand wait=0
+expect reply "running:"
+# cs2 wait fails once its 9 s pass with the search still going: sleep first, then one wait.
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "no set within the limit: closest current gear with 9% deaths"
+expect reply "Helmet: keep Green Dragonhide Cowl  nothing separated them"
+expect reply "Legs: keep Elk Leather Chaps (u)  fewest deaths (−38.3% [−68.7, −8.1] vs Stone Platelegs)"
+expect reply "hash 6469b2ebba37"

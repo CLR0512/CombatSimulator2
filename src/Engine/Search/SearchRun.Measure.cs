@@ -1,3 +1,4 @@
+using MelvorMods.CombatSimulator2.Common;
 using MelvorMods.CombatSimulator2.Model.Search;
 
 namespace MelvorMods.CombatSimulator2.Engine.Search;
@@ -44,4 +45,13 @@ internal sealed partial class SearchRun
     // Notes how long the stage just fought took, for the next search's estimate.
     private void Timed(int sets, int trials, bool whole) =>
         SearchTimes.Record(_target.Key, _target.Kind, sets, trials, _clock.Elapsed.TotalSeconds, whole);
+
+    // A stage done, as the answer and the log list it.
+    private void Summarise(int trials, int fought, int left, double seconds)
+    {
+        _stages.Add(new StageSummary(trials, fought, fought - left, left, seconds));
+        Log.Info(
+            $"search stage {_stages.Count}: {trials} trials, {fought} fought, {fought - left} dropped, {left} left, {seconds:0.0} s"
+        );
+    }
 }

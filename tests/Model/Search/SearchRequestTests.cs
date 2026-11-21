@@ -48,6 +48,77 @@ public sealed class SearchRequestTests
     }
 
     [Fact]
+    public void ARequestStartsOnTheOwnedPoolWithNothingNarrowed()
+    {
+        var request = Request();
+        Assert.Equal(ItemPool.Owned, request.Pool);
+        Assert.False(request.Narrowed);
+    }
+
+    [Fact]
+    public void EveryItemWithItsNarrowingIsFineForOneTarget()
+    {
+        var request = Request() with
+        {
+            Pool = ItemPool.Every,
+            WearableOnly = true,
+            ReachedOnly = true,
+            LeftOutSources = new HashSet<string> { "Shop" },
+        };
+        Assert.Empty(request.Check(Catalogue()));
+    }
+
+    [Theory]
+    [InlineData("master:MelvorBase:Kuren")]
+    [InlineData("area:MelvorBase:Farm")]
+    [InlineData("pinned:MelvorBase:Farm/MelvorBase:Cow,MelvorBase:Farm/MelvorBase:Chicken")]
+    public void EveryItemIsOneTargetAtATime(string target)
+    {
+        var request = Request() with { Pool = ItemPool.Every, Target = target };
+        Assert.Equal(["Every item: one target at a time"], request.Check(Catalogue()).Select(n => n.English()));
+        Assert.Equal(["Every item: one target at a time"], request.Refusals().Select(n => n.English()));
+        Assert.Empty((request with { Pool = ItemPool.Owned }).Check(Catalogue()));
+    }
+
+    [Fact]
+    public void NarrowingNeedsEveryItem()
+    {
+        foreach (
+            var request in new[]
+            {
+                Request() with
+                {
+                    WearableOnly = true,
+                },
+                Request() with
+                {
+                    ReachedOnly = true,
+                },
+                Request() with
+                {
+                    LeftOutSources = new HashSet<string> { "Shop" },
+                },
+            }
+        )
+            Assert.Equal(["Narrowing the pool needs every item"], request.Check(Catalogue()).Select(n => n.English()));
+    }
+
+    [Fact]
+    public void WhatNeedsTheCatalogueIsCheckedOnlyWithIt()
+    {
+        var request = Request() with { Locks = new HashSet<string> { Id("Tail") } };
+        Assert.Empty(request.Refusals());
+        Assert.Equal(["No slot Tail"], request.Check(Catalogue()).Select(n => n.English()));
+    }
+
+    [Fact]
+    public void DroptimizerHasNoPoolToChoose() =>
+        Assert.Equal(
+            ["Droptimizer tries every item already"],
+            (Request(SearchKind.Droptimizer) with { Pool = ItemPool.Every }).Check(Catalogue()).Select(n => n.English())
+        );
+
+    [Fact]
     public void DroptimizerTakesNoLocks()
     {
         var request = Request(SearchKind.Droptimizer) with { Locks = new HashSet<string> { Id("Weapon") } };

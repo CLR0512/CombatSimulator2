@@ -14,10 +14,10 @@ wait 9000
 cs2 wait timeout=9
 cs2 gear show
 expect reply "gear area:CorruptedFarmlands by xp:main"
-expect reply "best: +19.1% [10.1, 28.1] xp:main, the mean over its targets, stance Accurate"
-expect reply "Prayers: none → Rally, Rigour   prayer points 9,850 /h"
+expect reply "best: +15.7% [9.9, 21.6] xp:main, the mean over its targets, stance Accurate"
+expect reply "Prayers: none → Rally, Rigour   prayer points 11,230 /h"
 expect reply "helps 3 of 5"
-expect reply "hash 4c60ae894369"
+expect reply "hash bbe1ec8df3e7"
 cs2 gear open
 wait 9000
 wait 9000

@@ -453,7 +453,8 @@ internal sealed class SlayerMasters
                 a,
                 new Goal(GoalMetric, _limit),
                 new RunRequest(a, [], prefs.Trials, null, prefs.Copies ?? service.Status.DefaultCopies),
-                [.. masters.Where(offered.Contains)]
+                [.. masters.Where(offered.Contains)],
+                SlayerTasksNow.SideALine()
             );
         }
         catch (Common.CommandException e)

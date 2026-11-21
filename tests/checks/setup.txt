@@ -5,7 +5,14 @@ expect reply "current  Chk "
 # Every check starts on Simulate, in the game's look, with one side and every name shown, once the view is built.
 cs2 side b off
 cs2 spoilers off
+# As teardown leaves it after every check, so the first starts the same way: a player's own experiments left on Chk
+# (Find best's results, a loadout as the base, changes, targets ignored, another filter) would change every number.
+cs2 loadouts best clear
 cs2 side a ignore-req=off
+cs2 side a clear
+cs2 side a base=current
+cs2 unignore all
+cs2 filter can-fight kinds=monsters,dungeons,slayer,masters areas=all search=
 cs2 skin base
 cs2 open simulate
 wait 2000

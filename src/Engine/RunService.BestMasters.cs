@@ -49,13 +49,15 @@ internal sealed partial class RunService
     /// Best loadouts on the masters offered on the side (<see cref="BestMastersOffered"/>), or those of them in
     /// <paramref name="only"/>, one after another from one seed, then each master's best setup with its blocks;
     /// side B is left as it was (each master's best goes there only when used). Refused without an unlocked saved loadout,
-    /// and while anything else runs.
+    /// and while anything else runs. <paramref name="sideLine"/> is the side as one setup line, to tell later whether it
+    /// has changed since.
     /// </summary>
     public BestMastersRun StartBestMasters(
         Setup side,
         Goal goal,
         RunRequest options,
-        IReadOnlyCollection<string>? only = null
+        IReadOnlyCollection<string>? only = null,
+        string? sideLine = null
     )
     {
         MainThread.Assert("RunService.StartBestMasters");
@@ -72,7 +74,7 @@ internal sealed partial class RunService
         var masters = only == null ? offered : offered.Where(only.Contains).ToList();
         if (masters.Count == 0)
             throw new CommandException("No Slayer master chosen");
-        var run = BestMasters = new BestMastersRun(masters, goal);
+        var run = BestMasters = new BestMastersRun(masters, goal) { SideLine = sideLine };
         // One seed for every master, so each is fought as a run of it with that seed would fight it.
         var seeded = options with
         {
@@ -111,7 +113,8 @@ internal sealed partial class RunService
                 _bestGoal = run.Goal;
                 _bestByMaster[best.Master] = best;
                 NextMaster(run, side, options);
-            }
+            },
+            run.SideLine
         );
     }
 

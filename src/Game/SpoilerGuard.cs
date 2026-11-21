@@ -1,4 +1,5 @@
 using GamesByMalcs.Melvor2.Components.CombatAreas;
+using GamesByMalcs.Melvor2.Data.Items;
 using GamesByMalcs.Melvor2.Entities.Combat;
 using MelvorMods.CombatSimulator2.Common;
 using MelvorMods.CombatSimulator2.Model;
@@ -44,7 +45,20 @@ internal static class SpoilerGuard
             .Data.GetDataRegistryOutput<Enemy>()
             .GetAllObjects()
             .Select(enemy => new SpoilerEnemy(enemy.Id, enemy.DisplayName.Text, killed.GetValue(enemy) > 0));
-        return Spoilers.Of(places, enemies, Pets(game));
+        return Spoilers.Of(places, enemies, Pets(game), Holders(game));
+    }
+
+    // Chests and the like, by the fights that give them, so one only a hidden monster drops is hidden with it.
+    private static IEnumerable<SpoilerHolder> Holders(MelvorGame game)
+    {
+        var sources = Search.ItemSources.All(game);
+        foreach (var item in game.Data.GetDataRegistryOutput<Item>().GetAllObjects())
+            if (item.Capabilities.TryGet<OpenableCapability>(out _) && sources.TryGetValue(item, out var from))
+                yield return new SpoilerHolder(
+                    LiveGame.NameOf(game, item.Id, masked: false),
+                    [.. from.Where(s => s.Fight != null).Select(s => s.Fight!)],
+                    from.Any(s => s.Fight == null)
+                );
     }
 
     // The live character's pets, found or not; none when the build's pet calls moved.

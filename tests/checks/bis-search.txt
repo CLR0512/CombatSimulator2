@@ -1,0 +1,46 @@
+# "Find best setup" over every item in the game, on Chk against Golbin with the weapon, ammo, gloves and ring slots
+# free: the plan counts the pool by slot type, the answer holds items Chk doesn't own and names its pool, the set
+# opened as side B and run gives the answer's own hash, and a setup already wearing that set is told to keep it.
+# Retake the numbers when Chk or the game changes.
+cs2 gear plan GolbinForest/Golbin pool=every kinds=none lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet
+expect reply "pool: every item"
+expect reply "Helmet: 88 (owned 34, wearable 88)"
+expect reply "Weapon: 218 (owned 83, wearable 218)"
+expect reply "sets: 459,648 possible, 397,404 ruled out"
+cs2 gear GolbinForest/Golbin pool=every kinds=none seed=1 wait=0 lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet
+expect reply "running:"
+# cs2 wait fails once its 9 s pass with the search still going: sleep first, then one wait.
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "best: +16.3% [14.8, 17.9] xp:main (4,941 → 5,749 /h), stance Accurate · pool: every item"
+expect reply "Weapon: Oak Bow → Refined Meteorite Javelin"
+expect reply "Gloves: Spider Silk Vambraces → Kelsarin Gloves"
+expect reply "hash 74069817ee8c"
+cs2 gear open
+wait 9000
+cs2 wait timeout=9
+cs2 compare show
+expect reply "equip=Weapon:RefinedMeteoriteJavelin accepted was=OakBow"
+cs2 result
+expect reply "results 74069817ee8c"
+# Wearing the answer's set already, the search keeps it.
+cs2 gear GolbinForest/Golbin pool=every kinds=none seed=1 wait=0 lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet equip=Ammo:JadestoneBolts equip=Gloves:KelsarinGloves equip=RingSlot1:GoldJadestoneRing equip=Weapon:RefinedMeteoriteJavelin stance=Accurate
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "keep what you have: no set is better by more than the margin"
+expect reply "· pool: every item"
+expect reply "hash 74069817ee8c"

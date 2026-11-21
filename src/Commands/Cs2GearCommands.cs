@@ -17,7 +17,9 @@ internal static class Cs2GearCommands
     private const string Usage =
         "cs2 gear <target> [metric=<key>] [deaths=none|5|any] [lock=<slot>,…] [exclude=<item>,…] [styles=all] "
         + "[trials=] [seed=] [copies=] [where=host|game] [wait=<s>] [short] [setup=<loadout>] [ignore-req] "
-        + "[kinds=<kind>,…|all|none] [unowned] [<change>…] "
+        + "[kinds=<kind>,…|all|none] [unowned] "
+        + PoolArgs.Usage
+        + " [<change>…] "
         + "| cs2 gear plan <target> … | cs2 gear show [target] | cs2 gear cancel | cs2 gear open [tie=<n>|alt=cheaper|safer] "
         + "| cs2 gear keep [tie=<n>]";
 
@@ -47,9 +49,10 @@ internal static class Cs2GearCommands
                     "tie",
                     "alt",
                     "kinds",
+                    .. PoolArgs.Options,
                     .. ChangeArgs.Options,
                 ],
-                ["short", "ignore-req", "unowned"],
+                ["short", "ignore-req", "unowned", .. PoolArgs.Flags],
                 Gear,
                 Purpose: "Finds the best owned gear for one target: the best set, the sets as good, and the gain over current gear"
             )
@@ -209,7 +212,7 @@ internal static class Cs2GearCommands
         var target = SearchTarget(targetWord);
         var setup = RunArgs.SetupFrom(args);
         setup.Changes = ChangeArgs.From(args, SideLetter.A).A;
-        return new SearchRequest(
+        var request = new SearchRequest(
             kind,
             setup,
             target.Key,
@@ -227,6 +230,7 @@ internal static class Cs2GearCommands
             Kinds = kind == SearchKind.BestGear ? KindsFrom(args.String("kinds")) : [],
             IncludeUnowned = kind == SearchKind.BestGear && args.Flag("unowned"),
         };
+        return kind == SearchKind.BestGear ? PoolArgs.Apply(request, args) : request;
     }
 
     // The kinds besides gear: as given, all, none, or the switches saved in the panel.
@@ -298,7 +302,8 @@ internal static class Cs2GearCommands
             {
                 found = result;
                 answered = true;
-            }
+            },
+            kind == SearchKind.BestGear ? PoolArgs.Key(args) : null
         );
         MainThread.When(
             () => answered,
@@ -325,7 +330,7 @@ internal static class Cs2GearCommands
     private static string Running(Engine.Search.SearchRun search) =>
         string.Create(
             CultureInfo.InvariantCulture,
-            $"running: {(search.Stage == 0 ? "planning" : $"stage {search.Stage}, {search.Left} left")}{(search.SecondsLeft is { } s ? $", about {s:0} s to go" : "")} (cs2 wait, then cs2 gear show)"
+            $"running: {(search.Stage == 0 ? "planning" : $"stage {search.Stage}, {search.Left} left")}{(search.SecondsLeft is { } s ? $", {(search.LeftIsLimit ? "at most" : "about")} {s:0} s to go" : "")} (cs2 wait, then cs2 gear show)"
         ) + BestSoFar();
 
     // A setup search's best confirmed set so far, which Stop keeps.

@@ -17,7 +17,7 @@ cs2 wait timeout=9
 cs2 gear show
 expect reply "gear GolbinForest/Golbin by xp:main, no deaths, margin 1%, seed 1"
 expect reply "stage 1: 400 trials, 48 fought, 47 dropped, 1 left"
-expect reply "stage 6: 400 trials, 22 fought, 21 dropped, 1 left"
+expect reply "stage 6: 400 trials, 13 fought, 12 dropped, 1 left"
 expect reply "best: +5.5% [3.1, 7.8] xp:main (4,961 → 5,232 /h), stance Accurate"
 expect reply "Weapon: Oak Bow → Adamant Javelin"
 expect reply "hash ca26a1b42b6e"
@@ -55,14 +55,14 @@ wait 9000
 wait 9000
 cs2 wait timeout=9
 cs2 droptimizer show
-expect reply "stage 1: 25 trials, 428 fought, 251 dropped, 177 left"
-expect reply "stage 3: 400 trials, 151 fought, 0 dropped, 151 left"
-expect reply "no gain: 402   over the death limit: 0"
+expect reply "stage 1: 25 trials, 285 fought, 130 dropped, 155 left"
+expect reply "stage 3: 400 trials, 135 fought, 0 dropped, 135 left"
+expect reply "no gain: 260   over the death limit: 0"
 cs2 droptimizer GolbinForest/Golbin seed=1 trials=400 wait=0
 wait 9000
 wait 9000
 wait 9000
 cs2 wait timeout=9
 cs2 droptimizer show
-expect reply "stage 1: 25 trials, 428 fought, 251 dropped, 177 left"
-expect reply "no gain: 402   over the death limit: 0"
+expect reply "stage 1: 25 trials, 285 fought, 130 dropped, 155 left"
+expect reply "no gain: 260   over the death limit: 0"

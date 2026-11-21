@@ -20,12 +20,11 @@ public sealed record Assumption(string Key, Note Note, bool InEveryFight)
         new(Consumables, Note.Of("unlimited consumables (topped up after each tick)"), InEveryFight: true),
         new(Levels, Note.Of("levels held (XP reset after each trial)"), InEveryFight: true),
         new("loot-cleared", Note.Of("loot cleared from the bank after it is counted"), InEveryFight: false),
-        // The copy keeps the save's slayer task; only auto-slayer is off, so the copy never switches enemy.
+        // The copy keeps the save's slayer task for the whole run; only auto-slayer is off, so the copy never switches
+        // enemy.
         new(
             SlayerOff,
-            Note.Of(
-                "slayer task as in the save, auto-slayer off; a task that ends during a fight changes the rest of that fight, as in the game"
-            ),
+            Note.Of("slayer task as in the save, for the whole run (it never runs out), auto-slayer off"),
             InEveryFight: false
         ),
         new("noon", Note.Of("time of day frozen at 12:00"), InEveryFight: false),

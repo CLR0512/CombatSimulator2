@@ -82,6 +82,8 @@ internal sealed partial class SearchRun : IDisposable
     private GearCatalogue? _catalogue;
     private SearchPlan? _plan;
     private SetupPasses? _passes;
+    private readonly SettlingRaces _settling = new();
+    private readonly GapStage _gap = new();
     private readonly Func<int> _nextGeneration;
     private int _generation;
     private bool _changed;
@@ -229,6 +231,8 @@ internal sealed partial class SearchRun : IDisposable
         try
         {
             _passes?.Races.OnFrame();
+            _settling.OnFrame();
+            _gap.OnFrame();
             if (_queue.Drain(_generation) > 0)
                 _changed = true;
             if (FirstStageTooLong())
@@ -405,46 +409,7 @@ internal sealed partial class SearchRun : IDisposable
             End(answer);
             return;
         }
-        // A step's winner is its best set, unless the held set is as good: it stays; with none inside the death limit
-        // yet, the one that died least. A climb in a style current gear doesn't fight in never holds current gear.
-        var own = OwnStyle(results);
-        var end = Race.End([.. results.Where(r => !own || r.Index != 0).Select(Held)], Request.Goal, Margin, _prices);
-        var winner = end.State switch
-        {
-            AnswerState.Found when end.Best is { } best => Unheld(best),
-            AnswerState.NoneWithinLimit when FewestDeaths() is var fewest && !(own && fewest == 0) => fewest,
-            _ => own ? results.First(r => r.Index != 0).Index : _held,
-        };
-        _passes?.Noted(end, Unheld, _candidates, winner);
-        Summarise(trials, _roundSets, 1, _roundClock.Elapsed.TotalSeconds);
-        // The weapon step's best set on another weapon, when close, is where a second climb starts: that weapon may
-        // lead to more once the slots around it change.
-        var weapon = _climb.WeaponOf(_candidates[winner].Changes);
-        var runnerUp = _climb.WeaponStep
-            ? Race.RunnerUp(
-                [.. results.Select(Held)],
-                Held(_last[winner]).Index,
-                Request.Goal,
-                RestartWithin,
-                i => _climb.WeaponOf(_candidates[Unheld(i)].Changes) != weapon,
-                _prices
-            )
-            : null;
-        _climb.Won(
-            _candidates[winner].Changes,
-            runnerUp is { } second ? _candidates[Unheld(second)].Changes : null,
-            _passes?.Order(results, _candidates)
-        );
-        FinishedStep(winner);
-        NextStep();
-    }
-
-    private void Summarise(int trials, int fought, int left, double seconds)
-    {
-        _stages.Add(new StageSummary(trials, fought, fought - left, left, seconds));
-        Log.Info(
-            $"search stage {_stages.Count}: {trials} trials, {fought} fought, {fought - left} dropped, {left} left, {seconds:0.0} s"
-        );
+        StepEnded(results, trials);
     }
 
     /// <summary>The margin the search races and ties by.</summary>
@@ -484,7 +449,10 @@ internal sealed partial class SearchRun : IDisposable
 
     private void End(Answer answer)
     {
-        _passes?.Finish(answer, _candidates, _last, _catalogue, _prices);
+        if (_settling.Start(answer, this, _catalogue, End) || _gap.Start(answer, this, _catalogue, _prices, End))
+            return;
+        var (sets, results) = _passes?.Races.Answered ?? (_candidates, _last);
+        _passes?.Finish(answer, sets, results, _catalogue, _prices);
         WantsOwnSet(answer);
         Answer = answer;
         _fighter.Dispose();

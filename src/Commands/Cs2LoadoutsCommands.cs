@@ -16,7 +16,7 @@ internal static class Cs2LoadoutsCommands
     private const string Usage =
         "cs2 loadouts | cs2 loadouts best master:<m>|all [masters=<m>,…] [side=a|b] [metric=<key>] [deaths=none|5|any] [seed=] [trials=] "
         + "[copies=] [where=host|game] | cs2 loadouts best status [all] | cs2 loadouts best use <master>|all | cs2 loadouts best cancel "
-        + "| cs2 loadouts tasks [metric=<key>]";
+        + "| cs2 loadouts best clear | cs2 loadouts tasks [metric=<key>]";
 
     public static void Add(List<Subcommand> subs) =>
         subs.Add(
@@ -71,7 +71,13 @@ internal static class Cs2LoadoutsCommands
                 call.Ok(Status(service.BestLoadouts ?? throw new CommandException("Best loadouts hasn't run")));
                 return;
             case "all":
-                var all = service.StartBestMasters(SideSetup(args), GoalOf(args), Options(args, null), MastersOf(args));
+                var all = service.StartBestMasters(
+                    SideSetup(args),
+                    GoalOf(args),
+                    Options(args, null),
+                    MastersOf(args),
+                    SideLine(args)
+                );
                 call.Ok($"Best loadouts started on {all.Masters.Count} masters (cs2 loadouts best status all)");
                 return;
             case "use":
@@ -97,6 +103,10 @@ internal static class Cs2LoadoutsCommands
                 service.CancelBestLoadouts();
                 call.Ok("Best loadouts cancelled: side B is as it was");
                 return;
+            case "clear":
+                service.ForgetBestLoadouts();
+                call.Ok("Best loadouts forgotten: tasks are judged on side A's runs");
+                return;
             case { } word when Ids.IsMaster(Ids.FullKey(word)) || Ids.IsMaster(Ids.FullKey(Ids.MasterPrefix + word)):
                 var key = Ids.FullKey(Ids.IsMaster(Ids.FullKey(word)) ? word : Ids.MasterPrefix + word);
                 var setup = SideSetup(args);
@@ -105,7 +115,8 @@ internal static class Cs2LoadoutsCommands
                     setup,
                     GoalOf(args),
                     Options(args, setup),
-                    Panel.Slayer.MonsterLoadouts.PutPicks
+                    Panel.Slayer.MonsterLoadouts.PutPicks,
+                    SideLine(args)
                 );
                 call.Ok(
                     $"Best loadouts started on {Ids.BriefKey(key)}: {job.Choices.Count} choices, seed {job.Seed} (cs2 loadouts best status)"
@@ -127,6 +138,12 @@ internal static class Cs2LoadoutsCommands
     private static Setup SideSetup(CommandArgs args) =>
         ((args.String("side") ?? "a") == "b" ? PanelState.B : PanelState.A)?.ToSetup("")
         ?? throw new CommandException("there is no side B: give side=a or open side B");
+
+    // The side Best loadouts starts from as one setup line, so the tasks can tell when side A has changed since.
+    private static string? SideLine(CommandArgs args) =>
+        Panel.SetupTab.SlayerTasksNow.LineOf(
+            (args.String("side") ?? "a") == "b" ? PanelState.CheckB : PanelState.CheckA
+        );
 
     private static Goal GoalOf(CommandArgs args) =>
         new(args.String("metric") ?? Metrics.MainXp, Cs2GearCommands.DeathsFrom(args.String("deaths")));
@@ -162,7 +179,8 @@ internal static class Cs2LoadoutsCommands
                             $"  {v.Advice.ToString().ToLowerInvariant()}  {v.Ratio:0.00}x"
                         )
                         + gain
-                        + (s.Best ? "  on best" : "  on side a");
+                        + (s.Best ? "  on best" : "  on side a")
+                        + (s.Stale ? ", side a changed since" : "");
                 })
             );
     }

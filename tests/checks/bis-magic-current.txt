@@ -1,0 +1,41 @@
+# A magic setup searched slot by slot with spells among the choices keeps current gear as it is, as the first set: on
+# Chk's magic loadout against Blighted Torfish (Crescent Lake: requirements ignored), the answer has a gain over
+# current gear. The set found varies a little between runs here; current gear's figure doesn't. Retake the numbers when
+# Chk or the game changes.
+cs2 gear CrescentLake/BlightedTorfish metric=xp:MelvorBase:Magic seed=8325979865830007 trials=1000 kinds=prayers,spell,imbuement,toolbelt,potion setup=Loadout3 ignore-req wait=0
+expect reply "running:"
+# cs2 wait fails once its 9 s pass with the search still going: sleep first, then one wait.
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "best: +"
+expect reply "xp:MelvorBase:Magic (16,060 → "

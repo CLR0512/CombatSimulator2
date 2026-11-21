@@ -208,7 +208,8 @@ internal sealed class Progress
                 ? Words.Seconds((tenths / 10.0).ToString("0.0", Tr.Culture))
                 // Translators: A gear search's time so far, in minutes and seconds: "2m 05s".
                 : Tr.Format("{0}m {1}s", [seconds / 60, (seconds % 60).ToString("00", Tr.Culture)]);
-        var left = SearchWords.TimeLeft(RunService.Instance.Search?.SecondsLeft);
+        var search = RunService.Instance.Search;
+        var left = SearchWords.TimeLeft(search?.SecondsLeft, search?.LeftIsLimit == true);
         _time.Text = left.Length == 0 ? spent : $"{spent} · {left}";
     }
 

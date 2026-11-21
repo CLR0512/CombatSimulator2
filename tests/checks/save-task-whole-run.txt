@@ -1,0 +1,16 @@
+# A monster fought as the save has it keeps the save's slayer task for the whole run, however many trials: Chk's save
+# has Red Slime on Allevia's task with 121 kills left, and runs of 300 and 1,000 trials both pay the game's 11 coins
+# and 12.65 Slayer XP on every kill. Before, the task ran out after its 121 kills and the rates fell with the trials.
+cs2 run SlimeForest/RedSlime seed=1 trials=300 fresh where=game
+cs2 wait timeout=9
+cs2 wait timeout=9
+cs2 result SlimeForest/RedSlime unit=kill
+expect reply "currency:MelvorBase:SlayerCoins 11 [11, 11]"
+expect reply "xp:MelvorBase:Slayer 12.65 [12.65, 12.65]"
+expect reply "slayer task as in the save, for the whole run (it never runs out), auto-slayer off"
+cs2 run SlimeForest/RedSlime seed=1 trials=1000 fresh where=game
+cs2 wait timeout=9
+cs2 wait timeout=9
+cs2 result SlimeForest/RedSlime unit=kill
+expect reply "currency:MelvorBase:SlayerCoins 11 [11, 11]"
+expect reply "xp:MelvorBase:Slayer 12.65 [12.65, 12.65]"

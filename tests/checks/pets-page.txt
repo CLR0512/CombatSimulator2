@@ -17,8 +17,8 @@ cs2 whatif DragonsPass/Drake pet=Bruno:on ignore-req seed=1
 cs2 wait timeout=9
 cs2 wait timeout=9
 wait 1500
-cs2 compare show
-expect reply "DragonsPass/Drake  A=12,134 [11,836, 12,432]  B=12,199 [12,016, 12,382]"
+cs2 compare show metric=xp:main
+expect reply "DragonsPass/Drake  A=13,019 [12,768, 13,271]  B=13,017 [12,822, 13,212]"
 cs2 result DragonsPass/Drake full
 expect reply "Bruno found: requirement ignored (not found yet)"
 expect reply "Pets added or taken away here change their bonuses only; the game still counts the pets you've found."

@@ -139,7 +139,7 @@ public sealed class AnswersTests
     {
         // Set 1 was dropped at an earlier stage with three deaths; the sets still in died more.
         var answer = new Answer();
-        var stillIn = new[] { Set(0, 12, deaths: 40), Set(2, 9, deaths: 20) };
+        var stillIn = new[] { Set(0, 12, deaths: 40), Set(2, 9, deaths: 60) };
         var all = stillIn.Append(Set(1, 10, deaths: 3, trials: 90)).ToDictionary(r => r.Index);
         Answers.Fill(answer, Sets, stillIn, all, Kills, 0.01, false, Catalogue());
         Assert.Equal(AnswerState.NoneWithinLimit, answer.State);
@@ -165,5 +165,31 @@ public sealed class AnswersTests
         Assert.Equal(Sets[1].Changes, answer.ByStyle[0].Best!.Changes);
         Assert.Equal(Sets[3].Changes, answer.ByStyle[1].Best!.Changes);
         Assert.Empty(Filled([Set(0, 12), Set(1, 11)]).ByStyle);
+    }
+
+    [Fact]
+    public void EachChangedSlotIsMarkedByWhatItsItemTakesToGet()
+    {
+        var catalogue = SearchFixture.Catalogue(i =>
+            i.Id == SearchFixture.Id("RuneShield") ? i with { Source = Note.Text("Golbin Chief") } : i
+        );
+        var candidate = new Candidate(
+            1,
+            ChangeList.Parse("equip=Offhand:RuneShield equip=Helmet:DragonHelmet equip=Platebody:IronPlatebody"),
+            "Melee"
+        );
+        var result = new StageResult(1, RankingTests.Finished("t", "t", 20), "kills");
+        var set = Answers.Set(candidate, result, null, catalogue);
+        Mark? Of(string slot) => set.Slots.Single(s => s.Slot == SearchFixture.Id(slot)).Mark;
+        // Not owned, wearable: where it comes from.
+        Assert.Equal(MarkKind.NotInBank, Of("Offhand")!.Kind);
+        Assert.Equal("Golbin Chief", Of("Offhand")!.Source!.English());
+        Assert.Null(Of("Offhand")!.Needs);
+        // Not owned and lacking a level: both, and the set is fought with requirements ignored.
+        Assert.Equal(MarkKind.NotInBank, Of("Helmet")!.Kind);
+        Assert.Equal("Defence level 60", Of("Helmet")!.Needs!.English());
+        Assert.True(set.NeedsRequirementsIgnored);
+        // Owned and wearable: no mark, as before.
+        Assert.Null(Of("Platebody"));
     }
 }

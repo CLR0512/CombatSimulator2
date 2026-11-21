@@ -62,13 +62,29 @@ public sealed class DeathLimitsTests
         Assert.Equal(
             2,
             DeathLimits.Closest([
-                (1, Deaths(30)),
-                (2, Deaths(6)),
-                (3, Deaths(6)),
-                (4, Without(4, TargetState.Refused).Result),
+                (1, Deaths(30), null),
+                (2, Deaths(6), null),
+                (3, Deaths(6), null),
+                (4, Without(4, TargetState.Refused).Result, null),
             ])
         );
-        Assert.Equal(5, DeathLimits.Closest([(4, Deaths(10, 300)), (5, Deaths(10, 600))]));
+        Assert.Equal(5, DeathLimits.Closest([(4, Deaths(10, 300), null), (5, Deaths(10, 600), null)]));
         Assert.Null(DeathLimits.Closest([]));
     }
+
+    [Fact]
+    public void AmongSharesNotClearlyAboveTheSmallestTheGoalDecides()
+    {
+        // 6 and 8 deaths in 1,000 trials are within each other's range: the higher value wins over fewer deaths.
+        Assert.Equal(2, DeathLimits.Closest([(1, Deaths(6, 1000), Value(100)), (2, Deaths(8, 1000), Value(150))]));
+        // 60 deaths is clearly more than 6: a better value doesn't bring it in.
+        Assert.Equal(1, DeathLimits.Closest([(1, Deaths(6, 1000), Value(100)), (2, Deaths(60, 1000), Value(500))]));
+        // Lower is better: the smaller value wins among the near ones.
+        Assert.Equal(
+            1,
+            DeathLimits.Closest([(1, Deaths(8, 1000), Value(100)), (2, Deaths(6, 1000), Value(150))], true)
+        );
+    }
+
+    private static Estimate Value(double point) => new(point, point, point, 0, "test");
 }

@@ -1,6 +1,7 @@
-# The save's tasks judged against their masters: Chk's six tasks, from a run of the six masters with one seed. Hans'
-# Drake beats his average and isn't extended yet, so extending it pays; Galan's Dire Wolf is well under his, so
-# rerolling the kills left pays. Run in the game's process.
+# The save's tasks judged against their masters on side A: Chk's six tasks, from a run of the six masters with one
+# seed (the teardown leaves no Find best results, which the tasks would be judged on instead). Hans' Drake beats his
+# average and isn't extended yet, so extending it pays; Fells' Toxic Razorfish is well under his, so rerolling the kills
+# left pays. Run in the game's process.
 cs2 run master:Kuren master:Allevia master:Satsgar master:Fells master:Galan master:Hans seed=1 trials=300 fresh where=game
 wait 9000
 wait 9000
@@ -9,5 +10,5 @@ cs2 wait timeout=9
 cs2 wait timeout=9
 cs2 loadouts tasks
 expect reply "6 tasks · metric xp:MelvorBase:Slayer"
-expect reply "Hans  Drake  0/216  extend"
-expect reply "Galan  DireWolf  0/334  reroll"
+expect reply "Hans  Drake  0/216  extend  7.43x  +4,347 over 65 kills for 2,500  on side a"
+expect reply "Fells  ToxicRazorfish  0/177  reroll  0.74x  +2,805 over 177 kills for 2,375  on side a"

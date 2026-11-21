@@ -326,9 +326,11 @@ internal static partial class KnownParts
     public static IReadOnlyDictionary<string, PartGroup> StatCategories { get; } =
         new Dictionary<string, PartGroup>(StringComparer.Ordinal)
         {
-            ["MelvorBase:Melee"] = PartGroup.Fight,
-            ["MelvorBase:Ranged"] = PartGroup.Fight,
-            ["MelvorBase:Magic"] = PartGroup.Fight,
+            ["MelvorBase:MeleeAttackBonus"] = PartGroup.Fight,
+            ["MelvorBase:RangedAttackBonus"] = PartGroup.Fight,
+            ["MelvorBase:MagicAttackBonus"] = PartGroup.Fight,
+            // The strength and damage bonuses of every style.
+            ["MelvorBase:OtherBonuses"] = PartGroup.Fight,
             ["MelvorBase:MeleeEvasion"] = PartGroup.Defence,
             ["MelvorBase:RangedEvasion"] = PartGroup.Defence,
             ["MelvorBase:MagicEvasion"] = PartGroup.Defence,

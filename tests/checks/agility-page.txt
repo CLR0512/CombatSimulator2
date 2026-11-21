@@ -21,7 +21,7 @@ expect reply "GlowingDepths/GlowingJellyfish finished"
 cs2 whatif GolbinForest/Golbin technique=Evading:25 seed=1
 cs2 wait timeout=9
 wait 1500
-cs2 compare show
+cs2 compare show metric=xp:main
 expect reply "technique=Evading:25 accepted was=1"
 expect reply "GolbinForest/Golbin  A=4,941 [4,877, 5,005]  B=4,941 [4,877, 5,005]  d=0"
 # Past the technique's cap is refused.

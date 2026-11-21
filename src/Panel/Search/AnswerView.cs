@@ -14,6 +14,7 @@ internal sealed partial class AnswerView
 {
     private readonly Action _again;
     private readonly Action<int?, string?> _open;
+    private readonly Action<string> _leaveOut;
     private Answer? _shown;
     private (Answer, string, int)? _stamp;
     private IReadOnlyList<Note> _changed = [];
@@ -21,12 +22,13 @@ internal sealed partial class AnswerView
 
     /// <summary>
     /// The view; <paramref name="again"/> goes to the start form; <paramref name="open"/> takes a set of the answer
-    /// (null the best, else a tie from 1).
+    /// (null the best, else a tie from 1); <paramref name="leaveOut"/> leaves an item source out and goes to the form.
     /// </summary>
-    public AnswerView(Action again, Action<int?, string?> open)
+    public AnswerView(Action again, Action<int?, string?> open, Action<string> leaveOut)
     {
         _again = again;
         _open = open;
+        _leaveOut = leaveOut;
         Root = Ui.Column(12, "GearSearchAnswer");
     }
 
@@ -89,13 +91,17 @@ internal sealed partial class AnswerView
                 var best = SetupRows.Shown(answer, _tab, found);
                 SetupRows.Banner(body, _tab, best, found);
                 Heading(body, answer, best, againLink);
+                BestInSlotRows.PoolLine(body, answer);
+                BestInSlotRows.NotRun(body, answer);
                 SetupRows.Under(body, answer);
                 var rows = SetupRows.Rows(_tab, best, found);
-                Wear(body, rows, open: actions ? OpenButton() : null);
+                Wear(body, rows, open: actions ? OpenButton() : null, answer: _tab == SetupRows.Best ? answer : null);
                 SetupRows.Choices(body, rows);
                 Why(body, answer, best);
                 Members(body, answer, best);
                 SetupRows.Folds(body, answer, best);
+                if (_tab == SetupRows.Best)
+                    BestInSlotRows.Folds(body, answer, found, actions ? _leaveOut : null);
                 break;
             case AnswerState.KeepCurrent:
                 // Translators: Gear search answer when no set is better than current gear by more than the margin.
@@ -126,7 +132,7 @@ internal sealed partial class AnswerView
                             "GearSearchClosest"
                         )
                     );
-                    Wear(body, closest, heading: false);
+                    Wear(body, closest, heading: false, answer: answer);
                 }
                 break;
             case AnswerState.NoneKills:
@@ -209,8 +215,15 @@ internal sealed partial class AnswerView
     }
 
     // Per changed slot, old → new with both icons; then the stance when it changes, and what the set uses up.
-    // The heading carries "Open as setup" at its right, near the top where it stays in view.
-    private static void Wear(VBoxContainer body, SetResult set, bool heading = true, Button? open = null)
+    // The heading carries "Open as setup" at its right, near the top where it stays in view. With the answer, a slot
+    // shows its item's mark, and its hover what decided it.
+    private static void Wear(
+        VBoxContainer body,
+        SetResult set,
+        bool heading = true,
+        Button? open = null,
+        Answer? answer = null
+    )
     {
         var nothing = set.Slots.Count == 0 && set.Stance == null && set.Assumes.Count == 0;
         if (nothing && open == null)
@@ -250,12 +263,8 @@ internal sealed partial class AnswerView
                     wrap: true
                 )
             );
+            BestInSlotRows.Slot(words, answer, slot);
             SetupRows.GapMark(row, set, slot.New);
-            if (slot.New != null)
-            {
-                words.MouseFilter = Control.MouseFilterEnum.Stop;
-                InstantTooltips.Lazy(words, () => ItemPicture.About(slot.New, slot.Old));
-            }
         }
         if (set.Stance != null)
             column.AddChild(
@@ -336,7 +345,7 @@ internal sealed partial class AnswerView
             gain.SizeFlagsVertical = Control.SizeFlags.ShrinkBegin;
             if (SearchWords.GainColour(tie.Percent, tie.Gain) is { } colour)
                 gain.LabelSettings = Compare.CompareText.Coloured(colour, TextStyle.Small);
-            var text = Ui.Add(row, Ui.Label(SetLine(tie), TextStyle.Small, wrap: true));
+            var text = Ui.Add(row, Ui.Label(SearchWords.SetLine(tie), TextStyle.Small, wrap: true));
             text.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
             if (actions && !tie.Changes.IsEmpty)
             {
@@ -384,6 +393,7 @@ internal sealed partial class AnswerView
                     wrap: true
                 )
             );
+        BestInSlotRows.StoppedAtLimit(column, answer);
         if (answer is { Reran: true, BehindAtStage: { } behind })
             column.AddChild(
                 Ui.Label(
@@ -395,18 +405,5 @@ internal sealed partial class AnswerView
                     wrap: true
                 )
             );
-    }
-
-    // A set's changed slots on one line: "Weapon: Rune Sword → Dragon Sword; Stance: Slash".
-    private static string SetLine(SetResult set)
-    {
-        var names = PanelState.Names();
-        var parts = set
-            .Slots.Select(s => Tr.Format("{0}: {1}", [names(s.Slot), s.NewName ?? Tr.Get("nothing")]))
-            .ToList();
-        if (set.Stance != null)
-            parts.Add(Tr.Format("Stance: {0}", PanelState.Names()(set.Stance)));
-        parts.AddRange(SetupRows.ChoiceParts(set));
-        return parts.Count == 0 ? Tr.Get("current gear") : string.Join("; ", parts);
     }
 }

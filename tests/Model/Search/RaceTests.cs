@@ -140,10 +140,18 @@ public sealed class RaceTests
     [Fact]
     public void WithNoSetWithinTheLimitTheClosestIsNamed()
     {
-        var end = Race.End([Set(0, 12, deaths: 40), Set(1, 10, deaths: 3), Set(2, 9, deaths: 9)], Kills, OnePercent);
+        var end = Race.End([Set(0, 12, deaths: 40), Set(1, 10, deaths: 3), Set(2, 9, deaths: 30)], Kills, OnePercent);
         Assert.Equal(AnswerState.NoneWithinLimit, end.State);
         Assert.Null(end.Best);
         Assert.Equal(1, end.Closest);
+    }
+
+    [Fact]
+    public void AmongTheClosestTheGoalDecides()
+    {
+        // 3 and 9 deaths in 300 trials are within each other's range: set 2, killing every 9 s against 10, is named.
+        var end = Race.End([Set(0, 12, deaths: 40), Set(1, 10, deaths: 3), Set(2, 9, deaths: 9)], Kills, OnePercent);
+        Assert.Equal(2, end.Closest);
     }
 
     [Fact]

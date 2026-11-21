@@ -1,0 +1,49 @@
+# An answer over every item marks each changed slot by what its item takes to get, from the game's data: where an
+# item Chk doesn't own comes from (a monster, a chest, a recipe's group), and the level it lacks when the setup's
+# levels don't meet it. With the spoiler guard on, a monster Chk hasn't met shows as the guard shows it.
+# Against Golbin with Ranged lowered to 60, the javelin and bolts need Ranged 90.
+cs2 gear GolbinForest/Golbin pool=every kinds=none seed=1 wait=0 lock=Helmet,Cape,Torso,Legs,Boots,Offhand,Amulet level=Ranged:60
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show level=Ranged:60 pool=every
+expect reply "Weapon: Oak Bow → Refined Meteorite Javelin  [not in your bank: Javelins]  [needs Ranged Level 90]"
+expect reply "Gloves: Spider Silk Vambraces → Blackstone Gauntlet  [not in your bank: Blackstone Chest]"
+# Against Siltspinner (The Path to Melvor done in the setup), with the guard on: Act 2's monsters are hidden, and so
+# is the Kraken Chest, which only the hidden Kraken gives.
+cs2 spoilers on
+cs2 gear SiltedOasis/Siltspinner quest=MQ10:done ignore-req pool=every kinds=none seed=1 wait=0 lock=Helmet,Torso,Ammo,Weapon,Offhand
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show
+expect reply "Boots: Harpy Boots → Drowned Boots  [not in your bank: ???]"
+expect reply "RingSlot1: Pestilence Ring → Elder Vampire Ring  [not in your bank: ???]"
+expect reply "Legs: Elk Leather Chaps (u) → Drowned Chaps  [not in your bank: ???]"
+cs2 spoilers off
+cs2 gear show
+expect reply "Boots: Harpy Boots → Drowned Boots  [not in your bank: Drowned Quartermaster]"
+expect reply "RingSlot1: Pestilence Ring → Elder Vampire Ring  [not in your bank: Elder Vampire]"
+expect reply "Legs: Elk Leather Chaps (u) → Drowned Chaps  [not in your bank: Kraken Chest]"

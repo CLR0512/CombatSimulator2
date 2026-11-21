@@ -109,4 +109,30 @@ public sealed class SpoilersTests
         Assert.False(guard.SameAs(Spoilers.Of(places, enemies, [new SpoilerPet("Bruno", Found: true)])));
         Assert.True(guard.SameAs(Spoilers.Of(places, enemies, [new SpoilerPet("Bruno", Found: false)])));
     }
+
+    [Fact]
+    public void AChestOnlyHiddenFightsGiveIsHiddenWithThem()
+    {
+        var guard = Spoilers.Of(
+            [
+                new SpoilerPlace("Farm", "Farm", Open: true, ["Cow"]),
+                new SpoilerPlace("Cave", "Dark Cave", Open: false, ["Golem"]),
+            ],
+            [new("Cow", "Cow", false), new("Golem", "Golem", false)],
+            null,
+            [
+                new SpoilerHolder("Golem Chest", ["Golem"], Elsewhere: false),
+                new SpoilerHolder("Cave Chest", ["Cave"], Elsewhere: false),
+                new SpoilerHolder("Shared Chest", ["Golem", "Cow"], Elsewhere: false),
+                new SpoilerHolder("Shop Chest", ["Golem"], Elsewhere: true),
+                new SpoilerHolder("Bought Chest", [], Elsewhere: true),
+            ]
+        );
+        Assert.Equal(Spoilers.Mask, guard.Name("Golem Chest"));
+        Assert.Equal(Spoilers.Mask, guard.Name("Cave Chest"));
+        // A fight the character can meet, or another way to get it, keeps it readable.
+        Assert.Equal("Shared Chest", guard.Name("Shared Chest"));
+        Assert.Equal("Shop Chest", guard.Name("Shop Chest"));
+        Assert.Equal("Bought Chest", guard.Name("Bought Chest"));
+    }
 }

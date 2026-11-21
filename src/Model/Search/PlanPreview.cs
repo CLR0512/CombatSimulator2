@@ -17,6 +17,15 @@ public sealed record PlanPreview
     public const double LongSearchSeconds = 150;
 
     /// <summary>
+    /// The long-search limit of a search over every item in the game: its pool is several times a bank's, and a slow
+    /// target's climb needs about twice the time to finish its passes.
+    /// </summary>
+    public const double EveryItemSeconds = 300;
+
+    /// <summary>The long-search limit of a search choosing from <paramref name="pool"/>.</summary>
+    public static double LimitFor(ItemPool pool) => pool == ItemPool.Every ? EveryItemSeconds : LongSearchSeconds;
+
+    /// <summary>
     /// The most sets fought whole before any search of the kind of target has been timed: past it the time could
     /// be anything, and a slot at a time is sure to end.
     /// </summary>
@@ -52,9 +61,57 @@ public sealed record PlanPreview
     /// <summary>A setup search whose choices' steps are expected to take it past the long-search limit.</summary>
     public bool KindsOverLimit { get; init; }
 
+    /// <summary>The longest the search may run a slot at a time, the player's limit; null for none.</summary>
+    public double? MaxSeconds { get; init; }
+
+    /// <summary>The seconds a search a slot at a time is expected to take; null when it fights every set or isn't timed.</summary>
+    public double? ClimbSeconds { get; init; }
+
     /// <summary>Droptimizer: the unowned items read and those wearable now.</summary>
     public int Unowned { get; init; }
     public int Wearable { get; init; }
+
+    public ItemPool Pool { get; init; }
+
+    /// <summary>With every item: each slot type's share of the pool, in the game's slot order.</summary>
+    public IReadOnlyList<PoolCount> PoolCounts { get; init; } = [];
+}
+
+/// <summary>
+/// One slot type's items in a search's pool: all of them, those the character owns, and those its levels meet.
+/// </summary>
+public sealed record PoolCount(string SlotType, int Items, int Owned, int Wearable)
+{
+    /// <summary>
+    /// The pool <paramref name="request"/> chooses from, by slot type; what it excludes or narrows away isn't counted.
+    /// </summary>
+    public static IReadOnlyList<PoolCount> Of(GearCatalogue catalogue, SearchRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(catalogue);
+        ArgumentNullException.ThrowIfNull(request);
+        return
+        [
+            .. catalogue
+                .Slots.Select(s => s.Type)
+                .Distinct(StringComparer.Ordinal)
+                .Select(type =>
+                {
+                    var items = catalogue
+                        .Items.Where(i =>
+                            i.SlotType == type
+                            && !request.Excluded.Contains(i.Id)
+                            && (request.Pool != ItemPool.Every || Planner.InPool(i, request))
+                        )
+                        .ToList();
+                    return new PoolCount(
+                        type,
+                        items.Count,
+                        items.Count(i => i.Owned > 0),
+                        items.Count(i => i.Wearable)
+                    );
+                }),
+        ];
+    }
 }
 
 /// <summary>

@@ -9,7 +9,8 @@ namespace MelvorMods.CombatSimulator2.Panel.Settings;
 
 /// <summary>
 /// The gear search's settings: "Treat as equal within", the margin a set must beat another by to rank above it, as
-/// a stepper from 0% to 5% in half steps; and clearing the answers kept to show again on returning to a target.
+/// a stepper from 0% to 5% in half steps; the longest a search a slot at a time runs, as four buttons; and clearing the
+/// answers kept to show again on returning to a target.
 /// </summary>
 internal sealed class TieShareRow
 {
@@ -19,6 +20,7 @@ internal sealed class TieShareRow
     private readonly Button _up;
     private readonly Label _value;
     private readonly Button _clear;
+    private readonly LongestSearch _longest;
 
     /// <summary>Adds the rows to <paramref name="section"/>.</summary>
     public TieShareRow(VBoxContainer section)
@@ -41,6 +43,7 @@ internal sealed class TieShareRow
             Tr.Get("Gear search: a set must beat another by more than this to rank above it."),
             stepper
         );
+        _longest = new LongestSearch(section, "Settings", help: true);
         // Translators: Button that forgets the gear search answers kept for each target.
         _clear = Ui.Button(Tr.Get("Clear kept answers"), Look.Cancel8, "SettingsClearAnswers", Clear);
         SettingRow.Setting(
@@ -60,13 +63,14 @@ internal sealed class TieShareRow
         _down.Disabled = share <= 0;
         _up.Disabled = share >= Preferences.MaxTieShare - 1e-9;
         _clear.Disabled = RunService.KeptAnswerCount == 0;
+        _longest.Show();
     }
 
     /// <summary>The margin as <c>cs2 ui</c> prints it.</summary>
     public static void Describe(System.Text.StringBuilder text) =>
         text.Append(
             CultureInfo.InvariantCulture,
-            $"\ntie-share={PanelState.Prefs.TieShare * 100:0.#}% kept-answers={RunService.KeptAnswerCount}"
+            $"\ntie-share={PanelState.Prefs.TieShare * 100:0.#}% kept-answers={RunService.KeptAnswerCount} longest-search={PanelState.Prefs.SearchMinutes}"
         );
 
     private void Set(double share)

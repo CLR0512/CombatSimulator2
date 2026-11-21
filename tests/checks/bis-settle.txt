@@ -1,0 +1,45 @@
+# Slots the goal can't tell apart are settled by the chance of dying, then damage taken, then food, and every slot
+# says what decided it. Both searches climb a slot at a time (short), so the same steps tie every time.
+# On Chk's own items against Golbin, which barely hurts it: two items that take less damage for the same XP.
+cs2 gear GolbinForest/Golbin pool=own kinds=none seed=1 short wait=0 lock=Helmet,Torso,Ammo,Weapon,Offhand,Legs,Boots
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show GolbinForest/Golbin kinds=none
+expect reply "Cape: Snakeskin Cape → Dire Wolf Cloak  least damage taken (−21.1% [−39.8, −2.4] vs Snakeskin Cape)"
+expect reply "Gloves: keep Spider Silk Vambraces  nothing separated them"
+expect reply "Weapon: keep Oak Bow  locked"
+expect reply "hash 580be4d8a759"
+# The settled set opened and run gives the answer's own result.
+cs2 gear open
+wait 9000
+cs2 wait timeout=9
+cs2 result
+expect reply "results 580be4d8a759"
+# Over every item against Siltspinner (The Path to Melvor done in the setup): capes and gloves tied in the climb; the
+# settling race tells the capes apart on XP and the gloves by damage taken.
+cs2 gear SiltedOasis/Siltspinner quest=MQ10:done ignore-req pool=every kinds=none seed=1 short wait=0 lock=Helmet,Torso,Ammo,Weapon,Offhand,Amulet,Legs,RingSlot1,Boots
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show SiltedOasis/Siltspinner quest=MQ10:done ignore-req pool=every
+expect reply "Cape: Snakeskin Cape → Nightwing Cloak  [not in your bank: Nightwing]  goal (+2.1% [+1.1, +3.2] vs Glowing Lurker Cape)"
+expect reply "Gloves: Spider Silk Vambraces → Blackstone Gauntlet  [not in your bank: Blackstone Chest]  least damage taken"
+expect reply "Helmet: keep Green Dragonhide Cowl  [worn]  locked"
+expect reply "hash d85a33209486"

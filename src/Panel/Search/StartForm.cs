@@ -17,10 +17,12 @@ internal sealed class StartForm
     private readonly Dropdown _rankBy;
     private readonly Segmented _deaths;
     private readonly Button _styles;
+    private readonly Button _ignore;
     private readonly StartGear _gear;
     private readonly KindSwitches _switches;
-    private readonly GridContainer _counts;
-    private readonly RichTextLabel _more;
+    private readonly PoolNarrowing _narrowing;
+    private readonly StartCounts _counts = new();
+    private readonly OptionsFold _options;
     private readonly Label _note;
     private readonly Button _find;
     private readonly Action<SearchRequest> _start;
@@ -46,9 +48,10 @@ internal sealed class StartForm
     {
         _start = start;
         _switches = new KindSwitches(Changed);
+        _narrowing = new PoolNarrowing(Changed);
         Root = Ui.Column(12, "GearSearchStart");
 
-        var rank = Ui.Add(Root, Ui.Row(8));
+        var rank = Ui.Row(8);
         var rankLabel = Ui.Add(rank, Ui.Label(Tr.Get("Rank by"), TextStyle.Label));
         rankLabel.CustomMinimumSize = new Vector2(76, 0);
         rankLabel.SizeFlagsVertical = Control.SizeFlags.ShrinkCenter;
@@ -66,7 +69,7 @@ internal sealed class StartForm
         };
         rank.AddChild(_rankBy.Root);
 
-        var deaths = Ui.Add(Root, Ui.Row(8));
+        var deaths = Ui.Row(8);
         // Translators: Label of the death limit's three buttons in the gear search's form.
         var deathsLabel = Ui.Add(deaths, Ui.Label(Tr.Get("Deaths"), TextStyle.Label));
         deathsLabel.CustomMinimumSize = new Vector2(76, 0);
@@ -114,20 +117,27 @@ internal sealed class StartForm
         _styles.TooltipText = Tr.Get(
             "Also search with a weapon of each other combat style, and show each style's best."
         );
-        Root.AddChild(_styles);
-        foreach (var control in _switches.Controls)
-            Root.AddChild(control);
-
+        // Side A's own setting, here too: what the search may wear and try hangs on it. The side's new check counts the
+        // search again.
+        _ignore = Cs2Check.Make(
+            "GearSearchIgnoreRequirements",
+            Tr.Get("Ignore requirements"),
+            false,
+            on =>
+            {
+                if (PanelState.A is { CanChange: true } a)
+                    PanelState.SetSide(SideLetter.A, a.WithIgnoreRequirements(on));
+            }
+        );
         _gear = new StartGear(pickItem, Changed);
-        Root.AddChild(_gear.Root);
+        // The gear first, where the player looks and locks; then the goal; the rest folded with a line of what's on.
+        _options = new OptionsFold([_ignore, _narrowing.Root, _styles, .. _switches.Controls], OptionsOn);
+        foreach (var part in new Control[] { _gear.Root, rank, deaths, _options.Root })
+            Root.AddChild(part);
 
         // The counts and the button stay in view at the details' foot, however long the form above them.
         Foot = Ui.Column(8, "GearSearchStartFoot");
-        var counts = Ui.Add(Foot, Ui.Column(2, "GearSearchCounts"));
-        _counts = Ui.Add(counts, new GridContainer { Name = "GearSearchCountsLine", Columns = 2 });
-        _counts.AddThemeConstantOverride("h_separation", 12);
-        _counts.AddThemeConstantOverride("v_separation", 2);
-        _more = Ui.Add(counts, Wrapping(TextStyle.Small, "GearSearchCountsMore"));
+        Foot.AddChild(_counts.Root);
         _note = Ui.Add(Foot, Ui.Label("", TextStyle.Small, "GearSearchNote", wrap: true));
         _note.LabelSettings = Compare.CompareText.Coloured(Look.Risky, TextStyle.Small);
 
@@ -181,7 +191,16 @@ internal sealed class StartForm
             }
         );
         Cs2Check.Set(_styles, _allStyles);
+        Cs2Check.Set(_ignore, PanelState.A.IgnoreRequirements);
+        var bypass = Game.Dependencies.IsAvailable(Game.Dependencies.IgnoreRequirements);
+        _ignore.Disabled = !PanelState.A.CanChange || !bypass;
+        _ignore.TooltipText = bypass
+            // Translators: Hover of the gear search form's Ignore requirements tick, which is side A's own setting.
+            ? Tr.Get("Side A's setting, as on the Setup tab: search any gear and choice, requirements met or not.")
+            : Tr.Get("Unsupported on this game build");
         _switches.Show(kind);
+        _narrowing.Show(PoolPick.For(kind, target) == ItemPool.Every);
+        _options.Refresh();
         _gear.Fill();
         _note.Text = note ?? "";
         _note.Visible = note != null;
@@ -189,9 +208,17 @@ internal sealed class StartForm
             Count();
     }
 
+    /// <summary>The pool chosen again in the tab's sentence: its narrowing shown or hidden, and counted again.</summary>
+    public void PoolChanged()
+    {
+        if (_target != null)
+            _narrowing.Show(PoolPick.For(_kind, _target) == ItemPool.Every);
+        Changed();
+    }
+
     /// <summary>The form's choices and counts, for <c>cs2 ui</c>.</summary>
     public string Describe() =>
-        $"metric={_metric} deaths={_limit} styles={(_allStyles ? "all" : "setup")} locks={_gear.Locks.Count} never={_gear.Excluded.Count} counts=\"{string.Join(" ", _counts.GetChildren().OfType<Label>().Select(l => l.Text))}\"";
+        $"pool={(_target != null ? PoolPick.For(_kind, _target) : ItemPool.Owned)} metric={_metric} deaths={_limit} styles={(_allStyles ? "all" : "setup")} locks={_gear.Locks.Count} never={_gear.Excluded.Count} counts=\"{_counts.Describe()}\"";
 
     private void FillMetrics()
     {
@@ -212,7 +239,40 @@ internal sealed class StartForm
     private void Changed()
     {
         _note.Visible = false;
+        _options.Refresh();
         Count();
+    }
+
+    // What the options switched on add, for the options' summary.
+    private string OptionsOn()
+    {
+        var prefs = PanelState.Prefs;
+        var on = new List<string>();
+        if (PanelState.A.IgnoreRequirements)
+            // Translators: In the summary of the gear search form's options: side A ignores requirements.
+            on.Add(Tr.Get("requirements ignored"));
+        if (_target != null && PoolPick.For(_kind, _target) == ItemPool.Every)
+        {
+            if (prefs.SearchPoolWearable)
+                on.Add(Tr.Get("wearable at my levels"));
+            if (prefs.SearchPoolReached)
+                on.Add(Tr.Get("content I've reached"));
+            if (prefs.SearchLeftOut.Count > 0)
+                // Translators: In the summary of the gear search form's options: {0} how many item sources are left out.
+                on.Add(Tr.Format("{0} left out", Ui.Number(prefs.SearchLeftOut.Count)));
+        }
+        if (_kind == SearchKind.BestGear)
+        {
+            if (_allStyles)
+                // Translators: In the summary of the gear search form's options: other combat styles are tried too.
+                on.Add(Tr.Get("other styles"));
+            on.AddRange(KindSwitches.For(_kind).Select(KindSwitches.KindName));
+            if (prefs.SearchIncludeUnowned)
+                // Translators: In the summary of the gear search form's options: choices the character doesn't have are tried too.
+                on.Add(Tr.Get("choices I don't have"));
+        }
+        // Translators: The summary of the gear search form's options when none is switched on.
+        return on.Count == 0 ? Tr.Get("Gear only") : string.Join(" · ", on);
     }
 
     private SearchRequest? Request()
@@ -220,21 +280,24 @@ internal sealed class StartForm
         if (_target == null)
             return null;
         var prefs = PanelState.Prefs;
-        return new SearchRequest(
-            _kind,
-            Simulate.SetupCheck.Current(),
-            _target,
-            new Goal(_metric, _limit),
-            prefs.Trials,
-            prefs.Copies ?? RunService.Instance.Status.DefaultCopies
-        )
-        {
-            Locks = _kind == SearchKind.BestGear ? new HashSet<string>(_gear.Locks) : new HashSet<string>(),
-            Excluded = new HashSet<string>(_gear.Excluded),
-            AllStyles = _kind == SearchKind.BestGear && _allStyles,
-            Kinds = KindSwitches.For(_kind),
-            IncludeUnowned = _kind == SearchKind.BestGear && PanelState.Prefs.SearchIncludeUnowned,
-        };
+        return PoolPick.Apply(
+            new SearchRequest(
+                _kind,
+                Simulate.SetupCheck.Current(),
+                _target,
+                new Goal(_metric, _limit),
+                prefs.Trials,
+                prefs.Copies ?? RunService.Instance.Status.DefaultCopies
+            )
+            {
+                Locks = _kind == SearchKind.BestGear ? new HashSet<string>(_gear.Locks) : new HashSet<string>(),
+                Excluded = new HashSet<string>(_gear.Excluded),
+                AllStyles = _kind == SearchKind.BestGear && _allStyles,
+                Kinds = KindSwitches.For(_kind),
+                IncludeUnowned = _kind == SearchKind.BestGear && PanelState.Prefs.SearchIncludeUnowned,
+                MaxSeconds = prefs.SearchMaxSeconds,
+            }
+        );
     }
 
     // The plan's counts, read from a check copy; a later change makes an earlier count's answer stale. The counts
@@ -282,158 +345,17 @@ internal sealed class StartForm
         }
     }
 
-    // A message in place of the counts, which are then no longer shown.
+    // A message in place of the counts.
     private void Say(string message)
     {
         _shown = null;
-        Ui.Clear(_counts);
-        _more.Text = Escape(message);
-        _more.Visible = true;
-    }
-
-    // A count's name and its value, the value faded while the counts are worked out again.
-    private void Row(string name, string value)
-    {
-        var label = Ui.Add(_counts, Ui.Label(name, TextStyle.Small));
-        label.Modulate = Colors.White with { A = 0.7f };
-        var shown = Ui.Add(_counts, Ui.Label(value, TextStyle.Small, wrap: true));
-        shown.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
-        if (_counting)
-            shown.Modulate = Colors.White with { A = 0.45f };
+        _counts.Say(message);
     }
 
     private void Render(PlanPreview preview)
     {
-        Restyle(_more, TextStyle.Small);
-        Ui.Clear(_counts);
         _switches.Counts(preview);
-        var lines = new List<string>();
-        if (preview.Kind == SearchKind.Droptimizer)
-        {
-            // Translators: In Droptimizer's counts: items the character doesn't own.
-            Row(Tr.Get("Not owned"), SearchWords.Count((double)preview.Unowned));
-            // Translators: In Droptimizer's counts: of those, the ones the character can wear now.
-            Row(Tr.Get("Wearable now"), SearchWords.Count((double)preview.Wearable));
-            // Translators: In a gear search's counts before it starts: how many sets will be simulated.
-            Row(Tr.Get("Simulation"), SearchWords.Count((double)preview.ToFight));
-        }
-        else
-        {
-            Row(Tr.Get("Combinations"), SearchWords.Count((double)preview.Possible));
-            if (preview.RuledOut > 0)
-                Row(Tr.Get("Ruled out"), SearchWords.Count((double)preview.RuledOut));
-            Row(
-                Tr.Get("Simulation"),
-                preview.Climb
-                    // Translators: In a gear search's counts, when there are too many sets to fight them all.
-                    ? Tr.Get("Per slot")
-                    : SearchWords.Count((double)preview.ToFight)
-            );
-            foreach (var skipped in preview.SkippedStyles)
-                lines.Add(Escape(Tr.Format("{0}: skipped, {1}", [skipped.Style, Tr.Note(skipped.Why)])));
-        }
-        if (!preview.NothingToSearch && !preview.Climb && preview.Seconds is { } seconds)
-            // Translators: In a gear search's counts before it starts: how long it is expected to take.
-            Row(Tr.Get("Time"), SearchWords.About(seconds));
-        if (preview.NothingToSearch)
-            lines.Add(
-                Escape(
-                    preview.Kind == SearchKind.Droptimizer
-                        ? Tr.Get("Nothing to try: no unowned item can be worn now.")
-                        : Tr.Get("Nothing to search: nothing else you own fits an unlocked slot.")
-                )
-            );
-        else if (preview.Climb)
-            lines.Add(
-                Escape(
-                    // Translators: Under a gear search's counts before it starts, when there are too many sets to fight them all.
-                    Tr.Get(
-                        "Too many combinations to try: the search builds a set slot by slot. A better mix may exist."
-                    )
-                )
-            );
-        else if (preview.KindsOverLimit)
-            lines.Add(
-                Escape(
-                    // Translators: Under a setup search's counts: {0} the long-search limit in minutes.
-                    Tr.Format(
-                        "Trying everything switched on may take over {0} min. Switch some off to make it shorter.",
-                        Ui.Number(Math.Ceiling(preview.LimitSeconds / 60))
-                    )
-                )
-            );
-        else if (preview.Seconds is not null)
-        {
-            if (preview.OverLimit)
-                lines.Add(
-                    Escape(
-                        // Translators: Under a gear search's counts: {0} the long-search limit in minutes.
-                        Tr.Format(
-                            "Simulating them all would take over {0} min, so the search builds a set slot by slot. A better mix may exist.",
-                            Ui.Number(Math.Ceiling(preview.LimitSeconds / 60))
-                        )
-                    )
-                );
-        }
-        else if (preview.OverLimit)
-            lines.Add(
-                Filled(
-                    // Translators: Before any search of this kind of target has been timed; {0} is how many sets.
-                    Tr.Format(
-                        "{0} sets is too many to simulate before a search here has been timed, so the search builds a set slot by slot. A better mix may exist.",
-                        Mark0
-                    ),
-                    TextStyle.Small,
-                    SearchWords.Count((double)preview.ToFight)
-                )
-            );
-        _more.Text = string.Join("\n", lines);
-        _more.Visible = lines.Count > 0;
-    }
-
-    // A stand-in for a line's number, put in by Filled once the line is translated.
-    private const string Mark0 = "\u00010\u0001";
-
-    // A translated line with its number put in, faded while the counts are being worked out again.
-    private string Filled(string translated, TextStyle style, string number) =>
-        Escape(translated).Replace(Mark0, Number(Escape(number), style), StringComparison.Ordinal);
-
-    private string Number(string text, TextStyle style) =>
-        _counting ? $"[color=#{Look.Style(style).FontColor.ToHtml(false)}{Faded}]{text}[/color]" : text;
-
-    // The alpha of a number being worked out again, as two hex digits: as faded as anything else pending.
-    private const string Faded = "73";
-
-    private static string Escape(string text) => text.Replace("[", "[lb]", StringComparison.Ordinal);
-
-    // Text that wraps like a label, in a text style, with parts of it faded.
-    private static RichTextLabel Wrapping(TextStyle style, string name)
-    {
-        var rich = new RichTextLabel
-        {
-            Name = name,
-            BbcodeEnabled = true,
-            FitContent = true,
-            ScrollActive = false,
-            SelectionEnabled = false,
-            AutowrapMode = TextServer.AutowrapMode.WordSmart,
-            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
-            MouseFilter = Control.MouseFilterEnum.Ignore,
-            AutoTranslateMode = Node.AutoTranslateModeEnum.Disabled,
-        };
-        rich.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
-        Restyle(rich, style);
-        return rich;
-    }
-
-    // The style read again on each showing, so a change of look reaches the counts.
-    private static void Restyle(RichTextLabel rich, TextStyle style)
-    {
-        var settings = Look.Style(style);
-        if (settings.Font != null)
-            rich.AddThemeFontOverride("normal_font", settings.Font);
-        rich.AddThemeFontSizeOverride("normal_font_size", settings.FontSize);
-        rich.AddThemeColorOverride("default_color", settings.FontColor);
+        _counts.Render(preview, _counting);
     }
 
     private void Start()

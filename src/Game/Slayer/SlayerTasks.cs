@@ -75,6 +75,23 @@ internal static class SlayerTasks
         Rereads.TasksByEnemy(slayer);
     }
 
+    /// <summary>
+    /// The save's tasks kept, each with a length no fight reaches: what a target fought as the save has it is fought
+    /// with. Trials follow one another, so a task ending after the kills it has left would turn every later trial off
+    /// task, and the rates would fall with the number of trials. The copy's reset puts the save's lengths back.
+    /// </summary>
+    public static void KeepForRun(MelvorGame game)
+    {
+        using var scope = Guards.Enter();
+        if (Component(game) is not { } slayer)
+            return;
+        foreach (var master in slayer.ActiveMasters.Values)
+        {
+            if (master.CurrentTask != null)
+                master._taskLength = UnreachableLength;
+        }
+    }
+
     /// <summary>Every master's task cleared: what a monster the setup puts off task is fought with.</summary>
     public static void Clear(MelvorGame game)
     {

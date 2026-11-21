@@ -317,6 +317,34 @@ public sealed class PreferencesTests
     }
 
     [Fact]
+    public void TheSearchPoolStartsOnOwnedWithNothingNarrowed()
+    {
+        var prefs = Load("{}");
+        Assert.Equal(ItemPool.Owned, prefs.SearchPool);
+        Assert.False(prefs.SearchPoolWearable);
+        Assert.False(prefs.SearchPoolReached);
+        Assert.Empty(prefs.SearchLeftOut);
+    }
+
+    [Fact]
+    public void TheSearchPoolRoundTripsAndDropsRepeatedSources()
+    {
+        var prefs = Load(
+            """{ "SearchPool": 1, "SearchPoolWearable": true, "SearchPoolReached": true, "SearchLeftOut": ["Shop", "", "Shop", "Golbin"] }"""
+        );
+        Assert.Equal(["Shop", "Golbin"], prefs.SearchLeftOut);
+        var again = Load(JsonSerializer.Serialize(prefs, Json));
+        Assert.Equal(ItemPool.Every, again.SearchPool);
+        Assert.True(again.SearchPoolWearable);
+        Assert.True(again.SearchPoolReached);
+        Assert.Equal(["Shop", "Golbin"], again.SearchLeftOut);
+    }
+
+    [Fact]
+    public void AnUnknownSearchPoolIsOwned() =>
+        Assert.Equal(ItemPool.Owned, Load("""{ "SearchPool": 7 }""").SearchPool);
+
+    [Fact]
     public void NoSearchKindsStaysNone() => Assert.Empty(Load("""{ "SearchKinds": [] }""").SearchKindList);
 
     [Fact]

@@ -79,8 +79,10 @@ public static class SetupAnswers
         // Sets whose choices change nothing in these fights fought the same fights: each such result counts once.
         group = [.. group.DistinctBy(s => ResultsHashInput.Brief([s.Result]))];
         var lower = Ranking.LowerIsBetter(best.Metric);
+        // A set settling made, which the search never fought, stays: its slots were decided past the goal's ties.
         var picked =
-            group.Find(s => s.Changes.IsEmpty)
+            (indexOf(best) < 0 ? best : null)
+            ?? group.Find(s => s.Changes.IsEmpty)
             ?? (
                 lower
                     ? group.MinBy(s => s.Gain?.Point ?? double.MaxValue)
@@ -94,7 +96,8 @@ public static class SetupAnswers
                 .OrderBy(s => lower ? s.Gain?.Point ?? double.MaxValue : -(s.Gain?.Point ?? double.MinValue))
                 .Select(s =>
                 {
-                    var tie = shown(indexOf(s));
+                    // A set settling made wasn't one the search fought: it stands as it was shown.
+                    var tie = indexOf(s) is var index and >= 0 ? shown(index) : s;
                     tie.FromBest = Race.Difference(from, new StageResult(1, s.Result, s.Metric)).Delta;
                     return tie;
                 }),

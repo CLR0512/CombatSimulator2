@@ -18,14 +18,15 @@ internal sealed partial class RunService
     /// <summary>
     /// Starts Best loadouts on <paramref name="masterKey"/> for <paramref name="side"/>; <paramref name="done"/> runs on
     /// the main thread when it ends with picks. Refused without an unlocked saved loadout, and while a run or search is
-    /// going.
+    /// going. <paramref name="sideLine"/> is the side as one setup line, to tell later whether it has changed since.
     /// </summary>
     public BestLoadouts StartBestLoadouts(
         string masterKey,
         Setup side,
         Goal goal,
         RunRequest options,
-        Action<BestLoadouts> done
+        Action<BestLoadouts> done,
+        string? sideLine = null
     )
     {
         MainThread.Assert("RunService.StartBestLoadouts");
@@ -33,7 +34,7 @@ internal sealed partial class RunService
             throw new CommandException("a run or search is still going: wait for it or cancel it first");
         if (!Dependencies.IsAvailable(Dependencies.SlayerMasters))
             throw new CommandException("Slayer masters are unsupported on this game build (see cs2 deps)");
-        return BeginBestLoadouts(masterKey, side, goal, options, done);
+        return BeginBestLoadouts(masterKey, side, goal, options, done, sideLine);
     }
 
     // Best loadouts on one master, its checks made by the caller.
@@ -42,7 +43,8 @@ internal sealed partial class RunService
         Setup side,
         Goal goal,
         RunRequest options,
-        Action<BestLoadouts> done
+        Action<BestLoadouts> done,
+        string? sideLine
     )
     {
         var game = LiveGame.Require();
@@ -62,7 +64,10 @@ internal sealed partial class RunService
         // Slayer XP on a master's tasks, so that stands for it.
         if (goal.Metric == Metrics.MainXp)
             goal = goal with { Metric = SlayerXp };
-        var job = new BestLoadouts(masterKey, side, goal, options.Seed ?? NewSeed(), [null, .. loadouts]);
+        var job = new BestLoadouts(masterKey, side, goal, options.Seed ?? NewSeed(), [null, .. loadouts])
+        {
+            SideLine = sideLine,
+        };
         BestLoadouts = _bestLoadoutsByMaster[masterKey] = job;
         _loadoutsCancel?.Dispose();
         _loadoutsCancel = new CancellationTokenSource();
@@ -86,6 +91,23 @@ internal sealed partial class RunService
             all.State = BestLoadoutsState.Cancelled;
         _loadoutsCancel?.Cancel();
         _generation++; // what its fights still send is dropped
+        _changed = true;
+    }
+
+    /// <summary>
+    /// Forgets the session's Best loadouts, alone and over every master, so tasks are judged on side A's runs again;
+    /// refused while one runs.
+    /// </summary>
+    public void ForgetBestLoadouts()
+    {
+        MainThread.Assert("RunService.ForgetBestLoadouts");
+        if (BestLoadouts is { IsActive: true })
+            throw new CommandException("Best loadouts is running: cancel it first");
+        BestLoadouts = null;
+        BestMasters = null;
+        _bestLoadoutsByMaster.Clear();
+        _bestByMaster.Clear();
+        _bestGoal = null;
         _changed = true;
     }
 
@@ -143,6 +165,7 @@ internal sealed partial class RunService
                     return;
                 }
                 job.Picks = LoadoutPicks.For(job.Results, job.Goal, TimeUnit.Hour, LiveGame.Prices(LiveGame.Require()));
+                job.EndedAt = DateTime.UtcNow;
                 job.State = BestLoadoutsState.Done;
                 Log.Info(
                     $"best loadouts on {Ids.BriefKey(job.Master)} done: {job.Picks?.Change?.ShortForm ?? "the setup for all"}"

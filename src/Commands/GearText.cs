@@ -34,6 +34,11 @@ internal static partial class GearText
         }
         if (answer.Climbed)
             text.Append("\nfound a slot at a time; a better combination may exist");
+        if (answer.StoppedAtLimit is { } limit)
+            text.Append(
+                CultureInfo.InvariantCulture,
+                $"\ncut short to keep within the limit of {limit / 60:0} min: the best set found so far"
+            );
         if (answer is { Reran: true, BehindAtStage: { } behind })
             text.Append(
                 CultureInfo.InvariantCulture,
@@ -49,13 +54,14 @@ internal static partial class GearText
                     text.Append("\n  current gear: ")
                         .Append(ResultText.Name(stuck.Result.State))
                         .Append(stuck.Result.Reasons.Count > 0 ? ": " + stuck.Result.Reasons[0].English() : "");
-                Slots(text, best);
+                BestInSlotText.Slots(text, best, answer);
                 Choices(text, best);
                 Members(text, answer, best);
                 if (answer.Current is { } current && Why(current, best) is { Length: > 0 } why)
                     text.Append("\n  why: ").Append(why);
                 text.Append("\n  hash ").Append(ResultsHashInput.Brief([best.Result]));
                 Ties(text, answer.Ties, IsSetup(answer) ? best : null);
+                BestInSlotText.Gap(text, answer);
                 Efficiency(text, answer);
                 break;
             case AnswerState.KeepCurrent:
@@ -77,6 +83,9 @@ internal static partial class GearText
                 if (answer.Closest is { } closest)
                 {
                     text.Append(": closest ").Append(Line(closest)).Append(" with ").Append(DeathShare(closest));
+                    if (answer.Decisions.Count > 0)
+                        BestInSlotText.Decisions(text, answer);
+                    text.Append("\n  hash ").Append(ResultsHashInput.Brief([closest.Result]));
                 }
                 break;
             case AnswerState.NoneKills:
@@ -285,17 +294,6 @@ internal static partial class GearText
         Metrics.Estimate(set.Result, set.Metric, TimeUnit.Hour) is { } value && double.IsFinite(value.Point)
             ? value.Point
             : null;
-
-    private static void Slots(StringBuilder text, SetResult set)
-    {
-        foreach (var slot in set.Slots)
-            text.Append(
-                CultureInfo.InvariantCulture,
-                $"\n  {slot.SlotName}: {slot.OldName ?? "nothing"} → {slot.NewName ?? "nothing"}"
-            );
-        foreach (var item in set.Assumes)
-            text.Append(CultureInfo.InvariantCulture, $"\n  assumes {item} lasts");
-    }
 
     // A setup search can find many sets as good, the highest gains first: the first few are listed, each by what it
     // holds other than the best.

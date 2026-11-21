@@ -1,0 +1,12 @@
+# A quest task whose goals are conditions waits for the player's Confirm: Starlit Sky's three technique levels, The
+# Sunken Tower's Astrology nodes. With requirements checked a quest change names the unmet conditions; with them
+# ignored the quest is done and they are listed as ignored, so the quests after Starlit Sky can be done too.
+cs2 side b base=current ignore-req=off quest=MQ14:done
+expect reply "quest=MQ14:done refused was=open"
+cs2 side b clear
+cs2 side b base=current ignore-req=on quest=MQ15:done quest=MQ17:done
+expect reply "quest=MQ15:done requirement-ignored was=open"
+expect reply "Achieve Evading Level 20 in Agility"
+expect reply "quest=MQ17:done requirement-ignored was=open"
+expect reply "Unlock 2 Syllia Major Nodes in Astrology"
+cs2 side b off

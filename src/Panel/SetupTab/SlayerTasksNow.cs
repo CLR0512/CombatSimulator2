@@ -11,8 +11,8 @@ namespace MelvorMods.CombatSimulator2.Panel.SetupTab;
 /// <summary>
 /// The Slayer page's "Your tasks now": each master's task in the save, its monster's rate on task against the master's
 /// average, and whether to extend, keep or reroll it, with the gain over the kills involved and the coin it costs.
-/// The figures come from the latest run of the master on side A (a run, or Find best's fights with the setup); one
-/// action runs the masters when none has.
+/// Each task is judged on whichever came last: Find best on its master, or a run of the master on side A; one action
+/// runs the masters on side A again.
 /// </summary>
 [System.Diagnostics.CodeAnalysis.SuppressMessage(
     "Reliability",
@@ -25,6 +25,9 @@ internal sealed class SlayerTasksNow
     private readonly Button _run;
     private readonly VBoxContainer _rows;
     private string? _shownFor;
+
+    // Side A as one setup line, written again only when its check changes.
+    private static (SideCheck? Check, string? Line) _sideA;
 
     public SlayerTasksNow()
     {
@@ -82,6 +85,7 @@ internal sealed class SlayerTasksNow
                     Task: t,
                     Verdict: sources[t.Master] is { } r ? TaskVerdicts.For(t, r.Result, metric, prices) : null,
                     Best: sources[t.Master]?.Best == true,
+                    Stale: sources[t.Master]?.Stale == true,
                     Blocked: sources[t.Master] is { Best: true } b
                         && (b.Result.Blocked ?? []).Any(k => k.EndsWith("/" + t.Enemy, StringComparison.Ordinal))
                 )
@@ -89,18 +93,19 @@ internal sealed class SlayerTasksNow
             .OrderByDescending(v => v.Verdict?.Ratio ?? double.MinValue)
             .ToList();
         var missing = verdicts.Count(v => v.Verdict == null);
-        // Always there: simulating again catches up with a changed setup.
+        // Always there: a run ended after Find best is what the tasks are judged on, so simulating again catches up with
+        // a changed setup.
         _run.Disabled = service.IsActive;
         _sub.Text =
             missing > 0
                 ? Tr.Get("Simulate to compare each task with its master's overall rate.")
                 : Tr.Get(
-                    "Each task on its master's best setup (side A before Find best) against the master's overall rate: above it is worth extending, below it worth rerolling."
+                    "Each task on its master's best setup or on side A, whichever was simulated last, against the master's overall rate: above it is worth extending, below it worth rerolling."
                 );
         var pending = Pending();
-        foreach (var (task, verdict, best, blocked) in verdicts)
+        foreach (var (task, verdict, best, stale, blocked) in verdicts)
         {
-            var row = Row(task, verdict, best, blocked, unit, id => Art.Currency(game, id), names);
+            var row = Row(task, verdict, best, stale, blocked, unit, id => Art.Currency(game, id), names);
             if (pending.Contains(Ids.MasterKey(task.Master)))
                 Widgets.Pending.Pulse(row, true);
             _rows.AddChild(row);
@@ -126,29 +131,56 @@ internal sealed class SlayerTasksNow
         return keys;
     }
 
-    // The latest finished result of a master with its monsters: the current run's, else Find best's with the setup.
-    // The master as its task is judged: on its best setup once Find best has found one (each monster on its picked
-    // loadout, the best blocks), as the task would be played; else the latest finished run of it, on side A.
-    internal static (TargetResult Result, bool Best)? Source(string master)
+    // The master as its task is judged, whichever came last: its best setup once Find best has found one (each monster
+    // on its picked loadout, the best blocks), as the task would be played, or the current run of it on side A, so
+    // simulating the tasks again after a change is what they are judged on. Stale when side A has changed since Find
+    // best started from it. Else Find best's fight with the setup.
+    internal static (TargetResult Result, bool Best, bool Stale)? Source(string master)
     {
         var service = RunService.Instance;
+        var job = service.BestLoadoutsFor(master);
+        var current = service.Current;
+        var run = current?.Results.GetValueOrDefault(master) is { State: TargetState.Finished, Parts.Count: > 0 } r
+            ? r
+            : null;
+        // A run still going when its master finished ended after any Find best: only one runs at a time.
+        var runEnded = run == null ? DateTime.MinValue : current!.EndedAt ?? DateTime.MaxValue;
         if (
             service.BestByMaster.FirstOrDefault(b => b.Master == master) is { Figure: not null } best
-            && service.BestLoadoutsFor(master) is { State: BestLoadoutsState.Done, Picks: { } picks } job
+            && job is { State: BestLoadoutsState.Done, Picks: { } picks }
+            && (job.EndedAt ?? DateTime.MinValue) >= runEnded
             && BestMasters.Picked(job.Results, picks, best.Blocked) is { } picked
         )
-            return (picked, true);
-        if (service.Current?.Results.GetValueOrDefault(master) is { State: TargetState.Finished, Parts.Count: > 0 } run)
-            return (run, false);
-        return service.BestLoadoutsFor(master)?.Results.FirstOrDefault(r => r.Choice == null).Master is { } setup
-            ? (setup, false)
+            return (picked, true, job.SideLine is { } from && SideALine() is { } now && now != from);
+        if (run != null)
+            return (run, false, false);
+        return job?.Results.FirstOrDefault(r => r.Choice == null).Master is { } setup ? (setup, false, false) : null;
+    }
+
+    /// <summary>A side as its check found it, as one setup line; null without a check or when it can't be written.</summary>
+    internal static string? LineOf(SideCheck? check) =>
+        check != null
+        && SetupLine.TryWrite(
+            new LineContent(SetupLine.Version, LineKind.Setup, LineIds.Build, null, check.Line),
+            out var text
+        )
+            ? text
             : null;
+
+    /// <summary>Side A as one setup line, as <see cref="LineOf"/> writes it.</summary>
+    internal static string? SideALine()
+    {
+        var check = PanelState.CheckA;
+        if (!ReferenceEquals(check, _sideA.Check))
+            _sideA = (check, LineOf(check));
+        return _sideA.Line;
     }
 
     private static PanelContainer Row(
         TaskNow task,
         TaskVerdict? verdict,
         bool onBest,
+        bool stale,
         bool blockedOnBest,
         string unit,
         Func<string, Texture2D?> coinOf,
@@ -177,6 +209,9 @@ internal sealed class SlayerTasksNow
                 : Tr.Format("{0} /h · {1}", [Ui.Number(verdict.Rate.Point), Against(verdict.Ratio, names(task.Master))])
                     // Translators: After a task's comparison when it was judged on side A, before Find best.
                     + (onBest ? "" : " · " + Tr.Get("on side A"))
+                    // Translators: After a task's comparison on its master's best setup, when side A has changed since
+                    // Find best found it.
+                    + (stale ? " · " + Tr.Get("best found before your setup changed") : "")
                     // Translators: After a task's comparison when its master's best setup blocks the task's monster.
                     + (blockedOnBest ? " · " + Tr.Get("its best setup blocks it") : ""),
             TextStyle.Small
@@ -195,6 +230,15 @@ internal sealed class SlayerTasksNow
                             names(task.Master)
                         )
                         : Tr.Format("On side A. Find best on {0} judges it on its best loadouts.", names(task.Master))
+                )
+                + (
+                    stale
+                        // Translators: Hover on a task judged on a best setup found before side A changed.
+                        ? "\n\n"
+                            + Tr.Get(
+                                "Your setup has changed since Find best. Find best again for the best setup now, or Simulate tasks to judge it on side A."
+                            )
+                        : ""
                 );
             rate.MouseFilter = Control.MouseFilterEnum.Stop;
         }

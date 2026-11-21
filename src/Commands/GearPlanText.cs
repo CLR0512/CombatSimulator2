@@ -14,7 +14,17 @@ internal static class GearPlanText
     public static string Of(PlanPreview plan)
     {
         ArgumentNullException.ThrowIfNull(plan);
-        var text = new StringBuilder(
+        var text = new StringBuilder();
+        if (plan.Pool == ItemPool.Every)
+        {
+            text.Append("pool: every item\n");
+            foreach (var count in plan.PoolCounts)
+                text.Append(
+                    CultureInfo.InvariantCulture,
+                    $"{Model.Ids.Brief(count.SlotType)}: {count.Items} (owned {count.Owned}, wearable {count.Wearable})\n"
+                );
+        }
+        text.Append(
             string.Create(
                 CultureInfo.InvariantCulture,
                 $"sets: {plan.Possible:#,0} possible, {plan.RuledOut:#,0} ruled out, {(plan.Climb ? "too many" : plan.ToFight.ToString("#,0", CultureInfo.InvariantCulture))} to simulate, {plan.LeftOut} left out"
@@ -41,7 +51,19 @@ internal static class GearPlanText
         if (plan.NothingToSearch)
             text.Append("\nnothing to search: nothing else owned fits an unlocked slot");
         else if (plan.Climb)
+        {
             text.Append("\na slot at a time: too many sets to fight them all");
+            if (plan.ClimbSeconds is { } climbing)
+                text.Append(CultureInfo.InvariantCulture, $"\nexpected: about {Math.Ceiling(climbing):0} s")
+                    .Append(
+                        plan.MaxSeconds is { } max && climbing > max
+                            ? string.Create(
+                                CultureInfo.InvariantCulture,
+                                $"\nover the limit: it stops at {max:0} s and keeps the best set found"
+                            )
+                            : ""
+                    );
+        }
         if (plan.Seconds is { } seconds)
             text.Append(CultureInfo.InvariantCulture, $"\nexpected: about {Math.Ceiling(seconds):0} s")
                 .Append(

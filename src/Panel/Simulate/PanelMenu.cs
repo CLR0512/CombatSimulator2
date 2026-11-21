@@ -7,8 +7,8 @@ namespace MelvorMods.CombatSimulator2.Panel.Simulate;
 
 /// <summary>
 /// The ☰ menu: the controls a run needs now and then but not on every look. Share copies the Simulate page as one
-/// line or pastes one; How runs fight holds the same settings as the Settings tab, read again each time it opens;
-/// Window holds the scale slider; Help and reports saves a bug report or goes to the history. Drawn in CS2's window under its button, as the Areas
+/// line or pastes one; How runs fight and Gear search hold the same settings as the Settings tab, read again each time
+/// it opens; Window holds the scale slider; Help and reports saves a bug report or goes to the history. Drawn in CS2's window under its button, as the Areas
 /// list is; a click outside it or Esc closes it.
 /// </summary>
 [System.Diagnostics.CodeAnalysis.SuppressMessage(
@@ -27,6 +27,7 @@ internal sealed class PanelMenu
     private readonly ScrollContainer _scroll;
     private readonly VBoxContainer _column;
     private readonly RunSettings _settings;
+    private readonly LongestSearch _longest;
     private readonly Button _copy;
 
     public PanelMenu(Control owner)
@@ -78,6 +79,9 @@ internal sealed class PanelMenu
         var settings = Ui.Add(_column, Ui.Column(10));
         _settings = new RunSettings(settings, "Cs2Menu", help: false);
 
+        Section(Tr.Get("Gear search"));
+        _longest = new LongestSearch(Ui.Add(_column, Ui.Column(10)), "Cs2Menu", help: false);
+
         Section(Tr.Get("Window"));
         var window = Ui.Add(_column, Ui.Column(10));
         SettingRow.Setting(window, Tr.Get("Scale"), "", ScaleSlider.Make());
@@ -117,7 +121,9 @@ internal sealed class PanelMenu
     public static Button Button(Control owner)
     {
         var button = Ui.Button("☰", "", "Cs2MenuButton");
-        button.TooltipText = Tr.Get("Menu: share this simulation, how runs fight, bug reports and history");
+        button.TooltipText = Tr.Get(
+            "Menu: share this simulation, how runs fight, the longest gear search, bug reports and history"
+        );
         foreach (var box in new[] { "normal", "hover", "pressed", "hover_pressed", "disabled", "focus" })
             button.AddThemeStyleboxOverride(box, new StyleBoxEmpty());
         // White on the blue ribbon, so it reads at a glance; pressing dims it a little.
@@ -141,6 +147,7 @@ internal sealed class PanelMenu
     public void Show(Control button)
     {
         _settings.Show();
+        _longest.Show();
         Overlays.Opened(this, () => Open, Close);
         _panel.Scale = _owner.GetGlobalTransform().Scale;
         _catcher.GlobalPosition = _owner.GetGlobalRect().Position;

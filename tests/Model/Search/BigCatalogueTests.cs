@@ -268,6 +268,30 @@ public sealed class BigCatalogueTests(ITestOutputHelper output)
         Assert.InRange(took, TimeSpan.Zero, TimeSpan.FromSeconds(5));
     }
 
+    [Fact]
+    public void PlanningEveryItemStaysQuick()
+    {
+        // About as many items as the game has, a fifth of them owned.
+        var catalogue = Big(owned: 0.2);
+        var request = Request() with { Pool = ItemPool.Every };
+        SearchPlan plan = null!;
+        var took = Timed("plan, every item", () => plan = Planner.Plan(catalogue, request));
+        output.WriteLine($"{plan.Branches.Count} branches, {plan.Possible:N0} possible, climb {plan.Climb}");
+        Assert.True(plan.Climb);
+        Assert.InRange(took, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+        var climb = new Climb(catalogue, plan.Branches);
+        var climbing = Timed(
+            "climb, every item",
+            () =>
+            {
+                while (climb.Next() is { } sets)
+                    climb.Won(sets.Append(climb.Held).MaxBy(s => Worth(catalogue, s))!);
+            }
+        );
+        Assert.True(climb.Done);
+        Assert.InRange(climbing, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+    }
+
     private static double Worth(GearCatalogue catalogue, ChangeList set) =>
         set.Where(c => c.Item != null).Sum(c => catalogue.Item(c.Item!)!.Stats.GetValueOrDefault(Strength));
 }

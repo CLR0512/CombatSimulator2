@@ -85,13 +85,13 @@ public sealed partial class LayerTests
         ),
         (
             "Engine/RunService",
-            1530,
+            1560,
             "the one active run, search or Best loadouts (one master, some or all): every part changes the same state on the main thread"
         ),
         (
             "Engine/Search/SearchRun",
-            960,
-            "one search on the main thread: its rounds, the climb, Droptimizer's stages, a round fought once, a stop and a set's weights change the same state"
+            1000,
+            "one search on the main thread: its rounds, the climb, Droptimizer's stages, a round fought once, a stop, a set's weights, the settling of its tied slots and a step stopped at the player's limit change the same state"
         ),
         ("Host/HostServer", 710, "one pipe: runs and searches share its gate, stock, peak and cancel"),
         (

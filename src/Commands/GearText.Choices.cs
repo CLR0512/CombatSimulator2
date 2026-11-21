@@ -14,9 +14,11 @@ internal static partial class GearText
 
     // ", for Loadout 2" after the best's gain, when the search ran on a loadout rather than the character as it is.
     private static string For(Answer answer) =>
-        IsSetup(answer) && answer.Loadout is { Length: > 0 } loadout && loadout != Setup.Current
-            ? ", for " + loadout
-            : "";
+        (
+            IsSetup(answer) && answer.Loadout is { Length: > 0 } loadout && loadout != Setup.Current
+                ? ", for " + loadout
+                : ""
+        ) + BestInSlotText.Pool(answer.Key);
 
     /// <summary>A line per choice the set holds: old → new with its mark and supplies, or keep.</summary>
     public static void Choices(StringBuilder text, SetResult set)

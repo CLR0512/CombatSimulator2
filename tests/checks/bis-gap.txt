@@ -1,0 +1,25 @@
+# The gap from now: each of an every-item answer's new items swapped alone into current gear, largest gain first,
+# the first to get first. A row's gain is what a comparison of current gear against that one swap gives on the
+# search's seed. Against Siltspinner (The Path to Melvor done in the setup), the cape and gloves free.
+cs2 gear SiltedOasis/Siltspinner quest=MQ10:done ignore-req pool=every kinds=none seed=1 short wait=0 lock=Helmet,Torso,Ammo,Weapon,Offhand,Amulet,Legs,RingSlot1,Boots
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+wait 9000
+cs2 wait timeout=9
+cs2 gear show SiltedOasis/Siltspinner quest=MQ10:done ignore-req pool=every
+expect reply "gap: +7.0% [4.4, 9.6] from now"
+expect reply "get first: Nightwing Cloak  +3.8% [0.9, 6.8]"
+expect reply "Blackstone Gauntlet  +0.8% [−1.8, 3.5]  only with the rest"
+# The cloak alone, as a comparison on the same seed and trials: the row's gain.
+cs2 compare SiltedOasis/Siltspinner a=current b=current a.quest=MQ10:done b.quest=MQ10:done b.equip=Cape:NightwingCloak seed=1 trials=1000 fresh
+wait 9000
+cs2 wait timeout=9
+cs2 compare show metric=xp:main
+expect reply "pct=3.84% [0.912, 6.78]"

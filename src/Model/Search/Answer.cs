@@ -114,7 +114,7 @@ public sealed class SetResult
     /// </summary>
     [JsonIgnore]
     public bool NeedsRequirementsIgnored =>
-        Slots.Any(s => s.Mark?.Kind == MarkKind.Locked) || Choices.Any(c => c.Mark.Kind == MarkKind.Locked);
+        Slots.Any(s => s.Mark?.HasNeeds == true) || Choices.Any(c => c.Mark.HasNeeds);
 }
 
 /// <summary>
@@ -201,6 +201,49 @@ public sealed record AnswerKey
     public bool IncludeUnowned { get; init; }
 
     /// <summary>
+    /// What the search chose from. Answers saved before there was a choice have none of these and read as the
+    /// character's own items, so they are written only when they differ from that.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public ItemPool Pool { get; init; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool WearableOnly { get; init; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool ReachedOnly { get; init; }
+
+    /// <summary>The sources left out, sorted.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? LeftOutSources { get; init; }
+
+    /// <summary>The key with <paramref name="request"/>'s pool.</summary>
+    public AnswerKey WithPool(SearchRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        return this with
+        {
+            Pool = request.Pool,
+            WearableOnly = request.WearableOnly,
+            ReachedOnly = request.ReachedOnly,
+            LeftOutSources =
+                request.LeftOutSources.Count == 0
+                    ? null
+                    : [.. request.LeftOutSources.Order(StringComparer.OrdinalIgnoreCase)],
+        };
+    }
+
+    /// <summary>Whether two keys chose from the same pool: answers of different pools are kept apart.</summary>
+    public bool SamePool(AnswerKey other)
+    {
+        ArgumentNullException.ThrowIfNull(other);
+        return Pool == other.Pool
+            && WearableOnly == other.WearableOnly
+            && ReachedOnly == other.ReachedOnly
+            && (LeftOutSources ?? []).SequenceEqual(other.LeftOutSources ?? [], StringComparer.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
     /// A hash of the food and toolbelt items owned and the prayers, spells and imbuements unlocked; only a search
     /// that tried other kinds goes out of date by it.
     /// </summary>
@@ -262,6 +305,29 @@ public sealed class Answer
     public SetResult? Best { get; set; }
     public List<SetResult> Ties { get; set; } = [];
 
+    /// <summary>
+    /// A gear search's every unlocked slot, in the game's order, with its item and what decided it; empty for an
+    /// answer from before slots were settled, or one without a set.
+    /// </summary>
+    public List<SlotDecision> Decisions { get; set; } = [];
+
+    /// <summary>
+    /// Whether the slots the goal left tied were settled: false when the search was stopped before, null for an
+    /// answer that had none to settle or came before settling.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public bool? Settled { get; set; }
+
+    /// <summary>
+    /// The gap from now: each of the best set's new items alone in current gear, largest gain first; empty when it
+    /// holds none, or the swaps weren't fought.
+    /// </summary>
+    public List<GapRow> Gap { get; set; } = [];
+
+    /// <summary>Whether the gap's swaps were fought: false when the search was stopped first, null when none were due.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public bool? GapFought { get; set; }
+
     /// <summary>Per style, when the search covered more than the setup weapon's.</summary>
     public List<StyleAnswer> ByStyle { get; set; } = [];
     public List<SkippedStyle> SkippedStyles { get; set; } = [];
@@ -314,6 +380,10 @@ public sealed class Answer
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int? StoppedAtStage { get; set; }
+
+    /// <summary>The player's limit a search a slot at a time stopped at, in seconds; null when it ran to its end.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public double? StoppedAtLimit { get; set; }
 
     /// <summary>Droptimizer: the unowned items read, those wearable now, and those another item beat.</summary>
     public int Unowned { get; set; }

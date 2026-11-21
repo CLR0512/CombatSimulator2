@@ -144,18 +144,19 @@ internal sealed partial class RunService
 
     /// <summary>
     /// The kept answer of <paramref name="kind"/> for <paramref name="target"/>, with what has changed since it was
-    /// searched against <paramref name="setup"/> as it stands; <paramref name="done"/> runs on the main thread, with
-    /// null when none is kept.
+    /// searched against <paramref name="setup"/> as it stands, from <paramref name="pool"/>'s pool (the character's own
+    /// items when null); <paramref name="done"/> runs on the main thread, with null when none is kept.
     /// </summary>
     public static void FindKept(
         SearchKind kind,
         Setup setup,
         string target,
-        Action<(Answer Answer, IReadOnlyList<Note> Changed)?> done
+        Action<(Answer Answer, IReadOnlyList<Note> Changed)?> done,
+        AnswerKey? pool = null
     )
     {
         MainThread.Assert("RunService.FindKept");
-        KeptAnswers.Find(kind, setup, target, DefaultTieShare(), done);
+        KeptAnswers.Find(kind, setup, target, DefaultTieShare(), done, pool);
     }
 
     /// <summary>How many search answers are kept, to show again on returning to their target.</summary>

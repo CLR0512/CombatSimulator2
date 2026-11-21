@@ -61,6 +61,81 @@ public sealed class AnswerStoreTests : IDisposable
         Assert.Equal(At("a", 1).Best!.Result.Batches.Count, found.Value.Answer.Best!.Result.Batches.Count);
     }
 
+    private static Answer Every(string target, int minute, params string[] leftOut)
+    {
+        var answer = At(target, minute);
+        answer.Key = answer.Key.WithPool(
+            SearchRequestTests.Request() with
+            {
+                Pool = ItemPool.Every,
+                LeftOutSources = leftOut.ToHashSet(),
+            }
+        );
+        return answer;
+    }
+
+    [Fact]
+    public void AnswersOfDifferentPoolsAreKeptApart()
+    {
+        var store = Loaded();
+        store.Keep(At("a", 1));
+        store.Keep(Every("a", 2));
+        store.Keep(Every("a", 3, "Shop"));
+        Assert.Equal(3, store.Count);
+        var again = Loaded();
+        Assert.Equal(1, again.Find(SearchKind.BestGear, "a", At("a", 1).Key)!.Value.Answer.FoundAt.Minute);
+        Assert.Equal(2, again.Find(SearchKind.BestGear, "a", Every("a", 0).Key)!.Value.Answer.FoundAt.Minute);
+        var shop = again.Find(SearchKind.BestGear, "a", Every("a", 0, "shop").Key)!.Value.Answer;
+        Assert.Equal(3, shop.FoundAt.Minute);
+        Assert.Equal(ItemPool.Every, shop.Key.Pool);
+        Assert.Equal(["Shop"], shop.Key.LeftOutSources!);
+        // A newer answer of one pool replaces only that pool's.
+        again.Keep(Every("a", 4));
+        Assert.Equal(3, again.Count);
+        Assert.Equal(1, again.Find(SearchKind.BestGear, "a", At("a", 1).Key)!.Value.Answer.FoundAt.Minute);
+    }
+
+    [Fact]
+    public void ASettledAnswersSlotsAreKept()
+    {
+        var answer = At("a", 1);
+        answer.Decisions =
+        [
+            new SlotDecision(
+                "MelvorBase:Gloves",
+                "Gloves",
+                "MelvorBase:BlackstoneGauntlet",
+                "Blackstone Gauntlet",
+                false,
+                new Mark(MarkKind.NotInBank, null, Note.Text("Blackstone Chest")),
+                DecidedBy.DamageTaken,
+                "Kelsarin Gloves",
+                new Estimate(-0.068, -0.113, -0.023, 4000, "relative")
+            ),
+        ];
+        answer.Settled = true;
+        Loaded().Keep(answer);
+        var back = Loaded().Find(SearchKind.BestGear, "a", answer.Key)!.Value.Answer;
+        var slot = Assert.Single(back.Decisions);
+        Assert.Equal(DecidedBy.DamageTaken, slot.DecidedBy);
+        Assert.Equal("Blackstone Chest", slot.Mark!.Source!.English());
+        Assert.Equal(-0.068, slot.Difference!.Point, 6);
+        Assert.True(back.Settled);
+    }
+
+    [Fact]
+    public void AnAnswerSavedBeforePoolsReadsAsOwnItemsAndSavesAsBefore()
+    {
+        var owned = At("a", 1).Key;
+        var json = System.Text.Json.JsonSerializer.Serialize(owned, RunFile.Options);
+        foreach (var field in new[] { "pool", "wearableOnly", "reachedOnly", "leftOutSources" })
+            Assert.DoesNotContain("\"" + field + "\"", json, StringComparison.Ordinal);
+        var read = System.Text.Json.JsonSerializer.Deserialize<AnswerKey>(json, RunFile.Options)!;
+        Assert.Equal(ItemPool.Owned, read.Pool);
+        Assert.True(read.SamePool(new AnswerKey()));
+        Assert.False(read.SamePool(Every("a", 1).Key));
+    }
+
     [Fact]
     public void AnAnswerUnderAnotherKeyIsFoundWithWhatChanged()
     {

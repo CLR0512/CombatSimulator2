@@ -9,13 +9,13 @@ namespace MelvorMods.CombatSimulator2.Engine.Search;
 // current gear, then current gear raced against what each ended holding.
 internal sealed partial class SearchRun
 {
-    private readonly Queue<Climb> _climbs = new();
+    private ClimbQueue? _climbQueue;
     private readonly List<int> _climbsHeld = [];
 
     // How far behind the weapon step's winner its runner-up may be and still have a climb of its own.
     private const double RestartWithin = 0.10;
 
-    // Since the style's climbs began (each style has its own), plus the first's gear race: climbs stop at the limit.
+    // Since the style's climbs began (each style has its own), plus the first's gear race.
     private readonly Stopwatch _climbClock = new();
     private double _beforeClimbs;
     private readonly Stopwatch _sinceSearchBegan = Stopwatch.StartNew();
@@ -25,11 +25,13 @@ internal sealed partial class SearchRun
         _progress.Left(
             _progress.Update(_trials, _roundStage, Left, StageFought, _climb),
             _sinceSearchBegan.Elapsed.TotalSeconds,
-            _climb == null ? null : _climbClock.Elapsed.TotalSeconds + _beforeClimbs,
-            _climbs.Count,
+            _climb != null,
             _roundClock.Elapsed.TotalSeconds,
-            SearchTimes.LimitSeconds
+            _climb == null ? null : _climbQueue?.Limit.Left(_sinceSearchBegan.Elapsed.TotalSeconds)
         );
+
+    /// <summary>Whether <see cref="SecondsLeft"/> is the time to the player's limit, the most the search has left.</summary>
+    public bool LeftIsLimit => _progress.AtLimit;
 
     /// <summary>How far the whole search has come, from 0 to 1, for one bar over all its stages and steps.</summary>
     public double Progress
@@ -61,15 +63,16 @@ internal sealed partial class SearchRun
         )
             return false;
         var seconds = _clock.Elapsed.TotalSeconds;
-        if (seconds > SearchTimes.LimitSeconds)
+        var limit = SearchTimes.Limit(Request);
+        if (seconds > limit)
             return true;
-        if (seconds < Math.Min(PaceAfterSeconds, SearchTimes.LimitSeconds))
+        if (seconds < Math.Min(PaceAfterSeconds, limit))
             return false;
         var trials = _trials[0];
         var fought = _in.Count(i => _fought.ContainsKey((i, trials)));
         // With none done yet it is read as one done: the fastest pace it could still have.
         var perTrial = seconds / (Math.Max(1, fought) * (double)trials);
-        return SearchTimes.Expected(perTrial, _in.Count, Request.Trials) > SearchTimes.LimitSeconds;
+        return SearchTimes.Expected(perTrial, _in.Count, Request.Trials) > limit;
     }
 
     // The stage stops; what it fought so far times the next search's estimate and is kept for the climb's steps,
@@ -82,7 +85,7 @@ internal sealed partial class SearchRun
         var fought = _in.Count(i => _fought.ContainsKey((i, trials)));
         Timed(fought, trials, whole: true);
         Log.Info(
-            $"search of {Request.Target}: {fought} of {_in.Count} sets fought in {_clock.Elapsed.TotalSeconds:0} s, too slow to fight them all within {SearchTimes.LimitSeconds:0} s: going a slot at a time"
+            $"search of {Request.Target}: {fought} of {_in.Count} sets fought in {_clock.Elapsed.TotalSeconds:0} s, too slow to fight them all within {SearchTimes.Limit(Request):0} s: going a slot at a time"
         );
         _plan = Planner.Plan(_catalogue!, Request with { SlotAtATime = true });
         _changed = true;
@@ -92,22 +95,9 @@ internal sealed partial class SearchRun
     // A setup search whose gear was raced whole climbs over its choices from the race's winner, given as from.
     private void StartClimbs(SearchPlan plan, GearCatalogue catalogue, Climb? from = null)
     {
-        // With other styles included, each style climbs on its own from current gear, so each keeps a best.
-        foreach (
-            var branches in from != null ? []
-            : Request.AllStyles
-                ? plan
-                    .Branches.GroupBy(b => b.Style)
-                    .OrderBy(g => g.Key, StringComparer.Ordinal)
-                    .Select(g => g.ToList())
-            :
-            [
-                [.. plan.Branches],
-            ]
-        )
-            _climbs.Enqueue(new Climb(catalogue, branches, _passes?.Steps));
-        _climb = from ?? _climbs.Dequeue();
-        _progress.ClimbStarts(_climbs.Count);
+        _climbQueue ??= new ClimbQueue(Request, _passes?.Steps);
+        _climb = _climbQueue.Start(plan, catalogue, from, _sinceSearchBegan.Elapsed.TotalSeconds);
+        _progress.ClimbStarts(_climbQueue.After);
         _beforeClimbs = _sinceSearchBegan.Elapsed.TotalSeconds;
         _climbClock.Restart();
         NextStep();
@@ -117,8 +107,10 @@ internal sealed partial class SearchRun
     private void NextStep()
     {
         Debug.Assert(_climb != null);
-        var spent = _climbClock.Elapsed.TotalSeconds + _beforeClimbs;
-        var stopped = spent > SearchTimes.LimitSeconds;
+        // A climb runs until a pass changes nothing or its last pass ends, or until its share of the limit is used.
+        var elapsed = _sinceSearchBegan.Elapsed.TotalSeconds;
+        var budget = _climbQueue!.Limit;
+        var stopped = budget.Over(elapsed);
         if (!stopped && _climb.Next() is { } sets)
         {
             StartRound([.. sets.Select(IndexOf)], IndexOf(_climb.Held));
@@ -126,28 +118,25 @@ internal sealed partial class SearchRun
         }
         _climbsHeld.Add(IndexOf(_climb.Held));
         Log.Info(
-            $"search climb{(_climb.Restarted ? " from the runner-up" : "")} {(stopped ? "stopped at the limit" : "ended")} in {_climb.Passes} passes, {spent:0} s, holding {(_climb.Held.IsEmpty ? "current gear" : _climb.Held.ShortForm)}"
+            $"search climb{(_climb.Restarted ? " from the runner-up" : "")} {(stopped ? "stopped at the limit" : "ended")} in {_climb.Passes} passes, {_climbClock.Elapsed.TotalSeconds + _beforeClimbs:0} s, holding {(_climb.Held.IsEmpty ? "current gear" : _climb.Held.ShortForm)}"
         );
-        if (spent < SearchTimes.LimitSeconds / 2 && _climb.Restart() is { } again)
+        var trials = _trials[^1];
+        var final = _last.ToDictionary(r => r.Key, r => _fought.GetValueOrDefault((r.Key, trials), r.Value));
+        var results = _climbsHeld.Prepend(0).Distinct().Where(final.ContainsKey).Select(i => final[i]).ToList();
+        // The runner-up's climb when there is room for it, else the next style's.
+        var next =
+            (!stopped && budget.RoomForRestart(elapsed) ? _climb.Restart() : null) ?? _climbQueue.NextStyle(elapsed);
+        if (next != null)
         {
-            _climb = again;
-            _progress.ClimbStarts(_climbs.Count);
-            NextStep();
-            return;
-        }
-        if (_climbs.Count > 0)
-        {
-            _climb = _climbs.Dequeue();
-            _progress.ClimbStarts(_climbs.Count);
+            _climb = next;
+            _progress.ClimbStarts(_climbQueue.After);
             _beforeClimbs = 0;
             _climbClock.Restart();
             NextStep();
             return;
         }
-        var trials = _trials[^1];
-        var final = _last.ToDictionary(r => r.Key, r => _fought.GetValueOrDefault((r.Key, trials), r.Value));
-        var results = _climbsHeld.Prepend(0).Distinct().Where(final.ContainsKey).Select(i => final[i]).ToList();
         var answer = NewAnswer(AnswerState.Found);
+        answer.StoppedAtLimit = budget.Stopped ? Request.MaxSeconds : null;
         Answers.Fill(answer, _candidates, results, final, Request.Goal, Margin, Request.AllStyles, _catalogue, _prices);
         if (_passes?.Races.Start(answer, this, _catalogue, End) != true)
             End(answer);

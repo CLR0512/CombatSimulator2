@@ -14,7 +14,8 @@ internal sealed class KindSwitches
     private readonly Control _kindsRow;
     private readonly Button _unowned;
 
-    private static string KindName(ChoiceKind kind) =>
+    /// <summary>A kind's name as its switch says it.</summary>
+    public static string KindName(ChoiceKind kind) =>
         kind switch
         {
             ChoiceKind.Prayers => Tr.Get("Prayers"),
@@ -61,7 +62,7 @@ internal sealed class KindSwitches
         _unowned = Cs2Check.Make(
             "GearSearchUnowned",
             // Translators: Tick in a setup search's form: also try prayers, food and the like the character lacks, and gear it owns but can't wear yet.
-            Tr.Get("Include what I can't use yet"),
+            Tr.Get("Include choices I don't have"),
             false,
             on =>
             {
@@ -75,8 +76,13 @@ internal sealed class KindSwitches
                 "Also tries prayers, spells, food and toolbelt items you don't have, and gear you own but can't wear yet."
             )
             + "\n"
-            // Translators: Second line of the tooltip of "Include what I can't use yet".
-            + Tr.Get("Gear you don't own: Find upgrades.");
+            // Translators: Second line of the tooltip of "Include choices I don't have": the two places gear the character doesn't own is searched.
+            + Tr.Get(
+                "Gear you don't own: choose \"every item\" above to search all of it, or Find upgrades for one item at a time."
+            )
+            + "\n"
+            // Translators: Third line of the tooltip of "Include choices I don't have".
+            + Tr.Get("With requirements ignored, gear you own but can't wear yet is tried either way.");
     }
 
     /// <summary>The switches' row and the tick under it, which the form places.</summary>

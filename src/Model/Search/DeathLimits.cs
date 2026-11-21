@@ -39,18 +39,39 @@ public static class DeathLimits
     }
 
     /// <summary>
-    /// The set that came closest when none is within the limit: the smallest share of deaths, the earlier set on
-    /// equal shares. Null without any trials.
+    /// The set that came closest when none is within the limit. Of the sets whose share of deaths isn't clearly above
+    /// the smallest (their 95% ranges meet), the one best for the goal by its value, as
+    /// <paramref name="lowerIsBetter"/> says; on equal values the smaller share, then the earlier set. A set without a
+    /// value goes after those with one. Null without any trials.
     /// </summary>
-    public static int? Closest(IEnumerable<(int Index, TargetResult Result)> sets)
+    public static int? Closest(
+        IEnumerable<(int Index, TargetResult Result, Estimate? Value)> sets,
+        bool lowerIsBetter = false
+    )
     {
         ArgumentNullException.ThrowIfNull(sets);
-        return sets.Select(s => (s.Index, Counts: Counts(s.Result)))
+        var counted = sets.Select(s => (s.Index, s.Value, Counts: Counts(s.Result)))
             .Where(s => s.Counts.Trials > 0)
-            .OrderBy(s => s.Counts.Deaths / (double)s.Counts.Trials)
+            .Select(s =>
+                (
+                    s.Index,
+                    s.Value,
+                    Share: s.Counts.Deaths / (double)s.Counts.Trials,
+                    Range: Estimators.Wilson(s.Counts.Deaths, s.Counts.Trials)
+                )
+            )
+            .ToList();
+        if (counted.Count == 0)
+            return null;
+        var fewest = counted.OrderBy(s => s.Share).ThenBy(s => s.Index).First();
+        // A share of deaths only a little above the smallest may be luck: the goal decides among those.
+        return counted
+            .Where(s => s.Range.Low <= fewest.Range.High)
+            .OrderBy(s => s.Value is { } value ? (lowerIsBetter ? value.Point : -value.Point) : double.PositiveInfinity)
+            .ThenBy(s => s.Share)
             .ThenBy(s => s.Index)
-            .Select(s => (int?)s.Index)
-            .FirstOrDefault();
+            .First()
+            .Index;
     }
 
     /// <summary>The deaths and trials of a result's batches.</summary>
@@ -71,13 +92,15 @@ public static class DeathLimits
         };
 
     /// <summary>
-    /// The set of <paramref name="round"/> that died least by its last result in <paramref name="last"/>, among
-    /// those with a value; <paramref name="held"/> on equal shares, and when none has a value.
+    /// The set of <paramref name="round"/> that came closest to the limit by its last result in
+    /// <paramref name="last"/> (<see cref="Closest"/>), among those with a value; <paramref name="held"/> on equal
+    /// values and shares, and when none has a value.
     /// </summary>
     public static int Fewest(
         IEnumerable<int> round,
         int held,
         IReadOnlyDictionary<int, StageResult> last,
+        bool lowerIsBetter,
         PriceTable? prices = null
     )
     {
@@ -87,6 +110,10 @@ public static class DeathLimits
             .Where(i => last.TryGetValue(i, out var set) && Race.Value(set, prices) != null)
             .OrderBy(i => i == held ? 0 : 1)
             .ToList();
-        return Closest(sets.Select((i, place) => (place, last[i].Result))) is { } place ? sets[place] : held;
+        return
+            Closest(sets.Select((i, place) => (place, last[i].Result, Race.Value(last[i], prices))), lowerIsBetter)
+                is { } place
+            ? sets[place]
+            : held;
     }
 }

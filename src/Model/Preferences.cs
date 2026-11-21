@@ -286,6 +286,47 @@ public sealed class Preferences
     /// <summary>"Include what I don't have": choices the character doesn't own or can't use yet.</summary>
     public bool SearchIncludeUnowned { get; set; }
 
+    /// <summary>The longest choices for a gear search, in minutes; 0 is no limit.</summary>
+    public static readonly IReadOnlyList<int> SearchMinuteChoices = [5, 10, 15, 30, 0];
+
+    private int _searchMinutes = (int)(SearchRequest.DefaultMaxSeconds / 60);
+
+    /// <summary>The longest a gear search a slot at a time runs, in minutes; 0 runs it to its end.</summary>
+    public int SearchMinutes
+    {
+        get => _searchMinutes;
+        set =>
+            _searchMinutes = SearchMinuteChoices.Contains(value) ? value : (int)(SearchRequest.DefaultMaxSeconds / 60);
+    }
+
+    /// <summary>The longest as a request holds it: null for no limit.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public double? SearchMaxSeconds => SearchMinutes == 0 ? null : SearchMinutes * 60.0;
+
+    private ItemPool _searchPool;
+
+    /// <summary>What "Find best setup" chooses from: the character's items or every item.</summary>
+    public ItemPool SearchPool
+    {
+        get => _searchPool;
+        set => _searchPool = Enum.IsDefined(value) ? value : ItemPool.Owned;
+    }
+
+    /// <summary>With every item: only what the character's levels already meet.</summary>
+    public bool SearchPoolWearable { get; set; }
+
+    /// <summary>With every item: only what is owned or comes from content the character has reached.</summary>
+    public bool SearchPoolReached { get; set; }
+
+    private List<string> _searchLeftOut = [];
+
+    /// <summary>With every item: the sources left out, by name, each once.</summary>
+    public List<string> SearchLeftOut
+    {
+        get => _searchLeftOut;
+        set => _searchLeftOut = [.. (value ?? []).Where(n => n.Length > 0).Distinct(StringComparer.Ordinal)];
+    }
+
     [System.Text.Json.Serialization.JsonIgnore]
     public TimeUnit Unit => TimeUnits.TryParse(TimeUnit, out var unit) ? unit : Model.TimeUnit.Hour;
 

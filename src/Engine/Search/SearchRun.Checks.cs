@@ -96,6 +96,8 @@ internal sealed partial class SearchRun
             }
         }
         SearchTimes.Record(_target.Key, _target.Kind, 1, (int)race.Fought, _clock.Elapsed.TotalSeconds, whole: false);
+        if (_climb != null)
+            SearchTimes.RecordStep(_target.Key, _target.Kind, sets, Request.Trials, _clock.Elapsed.TotalSeconds);
         _fighting = 0;
         StageDone(stats);
     }

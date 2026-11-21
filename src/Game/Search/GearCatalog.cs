@@ -50,7 +50,8 @@ internal static class GearCatalog
         }
         var sets = game.Data.GetDataRegistryOutput<EquipmentSetBonus>().GetAllObjects().ToList();
         var groups = new Dictionary<string, PartGroup>(StringComparer.Ordinal);
-        var sources = ItemSources.Read(game);
+        var sources = ItemSources.All(game);
+        var reachable = ItemSources.Reachable(game, sources);
         var offTask = OffTask(copy, target);
         var items = new List<GearItem>();
         foreach (var item in game.Data.GetDataRegistryOutput<Item>().GetAllObjects())
@@ -92,7 +93,10 @@ internal static class GearCatalog
                             ),
                     AmmoType = equip.AmmoType?.Id,
                     Stackable = equip.CanEquipQuantity,
-                    Source = sources.GetValueOrDefault(item),
+                    Source = sources.TryGetValue(item, out var ways) ? ways[0].Name : null,
+                    SourceDetail = ways?[0].Detail,
+                    SourceNames = ways == null ? [] : [.. ways.Select(s => s.Name.English()).Distinct()],
+                    Reachable = reachable.GetValueOrDefault(item),
                     Opaque = parts.Opaque != null,
                     OpaqueReason = parts.Opaque,
                     Unknowns = parts.Unknowns,

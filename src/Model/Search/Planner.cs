@@ -218,13 +218,25 @@ public static class Planner
                         i.Owned > 0
                         && !i.Wearable
                         && !request.IncludeUnowned
+                        && !request.Setup.IgnoreRequirements
+                        && request.Pool == ItemPool.Owned
                         && i.Worn == null
                         && !request.Excluded.Contains(i.Id)
                     )
                     .Select(i => new LeftOut(i.Name, i.Unmet[0])),
                 .. catalogue
-                    .Items.Where(i => Usable(i, request) && i.Weapon == null && i.Occupies.Count > 0 && i.Worn == null)
+                    .Items.Where(i =>
+                        Usable(i, request) && i.Owned > 0 && i.Weapon == null && i.Occupies.Count > 0 && i.Worn == null
+                    )
                     .Select(i => new LeftOut(i.Name, Note.Of("takes more than one slot"))),
+                .. catalogue
+                    .Items.Where(i =>
+                        request is { Pool: ItemPool.Every, ReachedOnly: true }
+                        && i.Owned == 0
+                        && i.Reachable == null
+                        && !request.Excluded.Contains(i.Id)
+                    )
+                    .Select(i => new LeftOut(i.Name, Note.Of("can't tell whether it can be got"))),
                 .. leftOut,
             ],
             Climb = climb,
@@ -332,8 +344,45 @@ public static class Planner
         return catalogue.Slots.Where(s => types.Contains(s.Type)).Select(s => s.Id);
     }
 
+    // Every item in the game's pool may be tried when the pool is every item; otherwise only what is owned, and what
+    // the setup can't wear yet when the request includes it or the setup ignores requirements, as its fights do then.
     private static bool Usable(GearItem item, SearchRequest request) =>
-        item.Owned > 0 && (item.Wearable || request.IncludeUnowned) && !request.Excluded.Contains(item.Id);
+        !request.Excluded.Contains(item.Id)
+        && (
+            request.Pool == ItemPool.Every
+                ? InPool(item, request)
+                : item.Owned > 0 && (item.Wearable || request.IncludeUnowned || request.Setup.IgnoreRequirements)
+        );
+
+    /// <summary>
+    /// Whether every item's pool, as <paramref name="request"/> narrows it, holds <paramref name="item"/>: with
+    /// <see cref="SearchRequest.WearableOnly"/> only what the setup's levels meet; with
+    /// <see cref="SearchRequest.ReachedOnly"/> only what is owned or has a source the character can reach now; and
+    /// none whose every source is one of <see cref="SearchRequest.LeftOutSources"/> ("Other" for an item with none).
+    /// </summary>
+    public static bool InPool(GearItem item, SearchRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(item);
+        ArgumentNullException.ThrowIfNull(request);
+        if (request.WearableOnly && !item.Wearable)
+            return false;
+        if (request.ReachedOnly && item.Owned == 0 && item.Reachable != true)
+            return false;
+        if (request.LeftOutSources.Count == 0)
+            return true;
+        IReadOnlyList<string> sources = item.SourceNames.Count > 0 ? item.SourceNames : [OtherSource];
+        return !sources.All(s => request.LeftOutSources.Contains(s, StringComparer.OrdinalIgnoreCase));
+    }
+
+    /// <summary>The source an item the game's data names none for is shown and left out under.</summary>
+    public const string OtherSource = "Other";
+
+    // How many of an item one set may wear: a stack never runs out, and with every item one not owned (or owned
+    // fewer times than the unit has slots) may fill each of the unit's slots, as a pair of one ring.
+    private static int Available(GearItem item, SearchRequest request, int slots, int held) =>
+        item.Stackable ? int.MaxValue
+        : request.Pool == ItemPool.Every ? Math.Max(item.Owned - held, slots)
+        : item.Owned - held;
 
     // The weapon's branch, its stance still to set. No branch when the weapon can't be worn under the locks (it takes a locked slot, or its slot is held), which
     // needs no saying, or when it has nothing to fire, which does.
@@ -360,7 +409,7 @@ public static class Planner
                 held[item] = held.GetValueOrDefault(item) + 1;
         }
         var units = new List<Unit>();
-        var needsAmmo = weapon.Weapon!.AmmoType;
+        var needsAmmo = weapon.AmmoNeeded;
         foreach (
             var type in catalogue.Slots.Where(s => s.Unlocked && !fixedSlots.ContainsKey(s.Id)).GroupBy(s => s.Type)
         )
@@ -375,12 +424,17 @@ public static class Planner
                 pool = [.. pool.Where(i => i.AmmoType == needsAmmo)];
             var available = pool.ToDictionary(
                 i => i.Id,
-                i => i.Stackable ? int.MaxValue : i.Owned - held.GetValueOrDefault(i.Id),
+                i => Available(i, request, type.Count(), held.GetValueOrDefault(i.Id)),
                 StringComparer.Ordinal
             );
             pool = [.. pool.Where(i => available[i.Id] > 0)];
             if (isAmmo && pool.Count == 0)
-                return (null, Note.Of("nothing owned for it to fire"));
+                return (
+                    null,
+                    request.Pool == ItemPool.Every
+                        ? Note.Of("nothing in the game for it to fire")
+                        : Note.Of("nothing owned for it to fire")
+                );
             units.Add(
                 new Unit([.. type.Select(s => s.Id)], [.. pool.Select(i => i.Id)], available, AllowEmpty: !isAmmo)
             );

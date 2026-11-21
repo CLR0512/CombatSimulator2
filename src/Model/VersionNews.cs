@@ -22,6 +22,21 @@ public static class VersionNews
             New(Note.Of("Rare drop chances per kill, and roughly when the first should drop")),
             New(Note.Of("Slayer masters: the best loadout for each, and which tasks to block")),
         ],
+        ["0.1.0-preview.2"] =
+        [
+            New(
+                Note.Of(
+                    "Find best setup can search every item in the game, narrowed to what you can wear or have reached"
+                )
+            ),
+            New(Note.Of("Items you don't own say where they come from")),
+            New(Note.Of("Slots your goal can't tell apart keep what you wear; Gap from now shows what to get first")),
+            New(Note.Of("Set how long a gear search may run, 15 min by default")),
+            Fix(Note.Of("Gear searches read Early Access's item stats, so they fight far fewer sets")),
+            Fix(
+                Note.Of("Slayer Coins and XP for your current task no longer show too low with Slayer task \"As save\"")
+            ),
+        ],
     };
 
     /// <summary>Every version with an entry.</summary>
@@ -32,4 +47,6 @@ public static class VersionNews
         version != null && Versions.TryGetValue(version, out var lines) ? lines : [];
 
     private static NewsLine New(Note text) => new(false, text);
+
+    private static NewsLine Fix(Note text) => new(true, text);
 }

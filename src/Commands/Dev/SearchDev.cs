@@ -13,12 +13,12 @@ namespace MelvorMods.CombatSimulator2.Commands.Dev;
 /// <c>cs2dev search</c>: the catalogue and plan of a search without a fight, and given sets fought through the
 /// search's own pool and stages, with each set's result hash to hold beside a run of the same changes.
 /// </summary>
-internal static class SearchDev
+internal static partial class SearchDev
 {
     public static Subcommand Sub { get; } =
         new(
             "search",
-            "cs2dev search plan <target> [metric=] [styles=all] [setup=<loadout>] [<change>…] | cs2dev search planned | cs2dev search fight <target> <change…> [| <change…>]… [trials=] [seed=] [copies=] [where=] [metric=] | cs2dev search state | cs2dev search unknown <item>|off | cs2dev search limit <seconds>|off | cs2dev search keys <target> <change…> [| <change…>]… | cs2dev search keys <target> plan [lock=] [metric=] [<change>…] | cs2dev search keys result | cs2dev search exhaust <target> slots=<a,b,c> [trials=5000] [metric=] | cs2dev search exhausted | cs2dev search census <target> | cs2dev search censused | cs2dev search ladder <target> [a.<change>…] <change…> [| <change…>]… [counts=100,400,1000] [truth=] [truthseed=] [seed=] [metric=] | cs2dev search laddered | cs2dev search arms [trials=1000] [truth=] [checks=] [widen=] | cs2dev search prefix | cs2dev search batches <count>",
+            "cs2dev search plan <target> [metric=] [styles=all] [setup=<loadout>] [pool=own|every] [wearable] [reached] [leave=] [<change>…] | cs2dev search planned | cs2dev search fight <target> <change…> [| <change…>]… [trials=] [seed=] [copies=] [where=] [metric=] | cs2dev search state | cs2dev search unknown <item>|off | cs2dev search limit <seconds>|off | cs2dev search keys <target> <change…> [| <change…>]… | cs2dev search keys <target> plan [lock=] [metric=] [<change>…] | cs2dev search keys result | cs2dev search exhaust <target> slots=<a,b,c> [trials=5000] [metric=] [pool=own|every] [wearable] [reached] [leave=] | cs2dev search exhausted | cs2dev search census <target> | cs2dev search censused | cs2dev search ladder <target> [a.<change>…] <change…> [| <change…>]… [counts=100,400,1000] [truth=] [truthseed=] [seed=] [metric=] | cs2dev search laddered | cs2dev search arms [trials=1000] [truth=] [checks=] [widen=] | cs2dev search prefix | cs2dev search batches <count>",
             [
                 "trials",
                 "setup",
@@ -34,9 +34,10 @@ internal static class SearchDev
                 "checks",
                 "truthseed",
                 "widen",
+                .. PoolArgs.Options,
                 .. ChangeArgs.Options,
             ],
-            ["ignore-req"],
+            ["ignore-req", .. PoolArgs.Flags],
             Run,
             Purpose: "plan: the catalogue and what a search would fight, without fighting; fight: given sets through the search's own stages, each with its result hash"
         );
@@ -188,17 +189,21 @@ internal static class SearchDev
         var setup = RunArgs.SetupFrom(args);
         var slot = RunService.CheckLoadout(setup, () => LiveGame.Loadouts(game));
         var changes = ChangeArgs.From(args, SideLetter.A).A;
-        var request = new SearchRequest(
-            SearchKind.BestGear,
-            setup,
-            target.Key,
-            new Goal(args.String("metric") ?? Metrics.MainXp),
-            1000,
-            4
-        )
-        {
-            AllStyles = args.String("styles") == "all",
-        };
+        var request = PoolArgs.Apply(
+            new SearchRequest(
+                SearchKind.BestGear,
+                setup,
+                target.Key,
+                new Goal(args.String("metric") ?? Metrics.MainXp),
+                1000,
+                4
+            )
+            {
+                AllStyles = args.String("styles") == "all",
+            },
+            args
+        );
+
         _planned = "planning";
         ChangeCheck.Read(
             LiveGame.TakeSnapshot(game),
@@ -213,8 +218,13 @@ internal static class SearchDev
                     _planned = $"error {error?.GetType().Name}: {error?.Message}";
                     return;
                 }
+                if (request.Check(catalogue) is [var problem, ..])
+                {
+                    _planned = "refused: " + problem.English();
+                    return;
+                }
                 var text = new StringBuilder(
-                    $"catalogue {catalogue.Hash}: {catalogue.Items.Count} items, stance {Ids.Brief(catalogue.Stance)}"
+                    $"catalogue {catalogue.Hash}: {catalogue.Items.Count} items, stance {Ids.Brief(catalogue.Stance)}, pool {(request.Pool == ItemPool.Every ? "every item" : "owned")}"
                 );
                 foreach (var gearSlot in catalogue.Slots)
                 {
@@ -268,157 +278,6 @@ internal static class SearchDev
             }
         );
         call.Ok("planning (cs2dev search planned)");
-    }
-
-    private static volatile string _exhausted = "nothing exhausted yet (cs2dev search exhaust <target> slots=<a,b,c>)";
-
-    /// <summary>
-    /// The ground truth for a small case: every combination of the named slots (the others kept as worn) fought in
-    /// full from seed 1, then the best and the sets as good among them, and whether the kept answer for the target
-    /// is the best or one of them. <c>cs2dev search exhausted</c> prints it.
-    /// </summary>
-    private static void Exhaust(CommandCall call, CommandArgs args)
-    {
-        var game = LiveGame.Require();
-        var target = Targets.Resolve(game, args.Word(1) ?? throw new CommandException("usage: " + Sub.Usage));
-        var free = (args.String("slots") ?? throw new CommandException("slots=<a,b,c>: the slots to try every item in"))
-            .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-            .Select(Ids.Full)
-            .ToHashSet(StringComparer.Ordinal);
-        var setup = RunArgs.SetupFrom(args);
-        var slot = RunService.CheckLoadout(setup, () => LiveGame.Loadouts(game));
-        var goal = new Goal(args.String("metric") ?? Metrics.MainXp);
-        var trials = args.Int("trials", 5000, 1, 100_000);
-        var copies = args.Int("copies", RunArgs.DefaultCopies(), 1, Math.Max(1, Environment.ProcessorCount));
-        var snapshot = LiveGame.TakeSnapshot(game);
-        var prices = LiveGame.Prices(game);
-        var share = RunService.DefaultTieShare();
-        var kept = Engine
-            .Search.KeptAnswers.Store?.Find(
-                SearchKind.BestGear,
-                target.Key,
-                new AnswerKey { Character = snapshot.Character }
-            )
-            ?.Answer;
-        _exhausted = "reading the catalogue";
-        ChangeCheck.Read(
-            snapshot,
-            slot,
-            setup.Changes,
-            setup.IgnoreRequirements,
-            copy => Game.Search.GearCatalog.Read(copy, target),
-            (catalogue, error) =>
-            {
-                if (catalogue == null)
-                {
-                    _exhausted = $"error {error?.GetType().Name}: {error?.Message}";
-                    return;
-                }
-                var request = new SearchRequest(SearchKind.BestGear, setup, target.Key, goal, trials, copies)
-                {
-                    Locks = catalogue
-                        .Slots.Select(s => s.Id)
-                        .Where(s => !free.Contains(s))
-                        .ToHashSet(StringComparer.Ordinal),
-                };
-                var plan = Planner.Plan(catalogue, request, comparing: false);
-                if (plan.Climb)
-                {
-                    _exhausted = $"too many sets to fight them all: {plan.Possible}";
-                    return;
-                }
-                _exhausted = $"fighting {plan.Candidates.Count} sets, {trials} trials each";
-                var results = new System.Collections.Concurrent.ConcurrentDictionary<int, StageResult>();
-                var pool = new Engine.Search.SearchPool();
-                pool.Start(
-                    new Engine.Search.SearchJob(
-                        snapshot,
-                        slot,
-                        setup.Changes,
-                        target,
-                        new DriveOptions(trials, new TrialLimits(), setup.IgnoreRequirements),
-                        1,
-                        copies,
-                        plan.Candidates
-                    ),
-                    new Exhausting(
-                        (index, result, skill) =>
-                            results[index] = new StageResult(index, result, Answers.MetricFor(goal, skill)),
-                        () =>
-                        {
-                            pool.Dispose();
-                            _exhausted = Exhausted(
-                                plan,
-                                [.. results.Values.OrderBy(r => r.Index)],
-                                goal,
-                                share,
-                                prices,
-                                kept
-                            );
-                        },
-                        e =>
-                        {
-                            pool.Dispose();
-                            _exhausted = $"error {e.GetType().Name}: {e.Message}";
-                        }
-                    ),
-                    CancellationToken.None
-                );
-            }
-        );
-        call.Ok("exhausting (cs2dev search exhausted)");
-    }
-
-    internal sealed class Exhausting(Action<int, TargetResult, string?> done, Action finished, Action<Exception> failed)
-        : Engine.Search.ISearchReport
-    {
-        public void CandidateDone(int index, TargetResult result, Note? left, string? mainSkill) =>
-            done(index, result, mainSkill);
-
-        public void Finished(PoolStats stats) => finished();
-
-        public void Failed(Exception error) => failed(error);
-    }
-
-    // The exhaustive best and its ties, and where the kept answer stands among them.
-    private static string Exhausted(
-        SearchPlan plan,
-        List<StageResult> results,
-        Goal goal,
-        double share,
-        PriceTable prices,
-        Answer? kept
-    )
-    {
-        var end = Race.End(results, goal, share, prices);
-        var text = new StringBuilder($"exhausted {results.Count} sets: {end.State}, margin {share * 100:0.#}%");
-        string Line(int index) => index == 0 ? "current gear" : plan.Candidates[index].Changes.ShortForm;
-        string Value(int index) =>
-            Race.Value(results.First(r => r.Index == index), prices) is { } v
-                ? v.Point.ToString("#,0.##", CultureInfo.InvariantCulture)
-                : "-";
-        var group = new List<int>();
-        if (end.Best is { } best)
-        {
-            group.Add(best);
-            group.AddRange(end.Ties.Select(t => t.Index));
-            text.Append(CultureInfo.InvariantCulture, $"\nbest: {Line(best)}  {Value(best)}");
-            foreach (var tie in end.Ties)
-                text.Append(CultureInfo.InvariantCulture, $"\n  as good: {Line(tie.Index)}  {Value(tie.Index)}");
-        }
-        if (kept?.Best is not { } answer)
-        {
-            text.Append("\nkept answer: none with a best set");
-            return text.ToString();
-        }
-        var at = plan.Candidates.FirstOrDefault(c => c.Changes.Equals(answer.Changes))?.Index;
-        text.Append("\nkept answer: ").Append(answer.Changes.ShortForm).Append(": ");
-        text.Append(
-            at == null ? "not among the sets exhausted (another slot changed)"
-            : group.Contains(at.Value) ? (at == end.Best ? "the exhaustive best" : "one of the exhaustive best's ties")
-            : $"NOT the best or a tie ({Value(at.Value)})"
-        );
-        return text.ToString();
     }
 
     /// <summary>The search as it stands: its stages, then every set with its last result's state, trials and hash.</summary>

@@ -59,7 +59,7 @@ msgstr[1] ""
 
 #: src/Engine/RunPlan.Masters.cs:32
 #: src/Game/Slayer/MasterFight.cs:47
-#: src/Game/Slayer/SlayerTasks.cs:138
+#: src/Game/Slayer/SlayerTasks.cs:155
 #, csharp-format
 msgid "no Slayer master {0} in this game"
 msgstr ""
@@ -70,7 +70,7 @@ msgid "loadout {0} is gone: change it"
 msgstr ""
 
 #: src/Engine/RunService.Comparisons.cs:119
-#: src/Engine/RunService.Loadouts.cs:176
+#: src/Engine/RunService.Loadouts.cs:199
 #: src/Engine/RunService.cs:301
 #: src/Game/Search/SetFight.cs:44
 #: src/Game/Slayer/MasterFight.cs:102
@@ -79,8 +79,8 @@ msgstr ""
 msgid "cancelled"
 msgstr ""
 
-#: src/Engine/RunService.Loadouts.cs:157
-#: src/Engine/Search/SearchRun.cs:459
+#: src/Engine/RunService.Loadouts.cs:180
+#: src/Engine/Search/SearchRun.cs:424
 #: src/Engine/Search/SearchStart.cs:33
 #, csharp-format
 msgid "failed: {0}"
@@ -97,7 +97,7 @@ msgstr ""
 msgid "the run is in progress"
 msgstr ""
 
-#: src/Engine/Search/KeptAnswers.cs:89
+#: src/Engine/Search/KeptAnswers.cs:91
 msgid "could not be checked"
 msgstr ""
 
@@ -266,21 +266,21 @@ msgstr ""
 msgid "requirements ignored: {0}"
 msgstr ""
 
-#: src/Game/Driver.cs:72
+#: src/Game/Driver.cs:76
 msgid "no master gives it: off task"
 msgstr ""
 
-#: src/Game/Driver.cs:204
+#: src/Game/Driver.cs:208
 #, csharp-format
 msgid "cancelled after {0} of {1} trials"
 msgstr ""
 
-#: src/Game/Driver.cs:236
+#: src/Game/Driver.cs:240
 #, csharp-format
 msgid "a trial ran over the {0:0} s limit after {1} finished trials"
 msgstr ""
 
-#: src/Game/Driver.cs:344
+#: src/Game/Driver.cs:348
 #, csharp-format
 msgid "stopped early at ±{0}% after {1} of {2} trials"
 msgstr ""
@@ -495,27 +495,119 @@ msgstr ""
 msgid "the game didn't complete the quest"
 msgstr ""
 
-#: src/Game/QuestChange.cs:93
+#: src/Game/QuestChange.cs:107
 msgid "the game didn't complete a task"
 msgstr ""
 
-#: src/Game/QuestChange.cs:97
+#: src/Game/QuestChange.cs:111
 msgid "the game didn't give the quest's rewards (bank full)"
 msgstr ""
 
 #. Why a setup search leaves out a combat style that needs a spell: the setup has none, and
 #. Spell is switched off under "Also try". Shown after "Magic: skipped, ".
-#: src/Game/Search/GearCatalog.cs:111
+#: src/Game/Search/GearCatalog.cs:115
 msgid "switch on Spell under Also try to include it"
 msgstr ""
 
-#: src/Game/Search/ItemSources.cs:30
+#. How an item is got, in a gear search answer's hover: {0} the monster that drops it.
+#: src/Game/Search/ItemSources.cs:61
+#, csharp-format
+msgid "Dropped by {0}"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the dungeon whose rewards hold it.
+#: src/Game/Search/ItemSources.cs:67
+#, csharp-format
+msgid "Reward from {0}"
+msgstr ""
+
+#: src/Game/Search/ItemSources.cs:74
 #: src/Panel/Stats/FullStatsView.Modifiers.cs:34
 msgid "Shop"
 msgstr ""
 
-#: src/Game/Search/ItemSources.cs:35
+#. How an item is got, in a gear search answer's hover: buying it in the shop.
+#: src/Game/Search/ItemSources.cs:77
+msgid "Bought in the shop"
+msgstr ""
+
+#: src/Game/Search/ItemSources.cs:94
 msgid "Upgrade"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the item upgraded into it.
+#: src/Game/Search/ItemSources.cs:97
+#, csharp-format
+msgid "Upgraded from {0}"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: upgrading another item.
+#: src/Game/Search/ItemSources.cs:102
+msgid "Upgraded from another item"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the chest or bag it comes out of.
+#: src/Game/Search/ItemSources.cs:112
+#, csharp-format
+msgid "Opened from {0}"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the Sacrificial Anvil's reward mode.
+#: src/Game/Search/ItemSources.cs:124
+#, csharp-format
+msgid "Sacrificial Anvil: {0}"
+msgstr ""
+
+#. Where an item comes from: a Thieving target that drops it, by the target's name.
+#: src/Game/Search/ItemSources.cs:133
+#, csharp-format
+msgid "Thieving: {0}"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the Thieving target it's stolen from.
+#: src/Game/Search/ItemSources.cs:136
+#, csharp-format
+msgid "Stolen from {0} in Thieving"
+msgstr ""
+
+#: src/Game/Search/ItemSources.cs:147
+#, csharp-format
+msgid "Firemaking: {0}"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the log whose burning finds it.
+#: src/Game/Search/ItemSources.cs:150
+#, csharp-format
+msgid "Found burning {0} in Firemaking"
+msgstr ""
+
+#: src/Game/Search/ItemSources.cs:159
+#, csharp-format
+msgid "Fishing: {0}"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the fishing spot it's caught at.
+#: src/Game/Search/ItemSources.cs:162
+#, csharp-format
+msgid "Caught fishing {0}"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the quest that rewards it.
+#: src/Game/Search/ItemSources.cs:173
+#, csharp-format
+msgid "Reward for the quest {0}"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the skill it's made in, {1} the recipe group.
+#: src/Game/Search/ItemSources.cs:185
+#, csharp-format
+msgid "Made in {0}: {1}"
+msgstr ""
+
+#. How an item is got, in a gear search answer's hover: {0} the recipe group it's made under.
+#: src/Game/Search/ItemSources.cs:187
+#, csharp-format
+msgid "Made: {0}"
 msgstr ""
 
 #: src/Game/SetupSheet.cs:44
@@ -766,51 +858,51 @@ msgstr ""
 msgid "loot cleared from the bank after it is counted"
 msgstr ""
 
-#: src/Model/Assumption.cs:26
-msgid "slayer task as in the save, auto-slayer off; a task that ends during a fight changes the rest of that fight, as in the game"
+#: src/Model/Assumption.cs:27
+msgid "slayer task as in the save, for the whole run (it never runs out), auto-slayer off"
 msgstr ""
 
-#: src/Model/Assumption.cs:31
+#: src/Model/Assumption.cs:30
 msgid "time of day frozen at 12:00"
 msgstr ""
 
-#: src/Model/Assumption.cs:43
+#: src/Model/Assumption.cs:42
 msgid "Auto Slayer on, starting in the task's area"
 msgstr ""
 
-#: src/Model/Assumption.cs:44
+#: src/Model/Assumption.cs:43
 msgid "every task fought to the end; no rerolls or extensions"
 msgstr ""
 
-#: src/Model/Assumption.cs:45
+#: src/Model/Assumption.cs:44
 msgid "Slayer level as in the setup"
 msgstr ""
 
-#: src/Model/Assumption.cs:46
+#: src/Model/Assumption.cs:45
 msgid "one respawn between tasks"
 msgstr ""
 
-#: src/Model/Assumption.cs:49
+#: src/Model/Assumption.cs:48
 msgid "you start again after each death: the game stops, so a master with deaths can't be left running"
 msgstr ""
 
-#: src/Model/Assumption.cs:52
+#: src/Model/Assumption.cs:51
 msgid "Auto Slayer enters areas you haven't unlocked"
 msgstr ""
 
-#: src/Model/Assumption.cs:53
+#: src/Model/Assumption.cs:52
 msgid "each monster given up to an hour a kill"
 msgstr ""
 
-#: src/Model/Assumption.cs:59
+#: src/Model/Assumption.cs:58
 msgid "Loadout swaps between tasks cost no time (swapped while the next monster spawns)"
 msgstr ""
 
-#: src/Model/Assumption.cs:72
+#: src/Model/Assumption.cs:71
 msgid "Pets added or taken away here change their bonuses only; the game still counts the pets you've found."
 msgstr ""
 
-#: src/Model/Assumption.cs:84
+#: src/Model/Assumption.cs:83
 msgid "items and prayers already in use stay when a level is lowered"
 msgstr ""
 
@@ -832,8 +924,9 @@ msgstr ""
 #: src/Model/ChangeNotes.cs:64
 #: src/Model/Search/SetupAnswers.cs:44
 #: src/Panel/Compare/CompareChart.cs:215
-#: src/Panel/Search/AnswerView.cs:405
+#: src/Panel/Search/SearchWords.cs:241
 #: src/Panel/Search/SetupRows.cs:268
+#: src/Panel/Search/StartCounts.cs:149
 #: src/Panel/Simulate/SetupCard.cs:404
 #: src/Panel/Slayer/MonsterLoadouts.cs:73
 #: src/Panel/Words.cs:24
@@ -1080,8 +1173,8 @@ msgstr ""
 #: src/Model/Metrics.cs:124
 #: src/Model/Metrics.cs:185
 #: src/Panel/Results/FightsSection.cs:47
-#: src/Panel/Search/AnswerView.cs:375
-#: src/Panel/Search/StartForm.cs:71
+#: src/Panel/Search/AnswerView.cs:384
+#: src/Panel/Search/StartForm.cs:74
 #: src/Panel/SetupTab/SlayerMasters.cs:105
 msgid "Deaths"
 msgstr ""
@@ -1213,7 +1306,7 @@ msgid "Rare event"
 msgstr ""
 
 #: src/Model/Metrics.cs:423
-#: src/Panel/Search/KindSwitches.cs:23
+#: src/Panel/Search/KindSwitches.cs:24
 #: src/Panel/Search/SetupRows.cs:458
 #: src/Panel/SetupTab/GearPage.Loadout.cs:277
 #: src/Panel/SetupTab/GearPage.Loadout.cs:304
@@ -1228,7 +1321,7 @@ msgid "Consumables"
 msgstr ""
 
 #: src/Model/Metrics.cs:425
-#: src/Panel/Search/KindSwitches.cs:25
+#: src/Panel/Search/KindSwitches.cs:26
 msgid "Potions"
 msgstr ""
 
@@ -1292,97 +1385,121 @@ msgstr ""
 msgid "a kept comparison uses this run"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:218
+#: src/Model/Search/Answer.cs:261
 msgid "setup changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:220
+#: src/Model/Search/Answer.cs:263
 msgid "gear changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:222
+#: src/Model/Search/Answer.cs:265
 msgid "levels changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:224
+#: src/Model/Search/Answer.cs:267
 msgid "game updated"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:226
+#: src/Model/Search/Answer.cs:269
 msgid "Combat Simulator 2 updated"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:228
+#: src/Model/Search/Answer.cs:271
 msgid "goal changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:230
+#: src/Model/Search/Answer.cs:273
 msgid "locks changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:232
+#: src/Model/Search/Answer.cs:275
 msgid "excluded items changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:234
+#: src/Model/Search/Answer.cs:277
 msgid "styles changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:236
+#: src/Model/Search/Answer.cs:279
 msgid "margin changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:238
+#: src/Model/Search/Answer.cs:281
 msgid "seed changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:240
+#: src/Model/Search/Answer.cs:283
 msgid "choices tried changed"
 msgstr ""
 
-#: src/Model/Search/Answer.cs:242
+#: src/Model/Search/Answer.cs:285
 msgid "prayers, spells, food or toolbelt changed"
 msgstr ""
 
+#. Where an item comes from when the game's data names no source.
 #: src/Model/Search/Answers.cs:10
+#: src/Panel/Search/BestInSlotRows.cs:103
 #: src/Panel/Stats/FullStatsView.Modifiers.cs:39
 #: src/Panel/Stats/FullStatsView.Stats.cs:16
 msgid "Other"
 msgstr ""
 
-#: src/Model/Search/Planner.cs:227
+#: src/Model/Search/Planner.cs:231
 msgid "takes more than one slot"
 msgstr ""
 
-#: src/Model/Search/Planner.cs:383
+#: src/Model/Search/Planner.cs:239
+msgid "can't tell whether it can be got"
+msgstr ""
+
+#: src/Model/Search/Planner.cs:435
+msgid "nothing in the game for it to fire"
+msgstr ""
+
+#: src/Model/Search/Planner.cs:436
 msgid "nothing owned for it to fire"
 msgstr ""
 
-#: src/Model/Search/SearchRequest.cs:53
-msgid "Choose one target"
-msgstr ""
-
-#: src/Model/Search/SearchRequest.cs:55
-msgid "Droptimizer keeps every slot as worn: it takes no locks"
-msgstr ""
-
-#: src/Model/Search/SearchRequest.cs:57
-msgid "Droptimizer tries gear only"
-msgstr ""
-
-#: src/Model/Search/SearchRequest.cs:59
-#, csharp-format
-msgid "No kind of choice {0}"
-msgstr ""
-
-#: src/Model/Search/SearchRequest.cs:62
+#: src/Model/Search/SearchRequest.cs:91
 #, csharp-format
 msgid "No slot {0}"
 msgstr ""
 
-#: src/Model/Search/SearchRequest.cs:65
+#: src/Model/Search/SearchRequest.cs:94
 #, csharp-format
 msgid "{0} is not an item that can be worn"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:105
+msgid "Choose one target"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:107
+msgid "Droptimizer keeps every slot as worn: it takes no locks"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:109
+msgid "Droptimizer tries gear only"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:111
+msgid "Droptimizer tries every item already"
+msgstr ""
+
+#. Hover of the greyed "every item" choice for an area, a master or the pins.
+#: src/Model/Search/SearchRequest.cs:113
+#: src/Panel/Search/PoolPick.cs:59
+msgid "Every item: one target at a time"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:115
+msgid "Narrowing the pool needs every item"
+msgstr ""
+
+#: src/Model/Search/SearchRequest.cs:117
+#, csharp-format
+msgid "No kind of choice {0}"
 msgstr ""
 
 #: src/Model/Slayer/MasterFigures.cs:107
@@ -1532,6 +1649,30 @@ msgstr ""
 
 #: src/Model/VersionNews.cs:23
 msgid "Slayer masters: the best loadout for each, and which tasks to block"
+msgstr ""
+
+#: src/Model/VersionNews.cs:28
+msgid "Find best setup can search every item in the game, narrowed to what you can wear or have reached"
+msgstr ""
+
+#: src/Model/VersionNews.cs:32
+msgid "Items you don't own say where they come from"
+msgstr ""
+
+#: src/Model/VersionNews.cs:33
+msgid "Slots your goal can't tell apart keep what you wear; Gap from now shows what to get first"
+msgstr ""
+
+#: src/Model/VersionNews.cs:34
+msgid "Set how long a gear search may run, 15 min by default"
+msgstr ""
+
+#: src/Model/VersionNews.cs:35
+msgid "Gear searches read Early Access's item stats, so they fight far fewer sets"
+msgstr ""
+
+#: src/Model/VersionNews.cs:37
+msgid "Slayer Coins and XP for your current task no longer show too low with Slayer task \"As save\""
 msgstr ""
 
 #. Column head over the difference of B from A in the comparison's table.
@@ -1902,7 +2043,7 @@ msgid "Settings"
 msgstr ""
 
 #: src/Panel/Help/About.cs:42
-#: src/Panel/Help/AboutButton.cs:31
+#: src/Panel/Help/AboutButton.cs:36
 msgid "About"
 msgstr ""
 
@@ -2141,6 +2282,7 @@ msgstr ""
 
 #. Title of the window that explains the Gear tab's two searches.
 #: src/Panel/Help/GearGuideText.cs:13
+#: src/Panel/Simulate/PanelMenu.cs:82
 msgid "Gear search"
 msgstr ""
 
@@ -2150,7 +2292,7 @@ msgstr ""
 
 #. Start button of a gear search for the best setup of what the character has (gear, prayers, food…).
 #: src/Panel/Help/GearGuideText.cs:18
-#: src/Panel/Search/StartForm.cs:171
+#: src/Panel/Search/StartForm.cs:181
 msgid "Find best setup"
 msgstr ""
 
@@ -2283,7 +2425,7 @@ msgstr ""
 
 #. Start button of a gear search for which unowned items would gain the most.
 #: src/Panel/Help/GearGuideText.cs:107
-#: src/Panel/Search/StartForm.cs:173
+#: src/Panel/Search/StartForm.cs:183
 msgid "Find upgrades"
 msgstr ""
 
@@ -2556,7 +2698,7 @@ msgstr ""
 #: src/Panel/Help/HelpText.cs:186
 #: src/Panel/SetupTab/EntriesPage.Rows.cs:181
 #: src/Panel/SetupTab/EntriesPage.cs:181
-#: src/Panel/SetupTab/SlayerTasksNow.cs:169
+#: src/Panel/SetupTab/SlayerTasksNow.cs:201
 #: src/Panel/Stats/FullStatsView.Modifiers.cs:113
 #, csharp-format
 msgid "{0} of {1}"
@@ -2812,7 +2954,7 @@ msgstr ""
 #. Gear tab sentence "Find [best setup] for [this target]": the selected target alone.
 #: src/Panel/Results/DetailsLegend.cs:23
 #: src/Panel/Results/DetailsLegend.cs:52
-#: src/Panel/Search/GearTab.cs:440
+#: src/Panel/Search/GearTab.cs:468
 msgid "this target"
 msgstr ""
 
@@ -3070,7 +3212,7 @@ msgstr ""
 
 #. In a gear search's counts before it starts: how long it is expected to take.
 #: src/Panel/Results/FightsSection.cs:45
-#: src/Panel/Search/StartForm.cs:337
+#: src/Panel/Search/StartCounts.cs:95
 msgid "Time"
 msgstr ""
 
@@ -3700,8 +3842,8 @@ msgstr ""
 
 #: src/Panel/Results/ResultsToolbar.cs:52
 #: src/Panel/Results/ResultsToolbar.cs:57
-#: src/Panel/Search/AnswerView.cs:374
-#: src/Panel/Search/StartForm.cs:52
+#: src/Panel/Search/AnswerView.cs:383
+#: src/Panel/Search/StartForm.cs:55
 #: src/Panel/Simulate/PasteDialog.Simulation.cs:113
 msgid "Rank by"
 msgstr ""
@@ -3791,8 +3933,8 @@ msgstr ""
 
 #: src/Panel/Results/RiskBlock.cs:154
 #: src/Panel/Results/RiskBlock.cs:250
-#: src/Panel/Search/SearchWords.cs:100
-#: src/Panel/Search/SearchWords.cs:151
+#: src/Panel/Search/SearchWords.cs:109
+#: src/Panel/Search/SearchWords.cs:160
 #: src/Panel/Simulate/KeyStats.cs:76
 #: src/Panel/Simulate/KeyStats.cs:99
 #, csharp-format
@@ -3881,7 +4023,7 @@ msgstr ""
 
 #: src/Panel/ScaleSlider.cs:31
 #: src/Panel/Settings/ScaleRow.cs:42
-#: src/Panel/Simulate/PanelMenu.cs:83
+#: src/Panel/Simulate/PanelMenu.cs:87
 msgid "Scale"
 msgstr ""
 
@@ -3929,161 +4071,300 @@ msgid "{0}: another set does clearly better there alone. Search it on its own."
 msgstr ""
 
 #. Button on the out-of-date notice: simulate the search again with the setup as it is now.
-#: src/Panel/Search/AnswerView.cs:53
+#: src/Panel/Search/AnswerView.cs:55
 #: src/Panel/Search/DroptimizerList.cs:57
 msgid "Sim again"
 msgstr ""
 
 #. Over a kept gear search answer whose setup has changed since; what changed is under it.
-#: src/Panel/Search/AnswerView.cs:60
+#: src/Panel/Search/AnswerView.cs:62
 #: src/Panel/Search/DroptimizerList.cs:54
 msgid "Out of date"
 msgstr ""
 
 #. Gear search answer when no set is better than current gear by more than the margin.
-#: src/Panel/Search/AnswerView.cs:102
+#: src/Panel/Search/AnswerView.cs:108
 msgid "Keep what you have"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:106
+#: src/Panel/Search/AnswerView.cs:112
 #, csharp-format
 msgid "No set is better by more than {0}."
 msgstr ""
 
 #. Gear search answer when every set dies more often than the death limit allows.
-#: src/Panel/Search/AnswerView.cs:119
+#: src/Panel/Search/AnswerView.cs:125
 msgid "No set stays within the death limit"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:124
+#: src/Panel/Search/AnswerView.cs:130
 #, csharp-format
 msgid "Closest: {0}"
 msgstr ""
 
 #. Gear search answer when no set finishes a fight against the target.
-#: src/Panel/Search/AnswerView.cs:134
+#: src/Panel/Search/AnswerView.cs:140
 msgid "No set kills this target"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:139
+#: src/Panel/Search/AnswerView.cs:145
 msgid "Nothing to search"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:141
+#: src/Panel/Search/AnswerView.cs:147
 msgid "Nothing else you own fits an unlocked slot."
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:154
-#: src/Panel/Search/AnswerView.cs:348
+#: src/Panel/Search/AnswerView.cs:160
+#: src/Panel/Search/AnswerView.cs:357
 #: src/Panel/Search/SetupRows.cs:211
 msgid "Open as setup"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:203
+#: src/Panel/Search/AnswerView.cs:209
 #: src/Panel/Search/DroptimizerList.cs:96
 msgid "Search again"
 msgstr ""
 
 #. Heading over the slots a gear search's answer changes.
-#: src/Panel/Search/AnswerView.cs:223
+#: src/Panel/Search/AnswerView.cs:236
 msgid "Wear"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:240
+#: src/Panel/Search/AnswerView.cs:253
 msgid "Nothing"
 msgstr ""
 
 #. Under the item a gear search puts on: {0} the slot, {1} the item it takes off.
-#: src/Panel/Search/AnswerView.cs:247
+#: src/Panel/Search/AnswerView.cs:260
 #, csharp-format
 msgid "{0} · replaces {1}"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:262
-#: src/Panel/Search/AnswerView.cs:408
+#: src/Panel/Search/AnswerView.cs:271
 #: src/Panel/Search/DroptimizerList.cs:245
+#: src/Panel/Search/SearchWords.cs:244
 #, csharp-format
 msgid "Stance: {0}"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:265
+#: src/Panel/Search/AnswerView.cs:274
 #, csharp-format
 msgid "Assumes {0} lasts"
 msgstr ""
 
 #. Heading over the fight numbers that explain a gear search's answer.
-#: src/Panel/Search/AnswerView.cs:275
+#: src/Panel/Search/AnswerView.cs:284
 msgid "Why"
 msgstr ""
 
 #. Heading over each combat style's best set.
-#: src/Panel/Search/AnswerView.cs:292
+#: src/Panel/Search/AnswerView.cs:301
 msgid "By style"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:301
+#: src/Panel/Search/AnswerView.cs:310
 msgid "No set"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:307
-#: src/Panel/Search/StartForm.cs:333
+#: src/Panel/Search/AnswerView.cs:316
+#: src/Panel/Search/StartCounts.cs:86
 #, csharp-format
 msgid "{0}: skipped, {1}"
 msgstr ""
 
 #. Folded list of sets as good as the best within the margin.
-#: src/Panel/Search/AnswerView.cs:324
+#: src/Panel/Search/AnswerView.cs:333
 #: src/Panel/Search/SetupRows.cs:172
 msgid "As good"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:344
+#: src/Panel/Search/AnswerView.cs:353
 #: src/Panel/Search/SetupRows.cs:207
 msgid "Open"
 msgstr ""
 
 #. In a gear search's counts: how many sets could be worn from what is owned.
-#: src/Panel/Search/AnswerView.cs:369
-#: src/Panel/Search/StartForm.cs:322
+#: src/Panel/Search/AnswerView.cs:378
+#: src/Panel/Search/StartCounts.cs:74
 msgid "Combinations"
 msgstr ""
 
 #. In a gear search's counts: sets left out because another set matches or beats them.
-#: src/Panel/Search/AnswerView.cs:371
-#: src/Panel/Search/StartForm.cs:324
+#: src/Panel/Search/AnswerView.cs:380
+#: src/Panel/Search/StartCounts.cs:76
 msgid "Ruled out"
 msgstr ""
 
 #. In a gear search's counts: sets that were fought.
-#: src/Panel/Search/AnswerView.cs:373
+#: src/Panel/Search/AnswerView.cs:382
 msgid "Simulated"
 msgstr ""
 
 #. In a gear search's counts: sets this close to the best count as just as good.
-#: src/Panel/Search/AnswerView.cs:377
+#: src/Panel/Search/AnswerView.cs:386
 msgid "Equal within"
 msgstr ""
 
 #. Under a gear search's answer when there were too many sets to fight them all.
-#: src/Panel/Search/AnswerView.cs:382
+#: src/Panel/Search/AnswerView.cs:391
 msgid "Built slot by slot, as there were too many combinations to try. A better mix may exist."
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:390
+#: src/Panel/Search/AnswerView.cs:400
 #, csharp-format
 msgid "The best was behind at stage {0}, so the leaders were fought again with another seed."
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:405
-msgid "nothing"
+#. Under a gear search's gain: it chose from every item in the game.
+#: src/Panel/Search/BestInSlotRows.cs:21
+msgid "Every item"
 msgstr ""
 
-#: src/Panel/Search/AnswerView.cs:410
-msgid "current gear"
+#. Under a gear search's gain, after "Every item": only what the character's levels meet.
+#: src/Panel/Search/BestInSlotRows.cs:24
+#: src/Panel/Search/StartForm.cs:257
+msgid "wearable at my levels"
+msgstr ""
+
+#. Under a gear search's gain, after "Every item": only content the character has reached.
+#: src/Panel/Search/BestInSlotRows.cs:27
+#: src/Panel/Search/StartForm.cs:259
+msgid "content I've reached"
+msgstr ""
+
+#. Under a gear search's gain, after "Every item": {0} the item sources left out.
+#: src/Panel/Search/BestInSlotRows.cs:30
+#, csharp-format
+msgid "leaving out {0}"
+msgstr ""
+
+#. On a stopped gear search's answer: the slots the goal left tied weren't raced again.
+#: src/Panel/Search/BestInSlotRows.cs:43
+msgid "Slots not settled: the search was stopped before tied slots were raced again."
+msgstr ""
+
+#. On a stopped gear search's answer: the new items weren't fought alone in current gear.
+#: src/Panel/Search/BestInSlotRows.cs:50
+msgid "No gap figures: the search was stopped before the new items were fought alone."
+msgstr ""
+
+#. Under a gear search's answer when part of it was cut short to keep within the player's longest search; {0} in minutes.
+#: src/Panel/Search/BestInSlotRows.cs:62
+#, csharp-format
+msgid "Cut short to keep within your {0} min limit: the best set found so far."
+msgstr ""
+
+#. Under an item of a gear search's answer that the character doesn't own: {0} where it comes from; in the item's hover, {0} says how it is got in full ("Dropped by Wind Drifter").
+#: src/Panel/Search/BestInSlotRows.cs:87
+#: src/Panel/Search/BestInSlotRows.cs:98
+#, csharp-format
+msgid "Not owned · {0}"
+msgstr ""
+
+#. In a slot's hover in a gear search's answer: the goal decided it; {0} the goal's metric.
+#: src/Panel/Search/BestInSlotRows.cs:143
+#, csharp-format
+msgid "Best for {0}"
+msgstr ""
+
+#. In a slot's hover: the goal left it tied and the fewest deaths decided it.
+#: src/Panel/Search/BestInSlotRows.cs:145
+msgid "Fewest deaths"
+msgstr ""
+
+#. In a slot's hover: the goal left it tied and the least damage taken decided it.
+#: src/Panel/Search/BestInSlotRows.cs:147
+msgid "Least damage taken"
+msgstr ""
+
+#. In a slot's hover: the goal left it tied and the least food eaten decided it.
+#: src/Panel/Search/BestInSlotRows.cs:149
+msgid "Least food eaten"
+msgstr ""
+
+#. In a slot's hover: the slot was locked in the search's form, so nothing was tried there.
+#: src/Panel/Search/BestInSlotRows.cs:151
+msgid "Locked in the form"
+msgstr ""
+
+#. In a slot's hover: nothing measured told the tied items apart, so the tie order chose.
+#: src/Panel/Search/BestInSlotRows.cs:153
+msgid "Nothing told the items apart"
+msgstr ""
+
+#. In a slot's hover: {0} what decided it, {1} its difference, {2} the item it beat.
+#: src/Panel/Search/BestInSlotRows.cs:157
+#, csharp-format
+msgid "{0} ({1} vs {2})"
+msgstr ""
+
+#. In a slot's hover: {0} the measure that decided it, {1} the goal's metric, which it left equal.
+#: src/Panel/Search/BestInSlotRows.cs:163
+#, csharp-format
+msgid "{0}; {1} the same"
+msgstr ""
+
+#. Heading summary of a gear search's items to get: how many.
+#: src/Panel/Search/BestInSlotRows.cs:188
+#, csharp-format
+msgid "{0} item"
+msgid_plural "{0} items"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Folded section of a gear search's answer: the items the set holds that the character doesn't have or can't wear yet.
+#: src/Panel/Search/BestInSlotRows.cs:190
+msgid "Items to get"
+msgstr ""
+
+#. Label of the item sources a search over every item leaves out, shown as chips; also the link beside an answer's item to get that leaves its source out.
+#: src/Panel/Search/BestInSlotRows.cs:207
+#: src/Panel/Search/PoolNarrowing.cs:55
+msgid "Leave out"
+msgstr ""
+
+#. Hover of "Leave out" beside an item to get: {0} its source.
+#: src/Panel/Search/BestInSlotRows.cs:209
+#, csharp-format
+msgid "Leave out {0} and search again"
+msgstr ""
+
+#. Folded section of a gear search's answer: what each new item gains alone over current gear.
+#: src/Panel/Search/BestInSlotRows.cs:230
+msgid "Gap from now"
+msgstr ""
+
+#. Heading summary of a gear search's gap: {0} the whole set's gain over current gear.
+#: src/Panel/Search/BestInSlotRows.cs:232
+#, csharp-format
+msgid "{0} from now"
+msgstr ""
+
+#. Tag on the first row of a gear search's gap: the item to get first.
+#: src/Panel/Search/BestInSlotRows.cs:244
+msgid "get first"
+msgstr ""
+
+#. In a gear search's gap: {0} an item's gain alone, too small to count without the rest of the set.
+#: src/Panel/Search/BestInSlotRows.cs:258
+#, csharp-format
+msgid "{0} · only with the rest"
+msgstr ""
+
+#. In a gear search's gap: {0} an item's gain alone, {1} its share of the whole set's gain.
+#: src/Panel/Search/BestInSlotRows.cs:260
+#: src/Panel/Search/SearchWords.cs:135
+#: src/Panel/Settings/HistoryList.Rows.cs:82
+#: src/Panel/SetupTab/SetupTabView.cs:266
+#: src/Panel/Simulate/RunControl.cs:365
+#: src/Panel/Words.cs:52
+#, csharp-format
+msgid "{0} · {1}"
 msgstr ""
 
 #: src/Panel/Search/DroptimizerList.cs:69
-#: src/Panel/Search/StartForm.cs:342
+#: src/Panel/Search/StartCounts.cs:100
 msgid "Nothing to try: no unowned item can be worn now."
 msgstr ""
 
@@ -4155,72 +4436,53 @@ msgid "replaces {0}"
 msgstr ""
 
 #. Gear tab sentence "Find [best setup] for [this target]": the best setup of what the character has.
-#: src/Panel/Search/GearTab.cs:80
+#: src/Panel/Search/GearTab.cs:81
 msgid "best setup"
 msgstr ""
 
 #. Gear tab sentence "Find [upgrades] for [this target]": which unowned items would gain the most.
-#: src/Panel/Search/GearTab.cs:82
+#: src/Panel/Search/GearTab.cs:83
 msgid "upgrades"
 msgstr ""
 
 #. Gear tab sentence; {0} is "best setup" or "upgrades", {1} is "this target", "its area" or "the 3 pins", each a gold choice.
-#: src/Panel/Search/GearTab.cs:98
+#: src/Panel/Search/GearTab.cs:103
 #, csharp-format
 msgid "Find {0} for {1}"
 msgstr ""
 
 #. Hover of the Gear tab's info button, which opens its guide.
-#: src/Panel/Search/GearTab.cs:115
+#: src/Panel/Search/GearTab.cs:127
 msgid "How gear search works"
 msgstr ""
 
 #. Hover of the greyed "its area" choice when the selected target isn't an enemy.
-#: src/Panel/Search/GearTab.cs:179
+#: src/Panel/Search/GearTab.cs:192
 msgid "Select an enemy to search its whole area."
 msgstr ""
 
 #. Hover of the greyed pins choice when fewer than two targets are pinned.
-#: src/Panel/Search/GearTab.cs:181
+#: src/Panel/Search/GearTab.cs:194
 msgid "Pin 2 or 3 targets to search them together."
 msgstr ""
 
 #. Gear tab sentence "Find [best setup] for [its area]": every enemy of the target's area.
-#: src/Panel/Search/GearTab.cs:442
+#: src/Panel/Search/GearTab.cs:470
 msgid "its area"
 msgstr ""
 
 #. Gear tab sentence "Find [best setup] for [the 3 pins]": the pinned targets together.
-#: src/Panel/Search/GearTab.cs:444
+#: src/Panel/Search/GearTab.cs:472
 #, csharp-format
 msgid "the {0} pins"
 msgstr ""
 
 #. Gear tab sentence "Find [best setup] for [the 3 pins]": the pinned targets together.
-#: src/Panel/Search/GearTab.cs:444
+#: src/Panel/Search/GearTab.cs:472
 msgid "the pins"
 msgstr ""
 
-#: src/Panel/Search/GearTab.cs:457
-#, csharp-format
-msgid "Cancelled after stage {0}."
-msgstr ""
-
-#: src/Panel/Search/GearTab.cs:458
-#, csharp-format
-msgid "The search failed: {0}"
-msgstr ""
-
-#: src/Panel/Search/GearTab.cs:465
-#, csharp-format
-msgid "A search for {0} is running: wait for it or cancel it first."
-msgstr ""
-
-#: src/Panel/Search/GearTab.cs:469
-msgid "A run is going: wait for it or cancel it first."
-msgstr ""
-
-#: src/Panel/Search/KindSwitches.cs:20
+#: src/Panel/Search/KindSwitches.cs:21
 #: src/Panel/Search/SetupRows.cs:455
 #: src/Panel/SetupTab/GearPage.Loadout.cs:215
 #: src/Panel/SetupTab/GearSkeleton.cs:77
@@ -4228,7 +4490,7 @@ msgstr ""
 msgid "Prayers"
 msgstr ""
 
-#: src/Panel/Search/KindSwitches.cs:21
+#: src/Panel/Search/KindSwitches.cs:22
 #: src/Panel/Search/SetupRows.cs:456
 #: src/Panel/SetupTab/GearPage.Loadout.cs:317
 #: src/Panel/SetupTab/GearPage.Loadout.cs:332
@@ -4238,14 +4500,14 @@ msgstr ""
 msgid "Spell"
 msgstr ""
 
-#: src/Panel/Search/KindSwitches.cs:22
+#: src/Panel/Search/KindSwitches.cs:23
 #: src/Panel/Search/SetupRows.cs:457
 #: src/Panel/SetupTab/GearPage.Loadout.cs:348
 #: src/Panel/SetupTab/GearPage.Loadout.cs:375
 msgid "Imbuement"
 msgstr ""
 
-#: src/Panel/Search/KindSwitches.cs:24
+#: src/Panel/Search/KindSwitches.cs:25
 #: src/Panel/Search/SetupRows.cs:461
 #: src/Panel/SetupTab/GearPage.Loadout.cs:100
 #: src/Panel/SetupTab/GearSkeleton.cs:60
@@ -4253,34 +4515,83 @@ msgid "Toolbelt"
 msgstr ""
 
 #. Label of the switches choosing what a setup search tries besides gear.
-#: src/Panel/Search/KindSwitches.cs:33
+#: src/Panel/Search/KindSwitches.cs:34
 msgid "Also try"
 msgstr ""
 
 #. Tick in a setup search's form: also try prayers, food and the like the character lacks, and gear it owns but can't wear yet.
-#: src/Panel/Search/KindSwitches.cs:64
-msgid "Include what I can't use yet"
+#: src/Panel/Search/KindSwitches.cs:65
+msgid "Include choices I don't have"
 msgstr ""
 
-#: src/Panel/Search/KindSwitches.cs:74
+#: src/Panel/Search/KindSwitches.cs:75
 msgid "Also tries prayers, spells, food and toolbelt items you don't have, and gear you own but can't wear yet."
 msgstr ""
 
-#. Second line of the tooltip of "Include what I can't use yet".
-#: src/Panel/Search/KindSwitches.cs:79
-msgid "Gear you don't own: Find upgrades."
+#. Second line of the tooltip of "Include choices I don't have": the two places gear the character doesn't own is searched.
+#: src/Panel/Search/KindSwitches.cs:80
+msgid "Gear you don't own: choose \"every item\" above to search all of it, or Find upgrades for one item at a time."
+msgstr ""
+
+#. Third line of the tooltip of "Include choices I don't have".
+#: src/Panel/Search/KindSwitches.cs:85
+msgid "With requirements ignored, gear you own but can't wear yet is tried either way."
 msgstr ""
 
 #. Hover of the Potions switch while the game has no combat potions.
-#: src/Panel/Search/KindSwitches.cs:108
+#: src/Panel/Search/KindSwitches.cs:114
 #: src/Panel/SetupTab/GearPage.Loadout.cs:132
 #: src/Panel/SetupTab/MissingPage.cs:49
 msgid "No combat potions in this build"
 msgstr ""
 
 #. Hover of the Potions switch while the character holds no combat potion to try.
-#: src/Panel/Search/KindSwitches.cs:111
+#: src/Panel/Search/KindSwitches.cs:117
 msgid "You have no combat potions"
+msgstr ""
+
+#. Folded section of the gear search's form: what the search tries besides gear, and how.
+#: src/Panel/Search/OptionsFold.cs:25
+msgid "Options"
+msgstr ""
+
+#. Tick under "Find best setup … from every item": only items the character's levels already meet.
+#: src/Panel/Search/PoolNarrowing.cs:28
+msgid "Wearable at my levels"
+msgstr ""
+
+#: src/Panel/Search/PoolNarrowing.cs:36
+msgid "Only items whose requirements your levels already meet."
+msgstr ""
+
+#. Tick under "Find best setup … from every item": only items owned or got from content the character has reached.
+#: src/Panel/Search/PoolNarrowing.cs:41
+msgid "Content I've reached"
+msgstr ""
+
+#: src/Panel/Search/PoolNarrowing.cs:49
+msgid "Only items you own, or can get from monsters, dungeons, shops and skills you have reached."
+msgstr ""
+
+#. Hover of a left-out source's chip in the start form.
+#: src/Panel/Search/PoolNarrowing.cs:82
+msgid "Bring it back"
+msgstr ""
+
+#. End of the Gear tab sentence "Find [best setup] for [this target] from [every item]"; {0} is "owned items" or "every item", a gold choice.
+#: src/Panel/Search/PoolPick.cs:34
+#, csharp-format
+msgid "from {0}"
+msgstr ""
+
+#. Gear tab sentence "… from [owned items]": the items the character owns.
+#: src/Panel/Search/PoolPick.cs:54
+msgid "owned items"
+msgstr ""
+
+#. Gear tab sentence "… from [every item]": every item in the game, owned or not.
+#: src/Panel/Search/PoolPick.cs:57
+msgid "every item"
 msgstr ""
 
 #. Heading of a gear search under way.
@@ -4351,13 +4662,13 @@ msgid "{0}m {1}s"
 msgstr ""
 
 #. A step of a gear search a slot at a time that has ended: {0} the step, {1} sets fought, {2} dropped.
-#: src/Panel/Search/Progress.cs:234
+#: src/Panel/Search/Progress.cs:235
 #, csharp-format
 msgid "Step {0} · {1} fought · {2} dropped"
 msgstr ""
 
 #. A gear search's stage that has ended: {0} the stage, {1} trials per set, {2} sets fought, {3} dropped, {4} left.
-#: src/Panel/Search/Progress.cs:236
+#: src/Panel/Search/Progress.cs:237
 #, csharp-format
 msgid "Stage {0} · {1} trials · {2} fought · {3} dropped · {4} left"
 msgstr ""
@@ -4367,128 +4678,164 @@ msgstr ""
 msgid "finishing"
 msgstr ""
 
+#. A gear search's time left when only the player's limit is known: "at most 1h 02m 05s left".
+#: src/Panel/Search/SearchWords.cs:30
+#, csharp-format
+msgid "at most {0}h {1}m {2}s left"
+msgstr ""
+
+#. A gear search's time left when only the player's limit is known: "at most 9m 59s left".
+#: src/Panel/Search/SearchWords.cs:33
+#, csharp-format
+msgid "at most {0}m {1}s left"
+msgstr ""
+
+#. A gear search's time left when only the player's limit is known: "at most 45s left".
+#: src/Panel/Search/SearchWords.cs:35
+#, csharp-format
+msgid "at most {0}s left"
+msgstr ""
+
 #. A gear search's estimated time left: "1h 02m 05s left".
-#: src/Panel/Search/SearchWords.cs:29
+#: src/Panel/Search/SearchWords.cs:38
 #, csharp-format
 msgid "{0}h {1}m {2}s left"
 msgstr ""
 
 #. A gear search's estimated time left: "2m 05s left".
-#: src/Panel/Search/SearchWords.cs:32
+#: src/Panel/Search/SearchWords.cs:41
 #, csharp-format
 msgid "{0}m {1}s left"
 msgstr ""
 
 #. A gear search's estimated time left: "45s left".
-#: src/Panel/Search/SearchWords.cs:34
+#: src/Panel/Search/SearchWords.cs:43
 #, csharp-format
 msgid "{0}s left"
 msgstr ""
 
 #. Death limit of a gear search: no trial may end in a death.
-#: src/Panel/Search/SearchWords.cs:42
+#: src/Panel/Search/SearchWords.cs:51
 msgid "No deaths"
 msgstr ""
 
 #. Death limit of a gear search: fewer than 5% of trials may end in a death.
-#: src/Panel/Search/SearchWords.cs:44
+#: src/Panel/Search/SearchWords.cs:53
 msgid "Under 5% deaths"
 msgstr ""
 
 #. Death limit of a gear search: any number of deaths, as long as one trial was survived.
-#: src/Panel/Search/SearchWords.cs:46
+#: src/Panel/Search/SearchWords.cs:55
 msgid "Any, if survived once"
 msgstr ""
 
-#: src/Panel/Search/SearchWords.cs:78
+#: src/Panel/Search/SearchWords.cs:87
 #, csharp-format
 msgid "Your gear now doesn't finish a fight: {0}"
 msgstr ""
 
-#: src/Panel/Search/SearchWords.cs:80
+#: src/Panel/Search/SearchWords.cs:89
 #: src/Panel/Widgets/Chart.Hover.cs:255
 msgid "no result"
 msgstr ""
 
-#: src/Panel/Search/SearchWords.cs:86
+#: src/Panel/Search/SearchWords.cs:95
 #, csharp-format
 msgid "95% range {0}% to {1}%"
 msgstr ""
 
-#: src/Panel/Search/SearchWords.cs:87
+#: src/Panel/Search/SearchWords.cs:96
 #, csharp-format
 msgid "95% range {0} to {1}"
 msgstr ""
 
 #. Gear search, a rare item goal: {0} how long the first takes with current gear, "12.2 h".
-#: src/Panel/Search/SearchWords.cs:119
+#: src/Panel/Search/SearchWords.cs:128
 #, csharp-format
 msgid "≈{0} to first drop with your gear"
 msgstr ""
 
 #. Gear search, a rare item goal: {0} how long the first takes with the set, "10.8 h".
-#: src/Panel/Search/SearchWords.cs:121
+#: src/Panel/Search/SearchWords.cs:130
 #, csharp-format
 msgid "≈{0} to first drop"
 msgstr ""
 
-#: src/Panel/Search/SearchWords.cs:126
-#: src/Panel/Settings/HistoryList.Rows.cs:82
-#: src/Panel/SetupTab/SetupTabView.cs:266
-#: src/Panel/Simulate/RunControl.cs:365
-#: src/Panel/Words.cs:52
-#, csharp-format
-msgid "{0} · {1}"
-msgstr ""
-
-#: src/Panel/Search/SearchWords.cs:126
+#: src/Panel/Search/SearchWords.cs:135
 #, csharp-format
 msgid "{0} sooner"
 msgstr ""
 
-#: src/Panel/Search/SearchWords.cs:126
+#: src/Panel/Search/SearchWords.cs:135
 #, csharp-format
 msgid "{0} later"
 msgstr ""
 
-#: src/Panel/Search/SearchWords.cs:133
+#: src/Panel/Search/SearchWords.cs:142
 #: src/Panel/Widgets/Badge.cs:41
 #, csharp-format
 msgid "{0} deaths"
 msgstr ""
 
 #. A very large count, {0} a number with up to three figures: "8.54 quadrillion".
-#: src/Panel/Search/SearchWords.cs:173
+#: src/Panel/Search/SearchWords.cs:182
 #, csharp-format
 msgid "{0} quadrillion"
 msgstr ""
 
 #. A very large count, {0} a number with up to three figures: "8.54 trillion".
-#: src/Panel/Search/SearchWords.cs:175
+#: src/Panel/Search/SearchWords.cs:184
 #, csharp-format
 msgid "{0} trillion"
 msgstr ""
 
 #. A large count, {0} a number with up to three figures: "30.5 billion".
-#: src/Panel/Search/SearchWords.cs:177
+#: src/Panel/Search/SearchWords.cs:186
 #, csharp-format
 msgid "{0} billion"
 msgstr ""
 
 #. A large count, {0} a number with up to three figures: "4.68 million".
-#: src/Panel/Search/SearchWords.cs:179
+#: src/Panel/Search/SearchWords.cs:188
 #, csharp-format
 msgid "{0} million"
 msgstr ""
 
-#: src/Panel/Search/SearchWords.cs:199
+#: src/Panel/Search/SearchWords.cs:208
 #, csharp-format
 msgid "About {0} s"
 msgstr ""
 
-#: src/Panel/Search/SearchWords.cs:200
+#: src/Panel/Search/SearchWords.cs:209
 #, csharp-format
 msgid "About {0} min"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:221
+#, csharp-format
+msgid "Cancelled after stage {0}."
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:222
+#, csharp-format
+msgid "The search failed: {0}"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:229
+#, csharp-format
+msgid "A search for {0} is running: wait for it or cancel it first."
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:233
+msgid "A run is going: wait for it or cancel it first."
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:241
+msgid "nothing"
+msgstr ""
+
+#: src/Panel/Search/SearchWords.cs:246
+msgid "current gear"
 msgstr ""
 
 #. Answer tab: the best setup found.
@@ -4632,7 +4979,7 @@ msgid "Potion"
 msgstr ""
 
 #: src/Panel/Search/SetupRows.cs:464
-#: src/Panel/Search/StartForm.cs:78
+#: src/Panel/Search/StartForm.cs:81
 #: src/Panel/SetupTab/SlayerMasters.cs:112
 #: src/Panel/Simulate/PasteDialog.Simulation.cs:78
 msgid "None"
@@ -4644,87 +4991,169 @@ msgstr ""
 msgid "Locked"
 msgstr ""
 
-#. Short button of the gear search's death limit: fewer than 5% of trials die.
-#: src/Panel/Search/StartForm.cs:80
-#: src/Panel/SetupTab/SlayerMasters.cs:113
-msgid "Under 5%"
-msgstr ""
-
-#. Short button of the gear search's death limit: any deaths, if one trial was survived.
-#: src/Panel/Search/StartForm.cs:82
-#: src/Panel/SetupTab/SlayerMasters.cs:114
-msgid "Any"
-msgstr ""
-
-#. Tick in the gear search's form: also try the other combat styles' weapons.
-#: src/Panel/Search/StartForm.cs:106
-msgid "Include other styles"
-msgstr ""
-
-#: src/Panel/Search/StartForm.cs:114
-msgid "Also search with a weapon of each other combat style, and show each style's best."
-msgstr ""
-
-#: src/Panel/Search/StartForm.cs:250
-msgid "Counting combinations…"
-msgstr ""
-
-#: src/Panel/Search/StartForm.cs:265
-msgid "The sets couldn't be counted."
-msgstr ""
-
-#. The start button when fighting every set would pass the long-search limit.
-#: src/Panel/Search/StartForm.cs:274
-msgid "Shorter search"
-msgstr ""
-
 #. In Droptimizer's counts: items the character doesn't own.
-#: src/Panel/Search/StartForm.cs:314
+#: src/Panel/Search/StartCounts.cs:64
 msgid "Not owned"
 msgstr ""
 
 #. In Droptimizer's counts: of those, the ones the character can wear now.
-#: src/Panel/Search/StartForm.cs:316
+#: src/Panel/Search/StartCounts.cs:66
 msgid "Wearable now"
 msgstr ""
 
 #. In a gear search's counts before it starts: how many sets will be simulated.
-#: src/Panel/Search/StartForm.cs:318
-#: src/Panel/Search/StartForm.cs:326
+#: src/Panel/Search/StartCounts.cs:68
+#: src/Panel/Search/StartCounts.cs:78
 #: src/Panel/Settings/SettingsView.Sections.cs:103
 msgid "Simulation"
 msgstr ""
 
+#: src/Panel/Search/StartCounts.cs:73
+msgid "Items"
+msgstr ""
+
 #. In a gear search's counts, when there are too many sets to fight them all.
-#: src/Panel/Search/StartForm.cs:329
+#: src/Panel/Search/StartCounts.cs:81
 msgid "Per slot"
 msgstr ""
 
-#: src/Panel/Search/StartForm.cs:343
+#: src/Panel/Search/StartCounts.cs:101
 msgid "Nothing to search: nothing else you own fits an unlocked slot."
 msgstr ""
 
 #. Under a gear search's counts before it starts, when there are too many sets to fight them all.
-#: src/Panel/Search/StartForm.cs:350
+#: src/Panel/Search/StartCounts.cs:107
 msgid "Too many combinations to try: the search builds a set slot by slot. A better mix may exist."
 msgstr ""
 
-#. Under a setup search's counts: {0} the long-search limit in minutes.
-#: src/Panel/Search/StartForm.cs:359
-#, csharp-format
-msgid "Trying everything switched on may take over {0} min. Switch some off to make it shorter."
-msgstr ""
-
 #. Under a gear search's counts: {0} the long-search limit in minutes.
-#: src/Panel/Search/StartForm.cs:371
+#: src/Panel/Search/StartCounts.cs:115
 #, csharp-format
 msgid "Simulating them all would take over {0} min, so the search builds a set slot by slot. A better mix may exist."
 msgstr ""
 
 #. Before any search of this kind of target has been timed; {0} is how many sets.
-#: src/Panel/Search/StartForm.cs:382
+#: src/Panel/Search/StartCounts.cs:124
 #, csharp-format
 msgid "{0} sets is too many to simulate before a search here has been timed, so the search builds a set slot by slot. A better mix may exist."
+msgstr ""
+
+#. Under a setup search's counts: {0} the long-search limit in minutes.
+#: src/Panel/Search/StartCounts.cs:134
+#, csharp-format
+msgid "Trying everything switched on may take over {0} min. Switch some off to make it shorter."
+msgstr ""
+
+#. The gear search form's short counts: {0} how many sets the character's choices make.
+#: src/Panel/Search/StartCounts.cs:163
+#, csharp-format
+msgid "{0} sets"
+msgstr ""
+
+#. The gear search form's short counts: the search builds a set slot by slot.
+#: src/Panel/Search/StartCounts.cs:166
+msgid "slot by slot"
+msgstr ""
+
+#. The gear search form's short counts: {0} how many sets will be simulated.
+#: src/Panel/Search/StartCounts.cs:168
+#, csharp-format
+msgid "{0} to simulate"
+msgstr ""
+
+#. In a gear search's counts: a search slot by slot not yet timed runs at most {0} minutes, the player's limit.
+#: src/Panel/Search/StartCounts.cs:196
+#, csharp-format
+msgid "Up to {0} min"
+msgstr ""
+
+#. In a gear search's counts: {0} how long building a set slot by slot is expected to take, {1} the player's limit it stops at, in minutes.
+#: src/Panel/Search/StartCounts.cs:199
+#, csharp-format
+msgid "{0} · stops at {1} min"
+msgstr ""
+
+#. In a gear search's counts over every item: {0} items in the pool, {1} of them not owned.
+#: src/Panel/Search/StartCounts.cs:209
+#, csharp-format
+msgid "{0} · {1} not owned"
+msgstr ""
+
+#. Short button of the gear search's death limit: fewer than 5% of trials die.
+#: src/Panel/Search/StartForm.cs:83
+#: src/Panel/SetupTab/SlayerMasters.cs:113
+msgid "Under 5%"
+msgstr ""
+
+#. Short button of the gear search's death limit: any deaths, if one trial was survived.
+#: src/Panel/Search/StartForm.cs:85
+#: src/Panel/SetupTab/SlayerMasters.cs:114
+msgid "Any"
+msgstr ""
+
+#. Tick in the gear search's form: also try the other combat styles' weapons.
+#: src/Panel/Search/StartForm.cs:109
+msgid "Include other styles"
+msgstr ""
+
+#: src/Panel/Search/StartForm.cs:117
+msgid "Also search with a weapon of each other combat style, and show each style's best."
+msgstr ""
+
+#: src/Panel/Search/StartForm.cs:124
+#: src/Panel/Settings/HistoryList.Rows.cs:90
+#: src/Panel/SetupTab/SetupTabView.cs:76
+#: src/Panel/Simulate/SetupCard.cs:122
+msgid "Ignore requirements"
+msgstr ""
+
+#. Hover of the gear search form's Ignore requirements tick, which is side A's own setting.
+#: src/Panel/Search/StartForm.cs:199
+msgid "Side A's setting, as on the Setup tab: search any gear and choice, requirements met or not."
+msgstr ""
+
+#: src/Panel/Search/StartForm.cs:200
+#: src/Panel/SetupTab/SetupTabView.cs:261
+msgid "Unsupported on this game build"
+msgstr ""
+
+#. In the summary of the gear search form's options: side A ignores requirements.
+#: src/Panel/Search/StartForm.cs:253
+msgid "requirements ignored"
+msgstr ""
+
+#. In the summary of the gear search form's options: {0} how many item sources are left out.
+#: src/Panel/Search/StartForm.cs:262
+#, csharp-format
+msgid "{0} left out"
+msgstr ""
+
+#. In the summary of the gear search form's options: other combat styles are tried too.
+#: src/Panel/Search/StartForm.cs:268
+msgid "other styles"
+msgstr ""
+
+#. In the summary of the gear search form's options: choices the character doesn't have are tried too.
+#: src/Panel/Search/StartForm.cs:272
+msgid "choices I don't have"
+msgstr ""
+
+#. The summary of the gear search form's options when none is switched on.
+#: src/Panel/Search/StartForm.cs:275
+msgid "Gear only"
+msgstr ""
+
+#: src/Panel/Search/StartForm.cs:313
+msgid "Counting combinations…"
+msgstr ""
+
+#: src/Panel/Search/StartForm.cs:328
+msgid "The sets couldn't be counted."
+msgstr ""
+
+#. The start button when fighting every set would pass the long-search limit.
+#: src/Panel/Search/StartForm.cs:337
+msgid "Shorter search"
 msgstr ""
 
 #. Above the items a gear search must not use.
@@ -4816,12 +5245,6 @@ msgstr ""
 #: src/Panel/Settings/HistoryList.Rows.cs:80
 #, csharp-format
 msgid "seed {0}"
-msgstr ""
-
-#: src/Panel/Settings/HistoryList.Rows.cs:90
-#: src/Panel/SetupTab/SetupTabView.cs:76
-#: src/Panel/Simulate/SetupCard.cs:122
-msgid "Ignore requirements"
 msgstr ""
 
 #: src/Panel/Settings/HistoryList.Rows.cs:91
@@ -4962,6 +5385,25 @@ msgstr ""
 
 #: src/Panel/Settings/LanguageRow.cs:27
 msgid "Same as the game"
+msgstr ""
+
+#: src/Panel/Settings/LongestSearch.cs:24
+msgid "No limit"
+msgstr ""
+
+#: src/Panel/Settings/LongestSearch.cs:25
+#: src/Panel/Words.cs:94
+#, csharp-format
+msgid "{0} min"
+msgstr ""
+
+#: src/Panel/Settings/LongestSearch.cs:35
+msgid "A search too big to try every set builds one slot by slot; at this limit it keeps the best set found so far."
+msgstr ""
+
+#. Setting of the gear search: the longest it runs before keeping the best set found so far.
+#: src/Panel/Settings/LongestSearch.cs:39
+msgid "Longest gear search"
 msgstr ""
 
 #: src/Panel/Settings/MotionRow.cs:15
@@ -5133,7 +5575,7 @@ msgid "Up to {0:0}% on this screen."
 msgstr ""
 
 #: src/Panel/Settings/SettingsView.Sections.cs:13
-#: src/Panel/Simulate/PanelMenu.cs:81
+#: src/Panel/Simulate/PanelMenu.cs:85
 msgid "Window"
 msgstr ""
 
@@ -5222,24 +5664,24 @@ msgid "Saved with setup, build and seed. {0} MB used."
 msgstr ""
 
 #. Setting of the gear search: sets whose results differ by less than this share count as equal.
-#: src/Panel/Settings/TieShareRow.cs:40
+#: src/Panel/Settings/TieShareRow.cs:42
 msgid "Treat as equal within"
 msgstr ""
 
-#: src/Panel/Settings/TieShareRow.cs:41
+#: src/Panel/Settings/TieShareRow.cs:43
 msgid "Gear search: a set must beat another by more than this to rank above it."
 msgstr ""
 
 #. Button that forgets the gear search answers kept for each target.
-#: src/Panel/Settings/TieShareRow.cs:45
+#: src/Panel/Settings/TieShareRow.cs:48
 msgid "Clear kept answers"
 msgstr ""
 
-#: src/Panel/Settings/TieShareRow.cs:48
+#: src/Panel/Settings/TieShareRow.cs:51
 msgid "Gear search answers"
 msgstr ""
 
-#: src/Panel/Settings/TieShareRow.cs:49
+#: src/Panel/Settings/TieShareRow.cs:52
 msgid "Kept to show again on returning to their target."
 msgstr ""
 
@@ -5919,10 +6361,6 @@ msgstr ""
 msgid "{0} can use any gear and entry, requirements met or not"
 msgstr ""
 
-#: src/Panel/SetupTab/SetupTabView.cs:261
-msgid "Unsupported on this game build"
-msgstr ""
-
 #: src/Panel/SetupTab/SetupTabView.cs:271
 #, csharp-format
 msgid "Copy of {0} · simulation only"
@@ -6032,125 +6470,136 @@ msgid "Single monsters are fought with no slayer task. Masters are always on tas
 msgstr ""
 
 #. Heading on the Slayer page: the save's current slayer tasks, each against its master's overall rate.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:36
+#: src/Panel/SetupTab/SlayerTasksNow.cs:39
 msgid "Your tasks now"
 msgstr ""
 
 #. Button on the Slayer page: simulate every master the player has a task with.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:40
+#: src/Panel/SetupTab/SlayerTasksNow.cs:43
 msgid "Simulate tasks"
 msgstr ""
 
-#: src/Panel/SetupTab/SlayerTasksNow.cs:41
+#: src/Panel/SetupTab/SlayerTasksNow.cs:44
 msgid "Simulates each master you have a task with, on side A, to compare your task with the master's overall rate"
 msgstr ""
 
-#: src/Panel/SetupTab/SlayerTasksNow.cs:96
+#: src/Panel/SetupTab/SlayerTasksNow.cs:101
 msgid "Simulate to compare each task with its master's overall rate."
 msgstr ""
 
-#: src/Panel/SetupTab/SlayerTasksNow.cs:97
-msgid "Each task on its master's best setup (side A before Find best) against the master's overall rate: above it is worth extending, below it worth rerolling."
+#: src/Panel/SetupTab/SlayerTasksNow.cs:102
+msgid "Each task on its master's best setup or on side A, whichever was simulated last, against the master's overall rate: above it is worth extending, below it worth rerolling."
 msgstr ""
 
-#: src/Panel/SetupTab/SlayerTasksNow.cs:176
+#: src/Panel/SetupTab/SlayerTasksNow.cs:208
 msgid "not simulated yet"
 msgstr ""
 
-#: src/Panel/SetupTab/SlayerTasksNow.cs:177
+#: src/Panel/SetupTab/SlayerTasksNow.cs:209
 #, csharp-format
 msgid "{0} /h · {1}"
 msgstr ""
 
 #. After a task's comparison when it was judged on side A, before Find best.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:179
+#: src/Panel/SetupTab/SlayerTasksNow.cs:211
 msgid "on side A"
 msgstr ""
 
+#. After a task's comparison on its master's best setup, when side A has changed since
+#. Find best found it.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:214
+msgid "best found before your setup changed"
+msgstr ""
+
 #. After a task's comparison when its master's best setup blocks the task's monster.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:181
+#: src/Panel/SetupTab/SlayerTasksNow.cs:216
 msgid "its best setup blocks it"
 msgstr ""
 
 #. Hover on a task's comparison once Find best has found its master's best; {0} the master.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:193
+#: src/Panel/SetupTab/SlayerTasksNow.cs:228
 #, csharp-format
 msgid "On {0}'s best loadouts and blocks. Overall rate: all of {0}'s tasks, blocked monsters left out."
 msgstr ""
 
 #. Hover on a task's comparison before Find best; {0} is the master.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:197
+#: src/Panel/SetupTab/SlayerTasksNow.cs:232
 #, csharp-format
 msgid "On side A. Find best on {0} judges it on its best loadouts."
 msgstr ""
 
+#. Hover on a task's comparison before Find best; {0} is the master.
+#: src/Panel/SetupTab/SlayerTasksNow.cs:238
+msgid "Your setup has changed since Find best. Find best again for the best setup now, or Simulate tasks to judge it on side A."
+msgstr ""
+
 #. Advice on a slayer task: pay to extend it.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:209
+#: src/Panel/SetupTab/SlayerTasksNow.cs:253
 msgid "Extend"
 msgstr ""
 
 #. Advice on a slayer task: pay to reroll it.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:211
+#: src/Panel/SetupTab/SlayerTasksNow.cs:255
 msgid "Reroll"
 msgstr ""
 
-#: src/Panel/SetupTab/SlayerTasksNow.cs:219
+#: src/Panel/SetupTab/SlayerTasksNow.cs:263
 msgid "Extended already: the game extends a task once"
 msgstr ""
 
-#: src/Panel/SetupTab/SlayerTasksNow.cs:220
+#: src/Panel/SetupTab/SlayerTasksNow.cs:264
 msgid "Neither extending nor rerolling earns back what it costs"
 msgstr ""
 
-#: src/Panel/SetupTab/SlayerTasksNow.cs:221
+#: src/Panel/SetupTab/SlayerTasksNow.cs:265
 msgid "About its master's overall rate: neither is worth paying for"
 msgstr ""
 
 #. Between a task's advice (Extend, Reroll) and what it costs in the master's coin.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:236
+#: src/Panel/SetupTab/SlayerTasksNow.cs:280
 msgid "for"
 msgstr ""
 
 #. A reroll's cost and gain; {1} the gain, {2} the goal's metric, {3} how long the
 #. kills left would take, {4} how many.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:243
+#: src/Panel/SetupTab/SlayerTasksNow.cs:287
 #, csharp-format
 msgid "{0}: +{1} {2} over the {3} the {4} kills left would take"
 msgstr ""
 
 #. An extension's cost and gain; {1} the gain, {2} the goal's metric, {3} how long the
 #. kills added take, {4} how many.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:255
+#: src/Panel/SetupTab/SlayerTasksNow.cs:299
 #, csharp-format
 msgid "{0}: +{1} {2} over the {3} of {4} more kills"
 msgstr ""
 
 #. After a task's cost and gain, when both are the master's coin: what is left.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:267
+#: src/Panel/SetupTab/SlayerTasksNow.cs:311
 #, csharp-format
 msgid "net +{0}"
 msgstr ""
 
 #. Hover on a reroll's or extension's gain; {0} the master.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:273
+#: src/Panel/SetupTab/SlayerTasksNow.cs:317
 #, csharp-format
 msgid "Against the same time on {0}'s tasks"
 msgstr ""
 
 #. A task about as good as its master's rate over all its tasks; {0} is the master.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:286
+#: src/Panel/SetupTab/SlayerTasksNow.cs:330
 #, csharp-format
 msgid "about {0}'s overall rate"
 msgstr ""
 
 #. A task better than its master's rate over all its tasks by {0} percent; {1} is the master.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:289
+#: src/Panel/SetupTab/SlayerTasksNow.cs:333
 #, csharp-format
 msgid "{0}% above {1}'s overall rate"
 msgstr ""
 
 #. A task worse than its master's rate over all its tasks by {0} percent; {1} is the master.
-#: src/Panel/SetupTab/SlayerTasksNow.cs:291
+#: src/Panel/SetupTab/SlayerTasksNow.cs:335
 #, csharp-format
 msgid "{0}% below {1}'s overall rate"
 msgstr ""
@@ -6450,44 +6899,44 @@ msgstr ""
 msgid "Accuracy ({0})"
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:60
+#: src/Panel/Simulate/PanelMenu.cs:61
 msgid "Menu"
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:64
+#: src/Panel/Simulate/PanelMenu.cs:65
 msgid "Share"
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:66
+#: src/Panel/Simulate/PanelMenu.cs:67
 msgid "Copy simulation"
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:68
+#: src/Panel/Simulate/PanelMenu.cs:69
 msgid "Paste…"
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:71
+#: src/Panel/Simulate/PanelMenu.cs:72
 msgid "Both sides, the targets left out and the settings below, as one line."
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:77
+#: src/Panel/Simulate/PanelMenu.cs:78
 msgid "How runs fight"
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:85
+#: src/Panel/Simulate/PanelMenu.cs:89
 msgid "Help and reports"
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:89
+#: src/Panel/Simulate/PanelMenu.cs:93
 msgid "Save bug report…"
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:101
+#: src/Panel/Simulate/PanelMenu.cs:105
 msgid "History"
 msgstr ""
 
-#: src/Panel/Simulate/PanelMenu.cs:120
-msgid "Menu: share this simulation, how runs fight, bug reports and history"
+#: src/Panel/Simulate/PanelMenu.cs:124
+msgid "Menu: share this simulation, how runs fight, the longest gear search, bug reports and history"
 msgstr ""
 
 #: src/Panel/Simulate/PasteDialog.Simulation.cs:17
@@ -7658,11 +8107,6 @@ msgstr ""
 
 #: src/Panel/Words.cs:80
 msgid "/day"
-msgstr ""
-
-#: src/Panel/Words.cs:94
-#, csharp-format
-msgid "{0} min"
 msgstr ""
 
 #: src/Panel/Words.cs:95

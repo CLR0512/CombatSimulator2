@@ -142,7 +142,8 @@ public static class Choices
 
     /// <summary>
     /// <paramref name="candidates"/> with a spell for each magic set that holds none it can cast, so it can fight:
-    /// the strongest its weapon allows (current gear's weapon for a set that keeps it).
+    /// the strongest its weapon allows (current gear's weapon for a set that keeps it). Current gear stays as it is:
+    /// every set is measured against it, and a slot-by-slot search starts from it as the first set.
     /// </summary>
     public static IReadOnlyList<Candidate> WithSpells(
         IReadOnlyList<Candidate> candidates,
@@ -159,7 +160,7 @@ public static class Choices
         [
             .. candidates.Select(c =>
             {
-                if (c.Style != Magic || c.Changes.Any(change => change.Kind == ChangeKind.Spell))
+                if (c.Changes.IsEmpty || c.Style != Magic || c.Changes.Any(change => change.Kind == ChangeKind.Spell))
                     return c;
                 var weapon =
                     c.Changes.Select(change => change.Item)

@@ -17,7 +17,7 @@ public sealed class AssumptionTests
                 "unlimited consumables (topped up after each tick)",
                 "levels held (XP reset after each trial)",
                 "loot cleared from the bank after it is counted",
-                "slayer task as in the save, auto-slayer off; a task that ends during a fight changes the rest of that fight, as in the game",
+                "slayer task as in the save, for the whole run (it never runs out), auto-slayer off",
                 "time of day frozen at 12:00",
             ],
             Assumption.All.Select(a => a.Note.English())

@@ -176,6 +176,9 @@ internal static partial class SearchStart
             };
         }
         var plan = reply.Plan!;
+        var limit = PlanPreview.LimitFor(request.Pool);
+        var target = TargetSpec.FromKey(request.Target);
+        var climbSeconds = SearchPlanning.ClimbExpected(plan, request, SearchTimes.StepPace(target.Key, target.Kind));
         var seconds = SearchPlanning.Expected(plan, request, perTrial);
         var all = KindCounts(reply, request);
         var kinds = all.Where(k => request.Kinds.Contains(k.Kind)).ToList();
@@ -191,7 +194,8 @@ internal static partial class SearchStart
             Kinds = all,
             On = request.Kinds,
             PotionsInBuild = LiveGame.Find() is { } game && Changes.PotionsInBuild(game),
-            KindsOverLimit = (seconds ?? 0) + (kindSeconds ?? 0) > SearchTimes.LongSearchSeconds && kindSeconds != null,
+            KindsOverLimit = (seconds ?? 0) + (kindSeconds ?? 0) > limit && kindSeconds != null,
+            ClimbSeconds = climbSeconds is { } climbed ? climbed + (kindSeconds ?? 0) : null,
             Kind = SearchKind.BestGear,
             Possible = plan.Possible,
             RuledOut = plan.RuledOut.Values.Aggregate(System.Numerics.BigInteger.Zero, (n, r) => n + r),
@@ -202,7 +206,10 @@ internal static partial class SearchStart
             SkippedStyles = plan.SkippedStyles,
             Seconds = seconds is { } gear && kindSeconds is { } more ? gear + more : seconds,
             OverLimit = SearchPlanning.TooLong(plan, request, perTrial),
-            LimitSeconds = SearchTimes.LongSearchSeconds,
+            LimitSeconds = limit,
+            MaxSeconds = request.MaxSeconds,
+            Pool = request.Pool,
+            PoolCounts = request.Pool == ItemPool.Every ? PoolCount.Of(reply.Catalogue, request) : [],
         };
     }
 
@@ -220,6 +227,8 @@ internal static partial class SearchStart
     /// </summary>
     public static SearchRun New(SearchRequest request, double share, string where, ulong seed, Func<int> nextGeneration)
     {
+        if (request.Refusals() is [var refused, ..])
+            throw new CommandException(refused.English());
         RequireDependencies();
         var game = LiveGame.Require();
         var slot = RunService.CheckLoadout(request.Setup, () => LiveGame.Loadouts(game));
@@ -276,7 +285,7 @@ internal static partial class SearchStart
             Share = share,
             Kinds = [.. ChoiceKinds.Normal(request.Kinds).Select(ChoiceKinds.Name)],
             IncludeUnowned = request.IncludeUnowned,
-        };
+        }.WithPool(request);
         ISearchFighter fighter =
             where == RunService.InHost
                 ? (RunService.Remote ?? throw new InvalidOperationException("no simulator host")).NewSearch()

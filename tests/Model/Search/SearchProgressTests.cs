@@ -56,26 +56,14 @@ public sealed class SearchProgressTests
     [Fact]
     public void TimeLeftFollowsThePaceSoFar() =>
         // A quarter done in 30 s: three quarters left at the same pace.
-        Assert.Equal(90, SearchProgress.SecondsLeft(30, 0.25, null)!.Value, 6);
-
-    [Fact]
-    public void AClimbHasNoMoreLeftThanItsLimit()
-    {
-        Assert.Equal(40, SearchProgress.SecondsLeft(30, 0.25, 40)!.Value, 6);
-        // Past the limit, the climb ends at its step under way: nothing left to count.
-        Assert.Equal(0, SearchProgress.SecondsLeft(160, 0.9, -10)!.Value, 6);
-    }
+        Assert.Equal(90, SearchProgress.SecondsLeft(30, 0.25)!.Value, 6);
 
     [Fact]
     public void TooEarlyToSayIsNothing()
     {
-        Assert.Null(SearchProgress.SecondsLeft(SearchProgress.EstimateAfter - 1, 0.5, null));
-        Assert.Null(SearchProgress.SecondsLeft(60, 0.01, null));
+        Assert.Null(SearchProgress.SecondsLeft(SearchProgress.EstimateAfter - 1, 0.5));
+        Assert.Null(SearchProgress.SecondsLeft(60, 0.01));
     }
-
-    [Fact]
-    public void AClimbWithNoPaceYetHasItsTimeToTheLimit() =>
-        Assert.Equal(142, SearchProgress.SecondsLeft(8, 0.001, 142)!.Value, 6);
 
     [Fact]
     public void TheBarFollowsTheTimeLeftAndNeverRunsBack()
@@ -87,24 +75,33 @@ public sealed class SearchProgressTests
     }
 
     [Fact]
-    public void AClimbNearItsLimitStillHasItsStepUnderWayLeft()
+    public void AClimbHasAtLeastItsStepUnderWayLeft()
     {
-        var progress = new SearchProgress();
-        // Half of the step under way done in 20 s, 1 s short of a 120 s limit, nothing queued.
-        progress.Update([400, 1000], 1, 0, 0, null);
         Assert.Equal(20, SearchProgress.RoundLeft(20, 0.5)!.Value, 6);
         Assert.Null(SearchProgress.RoundLeft(5, 0.01));
+        // A tenth of the round done in 10 s: the step needs 90 s more, whatever the whole search's pace says.
+        var progress = new SearchProgress();
+        progress.Update([1000], 1, 10, 1, null);
+        Assert.True(progress.Left(0.9, 100, true, 10) >= SearchProgress.RoundLeft(10, progress.LastRound));
+        var whole = new SearchProgress();
+        whole.Update([1000], 1, 10, 1, null);
+        Assert.Equal(100 * 0.1 / 0.9, whole.Left(0.9, 100, false, 10)!.Value, 6);
     }
 
     [Fact]
-    public void QueuedClimbsAddTheirLimitToTheTimeLeft()
+    public void TheLimitCapsAClimbUntilThePaceSaysLess()
     {
-        var progress = new SearchProgress();
-        var alone = progress.Left(progress.Update([400], 1, 10, 9, null), 100, 119, 0, 5, 120);
-        var another = new SearchProgress();
-        var withOne = another.Left(another.Update([400], 1, 10, 9, null), 100, 119, 1, 5, 120);
-        Assert.NotNull(alone);
-        Assert.True(withOne > alone);
-        Assert.True(withOne <= 121);
+        // Under 2% done, the pace says nothing: the time to the player's limit is the most the search has.
+        var early = new SearchProgress();
+        Assert.Equal(300, early.Left(0.01, 10, true, 1, 300)!.Value, 6);
+        Assert.True(early.AtLimit);
+        // Half done in 60 s: 60 s more by the pace, within the limit.
+        var paced = new SearchProgress();
+        Assert.Equal(60, paced.Left(0.5, 60, true, 1, 300)!.Value, 6);
+        Assert.False(paced.AtLimit);
+        // No limit: the pace alone.
+        var free = new SearchProgress();
+        Assert.Null(free.Left(0.01, 10, true, 1));
+        Assert.False(free.AtLimit);
     }
 }

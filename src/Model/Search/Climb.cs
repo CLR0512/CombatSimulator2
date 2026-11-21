@@ -280,7 +280,7 @@ public sealed partial class Climb
         var worn = new Dictionary<string, string?>(_worn, StringComparer.Ordinal);
         foreach (var (slot, item) in branch.Fixed)
             worn[slot] = item;
-        var fires = branch.Weapon == null ? null : _catalogue.Item(branch.Weapon)?.Weapon?.AmmoType;
+        var fires = branch.Weapon == null ? null : _catalogue.Item(branch.Weapon)?.AmmoNeeded;
         foreach (var unit in branch.Units)
         {
             var isAmmo =

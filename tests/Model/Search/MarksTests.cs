@@ -23,6 +23,74 @@ public sealed class MarksTests
         Assert.Equal("Prayer level 40", mark.Needs!.English());
     }
 
+    private static GearItem Item(int owned, Note? source = null, params Note[] unmet) =>
+        new("MelvorBase:RuneHelmet", "Rune Helmet", "Helmet")
+        {
+            Owned = owned,
+            Source = source,
+            Unmet = unmet,
+        };
+
+    [Fact]
+    public void AnOwnedWearableItemHasNoMark() => Assert.Equal(Mark.None, Mark.OfItem(Item(1, Note.Text("Golbin"))));
+
+    [Fact]
+    public void AnOwnedItemTheLevelsDontMeetNeedsThemAndNamesNoSource()
+    {
+        var mark = Mark.OfItem(Item(1, Note.Text("Golbin"), Note.Of("Defence level {0}", 40)));
+        Assert.Equal(MarkKind.Locked, mark.Kind);
+        Assert.Equal("Defence level 40", mark.Needs!.English());
+        Assert.Null(mark.Source);
+        Assert.True(mark.HasNeeds);
+    }
+
+    [Fact]
+    public void AnUnownedItemNamesWhereItComesFrom()
+    {
+        var mark = Mark.OfItem(Item(0, Note.Of("Shop")));
+        Assert.Equal(MarkKind.NotInBank, mark.Kind);
+        Assert.Equal("Shop", mark.Source!.English());
+        Assert.Null(mark.Needs);
+        Assert.False(mark.HasNeeds);
+    }
+
+    [Fact]
+    public void AnUnownedItemLackingLevelsIsNotInTheBankWithBoth()
+    {
+        var mark = Mark.OfItem(
+            Item(0, Note.Text("Golbin"), Note.Of("Defence level {0}", 40), Note.Of("Attack level {0}", 30))
+        );
+        Assert.Equal(MarkKind.NotInBank, mark.Kind);
+        Assert.Equal("Defence level 40", mark.Needs!.English());
+        Assert.Equal("Golbin", mark.Source!.English());
+        Assert.True(mark.HasNeeds);
+    }
+
+    [Fact]
+    public void AnUnownedItemWithoutASourceHasNone() => Assert.Null(Mark.OfItem(Item(0)).Source);
+
+    [Fact]
+    public void AMarkWithoutASourceSavesAsBefore()
+    {
+        var json = System.Text.Json.JsonSerializer.Serialize(Mark.Locked(Note.Text("Attack 60")), RunFile.Options);
+        Assert.DoesNotContain("source", json, StringComparison.Ordinal);
+        Assert.DoesNotContain("hasNeeds", json, StringComparison.Ordinal);
+        var back = System.Text.Json.JsonSerializer.Deserialize<Mark>(
+            System.Text.Json.JsonSerializer.Serialize(Mark.OfItem(Item(0, Note.Of("Shop"))), RunFile.Options),
+            RunFile.Options
+        );
+        Assert.Equal("Shop", back!.Source!.English());
+    }
+
+    [Fact]
+    public void ASetHoldingAnUnownedItemThatLacksLevelsNeedsRequirementsIgnored()
+    {
+        static SetResult Helmet(GearItem item) =>
+            new() { Slots = [new("Helmet", "Helmet", null, null, item.Id, item.Name) { Mark = Mark.OfItem(item) }] };
+        Assert.True(Helmet(Item(0, null, Note.Of("Defence level {0}", 40))).NeedsRequirementsIgnored);
+        Assert.False(Helmet(Item(0)).NeedsRequirementsIgnored);
+    }
+
     [Fact]
     public void AnAnswerMarksTheChoiceItChangesNotTheOnesItKeeps()
     {

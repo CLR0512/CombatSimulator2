@@ -1,7 +1,8 @@
 # Every master on its best setup: Best loadouts on each master Chk has unlocked, one seed, then each master's best
 # blocks within its open slots over its picked loadouts, from the same fights. Ranked best first; side B is left as it
-# was until a master's best is used, and a run with it lands on the ranked figure. Run in the game's process: about
-# 200 s on the release, which has all ten masters.
+# was until a master's best is used, and a run with it lands on the ranked figure. The save's tasks are judged on
+# whichever came last, Find best or a run of the master, and say when side A has changed since Find best. Run in the
+# game's process: about 200 s on the release, which has all ten masters.
 cs2 loadouts best all seed=1 trials=300 metric=xp:MelvorBase:Slayer where=game
 wait 9000
 wait 9000
@@ -34,6 +35,26 @@ expect reply "every master on its best setup · metric xp:MelvorBase:Slayer"
 expect reply "4 master:Allevia  7,964 [7,837, 8,091]"
 expect reply "blocks SlimeForest/GreenSlime (5,000 coins)  3 on own loadouts"
 expect reply "5 master:Kuren  6,952 [6,892, 7,011]"
+# Once Find best has a master's best setup, the save's tasks are judged on it: Galan's Dire Wolf, above his rate on
+# side A, is under it on his best.
+cs2 loadouts tasks
+expect reply "Galan  DireWolf  0/334  reroll  0.89x  +2,986 over 334 kills for 3,325  on best"
+expect reply "Hans  Drake  0/216  extend  1.98x  +2,488 over 65 kills for 2,500  on best"
+# A change on side A since Find best marks the best as found before it.
+cs2 side a level=Defence:98
+wait 2500
+cs2 loadouts tasks
+expect reply "Galan  DireWolf  0/334  reroll  0.89x  +2,986 over 334 kills for 3,325  on best, side a changed since"
+cs2 side a clear
+wait 2500
+# A run of a master after Find best is what its task is judged on: Simulate tasks catches up with the setup.
+cs2 run master:Galan seed=1 trials=300 fresh where=game
+wait 9000
+cs2 wait timeout=9
+cs2 wait timeout=9
+cs2 loadouts tasks
+expect reply "Galan  DireWolf  0/334  extend  1.57x  +1,379 over 55 kills for 1,750  on side a"
+expect reply "Hans  Drake  0/216  extend  1.98x  +2,488 over 65 kills for 2,500  on best"
 cs2 loadouts best use Allevia
 expect reply "Best on side B for master:Allevia"
 cs2 side b

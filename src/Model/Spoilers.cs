@@ -10,9 +10,15 @@ public sealed record SpoilerEnemy(string Id, string Name, bool Killed);
 public sealed record SpoilerPet(string Id, bool Found);
 
 /// <summary>
+/// An item that holds others when opened, as the guard reads it: the enemies and places whose fights give it, and
+/// whether anything else does. Named by a hidden fight alone, it names that fight too.
+/// </summary>
+public sealed record SpoilerHolder(string Name, IReadOnlyList<string> Fights, bool Elsewhere);
+
+/// <summary>
 /// What Spoiler guard hides: places the live character can't enter and has never fought in, monsters it has
-/// neither killed nor can meet in a place it can enter, and pets it hasn't found, so nothing the game already shows is
-/// hidden. Hidden things are named <see cref="Mask"/>, as the game's completion log names them.
+/// neither killed nor can meet in a place it can enter, pets it hasn't found, and chests only those hidden fights
+/// give, so nothing the game already shows is hidden. Hidden things are named <see cref="Mask"/>, as the game's completion log names them.
 /// </summary>
 public sealed class Spoilers
 {
@@ -52,7 +58,8 @@ public sealed class Spoilers
     public static Spoilers Of(
         IEnumerable<SpoilerPlace> places,
         IEnumerable<SpoilerEnemy> enemies,
-        IEnumerable<SpoilerPet>? pets = null
+        IEnumerable<SpoilerPet>? pets = null,
+        IEnumerable<SpoilerHolder>? holders = null
     )
     {
         ArgumentNullException.ThrowIfNull(places);
@@ -85,6 +92,9 @@ public sealed class Spoilers
             ids.Add(enemy.Id);
             hiddenNames.Add(enemy.Name);
         }
+        foreach (var holder in holders ?? [])
+            if (!holder.Elsewhere && holder.Fights.Count > 0 && holder.Fights.All(ids.Contains))
+                hiddenNames.Add(holder.Name);
         // A name something shown also has stays readable: masking it would hide what the game shows.
         hiddenNames.ExceptWith(shownNames);
         hiddenNames.Remove("");

@@ -84,6 +84,18 @@ public sealed record GearItem(string Id, string Name, string SlotType)
     /// <summary>Where the item comes from, as the game's data names it; null when the data doesn't say.</summary>
     public Note? Source { get; init; }
 
+    /// <summary>How the item is got from <see cref="Source"/>, in full: "Dropped by …", "Opened from …".</summary>
+    public Note? SourceDetail { get; init; }
+
+    /// <summary>Every way to get it, by name, the first being <see cref="Source"/>'s.</summary>
+    public IReadOnlyList<string> SourceNames { get; init; } = [];
+
+    /// <summary>
+    /// Whether the character can reach one of its sources now, by the game's own checks; null when none can and some
+    /// can't be judged.
+    /// </summary>
+    public bool? Reachable { get; init; }
+
     /// <summary>Which part made it opaque, for the counts and <c>cs2 deps</c>.</summary>
     public string? OpaqueReason { get; init; }
 
@@ -91,6 +103,12 @@ public sealed record GearItem(string Id, string Name, string SlotType)
     public IReadOnlyList<string> Unknowns { get; init; } = [];
 
     public bool Wearable => Unmet.Count == 0;
+
+    /// <summary>
+    /// The ammo it needs in another slot; null when it needs none, or when it is the ammo it fires (a javelin thrown
+    /// from its own stack).
+    /// </summary>
+    public string? AmmoNeeded => Weapon?.AmmoType is { } fires && fires != AmmoType ? fires : null;
 
     /// <summary>Whether it brings anything a comparison of stats and modifiers can't see.</summary>
     public bool Special => Opaque || Attacks.Count > 0 || Effects.Count > 0;
